@@ -1,0 +1,110 @@
+From d683d66f783ad99b4756005e937df642f1cdaadc Mon Sep 17 00:00:00 2001
+From: AntonRydahl <rydahl2610@gmail.com>
+Date: Thu, 31 Aug 2023 12:28:46 -0700
+Subject: [PATCH] Proof of concept for offloading std::for_each to GPUs using
+ OpenMP.
+
+---
+ .../pstl_backends/cpu_backends/for_each.h     | 53 +++++++++++++++++++
+ libcxx/include/__config                       |  4 +-
+ 2 files changed, 56 insertions(+), 1 deletion(-)
+
+diff --git a/libcxx/include/__algorithm/pstl_backends/cpu_backends/for_each.h b/libcxx/include/__algorithm/pstl_backends/cpu_backends/for_each.h
+index f6f22fdd8713..343379920494 100644
+--- a/libcxx/include/__algorithm/pstl_backends/cpu_backends/for_each.h
++++ b/libcxx/include/__algorithm/pstl_backends/cpu_backends/for_each.h
+@@ -13,8 +13,11 @@
+ #include <__algorithm/pstl_backends/cpu_backends/backend.h>
+ #include <__config>
+ #include <__iterator/concepts.h>
++#include <__iterator/wrap_iter.h>
+ #include <__type_traits/is_execution_policy.h>
+ #include <__utility/terminate_on_exception.h>
++#include <vector>
++#include <iostream>
+ 
+ #if !defined(_LIBCPP_HAS_NO_PRAGMA_SYSTEM_HEADER)
+ #  pragma GCC system_header
+@@ -22,14 +25,64 @@
+ 
+ #if !defined(_LIBCPP_HAS_NO_INCOMPLETE_PSTL) && _LIBCPP_STD_VER >= 17
+ 
++template <typename T, typename N>
++void OMPMapTo(T data,N length) {
++  _PSTL_PRAGMA(omp target enter data map(to:data[:length]));
++}
++
++/**
++ * Specialization for std::vector
++*/
++
++template <typename T,typename N>
++void OMPMapTo(std::__wrap_iter<T*> w,N length) {
++  std::pointer_traits<std::__wrap_iter<T*>> PT;
++  T* data = PT.to_address(w);
++  _PSTL_PRAGMA(omp target enter data map(to:data[:length]));
++}
++
++template <typename T,typename N>
++void OMPMapFrom(T data,N length) {
++  _PSTL_PRAGMA(omp target exit data map(from:data[:length]));
++}
++
++/**
++ * Specialization for std::vector
++*/
++
++template <typename T,typename N>
++void OMPMapFrom(std::__wrap_iter<T*> w,N length) {
++  std::pointer_traits<std::__wrap_iter<T*>> PT;
++  T* data = PT.to_address(w);
++  _PSTL_PRAGMA(omp target exit data map(from:data[:length]));
++}
++
+ _LIBCPP_BEGIN_NAMESPACE_STD
+ 
+ template <class _Iterator, class _DifferenceType, class _Function>
+ _LIBCPP_HIDE_FROM_ABI _Iterator __simd_walk_1(_Iterator __first, _DifferenceType __n, _Function __f) noexcept {
++  OMPMapTo(__first,__n);
+   _PSTL_PRAGMA_SIMD
+   for (_DifferenceType __i = 0; __i < __n; ++__i)
+     __f(__first[__i]);
++  OMPMapFrom(__first,__n);
++  return __first + __n;
++}
+ 
++/**
++ * Specialization for std::vector
++*/
++
++template <typename T, class _DifferenceType, class _Function>
++_LIBCPP_HIDE_FROM_ABI std::__wrap_iter<T*> __simd_walk_1(std::__wrap_iter<T*> __first, _DifferenceType __n, _Function __f) noexcept {
++  OMPMapTo(__first,__n);
++  // For std::vector the base pointer of the data buffer needs to be extracted 
++  std::pointer_traits<std::__wrap_iter<T*>> PT;
++  T* data = PT.to_address(__first);
++  _PSTL_PRAGMA_SIMD
++  for (_DifferenceType __i = 0; __i < __n; ++__i)
++    __f(data[__i]);
++  OMPMapFrom(__first,__n);
+   return __first + __n;
+ }
+ 
+diff --git a/libcxx/include/__config b/libcxx/include/__config
+index b503e1d01b10..567c57f1ac56 100644
+--- a/libcxx/include/__config
++++ b/libcxx/include/__config
+@@ -1432,7 +1432,9 @@ __sanitizer_verify_double_ended_contiguous_container(const void*, const void*, c
+ #  if (defined(_OPENMP) && _OPENMP >= 201307)
+ 
+ #    define _PSTL_UDR_PRESENT
+-#    define _PSTL_PRAGMA_SIMD _PSTL_PRAGMA(omp simd)
++#    define _PSTL_PRAGMA_DATA_MAP_TO(NAME,LEN) _PSTL_PRAGMA(omp target enter data map(to:NAME[:LEN]))
++#    define _PSTL_PRAGMA_DATA_MAP_FROM(NAME,LEN) _PSTL_PRAGMA(omp target exit data map(from:NAME[:LEN]))
++#    define _PSTL_PRAGMA_SIMD _PSTL_PRAGMA(omp target teams distribute parallel for)
+ #    define _PSTL_PRAGMA_DECLARE_SIMD _PSTL_PRAGMA(omp declare simd)
+ #    define _PSTL_PRAGMA_SIMD_REDUCTION(PRM) _PSTL_PRAGMA(omp simd reduction(PRM))
+ #    define _PSTL_PRAGMA_SIMD_SCAN(PRM) _PSTL_PRAGMA(omp simd reduction(inscan, PRM))
+-- 
+2.29.1
+
