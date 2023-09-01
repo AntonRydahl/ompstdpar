@@ -2,12 +2,12 @@ module load ninja
 ROOTDIR=`pwd`
 TARGETDIR=/dev/shm/rydahl1/LLVM
 SRCDIR=/g/g92/rydahl1/LLVM2/llvm-project
-if [ -d "/path/to/dir" ]; then
+if [ -d $TARGETDIR/build ] && [ -d $TARGETDIR/install/bin ]; then
   source recompile.sh
   exit(0)
 fi
-cd $SRCDIR
-git apply $ROOTDIR/patches/*.patch
+#cd $SRCDIR
+#git apply $ROOTDIR/patches/*.patch
 mkdir -p $TARGETDIR
 cd $TARGETDIR
 rm -rf build
@@ -33,10 +33,7 @@ cmake \
         -DLLVM_ENABLE_PROJECTS="clang;lld;openmp;pstl" \
         -DLLVM_ENABLE_RUNTIMES="compiler-rt;libcxx;libcxxabi" \
 	-DLIBOMPTARGET_ENABLE_DEBUG=ON  \
-        -DLIBC_GPU_ARCHITECTURES=gfx906 \
-	-DLIBC_GPU_TEST_ARCHITECTURE=gfx906 \
-        -DLIBC_GPU_VENDOR_MATH=ON \
-        -DLIBC_GPU_BUILTIN_MATH=OFF \
+	-DLIBCXX_ENABLE_OPENMP_OFFLOAD=ON \
         $SRCDIR/llvm
 
 ninja install -j 63
