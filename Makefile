@@ -13,6 +13,7 @@ bin: bin/$(APP)
 
 target: bin
 
+TMPOUT=temps/$(APP)
 
 CFLAGS = $(OPT) -Wall -std=c++2a
 CFLAGS += -stdlib=libc++ -fexperimental-library
@@ -44,5 +45,19 @@ ir:
 ast:
 	$(CXX) $(CFLAGS) -Xclang -ast-dump src/$(APP).cpp &> ast/$(APP).ast
 
+temps: ir
+	rm -rf $(TMPOUT)
+	mkdir -p $(TMPOUT)
+	$(CXX) $(CFLAGS) -save-temps src/$(APP).cpp -o $(APP) $(LDFLAGS)
+	mv $(APP)*.o $(TMPOUT)
+	mv $(APP)*.bc $(TMPOUT)
+	mv $(APP)*.ii $(TMPOUT)
+	#mv $(APP)*.i $(TMPOUT)
+	mv $(APP)*.s $(TMPOUT)
+	mv $(APP)*.out $(TMPOUT)
+	mv $(APP)*.img $(TMPOUT)
+	llvm-dis $(TMPOUT)/*.bc
+	#llvm-objdump -d $(TMPOUT)/$(APP).o.amdgcn-amd-amdhsa.gfx906.o > $(TMPOUT)/$(APP).o.amdgcn-amd-amdhsa.gfx906.o.objdump
+
 clean:
-	rm -rf bin/* ir/* *.core ast/*
+	rm -rf bin/* ir/* *.core ast/* temps/*/*.*
