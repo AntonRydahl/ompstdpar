@@ -33,7 +33,6 @@ cmake \
         -DLLVM_ENABLE_PROJECTS="clang;lld;openmp;pstl" \
         -DLLVM_ENABLE_RUNTIMES="compiler-rt;libcxx;libcxxabi" \
 	-DLIBOMPTARGET_ENABLE_DEBUG=ON  \
-	-DLIBCXX_ENABLE_OPENMP_OFFLOAD=ON \
         $SRCDIR/llvm
 
 ninja install -j 63

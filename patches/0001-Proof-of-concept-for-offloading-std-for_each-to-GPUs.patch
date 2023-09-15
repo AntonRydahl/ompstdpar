@@ -1,93 +1,215 @@
-From 7519f061ffcf33e4a8ff437394cbd65df9b3e826 Mon Sep 17 00:00:00 2001
+From 0d69627f100fd17b99e42847e7c312a7de8d0ae9 Mon Sep 17 00:00:00 2001
 From: AntonRydahl <rydahl2610@gmail.com>
 Date: Thu, 31 Aug 2023 12:28:46 -0700
 Subject: [PATCH] Proof of concept for offloading std::for_each to GPUs using
  OpenMP.
 
 ---
- libcxx/CMakeLists.txt                         |  8 ++++
- .../pstl_backends/cpu_backends/for_each.h     | 19 ++++++++
- libcxx/include/__config                       | 48 ++++++++++++++++++-
- 3 files changed, 74 insertions(+), 1 deletion(-)
+ .../pstl_backends/cpu_backends/fill.h         |   2 +-
+ .../pstl_backends/cpu_backends/for_each.h     |  21 ++-
+ .../pstl_backends/cpu_backends/transform.h    |  28 +++-
+ .../cpu_backends/transform_reduce.h           |   8 +-
+ libcxx/include/__config                       | 121 +++++++++++++++++-
+ 5 files changed, 169 insertions(+), 11 deletions(-)
 
-diff --git a/libcxx/CMakeLists.txt b/libcxx/CMakeLists.txt
-index b9d0ed51be26..0e1383ee44eb 100644
---- a/libcxx/CMakeLists.txt
-+++ b/libcxx/CMakeLists.txt
-@@ -101,6 +101,13 @@ option(LIBCXX_ENABLE_STD_MODULES
-     experimental and has additional dependencies. Only enable this when
-     interested in testing or developing this module. See
-     https://libcxx.llvm.org/Modules.html for more information." OFF)
-+option(LIBCXX_ENABLE_OPENMP_OFFLOAD "Enable OpenMP offloading of C++ standard 
-+    parallel algorithms. This option will enable an OpenMP offloading backend 
-+    rather than an OpenMP SIMD backend." OFF)
-+if (LIBCXX_ENABLE_OPENMP_OFFLOAD)
-+  message("Exporting _LIBCPP_ENABLE_OPENMP_OFFLOAD=1")
-+  set(1 _LIBCPP_ENABLE_OPENMP_OFFLOAD)
-+endif()
- 
- if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-   set(LIBCXX_DEFAULT_TEST_CONFIG "llvm-libc++-shared-gcc.cfg.in")
-@@ -767,6 +774,7 @@ elseif (LIBCXX_HARDENING_MODE STREQUAL "unchecked")
-   config_define(0 _LIBCPP_ENABLE_HARDENED_MODE_DEFAULT)
-   config_define(0 _LIBCPP_ENABLE_DEBUG_MODE_DEFAULT)
- endif()
-+config_define_if(LIBCXX_ENABLE_OPENMP_OFFLOAD _LIBCPP_ENABLE_OPENMP_OFFLOAD)
- # TODO(LLVM 18): Remove this after branching for LLVM 17, this is a simple
- # courtesy for vendors to be notified about this change.
- if (LIBCXX_ENABLE_ASSERTIONS)
+diff --git a/libcxx/include/__algorithm/pstl_backends/cpu_backends/fill.h b/libcxx/include/__algorithm/pstl_backends/cpu_backends/fill.h
+index 8b531887c731..7f6687306970 100644
+--- a/libcxx/include/__algorithm/pstl_backends/cpu_backends/fill.h
++++ b/libcxx/include/__algorithm/pstl_backends/cpu_backends/fill.h
+@@ -27,7 +27,7 @@ _LIBCPP_BEGIN_NAMESPACE_STD
+ template <class _Index, class _DifferenceType, class _Tp>
+ _LIBCPP_HIDE_FROM_ABI _Index __simd_fill_n(_Index __first, _DifferenceType __n, const _Tp& __value) noexcept {
+   _PSTL_USE_NONTEMPORAL_STORES_IF_ALLOWED
+-  _PSTL_PRAGMA_SIMD
++  _PSTL_PRAGMA_SIMD()
+   for (_DifferenceType __i = 0; __i < __n; ++__i)
+     __first[__i] = __value;
+   return __first + __n;
 diff --git a/libcxx/include/__algorithm/pstl_backends/cpu_backends/for_each.h b/libcxx/include/__algorithm/pstl_backends/cpu_backends/for_each.h
-index f6f22fdd8713..729bcaab5b47 100644
+index f6f22fdd8713..1155c070496c 100644
 --- a/libcxx/include/__algorithm/pstl_backends/cpu_backends/for_each.h
 +++ b/libcxx/include/__algorithm/pstl_backends/cpu_backends/for_each.h
 @@ -26,10 +26,29 @@ _LIBCPP_BEGIN_NAMESPACE_STD
  
  template <class _Iterator, class _DifferenceType, class _Function>
  _LIBCPP_HIDE_FROM_ABI _Iterator __simd_walk_1(_Iterator __first, _DifferenceType __n, _Function __f) noexcept {
+-  _PSTL_PRAGMA_SIMD
 +  _PSTL_OMP_MAP_TO(__first,__n);
-   _PSTL_PRAGMA_SIMD
++  _PSTL_PRAGMA_SIMD(__n)
    for (_DifferenceType __i = 0; __i < __n; ++__i)
      __f(__first[__i]);
 +  _PSTL_OMP_MAP_FROM(__first,__n);
 +  return __first + __n;
 +}
-+
+ 
 +/**
 + * Specialization for std::vector where the base pointer must be extrated to map
 + * the data to and from the GPU.
 +*/
- 
++
 +template <typename T, class _DifferenceType, class _Function>
 +_LIBCPP_HIDE_FROM_ABI std::__wrap_iter<T*> __simd_walk_1(std::__wrap_iter<T*> __first, _DifferenceType __n, _Function __f) noexcept {
 +  _PSTL_OMP_MAP_TO(__first,__n);
 +  // For std::vector the base pointer of the data buffer needs to be extracted 
 +  std::pointer_traits<std::__wrap_iter<T*>> PT;
 +  T* data = PT.to_address(__first);
-+  _PSTL_PRAGMA_SIMD
++  _PSTL_PRAGMA_SIMD(__n)
 +  for (_DifferenceType __i = 0; __i < __n; ++__i)
 +    __f(data[__i]);
 +  _PSTL_OMP_MAP_FROM(__first,__n);
    return __first + __n;
  }
  
+diff --git a/libcxx/include/__algorithm/pstl_backends/cpu_backends/transform.h b/libcxx/include/__algorithm/pstl_backends/cpu_backends/transform.h
+index 0259d8a84bb3..6611be3b7a44 100644
+--- a/libcxx/include/__algorithm/pstl_backends/cpu_backends/transform.h
++++ b/libcxx/include/__algorithm/pstl_backends/cpu_backends/transform.h
+@@ -30,9 +30,33 @@ _LIBCPP_BEGIN_NAMESPACE_STD
+ template <class _Iterator1, class _DifferenceType, class _Iterator2, class _Function>
+ _LIBCPP_HIDE_FROM_ABI _Iterator2
+ __simd_walk_2(_Iterator1 __first1, _DifferenceType __n, _Iterator2 __first2, _Function __f) noexcept {
+-  _PSTL_PRAGMA_SIMD
++  _PSTL_OMP_MAP_TO(__first1,__n);
++  _PSTL_OMP_MAP_ALLOC(__first2,__n);
++  _PSTL_PRAGMA_SIMD(__n)
+   for (_DifferenceType __i = 0; __i < __n; ++__i)
+     __f(__first1[__i], __first2[__i]);
++  _PSTL_OMP_MAP_FROM(__first2,__n);
++  return __first2 + __n;
++}
++
++/**
++ * Specialization for std::vector where the base pointer must be extrated to map
++ * the data to and from the GPU.
++*/
++
++template <typename T1, class _DifferenceType, typename T2, class _Function>
++_LIBCPP_HIDE_FROM_ABI std::__wrap_iter<T1*>
++__simd_walk_2(std::__wrap_iter<T1*> __first1, _DifferenceType __n, std::__wrap_iter<T2*> __first2, _Function __f) noexcept {
++  _PSTL_OMP_MAP_TO(__first1,__n);
++  _PSTL_OMP_MAP_ALLOC(__first2,__n);
++  std::pointer_traits<std::__wrap_iter<T1*>> PT1;
++  std::pointer_traits<std::__wrap_iter<T2*>> PT2;
++  T1* __data1 = PT1.to_address(__first1);
++  T2* __data2 = PT2.to_address(__first2);
++  _PSTL_PRAGMA_SIMD(__n)
++  for (_DifferenceType __i = 0; __i < __n; ++__i)
++    __f(__data1[__i], __data2[__i]);
++  _PSTL_OMP_MAP_FROM(__first2,__n);
+   return __first2 + __n;
+ }
+ 
+@@ -72,7 +96,7 @@ _LIBCPP_HIDE_FROM_ABI _ForwardOutIterator __pstl_transform(
+ template <class _Iterator1, class _DifferenceType, class _Iterator2, class _Iterator3, class _Function>
+ _LIBCPP_HIDE_FROM_ABI _Iterator3 __simd_walk_3(
+     _Iterator1 __first1, _DifferenceType __n, _Iterator2 __first2, _Iterator3 __first3, _Function __f) noexcept {
+-  _PSTL_PRAGMA_SIMD
++  _PSTL_PRAGMA_SIMD()
+   for (_DifferenceType __i = 0; __i < __n; ++__i)
+     __f(__first1[__i], __first2[__i], __first3[__i]);
+   return __first3 + __n;
+diff --git a/libcxx/include/__algorithm/pstl_backends/cpu_backends/transform_reduce.h b/libcxx/include/__algorithm/pstl_backends/cpu_backends/transform_reduce.h
+index 2afe5c7d1048..885648982409 100644
+--- a/libcxx/include/__algorithm/pstl_backends/cpu_backends/transform_reduce.h
++++ b/libcxx/include/__algorithm/pstl_backends/cpu_backends/transform_reduce.h
+@@ -57,7 +57,7 @@ __simd_transform_reduce(_Size __n, _Tp __init, _BinaryOperation __binary_op, _Un
+     _Tp* __lane = reinterpret_cast<_Tp*>(__lane_buffer);
+ 
+     // initializer
+-    _PSTL_PRAGMA_SIMD
++    _PSTL_PRAGMA_SIMD()
+     for (_Size __i = 0; __i < __block_size; ++__i) {
+       ::new (__lane + __i) _Tp(__binary_op(__f(__i), __f(__block_size + __i)));
+     }
+@@ -65,13 +65,13 @@ __simd_transform_reduce(_Size __n, _Tp __init, _BinaryOperation __binary_op, _Un
+     _Size __i                    = 2 * __block_size;
+     const _Size __last_iteration = __block_size * (__n / __block_size);
+     for (; __i < __last_iteration; __i += __block_size) {
+-      _PSTL_PRAGMA_SIMD
++      _PSTL_PRAGMA_SIMD()
+       for (_Size __j = 0; __j < __block_size; ++__j) {
+         __lane[__j] = __binary_op(std::move(__lane[__j]), __f(__i + __j));
+       }
+     }
+     // remainder
+-    _PSTL_PRAGMA_SIMD
++    _PSTL_PRAGMA_SIMD()
+     for (_Size __j = 0; __j < __n - __last_iteration; ++__j) {
+       __lane[__j] = __binary_op(std::move(__lane[__j]), __f(__last_iteration + __j));
+     }
+@@ -80,7 +80,7 @@ __simd_transform_reduce(_Size __n, _Tp __init, _BinaryOperation __binary_op, _Un
+       __init = __binary_op(std::move(__init), std::move(__lane[__j]));
+     }
+     // destroyer
+-    _PSTL_PRAGMA_SIMD
++    _PSTL_PRAGMA_SIMD()
+     for (_Size __j = 0; __j < __block_size; ++__j) {
+       __lane[__j].~_Tp();
+     }
 diff --git a/libcxx/include/__config b/libcxx/include/__config
-index b503e1d01b10..ccb5c2253dc9 100644
+index b503e1d01b10..51616f240d78 100644
 --- a/libcxx/include/__config
 +++ b/libcxx/include/__config
-@@ -1431,8 +1431,54 @@ __sanitizer_verify_double_ended_contiguous_container(const void*, const void*, c
+@@ -1431,8 +1431,118 @@ __sanitizer_verify_double_ended_contiguous_container(const void*, const void*, c
  // Enable SIMD for compilers that support OpenMP 4.0
  #  if (defined(_OPENMP) && _OPENMP >= 201307)
  
--#    define _PSTL_UDR_PRESENT
-+#  ifdef _LIBCPP_ENABLE_OPENMP_OFFLOAD
-+
++#    ifdef _LIBCPP_ENABLE_OPENMP_OFFLOAD
++#      ifndef _LIBCPP_ENABLE_OPENMP_OFFLOAD_MIN_BYTES
++#        define _LIBCPP_ENABLE_OPENMP_OFFLOAD_MIN_BYTES 32768
++#      endif
++#include <omp.h>
 +#include <__iterator/wrap_iter.h>
-+#    define _PSTL_PRAGMA_DATA_MAP_TO(NAME,LEN) _PSTL_PRAGMA(omp target enter data map(to:NAME[:LEN]))
-+#    define _PSTL_PRAGMA_DATA_MAP_FROM(NAME,LEN) _PSTL_PRAGMA(omp target exit data map(from:NAME[:LEN]))
++#      define _PSTL_PRAGMA_DATA_MAP_TO(NAME,LEN) _PSTL_PRAGMA(omp target enter data map(to:NAME[:LEN]))
++#      define _PSTL_PRAGMA_DATA_MAP_ALLOC(NAME,LEN) _PSTL_PRAGMA(omp target enter data map(alloc:NAME[:LEN]))
++#      define _PSTL_PRAGMA_DATA_MAP_FROM(NAME,LEN) _PSTL_PRAGMA(omp target update from(NAME[:LEN]))
++
++template <typename N>
++bool constexpr OMPIsOffloadable(N size)
++{
++      return size >= _LIBCPP_ENABLE_OPENMP_OFFLOAD_MIN_BYTES;
++}
++
++bool constexpr OMPIsOffloadable(void)
++{
++      return false;
++}
 +
 +template <typename T, typename N>
-+void OMPMapTo(T data,N length) {
-+  _PSTL_PRAGMA(omp target enter data map(to:data[:length]));
++void inline OMPMapToIf(T data,N length,int device = omp_get_default_device())
++{
++      // If the data is already present on the device, there is no need
++      // transfer the data again.
++      if (omp_target_is_present(data,device)){
++            return;
++      }
++      // If it is a small amount of data it does not make sense to offload to a
++      // device
++      if (!OMPIsOffloadable(length)){
++            return;
++      }
++      _PSTL_PRAGMA_DATA_MAP_TO(data,length);
++}
++
++template <typename T, typename N>
++void inline OMPMapAllocIf(T data,N length,int device = omp_get_default_device())
++{
++      // If the data is already present on the device, there is no need
++      // transfer the data again.
++      if (omp_target_is_present(data,device)){
++            return;
++      }
++      // If it is a small amount of data it does not make sense to offload to a
++      // device
++      if (!OMPIsOffloadable(length)){
++            return;
++      }
++      _PSTL_PRAGMA_DATA_MAP_ALLOC(data,length);
++}
++
++template <typename T, typename N>
++void inline OMPMapTo(T data,N length) {
++  OMPMapToIf(data,length);
 +}
 +
 +/**
@@ -95,41 +217,89 @@ index b503e1d01b10..ccb5c2253dc9 100644
 +*/
 +
 +template <typename T,typename N>
-+void OMPMapTo(std::__wrap_iter<T*> w,N length) {
++void inline OMPMapTo(std::__wrap_iter<T*> w,N length) {
 +  std::pointer_traits<std::__wrap_iter<T*>> PT;
 +  T* data = PT.to_address(w);
-+  _PSTL_PRAGMA(omp target enter data map(to:data[:length]));
++  OMPMapToIf(data,length);
 +}
 +
-+template <typename T,typename N>
-+void OMPMapFrom(T data,N length) {
-+  _PSTL_PRAGMA(omp target exit data map(from:data[:length]));
++template <typename T, typename N>
++void inline OMPMapAlloc(T data,N length) {
++  OMPMapAllocIf(data,length);
 +}
-+
-+#    define _PSTL_OMP_MAP_TO(DATA,LEN) OMPMapTo(DATA,LEN)
-+#    define _PSTL_OMP_MAP_FROM(DATA,LEN) OMPMapFrom(DATA,LEN)
 +
 +/**
 + * Specialization for std::vector
 +*/
 +
 +template <typename T,typename N>
-+void OMPMapFrom(std::__wrap_iter<T*> w,N length) {
++void inline OMPMapAlloc(std::__wrap_iter<T*> w,N length) {
 +  std::pointer_traits<std::__wrap_iter<T*>> PT;
 +  T* data = PT.to_address(w);
-+  _PSTL_PRAGMA(omp target exit data map(from:data[:length]));
++  OMPMapAllocIf(data,length);
 +}
-+#    define _PSTL_PRAGMA_SIMD _PSTL_PRAGMA(omp target teams distribute parallel for)
++
++template <typename T,typename N>
++void inline OMPMapFrom(T data,N length) {
++  _PSTL_PRAGMA_DATA_MAP_FROM(data,length);
++}
++
++/**
++ * Specialization for std::vector
++*/
++
++template <typename T,typename N>
++void inline OMPMapFrom(std::__wrap_iter<T*> w,N length) {
++  std::pointer_traits<std::__wrap_iter<T*>> PT;
++  T* data = PT.to_address(w);
++  _PSTL_PRAGMA_DATA_MAP_FROM(data,length);
++}
++#      define _PSTL_OMP_MAP_TO(DATA,LEN) OMPMapTo(DATA,LEN)
++#      define _PSTL_OMP_MAP_ALLOC(DATA,LEN) OMPMapAlloc(DATA,LEN)
++#      define _PSTL_OMP_MAP_FROM(DATA,LEN) OMPMapFrom(DATA,LEN)
++#      define _PSTL_PRAGMA_SIMD(...) _PSTL_PRAGMA(omp target teams distribute parallel for simd if(OMPIsOffloadable(__VA_ARGS__)))
 +#    else
- #    define _PSTL_PRAGMA_SIMD _PSTL_PRAGMA(omp simd)
-+#    define _PSTL_OMP_MAP_TO(DATA,LEN)
-+#    define _PSTL_OMP_MAP_FROM(DATA,LEN)
++#      define _PSTL_PRAGMA_SIMD(...) _PSTL_PRAGMA(omp simd)
++#      define _PSTL_OMP_MAP_TO(DATA,LEN)
++#      define _PSTL_OMP_MAP_ALLOC(DATA,LEN)
++#      define _PSTL_OMP_MAP_FROM(DATA,LEN)
 +#    endif
 +
-+#    define _PSTL_UDR_PRESENT
+ #    define _PSTL_UDR_PRESENT
+-#    define _PSTL_PRAGMA_SIMD _PSTL_PRAGMA(omp simd)
  #    define _PSTL_PRAGMA_DECLARE_SIMD _PSTL_PRAGMA(omp declare simd)
  #    define _PSTL_PRAGMA_SIMD_REDUCTION(PRM) _PSTL_PRAGMA(omp simd reduction(PRM))
  #    define _PSTL_PRAGMA_SIMD_SCAN(PRM) _PSTL_PRAGMA(omp simd reduction(inscan, PRM))
+@@ -1451,7 +1561,7 @@ __sanitizer_verify_double_ended_contiguous_container(const void*, const void*, c
+ 
+ #  elif defined(_LIBCPP_COMPILER_CLANG_BASED)
+ 
+-#    define _PSTL_PRAGMA_SIMD _Pragma("clang loop vectorize(enable) interleave(enable)")
++#    define _PSTL_PRAGMA_SIMD(...) _Pragma("clang loop vectorize(enable) interleave(enable)")
+ #    define _PSTL_PRAGMA_DECLARE_SIMD
+ #    define _PSTL_PRAGMA_SIMD_REDUCTION(PRM) _Pragma("clang loop vectorize(enable) interleave(enable)")
+ #    define _PSTL_PRAGMA_SIMD_SCAN(PRM) _Pragma("clang loop vectorize(enable) interleave(enable)")
+@@ -1461,7 +1571,7 @@ __sanitizer_verify_double_ended_contiguous_container(const void*, const void*, c
+ 
+ #  else // (defined(_OPENMP) && _OPENMP >= 201307)
+ 
+-#    define _PSTL_PRAGMA_SIMD
++#    define _PSTL_PRAGMA_SIMD(...)
+ #    define _PSTL_PRAGMA_DECLARE_SIMD
+ #    define _PSTL_PRAGMA_SIMD_REDUCTION(PRM)
+ #    define _PSTL_PRAGMA_SIMD_SCAN(PRM)
+@@ -1471,6 +1581,11 @@ __sanitizer_verify_double_ended_contiguous_container(const void*, const void*, c
+ 
+ #  endif // (defined(_OPENMP) && _OPENMP >= 201307)
+ 
++#  ifndef _LIBCPP_ENABLE_OPENMP_OFFLOAD
++#  define _PSTL_OMP_MAP_TO(...)
++#  define _PSTL_OMP_MAP_FROM(...)
++#  endif 
++
+ #  define _PSTL_USE_NONTEMPORAL_STORES_IF_ALLOWED
+ 
+ #endif // __cplusplus
 -- 
 2.29.1
 

@@ -20,3 +20,20 @@ Convince yourself that the program runs on the GPU with
 ```{bash}
 $ LIBOMPTARGET_DEBUG=-1 ./bin/foreach_std_vector
 ```
+or 
+```
+$ ./bin/foreach_std_vector & watch -n 0.1 rocm-smi
+========================= ROCm System Management Interface =========================
+=================================== Concise Info ===================================
+GPU  Temp (DieEdge)  AvgPwr  SCLK     MCLK    Fan     Perf  PwrCap  VRAM%  GPU%
+0    35.0c           77.0W   1725Mhz  800Mhz  14.51%  auto  225.0W    9%   100%
+1    30.0c           17.0W   930Mhz   350Mhz  14.51%  auto  225.0W    0%   0%
+2    30.0c           19.0W   930Mhz   350Mhz  14.51%  auto  225.0W    0%   0%
+3    31.0c           23.0W   930Mhz   350Mhz  14.51%  auto  225.0W    0%   0%
+4    28.0c           21.0W   930Mhz   350Mhz  14.51%  auto  225.0W    0%   0%
+5    29.0c           17.0W   930Mhz   350Mhz  14.51%  auto  225.0W    0%   0%
+6    28.0c           22.0W   930Mhz   350Mhz  14.51%  auto  225.0W    0%   0%
+7    28.0c           20.0W   930Mhz   350Mhz  14.51%  auto  225.0W    0%   0%
+====================================================================================
+=============================== End of ROCm SMI Log ================================
+```
