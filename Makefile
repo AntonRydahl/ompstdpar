@@ -20,14 +20,18 @@ CFLAGS += -stdlib=libc++ -fexperimental-library
 LDFLAGS = -L$(LLVMPATH)/lib/x86_64-unknown-linux-gnu/ -L/usr/include/tbb -ltbb
 LDFLAGS += -Wl,-rpath,$(LLVMPATH)/lib/x86_64-unknown-linux-gnu/
 
+ifdef LEN
+CFLAGS += -DLEN=$(LEN)
+endif
+
 ifdef OMP
 CFLAGS += -fopenmp -fopenmp-version=51
 ifdef OMPHOST
-CFLAGS += -fopenmp-targets=x86_64-pc-linux-gnu
+#CFLAGS += -fopenmp-targets=x86_64-pc-linux-gnu
 else
-CFLAGS += -fopenmp-targets=amdgcn-amd-amdhsa --offload-arch=gfx906 -D_LIBCPP_ENABLE_OPENMP_OFFLOAD
+CFLAGS += -fopenmp-targets=amdgcn-amd-amdhsa --offload-arch=gfx906 -D_LIBCPP_ENABLE_OPENMP_OFFLOAD -L$(LLVMPATH)/lib -lomptarget
 endif
-LDFLAGS += -lomp -L$(LLVMPATH)/lib -lomptarget
+LDFLAGS += -L$(LLVMPATH)/lib -lomp
 else
 CFLAGS += -fno-pie
 LDFLAGS += -static
@@ -39,6 +43,7 @@ SRC = $(subst .cpp,,$(SRC1))
 
 BINS = $(patsubst %, bin/$(APP)/%, $(SRC))
 TEMPS = $(patsubst %, temps/$(APP)/%, $(SRC))
+$(info $(BINS))
 
 # Compiling source to binary
 mkbin:
