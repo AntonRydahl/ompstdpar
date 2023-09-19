@@ -6,8 +6,8 @@
 int main()
 {
   int * a =  new int[LEN];
-  for (int i=0;i<LEN;i++) a[i] = -i;
-  for (int i=0; i < 100; i++) {
+  for (unsigned int i=0;i<LEN;i++) a[i] = -i;
+  for (int i=0; i < 10; i++) {
     std::fill(std::execution::par_unseq,a, a+LEN,i);
     assert(a[0] == i);
     assert(a[LEN-1] == i);

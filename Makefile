@@ -43,7 +43,6 @@ SRC = $(subst .cpp,,$(SRC1))
 
 BINS = $(patsubst %, bin/$(APP)/%, $(SRC))
 TEMPS = $(patsubst %, temps/$(APP)/%, $(SRC))
-$(info $(BINS))
 
 # Compiling source to binary
 mkbin:
@@ -68,7 +67,6 @@ temps/$(APP)/%: src/$(APP)/%.cpp
 	llvm-dis $(TMPOUT)/$(basename $(subst src/$(APP)/,,$<))/*.bc
 
 bin/$(APP): $(BINS)
-	$(info $(BINS))
 
 .PHONY: clean ast ir
 
