@@ -7,7 +7,7 @@ target triple = "amdgcn-amd-amdhsa"
 %struct.DynamicEnvironmentTy = type { i16 }
 %struct.KernelEnvironmentTy = type { %struct.ConfigurationEnvironmentTy, ptr, ptr }
 %struct.ConfigurationEnvironmentTy = type { i8, i8, i8 }
-%struct.DeviceEnvironmentTy = type { i32, i32, i32, i32, i64, i64, i64 }
+%struct.DeviceEnvironmentTy = type { i32, i32, i32, i32, i64, i64, i64, i64 }
 %"struct.ompx::state::ICVStateTy" = type { i32, i32, i32, i32, i32, i32, i32 }
 %"struct.(anonymous namespace)::SharedMemorySmartStackTy" = type { [512 x i8], [1024 x i8] }
 %"struct.ompx::state::TeamStateTy" = type { %"struct.ompx::state::ICVStateTy", i32, i32, ptr }
@@ -20,12 +20,12 @@ target triple = "amdgcn-amd-amdhsa"
 @__omp_rtl_assume_threads_oversubscription = internal addrspace(1) constant i32 0
 @0 = private unnamed_addr constant [23 x i8] c";unknown;unknown;0;0;;\00", align 1
 @1 = private unnamed_addr addrspace(1) constant %struct.ident_t { i32 0, i32 2, i32 0, i32 22, ptr @0 }, align 8
-@"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_0EET_S3_T0_T1__l30_dynamic_environment" = weak_odr protected addrspace(1) global %struct.DynamicEnvironmentTy zeroinitializer
-@"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_0EET_S3_T0_T1__l30_kernel_environment" = weak_odr protected addrspace(1) constant %struct.KernelEnvironmentTy { %struct.ConfigurationEnvironmentTy { i8 0, i8 0, i8 2 }, ptr addrspacecast (ptr addrspace(1) @1 to ptr), ptr addrspacecast (ptr addrspace(1) @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_0EET_S3_T0_T1__l30_dynamic_environment" to ptr) }
+@"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_0EET_S5_T0_T1_i_l81_dynamic_environment" = weak_odr protected addrspace(1) global %struct.DynamicEnvironmentTy zeroinitializer
+@"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_0EET_S5_T0_T1_i_l81_kernel_environment" = weak_odr protected addrspace(1) constant %struct.KernelEnvironmentTy { %struct.ConfigurationEnvironmentTy { i8 0, i8 0, i8 2 }, ptr addrspacecast (ptr addrspace(1) @1 to ptr), ptr addrspacecast (ptr addrspace(1) @"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_0EET_S5_T0_T1_i_l81_dynamic_environment" to ptr) }
 @2 = private unnamed_addr addrspace(1) constant %struct.ident_t { i32 0, i32 2050, i32 0, i32 22, ptr @0 }, align 8
 @3 = private unnamed_addr addrspace(1) constant %struct.ident_t { i32 0, i32 514, i32 0, i32 22, ptr @0 }, align 8
-@"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_1EET_S3_T0_T1__l30_dynamic_environment" = weak_odr protected addrspace(1) global %struct.DynamicEnvironmentTy zeroinitializer
-@"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_1EET_S3_T0_T1__l30_kernel_environment" = weak_odr protected addrspace(1) constant %struct.KernelEnvironmentTy { %struct.ConfigurationEnvironmentTy { i8 0, i8 0, i8 2 }, ptr addrspacecast (ptr addrspace(1) @1 to ptr), ptr addrspacecast (ptr addrspace(1) @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_1EET_S3_T0_T1__l30_dynamic_environment" to ptr) }
+@"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_1EET_S5_T0_T1_i_l81_dynamic_environment" = weak_odr protected addrspace(1) global %struct.DynamicEnvironmentTy zeroinitializer
+@"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_1EET_S5_T0_T1_i_l81_kernel_environment" = weak_odr protected addrspace(1) constant %struct.KernelEnvironmentTy { %struct.ConfigurationEnvironmentTy { i8 0, i8 0, i8 2 }, ptr addrspacecast (ptr addrspace(1) @1 to ptr), ptr addrspacecast (ptr addrspace(1) @"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_1EET_S5_T0_T1_i_l81_dynamic_environment" to ptr) }
 @llvm.used = appending addrspace(1) global [1 x ptr] [ptr addrspacecast (ptr addrspace(4) @__omp_rtl_device_environment to ptr)], section "llvm.metadata"
 @__omp_rtl_device_environment = weak protected addrspace(4) global %struct.DeviceEnvironmentTy undef, align 8
 @__omp_rtl_debug_kind = internal addrspace(1) constant i32 0
@@ -49,142 +49,94 @@ target triple = "amdgcn-amd-amdhsa"
 @_ZL12ThreadDSTPtr = internal unnamed_addr addrspace(5) global ptr undef, align 8
 
 ; Function Attrs: alwaysinline norecurse nounwind
-define weak_odr protected amdgpu_kernel void @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_0EET_S3_T0_T1__l30"(i64 noundef %0, ptr noundef nonnull align 1 dereferenceable(1) %1, ptr noundef %2, i64 noundef %3) #0 {
+define weak_odr protected amdgpu_kernel void @"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_0EET_S5_T0_T1_i_l81"(i64 noundef %0, ptr noundef nonnull align 1 dereferenceable(1) %1, ptr noundef %2) #0 {
+  %4 = alloca i64, align 8, addrspace(5)
   %5 = alloca i64, align 8, addrspace(5)
   %6 = alloca i64, align 8, addrspace(5)
-  %7 = alloca i64, align 8, addrspace(5)
-  %8 = alloca i32, align 4, addrspace(5)
-  %9 = alloca %class.anon, align 1, addrspace(5)
-  %10 = alloca [6 x ptr], align 8, addrspace(5)
-  %11 = alloca [6 x ptr], align 8, addrspace(5)
-  %12 = tail call i32 @__kmpc_target_init(ptr addrspacecast (ptr addrspace(1) @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_0EET_S3_T0_T1__l30_kernel_environment" to ptr)) #53
-  %13 = icmp eq i32 %12, -1
-  br i1 %13, label %15, label %14
+  %7 = alloca i32, align 4, addrspace(5)
+  %8 = alloca %class.anon, align 1, addrspace(5)
+  %9 = alloca [5 x ptr], align 8, addrspace(5)
+  %10 = tail call i32 @__kmpc_target_init(ptr addrspacecast (ptr addrspace(1) @"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_0EET_S5_T0_T1_i_l81_kernel_environment" to ptr)) #53
+  %11 = icmp eq i32 %10, -1
+  br i1 %11, label %13, label %12
 
-14:                                               ; preds = %76, %4
+12:                                               ; preds = %47, %3
   ret void
 
-15:                                               ; preds = %4
-  %16 = tail call i32 @__kmpc_global_thread_num(ptr addrspacecast (ptr addrspace(1) @1 to ptr)) #53
-  %17 = and i64 %3, 1
-  call void @llvm.lifetime.start.p5(i64 48, ptr addrspace(5) %10)
-  call void @llvm.lifetime.start.p5(i64 48, ptr addrspace(5) %11)
-  %18 = addrspacecast ptr addrspace(5) %9 to ptr
-  %19 = addrspacecast ptr addrspace(5) %10 to ptr
-  %20 = addrspacecast ptr addrspace(5) %11 to ptr
-  %21 = add nsw i64 %0, -1
-  %22 = icmp sgt i64 %0, 0
-  br i1 %22, label %23, label %76
+13:                                               ; preds = %3
+  %14 = tail call i32 @__kmpc_global_thread_num(ptr addrspacecast (ptr addrspace(1) @1 to ptr)) #53
+  call void @llvm.lifetime.start.p5(i64 40, ptr addrspace(5) %9)
+  %15 = addrspacecast ptr addrspace(5) %8 to ptr
+  %16 = addrspacecast ptr addrspace(5) %9 to ptr
+  %17 = add nsw i64 %0, -1
+  %18 = icmp sgt i64 %0, 0
+  br i1 %18, label %19, label %47
 
-23:                                               ; preds = %15
-  %24 = addrspacecast ptr addrspace(5) %8 to ptr
-  %25 = addrspacecast ptr addrspace(5) %7 to ptr
-  %26 = addrspacecast ptr addrspace(5) %6 to ptr
-  %27 = addrspacecast ptr addrspace(5) %5 to ptr
+19:                                               ; preds = %13
+  %20 = addrspacecast ptr addrspace(5) %7 to ptr
+  %21 = addrspacecast ptr addrspace(5) %6 to ptr
+  %22 = addrspacecast ptr addrspace(5) %5 to ptr
+  %23 = addrspacecast ptr addrspace(5) %4 to ptr
+  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %4) #54
+  store i64 0, ptr addrspace(5) %4, align 8, !tbaa !14
   call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %5) #54
-  store i64 0, ptr addrspace(5) %5, align 8, !tbaa !14
+  store i64 %17, ptr addrspace(5) %5, align 8, !tbaa !14
   call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %6) #54
-  store i64 %21, ptr addrspace(5) %6, align 8, !tbaa !14
-  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %7) #54
-  store i64 1, ptr addrspace(5) %7, align 8, !tbaa !14
-  call void @llvm.lifetime.start.p5(i64 4, ptr addrspace(5) %8) #54
-  store i32 0, ptr addrspace(5) %8, align 4, !tbaa !18
-  call void @llvm.lifetime.start.p5(i64 1, ptr addrspace(5) %9) #54
-  call void @__kmpc_distribute_static_init_8(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %16, i32 91, ptr nonnull %24, ptr nonnull %27, ptr nonnull %26, ptr nonnull %25, i64 1, i64 256) #53
-  %28 = load i64, ptr addrspace(5) %6, align 8
-  %29 = call i64 @llvm.smin.i64(i64 %28, i64 %21)
-  store i64 %29, ptr addrspace(5) %6, align 8, !tbaa !14
-  %30 = load i64, ptr addrspace(5) %5, align 8
-  %31 = icmp eq i64 %17, 0
-  %32 = icmp slt i64 %30, %0
-  br i1 %31, label %43, label %33
+  store i64 1, ptr addrspace(5) %6, align 8, !tbaa !14
+  call void @llvm.lifetime.start.p5(i64 4, ptr addrspace(5) %7) #54
+  store i32 0, ptr addrspace(5) %7, align 4, !tbaa !18
+  call void @llvm.lifetime.start.p5(i64 1, ptr addrspace(5) %8) #54
+  call void @__kmpc_distribute_static_init_8(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %14, i32 91, ptr nonnull %20, ptr nonnull %23, ptr nonnull %22, ptr nonnull %21, i64 1, i64 256) #53
+  %24 = load i64, ptr addrspace(5) %5, align 8
+  %25 = call i64 @llvm.smin.i64(i64 %24, i64 %17)
+  store i64 %25, ptr addrspace(5) %5, align 8, !tbaa !14
+  %26 = load i64, ptr addrspace(5) %4, align 8
+  %27 = icmp slt i64 %26, %0
+  br i1 %27, label %28, label %46
 
-33:                                               ; preds = %23
-  br i1 %32, label %34, label %75
+28:                                               ; preds = %19
+  %29 = getelementptr inbounds [5 x ptr], ptr addrspace(5) %9, i32 0, i32 1
+  %30 = getelementptr inbounds [5 x ptr], ptr addrspace(5) %9, i32 0, i32 2
+  %31 = inttoptr i64 %0 to ptr
+  %32 = getelementptr inbounds [5 x ptr], ptr addrspace(5) %9, i32 0, i32 3
+  %33 = getelementptr inbounds [5 x ptr], ptr addrspace(5) %9, i32 0, i32 4
+  br label %34
 
-34:                                               ; preds = %33
-  %35 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %10, i32 0, i32 1
-  %36 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %10, i32 0, i32 2
-  %37 = inttoptr i64 %0 to ptr
-  %38 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %10, i32 0, i32 3
-  %39 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %10, i32 0, i32 4
-  %40 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %10, i32 0, i32 5
-  %41 = inttoptr i64 %17 to ptr
-  %42 = trunc i64 %17 to i32
-  br label %51
+34:                                               ; preds = %34, %28
+  %35 = phi i64 [ %26, %28 ], [ %41, %34 ]
+  %36 = phi i64 [ %25, %28 ], [ %44, %34 ]
+  %37 = inttoptr i64 %35 to ptr
+  store ptr %37, ptr addrspace(5) %9, align 8, !tbaa !20, !llvm.access.group !22
+  %38 = inttoptr i64 %36 to ptr
+  store ptr %38, ptr addrspace(5) %29, align 8, !tbaa !20, !llvm.access.group !22
+  store ptr %31, ptr addrspace(5) %30, align 8, !tbaa !20, !llvm.access.group !22
+  store ptr %15, ptr addrspace(5) %32, align 8, !tbaa !20, !llvm.access.group !22
+  store ptr %2, ptr addrspace(5) %33, align 8, !tbaa !20, !llvm.access.group !22
+  call void @__kmpc_parallel_51(ptr addrspacecast (ptr addrspace(1) @1 to ptr), i32 %14, i32 1, i32 -1, i32 -1, ptr nonnull @"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_0EET_S5_T0_T1_i_l81_omp_outlined_omp_outlined", ptr null, ptr nonnull %16, i64 5) #53, !llvm.access.group !22
+  %39 = load i64, ptr addrspace(5) %6, align 8, !tbaa !14, !llvm.access.group !22
+  %40 = load i64, ptr addrspace(5) %4, align 8, !tbaa !14, !llvm.access.group !22
+  %41 = add nsw i64 %40, %39
+  store i64 %41, ptr addrspace(5) %4, align 8, !tbaa !14, !llvm.access.group !22
+  %42 = load i64, ptr addrspace(5) %5, align 8, !tbaa !14, !llvm.access.group !22
+  %43 = add nsw i64 %42, %39
+  %44 = call i64 @llvm.smin.i64(i64 %43, i64 %17)
+  store i64 %44, ptr addrspace(5) %5, align 8, !tbaa !14
+  %45 = icmp slt i64 %41, %0
+  br i1 %45, label %34, label %46, !llvm.loop !23
 
-43:                                               ; preds = %23
-  br i1 %32, label %44, label %75
+46:                                               ; preds = %34, %19
+  call void @__kmpc_distribute_static_fini(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %14) #53
+  call void @llvm.lifetime.end.p5(i64 1, ptr addrspace(5) %8) #53
+  br label %47
 
-44:                                               ; preds = %43
-  %45 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %11, i32 0, i32 1
-  %46 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %11, i32 0, i32 2
-  %47 = inttoptr i64 %0 to ptr
-  %48 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %11, i32 0, i32 3
-  %49 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %11, i32 0, i32 4
-  %50 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %11, i32 0, i32 5
-  br label %63
-
-51:                                               ; preds = %51, %34
-  %52 = phi i64 [ %29, %34 ], [ %61, %51 ]
-  %53 = phi i64 [ %30, %34 ], [ %58, %51 ]
-  %54 = inttoptr i64 %53 to ptr
-  store ptr %54, ptr addrspace(5) %10, align 8, !tbaa !20, !llvm.access.group !22
-  %55 = inttoptr i64 %52 to ptr
-  store ptr %55, ptr addrspace(5) %35, align 8, !tbaa !20, !llvm.access.group !22
-  store ptr %37, ptr addrspace(5) %36, align 8, !tbaa !20, !llvm.access.group !22
-  store ptr %18, ptr addrspace(5) %38, align 8, !tbaa !20, !llvm.access.group !22
-  store ptr %2, ptr addrspace(5) %39, align 8, !tbaa !20, !llvm.access.group !22
-  store ptr %41, ptr addrspace(5) %40, align 8, !tbaa !20, !llvm.access.group !22
-  call void @__kmpc_parallel_51(ptr addrspacecast (ptr addrspace(1) @1 to ptr), i32 %16, i32 %42, i32 -1, i32 -1, ptr nonnull @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_0EET_S3_T0_T1__l30_omp_outlined_omp_outlined", ptr null, ptr nonnull %19, i64 6) #53, !llvm.access.group !22
-  %56 = load i64, ptr addrspace(5) %7, align 8, !tbaa !14, !llvm.access.group !22
-  %57 = load i64, ptr addrspace(5) %5, align 8, !tbaa !14, !llvm.access.group !22
-  %58 = add nsw i64 %57, %56
-  store i64 %58, ptr addrspace(5) %5, align 8, !tbaa !14, !llvm.access.group !22
-  %59 = load i64, ptr addrspace(5) %6, align 8, !tbaa !14, !llvm.access.group !22
-  %60 = add nsw i64 %59, %56
-  %61 = call i64 @llvm.smin.i64(i64 %60, i64 %21)
-  store i64 %61, ptr addrspace(5) %6, align 8, !tbaa !14, !llvm.access.group !22
-  %62 = icmp slt i64 %58, %0
-  br i1 %62, label %51, label %75, !llvm.loop !23
-
-63:                                               ; preds = %63, %44
-  %64 = phi i64 [ %29, %44 ], [ %73, %63 ]
-  %65 = phi i64 [ %30, %44 ], [ %70, %63 ]
-  %66 = inttoptr i64 %65 to ptr
-  store ptr %66, ptr addrspace(5) %11, align 8, !tbaa !20
-  %67 = inttoptr i64 %64 to ptr
-  store ptr %67, ptr addrspace(5) %45, align 8, !tbaa !20
-  store ptr %47, ptr addrspace(5) %46, align 8, !tbaa !20
-  store ptr %18, ptr addrspace(5) %48, align 8, !tbaa !20
-  store ptr %2, ptr addrspace(5) %49, align 8, !tbaa !20
-  store ptr null, ptr addrspace(5) %50, align 8, !tbaa !20
-  call void @__kmpc_parallel_51(ptr addrspacecast (ptr addrspace(1) @1 to ptr), i32 %16, i32 0, i32 -1, i32 -1, ptr nonnull @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_0EET_S3_T0_T1__l30_omp_outlined_omp_outlined.1", ptr null, ptr nonnull %20, i64 6) #53
-  %68 = load i64, ptr addrspace(5) %7, align 8, !tbaa !14
-  %69 = load i64, ptr addrspace(5) %5, align 8, !tbaa !14
-  %70 = add nsw i64 %69, %68
-  store i64 %70, ptr addrspace(5) %5, align 8, !tbaa !14
-  %71 = load i64, ptr addrspace(5) %6, align 8, !tbaa !14
-  %72 = add nsw i64 %71, %68
-  %73 = call i64 @llvm.smin.i64(i64 %72, i64 %21)
-  store i64 %73, ptr addrspace(5) %6, align 8, !tbaa !14
-  %74 = icmp slt i64 %70, %0
-  br i1 %74, label %63, label %75, !llvm.loop !26
-
-75:                                               ; preds = %63, %51, %43, %33
-  call void @__kmpc_distribute_static_fini(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %16) #53
-  call void @llvm.lifetime.end.p5(i64 1, ptr addrspace(5) %9) #53
-  br label %76
-
-76:                                               ; preds = %75, %15
-  call void @llvm.lifetime.end.p5(i64 4, ptr addrspace(5) %8) #53
-  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %7) #53
+47:                                               ; preds = %46, %13
+  call void @llvm.lifetime.end.p5(i64 4, ptr addrspace(5) %7) #53
   call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %6) #53
   call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %5) #53
-  call void @llvm.lifetime.end.p5(i64 48, ptr addrspace(5) %10)
-  call void @llvm.lifetime.end.p5(i64 48, ptr addrspace(5) %11)
+  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %4) #53
+  call void @llvm.lifetime.end.p5(i64 40, ptr addrspace(5) %9)
   call void @__kmpc_target_deinit() #53
-  br label %14
+  br label %12
 }
 
 ; Function Attrs: nocallback nofree nosync nounwind willreturn memory(argmem: readwrite)
@@ -194,146 +146,54 @@ declare void @llvm.lifetime.start.p5(i64 immarg, ptr addrspace(5) nocapture) #1
 declare i64 @llvm.smin.i64(i64, i64) #2
 
 ; Function Attrs: alwaysinline norecurse nounwind
-define internal void @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_0EET_S3_T0_T1__l30_omp_outlined_omp_outlined"(ptr noalias nocapture noundef readonly %0, ptr noalias nocapture readnone %1, i64 noundef %2, i64 noundef %3, i64 noundef %4, ptr nocapture nonnull readnone align 1 %5, ptr nocapture noundef writeonly %6, i64 noundef %7) #3 {
+define internal void @"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_0EET_S5_T0_T1_i_l81_omp_outlined_omp_outlined"(ptr noalias nocapture noundef readonly %0, ptr noalias nocapture readnone %1, i64 noundef %2, i64 noundef %3, i64 noundef %4, ptr nocapture nonnull readnone align 1 %5, ptr nocapture noundef writeonly %6) #3 {
+  %8 = alloca i64, align 8, addrspace(5)
   %9 = alloca i64, align 8, addrspace(5)
   %10 = alloca i64, align 8, addrspace(5)
-  %11 = alloca i64, align 8, addrspace(5)
-  %12 = alloca i32, align 4, addrspace(5)
-  %13 = icmp sgt i64 %4, 0
-  br i1 %13, label %14, label %41
+  %11 = alloca i32, align 4, addrspace(5)
+  %12 = icmp sgt i64 %4, 0
+  br i1 %12, label %13, label %29
 
-14:                                               ; preds = %8
-  %15 = addrspacecast ptr addrspace(5) %12 to ptr
-  %16 = addrspacecast ptr addrspace(5) %11 to ptr
-  %17 = addrspacecast ptr addrspace(5) %10 to ptr
-  %18 = addrspacecast ptr addrspace(5) %9 to ptr
+13:                                               ; preds = %7
+  %14 = addrspacecast ptr addrspace(5) %11 to ptr
+  %15 = addrspacecast ptr addrspace(5) %10 to ptr
+  %16 = addrspacecast ptr addrspace(5) %9 to ptr
+  %17 = addrspacecast ptr addrspace(5) %8 to ptr
+  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %8) #53
   call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %9) #53
+  store i64 %2, ptr addrspace(5) %8, align 8, !tbaa !14
+  store i64 %3, ptr addrspace(5) %9, align 8, !tbaa !14
   call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %10) #53
-  store i64 %2, ptr addrspace(5) %9, align 8, !tbaa !14
-  store i64 %3, ptr addrspace(5) %10, align 8, !tbaa !14
-  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %11) #53
-  store i64 1, ptr addrspace(5) %11, align 8, !tbaa !14
-  call void @llvm.lifetime.start.p5(i64 4, ptr addrspace(5) %12) #53
-  store i32 0, ptr addrspace(5) %12, align 4, !tbaa !18
-  %19 = and i64 %7, 1
-  %20 = icmp eq i64 %19, 0
-  %21 = load i32, ptr %0, align 4, !tbaa !18
-  call void @__kmpc_for_static_init_8(ptr addrspacecast (ptr addrspace(1) @3 to ptr), i32 %21, i32 33, ptr nonnull %15, ptr nonnull %18, ptr nonnull %17, ptr nonnull %16, i64 1, i64 1) #53
-  %22 = load i64, ptr addrspace(5) %9, align 8, !tbaa !14
-  %23 = icmp ugt i64 %22, %3
-  br i1 %20, label %32, label %24
+  store i64 1, ptr addrspace(5) %10, align 8, !tbaa !14
+  call void @llvm.lifetime.start.p5(i64 4, ptr addrspace(5) %11) #53
+  store i32 0, ptr addrspace(5) %11, align 4, !tbaa !18
+  %18 = load i32, ptr %0, align 4, !tbaa !18
+  call void @__kmpc_for_static_init_8(ptr addrspacecast (ptr addrspace(1) @3 to ptr), i32 %18, i32 33, ptr nonnull %14, ptr nonnull %17, ptr nonnull %16, ptr nonnull %15, i64 1, i64 1) #53
+  %19 = load i64, ptr addrspace(5) %8, align 8, !tbaa !14
+  %20 = icmp ugt i64 %19, %3
+  br i1 %20, label %28, label %21
 
-24:                                               ; preds = %14
-  br i1 %23, label %40, label %25
+21:                                               ; preds = %13
+  %22 = load i64, ptr addrspace(5) %10, align 8, !tbaa !14, !llvm.access.group !26
+  br label %23
 
-25:                                               ; preds = %24
-  %26 = load i64, ptr addrspace(5) %11, align 8, !tbaa !14, !llvm.access.group !28
-  br label %27
+23:                                               ; preds = %23, %21
+  %24 = phi i64 [ %19, %21 ], [ %26, %23 ]
+  %25 = getelementptr inbounds i32, ptr %6, i64 %24
+  store i32 -1, ptr %25, align 4, !tbaa !18
+  %26 = add nsw i64 %22, %24
+  %27 = icmp ugt i64 %26, %3
+  br i1 %27, label %28, label %23, !llvm.loop !27
 
-27:                                               ; preds = %27, %25
-  %28 = phi i64 [ %22, %25 ], [ %30, %27 ]
-  %29 = getelementptr inbounds i32, ptr %6, i64 %28
-  store i32 -1, ptr %29, align 4, !tbaa !18
-  %30 = add nsw i64 %26, %28
-  %31 = icmp ugt i64 %30, %3
-  br i1 %31, label %40, label %27, !llvm.loop !29
-
-32:                                               ; preds = %14
-  br i1 %23, label %40, label %33
-
-33:                                               ; preds = %32
-  %34 = load i64, ptr addrspace(5) %11, align 8, !tbaa !14
-  br label %35
-
-35:                                               ; preds = %35, %33
-  %36 = phi i64 [ %22, %33 ], [ %38, %35 ]
-  %37 = getelementptr inbounds i32, ptr %6, i64 %36
-  store i32 -1, ptr %37, align 4, !tbaa !18
-  %38 = add nsw i64 %34, %36
-  %39 = icmp ugt i64 %38, %3
-  br i1 %39, label %40, label %35, !llvm.loop !31
-
-40:                                               ; preds = %35, %32, %27, %24
-  call void @__kmpc_distribute_static_fini(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %21) #53
-  call void @llvm.lifetime.end.p5(i64 4, ptr addrspace(5) %12) #53
-  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %11) #53
+28:                                               ; preds = %23, %13
+  call void @__kmpc_distribute_static_fini(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %18) #53
+  call void @llvm.lifetime.end.p5(i64 4, ptr addrspace(5) %11) #53
   call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %10) #53
   call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %9) #53
-  br label %41
+  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %8) #53
+  br label %29
 
-41:                                               ; preds = %40, %8
-  ret void
-}
-
-; Function Attrs: alwaysinline norecurse nounwind
-define internal void @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_0EET_S3_T0_T1__l30_omp_outlined_omp_outlined.1"(ptr noalias nocapture noundef readonly %0, ptr noalias nocapture readnone %1, i64 noundef %2, i64 noundef %3, i64 noundef %4, ptr nocapture nonnull readnone align 1 %5, ptr nocapture noundef writeonly %6, i64 noundef %7) #3 {
-  %9 = alloca i64, align 8, addrspace(5)
-  %10 = alloca i64, align 8, addrspace(5)
-  %11 = alloca i64, align 8, addrspace(5)
-  %12 = alloca i32, align 4, addrspace(5)
-  %13 = icmp sgt i64 %4, 0
-  br i1 %13, label %14, label %41
-
-14:                                               ; preds = %8
-  %15 = addrspacecast ptr addrspace(5) %12 to ptr
-  %16 = addrspacecast ptr addrspace(5) %11 to ptr
-  %17 = addrspacecast ptr addrspace(5) %10 to ptr
-  %18 = addrspacecast ptr addrspace(5) %9 to ptr
-  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %9) #53
-  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %10) #53
-  store i64 %2, ptr addrspace(5) %9, align 8, !tbaa !14
-  store i64 %3, ptr addrspace(5) %10, align 8, !tbaa !14
-  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %11) #53
-  store i64 1, ptr addrspace(5) %11, align 8, !tbaa !14
-  call void @llvm.lifetime.start.p5(i64 4, ptr addrspace(5) %12) #53
-  store i32 0, ptr addrspace(5) %12, align 4, !tbaa !18
-  %19 = and i64 %7, 1
-  %20 = icmp eq i64 %19, 0
-  %21 = load i32, ptr %0, align 4, !tbaa !18
-  call void @__kmpc_for_static_init_8(ptr addrspacecast (ptr addrspace(1) @3 to ptr), i32 %21, i32 33, ptr nonnull %15, ptr nonnull %18, ptr nonnull %17, ptr nonnull %16, i64 1, i64 1) #53
-  %22 = load i64, ptr addrspace(5) %9, align 8, !tbaa !14
-  %23 = icmp ugt i64 %22, %3
-  br i1 %20, label %32, label %24
-
-24:                                               ; preds = %14
-  br i1 %23, label %40, label %25
-
-25:                                               ; preds = %24
-  %26 = load i64, ptr addrspace(5) %11, align 8, !tbaa !14, !llvm.access.group !32
-  br label %27
-
-27:                                               ; preds = %27, %25
-  %28 = phi i64 [ %22, %25 ], [ %30, %27 ]
-  %29 = getelementptr inbounds i32, ptr %6, i64 %28
-  store i32 -1, ptr %29, align 4, !tbaa !18
-  %30 = add nsw i64 %26, %28
-  %31 = icmp ugt i64 %30, %3
-  br i1 %31, label %40, label %27, !llvm.loop !33
-
-32:                                               ; preds = %14
-  br i1 %23, label %40, label %33
-
-33:                                               ; preds = %32
-  %34 = load i64, ptr addrspace(5) %11, align 8, !tbaa !14
-  br label %35
-
-35:                                               ; preds = %35, %33
-  %36 = phi i64 [ %22, %33 ], [ %38, %35 ]
-  %37 = getelementptr inbounds i32, ptr %6, i64 %36
-  store i32 -1, ptr %37, align 4, !tbaa !18
-  %38 = add nsw i64 %34, %36
-  %39 = icmp ugt i64 %38, %3
-  br i1 %39, label %40, label %35, !llvm.loop !35
-
-40:                                               ; preds = %35, %32, %27, %24
-  call void @__kmpc_distribute_static_fini(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %21) #53
-  call void @llvm.lifetime.end.p5(i64 4, ptr addrspace(5) %12) #53
-  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %11) #53
-  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %10) #53
-  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %9) #53
-  br label %41
-
-41:                                               ; preds = %40, %8
+29:                                               ; preds = %28, %7
   ret void
 }
 
@@ -341,346 +201,206 @@ define internal void @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v1
 declare void @llvm.lifetime.end.p5(i64 immarg, ptr addrspace(5) nocapture) #1
 
 ; Function Attrs: alwaysinline norecurse nounwind
-define weak_odr protected amdgpu_kernel void @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_1EET_S3_T0_T1__l30"(i64 noundef %0, ptr noundef nonnull align 1 dereferenceable(1) %1, ptr noundef %2, i64 noundef %3) #0 {
+define weak_odr protected amdgpu_kernel void @"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_1EET_S5_T0_T1_i_l81"(i64 noundef %0, ptr noundef nonnull align 1 dereferenceable(1) %1, ptr noundef %2) #0 {
+  %4 = alloca i64, align 8, addrspace(5)
   %5 = alloca i64, align 8, addrspace(5)
   %6 = alloca i64, align 8, addrspace(5)
-  %7 = alloca i64, align 8, addrspace(5)
-  %8 = alloca i32, align 4, addrspace(5)
-  %9 = alloca %class.anon, align 1, addrspace(5)
-  %10 = alloca [6 x ptr], align 8, addrspace(5)
-  %11 = alloca [6 x ptr], align 8, addrspace(5)
-  %12 = tail call i32 @__kmpc_target_init(ptr addrspacecast (ptr addrspace(1) @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_1EET_S3_T0_T1__l30_kernel_environment" to ptr)) #53
-  %13 = icmp eq i32 %12, -1
-  br i1 %13, label %15, label %14
+  %7 = alloca i32, align 4, addrspace(5)
+  %8 = alloca %class.anon, align 1, addrspace(5)
+  %9 = alloca [5 x ptr], align 8, addrspace(5)
+  %10 = tail call i32 @__kmpc_target_init(ptr addrspacecast (ptr addrspace(1) @"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_1EET_S5_T0_T1_i_l81_kernel_environment" to ptr)) #53
+  %11 = icmp eq i32 %10, -1
+  br i1 %11, label %13, label %12
 
-14:                                               ; preds = %76, %4
+12:                                               ; preds = %47, %3
   ret void
 
-15:                                               ; preds = %4
-  %16 = tail call i32 @__kmpc_global_thread_num(ptr addrspacecast (ptr addrspace(1) @1 to ptr)) #53
-  %17 = and i64 %3, 1
-  call void @llvm.lifetime.start.p5(i64 48, ptr addrspace(5) %10)
-  call void @llvm.lifetime.start.p5(i64 48, ptr addrspace(5) %11)
-  %18 = addrspacecast ptr addrspace(5) %9 to ptr
-  %19 = addrspacecast ptr addrspace(5) %10 to ptr
-  %20 = addrspacecast ptr addrspace(5) %11 to ptr
-  %21 = add nsw i64 %0, -1
-  %22 = icmp sgt i64 %0, 0
-  br i1 %22, label %23, label %76
+13:                                               ; preds = %3
+  %14 = tail call i32 @__kmpc_global_thread_num(ptr addrspacecast (ptr addrspace(1) @1 to ptr)) #53
+  call void @llvm.lifetime.start.p5(i64 40, ptr addrspace(5) %9)
+  %15 = addrspacecast ptr addrspace(5) %8 to ptr
+  %16 = addrspacecast ptr addrspace(5) %9 to ptr
+  %17 = add nsw i64 %0, -1
+  %18 = icmp sgt i64 %0, 0
+  br i1 %18, label %19, label %47
 
-23:                                               ; preds = %15
-  %24 = addrspacecast ptr addrspace(5) %8 to ptr
-  %25 = addrspacecast ptr addrspace(5) %7 to ptr
-  %26 = addrspacecast ptr addrspace(5) %6 to ptr
-  %27 = addrspacecast ptr addrspace(5) %5 to ptr
+19:                                               ; preds = %13
+  %20 = addrspacecast ptr addrspace(5) %7 to ptr
+  %21 = addrspacecast ptr addrspace(5) %6 to ptr
+  %22 = addrspacecast ptr addrspace(5) %5 to ptr
+  %23 = addrspacecast ptr addrspace(5) %4 to ptr
+  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %4) #54
+  store i64 0, ptr addrspace(5) %4, align 8, !tbaa !14
   call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %5) #54
-  store i64 0, ptr addrspace(5) %5, align 8, !tbaa !14
+  store i64 %17, ptr addrspace(5) %5, align 8, !tbaa !14
   call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %6) #54
-  store i64 %21, ptr addrspace(5) %6, align 8, !tbaa !14
-  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %7) #54
-  store i64 1, ptr addrspace(5) %7, align 8, !tbaa !14
-  call void @llvm.lifetime.start.p5(i64 4, ptr addrspace(5) %8) #54
-  store i32 0, ptr addrspace(5) %8, align 4, !tbaa !18
-  call void @llvm.lifetime.start.p5(i64 1, ptr addrspace(5) %9) #54
-  call void @__kmpc_distribute_static_init_8(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %16, i32 91, ptr nonnull %24, ptr nonnull %27, ptr nonnull %26, ptr nonnull %25, i64 1, i64 256) #53
-  %28 = load i64, ptr addrspace(5) %6, align 8
-  %29 = call i64 @llvm.smin.i64(i64 %28, i64 %21)
-  store i64 %29, ptr addrspace(5) %6, align 8, !tbaa !14
-  %30 = load i64, ptr addrspace(5) %5, align 8
-  %31 = icmp eq i64 %17, 0
-  %32 = icmp slt i64 %30, %0
-  br i1 %31, label %43, label %33
+  store i64 1, ptr addrspace(5) %6, align 8, !tbaa !14
+  call void @llvm.lifetime.start.p5(i64 4, ptr addrspace(5) %7) #54
+  store i32 0, ptr addrspace(5) %7, align 4, !tbaa !18
+  call void @llvm.lifetime.start.p5(i64 1, ptr addrspace(5) %8) #54
+  call void @__kmpc_distribute_static_init_8(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %14, i32 91, ptr nonnull %20, ptr nonnull %23, ptr nonnull %22, ptr nonnull %21, i64 1, i64 256) #53
+  %24 = load i64, ptr addrspace(5) %5, align 8
+  %25 = call i64 @llvm.smin.i64(i64 %24, i64 %17)
+  store i64 %25, ptr addrspace(5) %5, align 8, !tbaa !14
+  %26 = load i64, ptr addrspace(5) %4, align 8
+  %27 = icmp slt i64 %26, %0
+  br i1 %27, label %28, label %46
 
-33:                                               ; preds = %23
-  br i1 %32, label %34, label %75
+28:                                               ; preds = %19
+  %29 = getelementptr inbounds [5 x ptr], ptr addrspace(5) %9, i32 0, i32 1
+  %30 = getelementptr inbounds [5 x ptr], ptr addrspace(5) %9, i32 0, i32 2
+  %31 = inttoptr i64 %0 to ptr
+  %32 = getelementptr inbounds [5 x ptr], ptr addrspace(5) %9, i32 0, i32 3
+  %33 = getelementptr inbounds [5 x ptr], ptr addrspace(5) %9, i32 0, i32 4
+  br label %34
 
-34:                                               ; preds = %33
-  %35 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %10, i32 0, i32 1
-  %36 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %10, i32 0, i32 2
-  %37 = inttoptr i64 %0 to ptr
-  %38 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %10, i32 0, i32 3
-  %39 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %10, i32 0, i32 4
-  %40 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %10, i32 0, i32 5
-  %41 = inttoptr i64 %17 to ptr
-  %42 = trunc i64 %17 to i32
-  br label %51
+34:                                               ; preds = %34, %28
+  %35 = phi i64 [ %26, %28 ], [ %41, %34 ]
+  %36 = phi i64 [ %25, %28 ], [ %44, %34 ]
+  %37 = inttoptr i64 %35 to ptr
+  store ptr %37, ptr addrspace(5) %9, align 8, !tbaa !20, !llvm.access.group !29
+  %38 = inttoptr i64 %36 to ptr
+  store ptr %38, ptr addrspace(5) %29, align 8, !tbaa !20, !llvm.access.group !29
+  store ptr %31, ptr addrspace(5) %30, align 8, !tbaa !20, !llvm.access.group !29
+  store ptr %15, ptr addrspace(5) %32, align 8, !tbaa !20, !llvm.access.group !29
+  store ptr %2, ptr addrspace(5) %33, align 8, !tbaa !20, !llvm.access.group !29
+  call void @__kmpc_parallel_51(ptr addrspacecast (ptr addrspace(1) @1 to ptr), i32 %14, i32 1, i32 -1, i32 -1, ptr nonnull @"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_1EET_S5_T0_T1_i_l81_omp_outlined_omp_outlined", ptr null, ptr nonnull %16, i64 5) #53, !llvm.access.group !29
+  %39 = load i64, ptr addrspace(5) %6, align 8, !tbaa !14, !llvm.access.group !29
+  %40 = load i64, ptr addrspace(5) %4, align 8, !tbaa !14, !llvm.access.group !29
+  %41 = add nsw i64 %40, %39
+  store i64 %41, ptr addrspace(5) %4, align 8, !tbaa !14, !llvm.access.group !29
+  %42 = load i64, ptr addrspace(5) %5, align 8, !tbaa !14, !llvm.access.group !29
+  %43 = add nsw i64 %42, %39
+  %44 = call i64 @llvm.smin.i64(i64 %43, i64 %17)
+  store i64 %44, ptr addrspace(5) %5, align 8, !tbaa !14
+  %45 = icmp slt i64 %41, %0
+  br i1 %45, label %34, label %46, !llvm.loop !30
 
-43:                                               ; preds = %23
-  br i1 %32, label %44, label %75
+46:                                               ; preds = %34, %19
+  call void @__kmpc_distribute_static_fini(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %14) #53
+  call void @llvm.lifetime.end.p5(i64 1, ptr addrspace(5) %8) #53
+  br label %47
 
-44:                                               ; preds = %43
-  %45 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %11, i32 0, i32 1
-  %46 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %11, i32 0, i32 2
-  %47 = inttoptr i64 %0 to ptr
-  %48 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %11, i32 0, i32 3
-  %49 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %11, i32 0, i32 4
-  %50 = getelementptr inbounds [6 x ptr], ptr addrspace(5) %11, i32 0, i32 5
-  br label %63
-
-51:                                               ; preds = %51, %34
-  %52 = phi i64 [ %29, %34 ], [ %61, %51 ]
-  %53 = phi i64 [ %30, %34 ], [ %58, %51 ]
-  %54 = inttoptr i64 %53 to ptr
-  store ptr %54, ptr addrspace(5) %10, align 8, !tbaa !20, !llvm.access.group !36
-  %55 = inttoptr i64 %52 to ptr
-  store ptr %55, ptr addrspace(5) %35, align 8, !tbaa !20, !llvm.access.group !36
-  store ptr %37, ptr addrspace(5) %36, align 8, !tbaa !20, !llvm.access.group !36
-  store ptr %18, ptr addrspace(5) %38, align 8, !tbaa !20, !llvm.access.group !36
-  store ptr %2, ptr addrspace(5) %39, align 8, !tbaa !20, !llvm.access.group !36
-  store ptr %41, ptr addrspace(5) %40, align 8, !tbaa !20, !llvm.access.group !36
-  call void @__kmpc_parallel_51(ptr addrspacecast (ptr addrspace(1) @1 to ptr), i32 %16, i32 %42, i32 -1, i32 -1, ptr nonnull @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_1EET_S3_T0_T1__l30_omp_outlined_omp_outlined", ptr null, ptr nonnull %19, i64 6) #53, !llvm.access.group !36
-  %56 = load i64, ptr addrspace(5) %7, align 8, !tbaa !14, !llvm.access.group !36
-  %57 = load i64, ptr addrspace(5) %5, align 8, !tbaa !14, !llvm.access.group !36
-  %58 = add nsw i64 %57, %56
-  store i64 %58, ptr addrspace(5) %5, align 8, !tbaa !14, !llvm.access.group !36
-  %59 = load i64, ptr addrspace(5) %6, align 8, !tbaa !14, !llvm.access.group !36
-  %60 = add nsw i64 %59, %56
-  %61 = call i64 @llvm.smin.i64(i64 %60, i64 %21)
-  store i64 %61, ptr addrspace(5) %6, align 8, !tbaa !14, !llvm.access.group !36
-  %62 = icmp slt i64 %58, %0
-  br i1 %62, label %51, label %75, !llvm.loop !37
-
-63:                                               ; preds = %63, %44
-  %64 = phi i64 [ %29, %44 ], [ %73, %63 ]
-  %65 = phi i64 [ %30, %44 ], [ %70, %63 ]
-  %66 = inttoptr i64 %65 to ptr
-  store ptr %66, ptr addrspace(5) %11, align 8, !tbaa !20
-  %67 = inttoptr i64 %64 to ptr
-  store ptr %67, ptr addrspace(5) %45, align 8, !tbaa !20
-  store ptr %47, ptr addrspace(5) %46, align 8, !tbaa !20
-  store ptr %18, ptr addrspace(5) %48, align 8, !tbaa !20
-  store ptr %2, ptr addrspace(5) %49, align 8, !tbaa !20
-  store ptr null, ptr addrspace(5) %50, align 8, !tbaa !20
-  call void @__kmpc_parallel_51(ptr addrspacecast (ptr addrspace(1) @1 to ptr), i32 %16, i32 0, i32 -1, i32 -1, ptr nonnull @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_1EET_S3_T0_T1__l30_omp_outlined_omp_outlined.2", ptr null, ptr nonnull %20, i64 6) #53
-  %68 = load i64, ptr addrspace(5) %7, align 8, !tbaa !14
-  %69 = load i64, ptr addrspace(5) %5, align 8, !tbaa !14
-  %70 = add nsw i64 %69, %68
-  store i64 %70, ptr addrspace(5) %5, align 8, !tbaa !14
-  %71 = load i64, ptr addrspace(5) %6, align 8, !tbaa !14
-  %72 = add nsw i64 %71, %68
-  %73 = call i64 @llvm.smin.i64(i64 %72, i64 %21)
-  store i64 %73, ptr addrspace(5) %6, align 8, !tbaa !14
-  %74 = icmp slt i64 %70, %0
-  br i1 %74, label %63, label %75, !llvm.loop !39
-
-75:                                               ; preds = %63, %51, %43, %33
-  call void @__kmpc_distribute_static_fini(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %16) #53
-  call void @llvm.lifetime.end.p5(i64 1, ptr addrspace(5) %9) #53
-  br label %76
-
-76:                                               ; preds = %75, %15
-  call void @llvm.lifetime.end.p5(i64 4, ptr addrspace(5) %8) #53
-  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %7) #53
+47:                                               ; preds = %46, %13
+  call void @llvm.lifetime.end.p5(i64 4, ptr addrspace(5) %7) #53
   call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %6) #53
   call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %5) #53
-  call void @llvm.lifetime.end.p5(i64 48, ptr addrspace(5) %10)
-  call void @llvm.lifetime.end.p5(i64 48, ptr addrspace(5) %11)
+  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %4) #53
+  call void @llvm.lifetime.end.p5(i64 40, ptr addrspace(5) %9)
   call void @__kmpc_target_deinit() #53
-  br label %14
+  br label %12
 }
 
 ; Function Attrs: alwaysinline norecurse nounwind
-define internal void @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_1EET_S3_T0_T1__l30_omp_outlined_omp_outlined"(ptr noalias nocapture noundef readonly %0, ptr noalias nocapture readnone %1, i64 noundef %2, i64 noundef %3, i64 noundef %4, ptr nocapture nonnull readnone align 1 %5, ptr nocapture noundef %6, i64 noundef %7) #3 {
+define internal void @"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_1EET_S5_T0_T1_i_l81_omp_outlined_omp_outlined"(ptr noalias nocapture noundef readonly %0, ptr noalias nocapture readnone %1, i64 noundef %2, i64 noundef %3, i64 noundef %4, ptr nocapture nonnull readnone align 1 %5, ptr nocapture noundef %6) #3 {
+  %8 = alloca i64, align 8, addrspace(5)
   %9 = alloca i64, align 8, addrspace(5)
   %10 = alloca i64, align 8, addrspace(5)
-  %11 = alloca i64, align 8, addrspace(5)
-  %12 = alloca i32, align 4, addrspace(5)
-  %13 = icmp sgt i64 %4, 0
-  br i1 %13, label %14, label %45
+  %11 = alloca i32, align 4, addrspace(5)
+  %12 = icmp sgt i64 %4, 0
+  br i1 %12, label %13, label %31
 
-14:                                               ; preds = %8
-  %15 = addrspacecast ptr addrspace(5) %12 to ptr
-  %16 = addrspacecast ptr addrspace(5) %11 to ptr
-  %17 = addrspacecast ptr addrspace(5) %10 to ptr
-  %18 = addrspacecast ptr addrspace(5) %9 to ptr
+13:                                               ; preds = %7
+  %14 = addrspacecast ptr addrspace(5) %11 to ptr
+  %15 = addrspacecast ptr addrspace(5) %10 to ptr
+  %16 = addrspacecast ptr addrspace(5) %9 to ptr
+  %17 = addrspacecast ptr addrspace(5) %8 to ptr
+  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %8) #53
   call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %9) #53
+  store i64 %2, ptr addrspace(5) %8, align 8, !tbaa !14
+  store i64 %3, ptr addrspace(5) %9, align 8, !tbaa !14
   call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %10) #53
-  store i64 %2, ptr addrspace(5) %9, align 8, !tbaa !14
-  store i64 %3, ptr addrspace(5) %10, align 8, !tbaa !14
-  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %11) #53
-  store i64 1, ptr addrspace(5) %11, align 8, !tbaa !14
-  call void @llvm.lifetime.start.p5(i64 4, ptr addrspace(5) %12) #53
-  store i32 0, ptr addrspace(5) %12, align 4, !tbaa !18
-  %19 = and i64 %7, 1
-  %20 = icmp eq i64 %19, 0
-  %21 = load i32, ptr %0, align 4, !tbaa !18
-  call void @__kmpc_for_static_init_8(ptr addrspacecast (ptr addrspace(1) @3 to ptr), i32 %21, i32 33, ptr nonnull %15, ptr nonnull %18, ptr nonnull %17, ptr nonnull %16, i64 1, i64 1) #53
-  %22 = load i64, ptr addrspace(5) %9, align 8, !tbaa !14
-  %23 = icmp ugt i64 %22, %3
-  br i1 %20, label %34, label %24
+  store i64 1, ptr addrspace(5) %10, align 8, !tbaa !14
+  call void @llvm.lifetime.start.p5(i64 4, ptr addrspace(5) %11) #53
+  store i32 0, ptr addrspace(5) %11, align 4, !tbaa !18
+  %18 = load i32, ptr %0, align 4, !tbaa !18
+  call void @__kmpc_for_static_init_8(ptr addrspacecast (ptr addrspace(1) @3 to ptr), i32 %18, i32 33, ptr nonnull %14, ptr nonnull %17, ptr nonnull %16, ptr nonnull %15, i64 1, i64 1) #53
+  %19 = load i64, ptr addrspace(5) %8, align 8, !tbaa !14
+  %20 = icmp ugt i64 %19, %3
+  br i1 %20, label %30, label %21
 
-24:                                               ; preds = %14
-  br i1 %23, label %44, label %25
+21:                                               ; preds = %13
+  %22 = load i64, ptr addrspace(5) %10, align 8, !tbaa !14, !llvm.access.group !32
+  br label %23
 
-25:                                               ; preds = %24
-  %26 = load i64, ptr addrspace(5) %11, align 8, !tbaa !14, !llvm.access.group !40
-  br label %27
+23:                                               ; preds = %23, %21
+  %24 = phi i64 [ %19, %21 ], [ %28, %23 ]
+  %25 = getelementptr inbounds i32, ptr %6, i64 %24
+  %26 = load i32, ptr %25, align 4, !tbaa !18
+  %27 = add nsw i32 %26, 1
+  store i32 %27, ptr %25, align 4, !tbaa !18
+  %28 = add nsw i64 %22, %24
+  %29 = icmp ugt i64 %28, %3
+  br i1 %29, label %30, label %23, !llvm.loop !33
 
-27:                                               ; preds = %27, %25
-  %28 = phi i64 [ %22, %25 ], [ %32, %27 ]
-  %29 = getelementptr inbounds i32, ptr %6, i64 %28
-  %30 = load i32, ptr %29, align 4, !tbaa !18
-  %31 = add nsw i32 %30, 1
-  store i32 %31, ptr %29, align 4, !tbaa !18
-  %32 = add nsw i64 %26, %28
-  %33 = icmp ugt i64 %32, %3
-  br i1 %33, label %44, label %27, !llvm.loop !41
-
-34:                                               ; preds = %14
-  br i1 %23, label %44, label %35
-
-35:                                               ; preds = %34
-  %36 = load i64, ptr addrspace(5) %11, align 8, !tbaa !14
-  br label %37
-
-37:                                               ; preds = %37, %35
-  %38 = phi i64 [ %22, %35 ], [ %42, %37 ]
-  %39 = getelementptr inbounds i32, ptr %6, i64 %38
-  %40 = load i32, ptr %39, align 4, !tbaa !18
-  %41 = add nsw i32 %40, 1
-  store i32 %41, ptr %39, align 4, !tbaa !18
-  %42 = add nsw i64 %36, %38
-  %43 = icmp ugt i64 %42, %3
-  br i1 %43, label %44, label %37, !llvm.loop !43
-
-44:                                               ; preds = %37, %34, %27, %24
-  call void @__kmpc_distribute_static_fini(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %21) #53
-  call void @llvm.lifetime.end.p5(i64 4, ptr addrspace(5) %12) #53
-  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %11) #53
+30:                                               ; preds = %23, %13
+  call void @__kmpc_distribute_static_fini(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %18) #53
+  call void @llvm.lifetime.end.p5(i64 4, ptr addrspace(5) %11) #53
   call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %10) #53
   call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %9) #53
-  br label %45
+  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %8) #53
+  br label %31
 
-45:                                               ; preds = %44, %8
-  ret void
-}
-
-; Function Attrs: alwaysinline norecurse nounwind
-define internal void @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_1EET_S3_T0_T1__l30_omp_outlined_omp_outlined.2"(ptr noalias nocapture noundef readonly %0, ptr noalias nocapture readnone %1, i64 noundef %2, i64 noundef %3, i64 noundef %4, ptr nocapture nonnull readnone align 1 %5, ptr nocapture noundef %6, i64 noundef %7) #3 {
-  %9 = alloca i64, align 8, addrspace(5)
-  %10 = alloca i64, align 8, addrspace(5)
-  %11 = alloca i64, align 8, addrspace(5)
-  %12 = alloca i32, align 4, addrspace(5)
-  %13 = icmp sgt i64 %4, 0
-  br i1 %13, label %14, label %45
-
-14:                                               ; preds = %8
-  %15 = addrspacecast ptr addrspace(5) %12 to ptr
-  %16 = addrspacecast ptr addrspace(5) %11 to ptr
-  %17 = addrspacecast ptr addrspace(5) %10 to ptr
-  %18 = addrspacecast ptr addrspace(5) %9 to ptr
-  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %9) #53
-  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %10) #53
-  store i64 %2, ptr addrspace(5) %9, align 8, !tbaa !14
-  store i64 %3, ptr addrspace(5) %10, align 8, !tbaa !14
-  call void @llvm.lifetime.start.p5(i64 8, ptr addrspace(5) %11) #53
-  store i64 1, ptr addrspace(5) %11, align 8, !tbaa !14
-  call void @llvm.lifetime.start.p5(i64 4, ptr addrspace(5) %12) #53
-  store i32 0, ptr addrspace(5) %12, align 4, !tbaa !18
-  %19 = and i64 %7, 1
-  %20 = icmp eq i64 %19, 0
-  %21 = load i32, ptr %0, align 4, !tbaa !18
-  call void @__kmpc_for_static_init_8(ptr addrspacecast (ptr addrspace(1) @3 to ptr), i32 %21, i32 33, ptr nonnull %15, ptr nonnull %18, ptr nonnull %17, ptr nonnull %16, i64 1, i64 1) #53
-  %22 = load i64, ptr addrspace(5) %9, align 8, !tbaa !14
-  %23 = icmp ugt i64 %22, %3
-  br i1 %20, label %34, label %24
-
-24:                                               ; preds = %14
-  br i1 %23, label %44, label %25
-
-25:                                               ; preds = %24
-  %26 = load i64, ptr addrspace(5) %11, align 8, !tbaa !14, !llvm.access.group !44
-  br label %27
-
-27:                                               ; preds = %27, %25
-  %28 = phi i64 [ %22, %25 ], [ %32, %27 ]
-  %29 = getelementptr inbounds i32, ptr %6, i64 %28
-  %30 = load i32, ptr %29, align 4, !tbaa !18
-  %31 = add nsw i32 %30, 1
-  store i32 %31, ptr %29, align 4, !tbaa !18
-  %32 = add nsw i64 %26, %28
-  %33 = icmp ugt i64 %32, %3
-  br i1 %33, label %44, label %27, !llvm.loop !45
-
-34:                                               ; preds = %14
-  br i1 %23, label %44, label %35
-
-35:                                               ; preds = %34
-  %36 = load i64, ptr addrspace(5) %11, align 8, !tbaa !14
-  br label %37
-
-37:                                               ; preds = %37, %35
-  %38 = phi i64 [ %22, %35 ], [ %42, %37 ]
-  %39 = getelementptr inbounds i32, ptr %6, i64 %38
-  %40 = load i32, ptr %39, align 4, !tbaa !18
-  %41 = add nsw i32 %40, 1
-  store i32 %41, ptr %39, align 4, !tbaa !18
-  %42 = add nsw i64 %36, %38
-  %43 = icmp ugt i64 %42, %3
-  br i1 %43, label %44, label %37, !llvm.loop !47
-
-44:                                               ; preds = %37, %34, %27, %24
-  call void @__kmpc_distribute_static_fini(ptr addrspacecast (ptr addrspace(1) @2 to ptr), i32 %21) #53
-  call void @llvm.lifetime.end.p5(i64 4, ptr addrspace(5) %12) #53
-  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %11) #53
-  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %10) #53
-  call void @llvm.lifetime.end.p5(i64 8, ptr addrspace(5) %9) #53
-  br label %45
-
-45:                                               ; preds = %44, %8
+31:                                               ; preds = %30, %7
   ret void
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(read, argmem: none, inaccessiblemem: none)
 define internal noundef i32 @_ZN4ompx6config12getDebugKindEv() #4 {
   %1 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %2 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %2 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %3 = and i32 %2, %1
   ret i32 %3
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
 define internal noundef i32 @_ZN4ompx6config13getNumDevicesEv() #5 {
-  %1 = load i32, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 1), align 4, !tbaa !50
+  %1 = load i32, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 1), align 4, !tbaa !37
   ret i32 %1
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
 define internal noundef i32 @_ZN4ompx6config12getDeviceNumEv() #5 {
-  %1 = load i32, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 2), align 8, !tbaa !51
+  %1 = load i32, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 2), align 8, !tbaa !38
   ret i32 %1
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
 define internal noundef i64 @_ZN4ompx6config20getDynamicMemorySizeEv() #5 {
-  %1 = load i32, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 3), align 4, !tbaa !52
+  %1 = load i32, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 3), align 4, !tbaa !39
   %2 = zext i32 %1 to i64
   ret i64 %2
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
 define internal noundef i64 @_ZN4ompx6config17getClockFrequencyEv() #5 {
-  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 4), align 8, !tbaa !53
+  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 4), align 8, !tbaa !40
   ret i64 %1
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
 define internal noundef ptr @_ZN4ompx6config23getIndirectCallTablePtrEv() #5 {
-  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 5), align 8, !tbaa !54
+  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 5), align 8, !tbaa !41
   %2 = inttoptr i64 %1 to ptr
   ret ptr %2
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
+define internal noundef i64 @_ZN4ompx6config22getHardwareParallelismEv() #5 {
+  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 7), align 8, !tbaa !42
+  ret i64 %1
+}
+
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
 define internal noundef i64 @_ZN4ompx6config24getIndirectCallTableSizeEv() #5 {
-  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 6), align 8, !tbaa !55
+  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 6), align 8, !tbaa !43
   ret i64 %1
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(read, argmem: none, inaccessiblemem: none)
 define internal noundef zeroext i1 @_ZN4ompx6config11isDebugModeENS0_9DebugKindE(i32 noundef %0) #4 {
   %2 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %3 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %3 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %4 = and i32 %2, %0
   %5 = and i32 %4, %3
   %6 = icmp ne i32 %5, 0
@@ -703,7 +423,7 @@ define internal noundef zeroext i1 @_ZN4ompx6config23mayUseNestedParallelismEv()
 3:                                                ; preds = %0
   %4 = load ptr, ptr addrspace(3) @_ZL20KernelEnvironmentPtr, align 8, !tbaa !20
   %5 = getelementptr inbounds %struct.ConfigurationEnvironmentTy, ptr %4, i64 0, i32 1
-  %6 = load i8, ptr %5, align 1, !tbaa !56
+  %6 = load i8, ptr %5, align 1, !tbaa !44
   %7 = icmp ne i8 %6, 0
   br label %8
 
@@ -727,39 +447,39 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
   %3 = alloca ptr, align 8, addrspace(5)
   %4 = addrspacecast ptr addrspace(5) %3 to ptr
   %5 = getelementptr inbounds %struct.ConfigurationEnvironmentTy, ptr %0, i64 0, i32 2
-  %6 = load i8, ptr %5, align 2, !tbaa !60
+  %6 = load i8, ptr %5, align 2, !tbaa !48
   %7 = and i8 %6, 2
   %8 = icmp eq i8 %7, 0
-  %9 = load i8, ptr %0, align 8, !tbaa !61
+  %9 = load i8, ptr %0, align 8, !tbaa !49
   %10 = icmp ne i8 %9, 0
   br i1 %8, label %19, label %11
 
 11:                                               ; preds = %1
-  %12 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !62, !noundef !63
+  %12 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !50, !noundef !51
   %13 = icmp eq i32 %12, 0
   br i1 %13, label %14, label %16
 
 14:                                               ; preds = %11
   store i32 1, ptr addrspace(3) @IsSPMDMode, align 4, !tbaa !18
   %15 = getelementptr inbounds [1024 x i8], ptr addrspace(3) getelementptr inbounds (%"struct.(anonymous namespace)::SharedMemorySmartStackTy", ptr addrspace(3) @_ZN12_GLOBAL__N_122SharedMemorySmartStackE, i32 0, i32 1, i32 0), i32 0, i32 %12
-  store i8 0, ptr addrspace(3) %15, align 1, !tbaa !64
-  store i32 0, ptr addrspace(3) @_ZN4ompx5state9TeamStateE, align 8, !tbaa !65
-  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 1), align 4, !tbaa !68
-  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 2), align 8, !tbaa !69
-  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 3), align 4, !tbaa !70
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 4), align 8, !tbaa !71
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 5), align 4, !tbaa !72
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8, !tbaa !73
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !74
-  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
-  store ptr null, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 3), align 8, !tbaa !76
+  store i8 0, ptr addrspace(3) %15, align 1, !tbaa !52
+  store i32 0, ptr addrspace(3) @_ZN4ompx5state9TeamStateE, align 8, !tbaa !53
+  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 1), align 4, !tbaa !56
+  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 2), align 8, !tbaa !57
+  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 3), align 4, !tbaa !58
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 4), align 8, !tbaa !59
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 5), align 4, !tbaa !60
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8, !tbaa !61
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !62
+  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
+  store ptr null, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 3), align 8, !tbaa !64
   store ptr null, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   store ptr %0, ptr addrspace(3) @_ZL20KernelEnvironmentPtr, align 8, !tbaa !20
   br label %18
 
 16:                                               ; preds = %11
   %17 = getelementptr inbounds [1024 x i8], ptr addrspace(3) getelementptr inbounds (%"struct.(anonymous namespace)::SharedMemorySmartStackTy", ptr addrspace(3) @_ZN12_GLOBAL__N_122SharedMemorySmartStackE, i32 0, i32 1, i32 0), i32 0, i32 %12
-  store i8 0, ptr addrspace(3) %17, align 1, !tbaa !64
+  store i8 0, ptr addrspace(3) %17, align 1, !tbaa !52
   br label %18
 
 18:                                               ; preds = %16, %14
@@ -770,35 +490,35 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
   store atomic i32 0, ptr addrspace(3) @_ZN4impl19namedBarrierTrackerE release, align 4
   %20 = tail call align 4 ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %21 = getelementptr inbounds i8, ptr addrspace(4) %20, i64 4
-  %22 = load i16, ptr addrspace(4) %21, align 4
+  %22 = load i16, ptr addrspace(4) %21, align 4, !range !65
   %23 = zext i16 %22 to i32
   %24 = add nsw i32 %23, -1
   %25 = and i32 %24, -64
-  %26 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !62, !noundef !63
+  %26 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !50, !noundef !51
   %27 = icmp eq i32 %26, %25
   br i1 %27, label %28, label %30
 
 28:                                               ; preds = %19
   store i32 0, ptr addrspace(3) @IsSPMDMode, align 4, !tbaa !18
   %29 = getelementptr inbounds [1024 x i8], ptr addrspace(3) getelementptr inbounds (%"struct.(anonymous namespace)::SharedMemorySmartStackTy", ptr addrspace(3) @_ZN12_GLOBAL__N_122SharedMemorySmartStackE, i32 0, i32 1, i32 0), i32 0, i32 %26
-  store i8 0, ptr addrspace(3) %29, align 1, !tbaa !64
-  store i32 0, ptr addrspace(3) @_ZN4ompx5state9TeamStateE, align 8, !tbaa !65
-  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 1), align 4, !tbaa !68
-  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 2), align 8, !tbaa !69
-  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 3), align 4, !tbaa !70
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 4), align 8, !tbaa !71
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 5), align 4, !tbaa !72
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8, !tbaa !73
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !74
-  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
-  store ptr null, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 3), align 8, !tbaa !76
+  store i8 0, ptr addrspace(3) %29, align 1, !tbaa !52
+  store i32 0, ptr addrspace(3) @_ZN4ompx5state9TeamStateE, align 8, !tbaa !53
+  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 1), align 4, !tbaa !56
+  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 2), align 8, !tbaa !57
+  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 3), align 4, !tbaa !58
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 4), align 8, !tbaa !59
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 5), align 4, !tbaa !60
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8, !tbaa !61
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !62
+  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
+  store ptr null, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 3), align 8, !tbaa !64
   store ptr null, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   store ptr %0, ptr addrspace(3) @_ZL20KernelEnvironmentPtr, align 8, !tbaa !20
   br label %32
 
 30:                                               ; preds = %19
   %31 = getelementptr inbounds [1024 x i8], ptr addrspace(3) getelementptr inbounds (%"struct.(anonymous namespace)::SharedMemorySmartStackTy", ptr addrspace(3) @_ZN12_GLOBAL__N_122SharedMemorySmartStackE, i32 0, i32 1, i32 0), i32 0, i32 %26
-  store i8 0, ptr addrspace(3) %31, align 1, !tbaa !64
+  store i8 0, ptr addrspace(3) %31, align 1, !tbaa !52
   br label %32
 
 32:                                               ; preds = %30, %28, %18
@@ -806,11 +526,11 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
 
 33:                                               ; preds = %32
   %34 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %35 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %35 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %36 = and i32 %34, 1
   %37 = and i32 %36, %35
   %38 = icmp ne i32 %37, 0
-  %39 = load i32, ptr addrspace(3) @_ZN4ompx5state9TeamStateE, align 8, !tbaa !77
+  %39 = load i32, ptr addrspace(3) @_ZN4ompx5state9TeamStateE, align 8, !tbaa !66
   %40 = icmp ne i32 %39, 0
   %41 = select i1 %38, i1 %40, i1 false
   br i1 %41, label %42, label %43
@@ -822,7 +542,7 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
 43:                                               ; preds = %33
   %44 = icmp eq i32 %39, 0
   tail call void @llvm.assume(i1 noundef %44) #59
-  %45 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 1), align 4, !tbaa !78
+  %45 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 1), align 4, !tbaa !67
   br i1 %38, label %46, label %49
 
 46:                                               ; preds = %43
@@ -837,7 +557,7 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
   %50 = phi i32 [ 0, %46 ], [ %45, %43 ]
   %51 = icmp eq i32 %50, 0
   tail call void @llvm.assume(i1 noundef %51) #59
-  %52 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 2), align 8, !tbaa !79
+  %52 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 2), align 8, !tbaa !68
   br i1 %38, label %53, label %56
 
 53:                                               ; preds = %49
@@ -852,7 +572,7 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
   %57 = phi i32 [ 0, %53 ], [ %52, %49 ]
   %58 = icmp eq i32 %57, 0
   tail call void @llvm.assume(i1 noundef %58) #59
-  %59 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 4), align 8, !tbaa !80
+  %59 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 4), align 8, !tbaa !69
   br i1 %38, label %60, label %63
 
 60:                                               ; preds = %56
@@ -867,7 +587,7 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
   %64 = phi i32 [ 1, %60 ], [ %59, %56 ]
   %65 = icmp eq i32 %64, 1
   tail call void @llvm.assume(i1 noundef %65) #59
-  %66 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 5), align 4, !tbaa !81
+  %66 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 5), align 4, !tbaa !70
   br i1 %38, label %67, label %89
 
 67:                                               ; preds = %63
@@ -884,7 +604,7 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
   br i1 %38, label %72, label %91
 
 72:                                               ; preds = %70
-  %73 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8, !tbaa !82
+  %73 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8, !tbaa !71
   %74 = icmp eq i32 %73, 1
   br i1 %74, label %76, label %75
 
@@ -896,7 +616,7 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
   br i1 %38, label %77, label %91
 
 77:                                               ; preds = %76
-  %78 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !74
+  %78 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !62
   %79 = icmp eq i32 %78, 1
   br i1 %79, label %81, label %80
 
@@ -905,7 +625,7 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
   unreachable
 
 81:                                               ; preds = %77
-  %82 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
+  %82 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
   %83 = icmp eq i32 %82, 0
   br i1 %83, label %85, label %84
 
@@ -941,11 +661,11 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
 96:                                               ; preds = %32
   %97 = tail call align 4 ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %98 = getelementptr inbounds i8, ptr addrspace(4) %97, i64 4
-  %99 = load i16, ptr addrspace(4) %98, align 4
+  %99 = load i16, ptr addrspace(4) %98, align 4, !range !65
   %100 = zext i16 %99 to i32
   %101 = add nsw i32 %100, -1
   %102 = and i32 %101, -64
-  %103 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !62, !noundef !63
+  %103 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !50, !noundef !51
   %104 = icmp eq i32 %103, %102
   br i1 %104, label %142, label %105
 
@@ -1000,7 +720,7 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
   tail call void @llvm.amdgcn.s.barrier() #56
   fence syncscope("workgroup") seq_cst
   call void @llvm.lifetime.end.p5(i64 noundef 8, ptr addrspace(5) noundef %2) #60
-  br label %112, !llvm.loop !83
+  br label %112, !llvm.loop !72
 
 129:                                              ; preds = %112
   call void @llvm.lifetime.end.p5(i64 noundef 8, ptr addrspace(5) noundef %2) #60
@@ -1011,7 +731,7 @@ define internal noundef i32 @__kmpc_target_init(ptr nofree noundef nonnull align
   store ptr null, ptr addrspace(5) %3, align 8, !tbaa !20
   %131 = call zeroext i1 @__kmpc_kernel_parallel(ptr nocapture nofree noundef nonnull writeonly align 8 dereferenceable(8) %4) #60
   %132 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %133 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %133 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %134 = and i32 %132, 1
   %135 = and i32 %134, %133
   %136 = icmp eq i32 %135, 0
@@ -1091,7 +811,7 @@ define internal noundef zeroext i1 @__kmpc_kernel_parallel(ptr nocapture nofree 
   br i1 %3, label %20, label %4
 
 4:                                                ; preds = %1
-  %5 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %5 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %6 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !18
   %7 = icmp eq i32 %6, 0
   br i1 %7, label %8, label %17
@@ -1101,7 +821,7 @@ define internal noundef zeroext i1 @__kmpc_kernel_parallel(ptr nocapture nofree 
   %10 = icmp eq i32 %9, 0
   %11 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %12 = getelementptr inbounds i8, ptr addrspace(4) %11, i64 4
-  %13 = load i16, ptr addrspace(4) %12, align 4
+  %13 = load i16, ptr addrspace(4) %12, align 4, !range !65, !invariant.load !51, !noundef !51
   %14 = zext i16 %13 to i32
   %15 = select i1 %10, i32 -64, i32 0
   %16 = add nsw i32 %15, %14
@@ -1120,7 +840,7 @@ define internal noundef zeroext i1 @__kmpc_kernel_parallel(ptr nocapture nofree 
 ; Function Attrs: convergent mustprogress noinline nounwind memory(readwrite, inaccessiblemem: write)
 define internal void @__kmpc_kernel_end_parallel() #14 {
   %1 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %2 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %2 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %3 = and i32 %2, 1
   %4 = and i32 %3, %1
   %5 = icmp ne i32 %4, 0
@@ -1144,17 +864,17 @@ define internal void @__kmpc_kernel_end_parallel() #14 {
   br i1 %16, label %17, label %32
 
 17:                                               ; preds = %10
-  %18 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %18 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %19 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %20 = zext i32 %18 to i64
   %21 = getelementptr inbounds ptr, ptr %19, i64 %20
   %22 = load ptr, ptr %21, align 8, !tbaa !20
   %23 = icmp eq ptr %22, null
-  br i1 %23, label %32, label %24, !prof !85
+  br i1 %23, label %32, label %24, !prof !74
 
 24:                                               ; preds = %17
   %25 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %22, i64 0, i32 1
-  %26 = load ptr, ptr %25, align 8, !tbaa !86
+  %26 = load ptr, ptr %25, align 8, !tbaa !75
   tail call void @__kmpc_free_shared(ptr noalias nocapture nofree noundef nonnull readnone align 8 dereferenceable(40) %22, i64 noundef 40) #62
   %27 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %28 = getelementptr inbounds ptr, ptr %27, i64 %20
@@ -1188,14 +908,14 @@ define internal void @__kmpc_free_shared(ptr nocapture nofree noundef readnone %
   br i1 %3, label %4, label %12
 
 4:                                                ; preds = %2
-  %5 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %5 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %6 = getelementptr inbounds [1024 x i8], ptr addrspace(3) getelementptr inbounds (%"struct.(anonymous namespace)::SharedMemorySmartStackTy", ptr addrspace(3) @_ZN12_GLOBAL__N_122SharedMemorySmartStackE, i32 0, i32 1, i32 0), i32 0, i32 %5
   %7 = trunc i64 %1 to i8
   %8 = add i8 %7, 15
   %9 = and i8 %8, -16
-  %10 = load i8, ptr addrspace(3) %6, align 1, !tbaa !64
+  %10 = load i8, ptr addrspace(3) %6, align 1, !tbaa !52
   %11 = sub i8 %10, %9
-  store i8 %11, ptr addrspace(3) %6, align 1, !tbaa !64
+  store i8 %11, ptr addrspace(3) %6, align 1, !tbaa !52
   br label %12
 
 12:                                               ; preds = %4, %2
@@ -1235,14 +955,14 @@ define internal i32 @memcmp(ptr nocapture nofree noundef readonly %0, ptr nocapt
 5:                                                ; preds = %8
   %6 = add nuw i64 %9, 1
   %7 = icmp eq i64 %6, %2
-  br i1 %7, label %19, label %8, !llvm.loop !88
+  br i1 %7, label %19, label %8, !llvm.loop !77
 
 8:                                                ; preds = %5, %3
   %9 = phi i64 [ %6, %5 ], [ 0, %3 ]
   %10 = getelementptr inbounds i8, ptr %0, i64 %9
-  %11 = load i8, ptr %10, align 1, !tbaa !64
+  %11 = load i8, ptr %10, align 1, !tbaa !52
   %12 = getelementptr inbounds i8, ptr %1, i64 %9
-  %13 = load i8, ptr %12, align 1, !tbaa !64
+  %13 = load i8, ptr %12, align 1, !tbaa !52
   %14 = icmp eq i8 %11, %13
   br i1 %14, label %5, label %15
 
@@ -1282,14 +1002,14 @@ define internal noundef i32 @"_ZN4ompx4impl50getNumberOfThreadsInBlock$ompvarian
   br label %5
 
 4:                                                ; preds = %1
-  tail call void @llvm.trap() #55
+  tail call void @llvm.trap() #58
   unreachable
 
 5:                                                ; preds = %3, %2, %1
   %6 = phi i64 [ 8, %3 ], [ 6, %2 ], [ 4, %1 ]
-  %7 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #64
+  %7 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %8 = getelementptr inbounds i8, ptr addrspace(4) %7, i64 %6
-  %9 = load i16, ptr addrspace(4) %8, align 2
+  %9 = load i16, ptr addrspace(4) %8, align 2, !range !65, !invariant.load !51, !noundef !51
   %10 = zext i16 %9 to i32
   ret i32 %10
 }
@@ -1308,7 +1028,7 @@ define internal noundef i64 @"_ZN4ompx4impl35lanemaskLT$ompvariant$S2$s7$Pamdgcn
   %1 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %2 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %1) #64
   %3 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %4 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %4 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %5 = and i32 %3, 1
   %6 = and i32 %5, %4
   %7 = icmp ne i32 %6, 0
@@ -1342,7 +1062,7 @@ define internal noundef i32 @_ZN4ompx7mapping17getThreadIdInWarpEv() #23 {
   %1 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %2 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %1) #64
   %3 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %4 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %4 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %5 = and i32 %3, 1
   %6 = and i32 %5, %4
   %7 = icmp ne i32 %6, 0
@@ -1383,7 +1103,7 @@ define internal noundef i64 @"_ZN4ompx4impl35lanemaskGT$ompvariant$S2$s7$Pamdgcn
   %1 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %2 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %1) #64
   %3 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %4 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %4 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %5 = and i32 %3, 1
   %6 = and i32 %5, %4
   %7 = icmp ne i32 %6, 0
@@ -1428,15 +1148,15 @@ define internal noundef i32 @"_ZN4ompx4impl43getThreadIdInBlock$ompvariant$S2$s7
   ]
 
 2:                                                ; preds = %1
-  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   br label %9
 
 4:                                                ; preds = %1
-  %5 = tail call i32 @llvm.amdgcn.workitem.id.y() #64, !range !62, !noundef !63
+  %5 = tail call i32 @llvm.amdgcn.workitem.id.y() #64, !range !50, !noundef !51
   br label %9
 
 6:                                                ; preds = %1
-  %7 = tail call i32 @llvm.amdgcn.workitem.id.z() #64, !range !62, !noundef !63
+  %7 = tail call i32 @llvm.amdgcn.workitem.id.z() #64, !range !50, !noundef !51
   br label %9
 
 8:                                                ; preds = %1
@@ -1458,12 +1178,12 @@ declare i32 @llvm.amdgcn.workitem.id.z() #2
 define internal noundef i32 @"_ZN4ompx4impl51getNumberOfThreadsInKernel$ompvariant$S2$s7$PamdgcnEv"() #5 {
   %1 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %2 = getelementptr inbounds i8, ptr addrspace(4) %1, i64 12
-  %3 = load i32, ptr addrspace(4) %2, align 4, !invariant.load !63
+  %3 = load i32, ptr addrspace(4) %2, align 4, !invariant.load !51
   %4 = getelementptr inbounds i8, ptr addrspace(4) %1, i64 16
-  %5 = load i32, ptr addrspace(4) %4, align 4, !invariant.load !63
+  %5 = load i32, ptr addrspace(4) %4, align 4, !invariant.load !51
   %6 = mul i32 %5, %3
   %7 = getelementptr inbounds i8, ptr addrspace(4) %1, i64 20
-  %8 = load i32, ptr addrspace(4) %7, align 4, !invariant.load !63
+  %8 = load i32, ptr addrspace(4) %7, align 4, !invariant.load !51
   %9 = mul i32 %6, %8
   ret i32 %9
 }
@@ -1533,22 +1253,22 @@ define internal noundef i32 @"_ZN4ompx4impl50getNumberOfBlocksInKernel$ompvarian
   br label %15
 
 14:                                               ; preds = %1
-  tail call void @llvm.trap() #55
+  tail call void @llvm.trap() #58
   unreachable
 
 15:                                               ; preds = %10, %6, %2
   %16 = phi ptr addrspace(4) [ %13, %10 ], [ %9, %6 ], [ %5, %2 ]
   %17 = phi ptr addrspace(4) [ %12, %10 ], [ %8, %6 ], [ %4, %2 ]
-  %18 = load i16, ptr addrspace(4) %16, align 2
-  %19 = load i32, ptr addrspace(4) %17, align 4, !invariant.load !63
-  %20 = zext i16 %18 to i32
-  %21 = udiv i32 %19, %20
+  %18 = load i32, ptr addrspace(4) %17, align 4, !invariant.load !51
+  %19 = load i16, ptr addrspace(4) %16, align 2, !range !65, !invariant.load !51, !noundef !51
+  %20 = zext i16 %19 to i32
+  %21 = udiv i32 %18, %20
   ret i32 %21
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
 define internal noundef i32 @"_ZN4ompx4impl41getWarpIdInBlock$ompvariant$S2$s7$PamdgcnEv"() #5 {
-  %1 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !62, !noundef !63
+  %1 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !50, !noundef !51
   %2 = lshr i32 %1, 6
   ret i32 %2
 }
@@ -1557,7 +1277,7 @@ define internal noundef i32 @"_ZN4ompx4impl41getWarpIdInBlock$ompvariant$S2$s7$P
 define internal noundef i32 @"_ZN4ompx4impl48getNumberOfWarpsInBlock$ompvariant$S2$s7$PamdgcnEv"() #5 {
   %1 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %2 = getelementptr inbounds i8, ptr addrspace(4) %1, i64 4
-  %3 = load i16, ptr addrspace(4) %2, align 4
+  %3 = load i16, ptr addrspace(4) %2, align 4, !range !65, !invariant.load !51, !noundef !51
   %4 = lshr i16 %3, 6
   %5 = zext i16 %4 to i32
   ret i32 %5
@@ -1583,9 +1303,9 @@ define internal noundef i32 @_ZN4ompx7mapping25getNumberOfThreadsInBlockEi(i32 n
 
 5:                                                ; preds = %3, %2, %1
   %6 = phi i64 [ 8, %3 ], [ 6, %2 ], [ 4, %1 ]
-  %7 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #64
+  %7 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %8 = getelementptr inbounds i8, ptr addrspace(4) %7, i64 %6
-  %9 = load i16, ptr addrspace(4) %8, align 2
+  %9 = load i16, ptr addrspace(4) %8, align 2, !range !65, !invariant.load !51, !noundef !51
   %10 = zext i16 %9 to i32
   ret i32 %10
 }
@@ -1603,13 +1323,13 @@ define internal noundef zeroext i1 @_ZN4ompx7mapping25isMainThreadInGenericModeE
   br i1 %7, label %8, label %16
 
 8:                                                ; preds = %2
-  %9 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !62, !noundef !63
+  %9 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !50, !noundef !51
   %10 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %11 = zext i32 %9 to i64
   %12 = getelementptr inbounds ptr, ptr %10, i64 %11
   %13 = load ptr, ptr %12, align 8, !tbaa !20
   %14 = icmp eq ptr %13, null
-  br i1 %14, label %16, label %15, !prof !85
+  br i1 %14, label %16, label %15, !prof !74
 
 15:                                               ; preds = %8
   br label %16
@@ -1624,11 +1344,11 @@ define internal noundef zeroext i1 @_ZN4ompx7mapping25isMainThreadInGenericModeE
 21:                                               ; preds = %16
   %22 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #65
   %23 = getelementptr inbounds i8, ptr addrspace(4) %22, i64 4
-  %24 = load i16, ptr addrspace(4) %23, align 4
+  %24 = load i16, ptr addrspace(4) %23, align 4, !range !65, !invariant.load !51, !noundef !51
   %25 = zext i16 %24 to i32
   %26 = add nsw i32 %25, -1
   %27 = and i32 %26, -64
-  %28 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !62, !noundef !63
+  %28 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !50, !noundef !51
   %29 = icmp eq i32 %28, %27
   br label %30
 
@@ -1646,15 +1366,15 @@ define internal noundef i32 @_ZN4ompx7mapping18getThreadIdInBlockEi(i32 noundef 
   ]
 
 2:                                                ; preds = %1
-  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   br label %9
 
 4:                                                ; preds = %1
-  %5 = tail call i32 @llvm.amdgcn.workitem.id.y() #64, !range !62, !noundef !63
+  %5 = tail call i32 @llvm.amdgcn.workitem.id.y() #64, !range !50, !noundef !51
   br label %9
 
 6:                                                ; preds = %1
-  %7 = tail call i32 @llvm.amdgcn.workitem.id.z() #64, !range !62, !noundef !63
+  %7 = tail call i32 @llvm.amdgcn.workitem.id.z() #64, !range !50, !noundef !51
   br label %9
 
 8:                                                ; preds = %1
@@ -1681,13 +1401,13 @@ define internal noundef zeroext i1 @_ZN4ompx7mapping25isMainThreadInGenericModeE
   br i1 %8, label %9, label %17
 
 9:                                                ; preds = %3
-  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !62, !noundef !63
+  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !50, !noundef !51
   %11 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %12 = zext i32 %10 to i64
   %13 = getelementptr inbounds ptr, ptr %11, i64 %12
   %14 = load ptr, ptr %13, align 8, !tbaa !20
   %15 = icmp eq ptr %14, null
-  br i1 %15, label %17, label %16, !prof !85
+  br i1 %15, label %17, label %16, !prof !74
 
 16:                                               ; preds = %9
   br label %17
@@ -1702,11 +1422,11 @@ define internal noundef zeroext i1 @_ZN4ompx7mapping25isMainThreadInGenericModeE
 22:                                               ; preds = %17
   %23 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #65
   %24 = getelementptr inbounds i8, ptr addrspace(4) %23, i64 4
-  %25 = load i16, ptr addrspace(4) %24, align 4
+  %25 = load i16, ptr addrspace(4) %24, align 4, !range !65, !invariant.load !51, !noundef !51
   %26 = zext i16 %25 to i32
   %27 = add nsw i32 %26, -1
   %28 = and i32 %27, -64
-  %29 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !62, !noundef !63
+  %29 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !50, !noundef !51
   %30 = icmp eq i32 %29, %28
   br label %31
 
@@ -1726,12 +1446,12 @@ define internal noundef zeroext i1 @_ZN4ompx7mapping10isSPMDModeEv() #4 {
 define internal noundef zeroext i1 @_ZN4ompx7mapping23isInitialThreadInLevel0Eb(i1 noundef zeroext %0) #5 {
   %2 = tail call align 4 ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %3 = getelementptr inbounds i8, ptr addrspace(4) %2, i64 4
-  %4 = load i16, ptr addrspace(4) %3, align 4
+  %4 = load i16, ptr addrspace(4) %3, align 4, !range !65
   %5 = zext i16 %4 to i32
   %6 = add nsw i32 %5, -1
   %7 = and i32 %6, -64
   %8 = select i1 %0, i32 0, i32 %7
-  %9 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !62, !noundef !63
+  %9 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !50, !noundef !51
   %10 = icmp eq i32 %9, %8
   ret i1 %10
 }
@@ -1742,7 +1462,7 @@ define internal noundef zeroext i1 @_ZN4ompx7mapping14isLeaderInWarpEv() #21 {
   %2 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %3 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %2) #64
   %4 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %5 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %5 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %6 = and i32 %4, 1
   %7 = and i32 %6, %5
   %8 = icmp ne i32 %7, 0
@@ -1772,7 +1492,7 @@ define internal noundef i64 @_ZN4ompx7mapping10lanemaskLTEv() #21 {
   %1 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %2 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %1) #64
   %3 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %4 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %4 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %5 = and i32 %3, 1
   %6 = and i32 %5, %4
   %7 = icmp ne i32 %6, 0
@@ -1800,7 +1520,7 @@ define internal noundef i64 @_ZN4ompx7mapping10lanemaskGTEv() #21 {
   %1 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %2 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %1) #64
   %3 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %4 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %4 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %5 = and i32 %3, 1
   %6 = and i32 %5, %4
   %7 = icmp ne i32 %6, 0
@@ -1835,7 +1555,7 @@ define internal noundef i64 @_ZN4ompx7mapping10lanemaskGTEv() #21 {
 define internal noundef i32 @_ZN4ompx7mapping17getMaxTeamThreadsEb(i1 noundef zeroext %0) #5 {
   %2 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %3 = getelementptr inbounds i8, ptr addrspace(4) %2, i64 4
-  %4 = load i16, ptr addrspace(4) %3, align 4
+  %4 = load i16, ptr addrspace(4) %3, align 4, !range !65, !invariant.load !51, !noundef !51
   %5 = zext i16 %4 to i32
   %6 = select i1 %0, i32 0, i32 -64
   %7 = add nsw i32 %6, %5
@@ -1848,7 +1568,7 @@ define internal noundef i32 @_ZN4ompx7mapping17getMaxTeamThreadsEv() #4 {
   %2 = icmp eq i32 %1, 0
   %3 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %4 = getelementptr inbounds i8, ptr addrspace(4) %3, i64 4
-  %5 = load i16, ptr addrspace(4) %4, align 4
+  %5 = load i16, ptr addrspace(4) %4, align 4, !range !65, !invariant.load !51, !noundef !51
   %6 = zext i16 %5 to i32
   %7 = select i1 %2, i32 -64, i32 0
   %8 = add nsw i32 %7, %6
@@ -1859,28 +1579,28 @@ define internal noundef i32 @_ZN4ompx7mapping17getMaxTeamThreadsEv() #4 {
 define internal noundef i32 @_ZN4ompx7mapping26getNumberOfThreadsInKernelEv() #5 {
   %1 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %2 = getelementptr inbounds i8, ptr addrspace(4) %1, i64 12
-  %3 = load i32, ptr addrspace(4) %2, align 4, !invariant.load !63
+  %3 = load i32, ptr addrspace(4) %2, align 4, !invariant.load !51
   %4 = getelementptr inbounds i8, ptr addrspace(4) %1, i64 16
-  %5 = load i32, ptr addrspace(4) %4, align 4, !invariant.load !63
+  %5 = load i32, ptr addrspace(4) %4, align 4, !invariant.load !51
   %6 = mul i32 %5, %3
   %7 = getelementptr inbounds i8, ptr addrspace(4) %1, i64 20
-  %8 = load i32, ptr addrspace(4) %7, align 4, !invariant.load !63
+  %8 = load i32, ptr addrspace(4) %7, align 4, !invariant.load !51
   %9 = mul i32 %6, %8
   ret i32 %9
 }
 
 ; Function Attrs: mustprogress nounwind memory(read, argmem: none, inaccessiblemem: write)
 define internal noundef i32 @_ZN4ompx7mapping16getWarpIdInBlockEv() #23 {
-  %1 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %1 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %2 = lshr i32 %1, 6
   %3 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %4 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %4 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %5 = and i32 %3, 1
   %6 = and i32 %5, %4
   %7 = icmp eq i32 %6, 0
   %8 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #64
   %9 = getelementptr inbounds i8, ptr addrspace(4) %8, i64 4
-  %10 = load i16, ptr addrspace(4) %9, align 4
+  %10 = load i16, ptr addrspace(4) %9, align 4, !range !65, !invariant.load !51
   %11 = lshr i16 %10, 6
   %12 = zext i16 %11 to i32
   %13 = icmp ult i32 %2, %12
@@ -1924,7 +1644,7 @@ define internal noundef i32 @_ZN4ompx7mapping18getBlockIdInKernelEi(i32 noundef 
 9:                                                ; preds = %6, %4, %2
   %10 = phi i32 [ %7, %6 ], [ %5, %4 ], [ %3, %2 ]
   %11 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %12 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %12 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %13 = and i32 %11, 1
   %14 = and i32 %13, %12
   %15 = icmp eq i32 %14, 0
@@ -1962,10 +1682,10 @@ define internal noundef i32 @_ZN4ompx7mapping18getBlockIdInKernelEi(i32 noundef 
 30:                                               ; preds = %25, %21, %17
   %31 = phi ptr addrspace(4) [ %28, %25 ], [ %24, %21 ], [ %20, %17 ]
   %32 = phi ptr addrspace(4) [ %27, %25 ], [ %23, %21 ], [ %19, %17 ]
-  %33 = load i16, ptr addrspace(4) %31, align 2
-  %34 = load i32, ptr addrspace(4) %32, align 4, !invariant.load !63
-  %35 = zext i16 %33 to i32
-  %36 = udiv i32 %34, %35
+  %33 = load i32, ptr addrspace(4) %32, align 4, !invariant.load !51
+  %34 = load i16, ptr addrspace(4) %31, align 2, !range !65, !invariant.load !51, !noundef !51
+  %35 = zext i16 %34 to i32
+  %36 = udiv i32 %33, %35
   %37 = icmp ult i32 %10, %36
   br i1 %37, label %39, label %38
 
@@ -2005,10 +1725,10 @@ define internal noundef i32 @_ZN4ompx7mapping18getBlockIdInKernelEi(i32 noundef 
 53:                                               ; preds = %48, %44, %40
   %54 = phi ptr addrspace(4) [ %51, %48 ], [ %47, %44 ], [ %43, %40 ]
   %55 = phi ptr addrspace(4) [ %50, %48 ], [ %46, %44 ], [ %42, %40 ]
-  %56 = load i16, ptr addrspace(4) %54, align 2
-  %57 = load i32, ptr addrspace(4) %55, align 4, !invariant.load !63
-  %58 = zext i16 %56 to i32
-  %59 = udiv i32 %57, %58
+  %56 = load i32, ptr addrspace(4) %55, align 4, !invariant.load !51
+  %57 = load i16, ptr addrspace(4) %54, align 2, !range !65, !invariant.load !51, !noundef !51
+  %58 = zext i16 %57 to i32
+  %59 = udiv i32 %56, %58
   %60 = icmp ult i32 %10, %59
   tail call void @llvm.assume(i1 noundef %60) #59
   ret i32 %10
@@ -2018,15 +1738,15 @@ define internal noundef i32 @_ZN4ompx7mapping18getBlockIdInKernelEi(i32 noundef 
 define internal noundef i32 @_ZN4ompx7mapping23getNumberOfWarpsInBlockEv() #23 {
   %1 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #64
   %2 = getelementptr inbounds i8, ptr addrspace(4) %1, i64 4
-  %3 = load i16, ptr addrspace(4) %2, align 4
+  %3 = load i16, ptr addrspace(4) %2, align 4, !range !65, !invariant.load !51, !noundef !51
   %4 = lshr i16 %3, 6
   %5 = zext i16 %4 to i32
   %6 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %7 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %7 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %8 = and i32 %6, 1
   %9 = and i32 %8, %7
   %10 = icmp ne i32 %9, 0
-  %11 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %11 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %12 = lshr i32 %11, 6
   %13 = icmp uge i32 %12, %5
   %14 = select i1 %10, i1 %13, i1 false
@@ -2075,12 +1795,12 @@ define internal noundef i32 @_ZN4ompx7mapping25getNumberOfBlocksInKernelEi(i32 n
 15:                                               ; preds = %10, %6, %2
   %16 = phi ptr addrspace(4) [ %13, %10 ], [ %9, %6 ], [ %5, %2 ]
   %17 = phi ptr addrspace(4) [ %12, %10 ], [ %8, %6 ], [ %4, %2 ]
-  %18 = load i16, ptr addrspace(4) %16, align 2
-  %19 = load i32, ptr addrspace(4) %17, align 4, !invariant.load !63
-  %20 = zext i16 %18 to i32
-  %21 = udiv i32 %19, %20
+  %18 = load i32, ptr addrspace(4) %17, align 4, !invariant.load !51
+  %19 = load i16, ptr addrspace(4) %16, align 2, !range !65, !invariant.load !51, !noundef !51
+  %20 = zext i16 %19 to i32
+  %21 = udiv i32 %18, %20
   %22 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %23 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %23 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %24 = and i32 %22, 1
   %25 = and i32 %24, %23
   %26 = icmp eq i32 %25, 0
@@ -2148,22 +1868,23 @@ define internal noundef i32 @_ZN4ompx7mapping25getNumberOfBlocksInKernelEi(i32 n
   ret i32 %21
 }
 
-; Function Attrs: mustprogress noreturn nounwind memory(inaccessiblemem: write)
-define internal noundef i32 @_ZN4ompx7mapping28getNumberOfProcessorElementsEv() #7 {
-  tail call void @llvm.trap() #58
-  unreachable
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
+define internal noundef i32 @_ZN4ompx7mapping28getNumberOfProcessorElementsEv() #5 {
+  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 7), align 8, !tbaa !42
+  %2 = trunc i64 %1 to i32
+  ret i32 %2
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(write, argmem: none, inaccessiblemem: none)
 define internal void @_ZN4ompx7mapping4initEb(i1 noundef zeroext %0) #24 {
   %2 = tail call align 4 ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %3 = getelementptr inbounds i8, ptr addrspace(4) %2, i64 4
-  %4 = load i16, ptr addrspace(4) %3, align 4
+  %4 = load i16, ptr addrspace(4) %3, align 4, !range !65
   %5 = zext i16 %4 to i32
   %6 = add nsw i32 %5, -1
   %7 = and i32 %6, -64
   %8 = select i1 %0, i32 0, i32 %7
-  %9 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !62, !noundef !63
+  %9 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !50, !noundef !51
   %10 = icmp eq i32 %9, %8
   br i1 %10, label %11, label %13
 
@@ -2185,15 +1906,15 @@ define internal noundef zeroext i1 @_ZN4ompx7mapping13isGenericModeEv() #4 {
 
 ; Function Attrs: mustprogress nofree noinline norecurse nosync nounwind willreturn memory(none)
 define internal i32 @__kmpc_get_hardware_thread_id_in_block() #25 {
-  %1 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !62, !noundef !63
+  %1 = tail call i32 @llvm.amdgcn.workitem.id.x() #56, !range !50, !noundef !51
   ret i32 %1
 }
 
 ; Function Attrs: mustprogress nofree noinline norecurse nosync nounwind willreturn memory(none)
-define internal i32 @__kmpc_get_hardware_num_threads_in_block() #25 {
+define internal noundef i32 @__kmpc_get_hardware_num_threads_in_block() #25 {
   %1 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %2 = getelementptr inbounds i8, ptr addrspace(4) %1, i64 4
-  %3 = load i16, ptr addrspace(4) %2, align 4
+  %3 = load i16, ptr addrspace(4) %2, align 4, !range !65, !invariant.load !51, !noundef !51
   %4 = zext i16 %3 to i32
   ret i32 %4
 }
@@ -2212,15 +1933,15 @@ define internal i32 @ompx_thread_id(i32 noundef %0) #18 {
   ]
 
 2:                                                ; preds = %1
-  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   br label %9
 
 4:                                                ; preds = %1
-  %5 = tail call i32 @llvm.amdgcn.workitem.id.y() #64, !range !62, !noundef !63
+  %5 = tail call i32 @llvm.amdgcn.workitem.id.y() #64, !range !50, !noundef !51
   br label %9
 
 6:                                                ; preds = %1
-  %7 = tail call i32 @llvm.amdgcn.workitem.id.z() #64, !range !62, !noundef !63
+  %7 = tail call i32 @llvm.amdgcn.workitem.id.z() #64, !range !50, !noundef !51
   br label %9
 
 8:                                                ; preds = %1
@@ -2259,7 +1980,7 @@ define internal i32 @ompx_block_id(i32 noundef %0) #23 {
 9:                                                ; preds = %6, %4, %2
   %10 = phi i32 [ %7, %6 ], [ %5, %4 ], [ %3, %2 ]
   %11 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %12 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %12 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %13 = and i32 %11, 1
   %14 = and i32 %13, %12
   %15 = icmp eq i32 %14, 0
@@ -2297,10 +2018,10 @@ define internal i32 @ompx_block_id(i32 noundef %0) #23 {
 30:                                               ; preds = %25, %21, %17
   %31 = phi ptr addrspace(4) [ %28, %25 ], [ %24, %21 ], [ %20, %17 ]
   %32 = phi ptr addrspace(4) [ %27, %25 ], [ %23, %21 ], [ %19, %17 ]
-  %33 = load i16, ptr addrspace(4) %31, align 2
-  %34 = load i32, ptr addrspace(4) %32, align 4, !invariant.load !63
-  %35 = zext i16 %33 to i32
-  %36 = udiv i32 %34, %35
+  %33 = load i32, ptr addrspace(4) %32, align 4, !invariant.load !51
+  %34 = load i16, ptr addrspace(4) %31, align 2, !range !65, !invariant.load !51, !noundef !51
+  %35 = zext i16 %34 to i32
+  %36 = udiv i32 %33, %35
   %37 = icmp ult i32 %10, %36
   br i1 %37, label %39, label %38
 
@@ -2340,17 +2061,17 @@ define internal i32 @ompx_block_id(i32 noundef %0) #23 {
 53:                                               ; preds = %48, %44, %40
   %54 = phi ptr addrspace(4) [ %51, %48 ], [ %47, %44 ], [ %43, %40 ]
   %55 = phi ptr addrspace(4) [ %50, %48 ], [ %46, %44 ], [ %42, %40 ]
-  %56 = load i16, ptr addrspace(4) %54, align 2
-  %57 = load i32, ptr addrspace(4) %55, align 4, !invariant.load !63
-  %58 = zext i16 %56 to i32
-  %59 = udiv i32 %57, %58
+  %56 = load i32, ptr addrspace(4) %55, align 4, !invariant.load !51
+  %57 = load i16, ptr addrspace(4) %54, align 2, !range !65, !invariant.load !51, !noundef !51
+  %58 = zext i16 %57 to i32
+  %59 = udiv i32 %56, %58
   %60 = icmp ult i32 %10, %59
   tail call void @llvm.assume(i1 noundef %60) #59
   ret i32 %10
 }
 
 ; Function Attrs: mustprogress nounwind memory(inaccessiblemem: write)
-define internal i32 @ompx_block_dim(i32 noundef %0) #18 {
+define internal noundef i32 @ompx_block_dim(i32 noundef %0) #18 {
   switch i32 %0, label %4 [
     i32 0, label %5
     i32 1, label %2
@@ -2369,9 +2090,9 @@ define internal i32 @ompx_block_dim(i32 noundef %0) #18 {
 
 5:                                                ; preds = %3, %2, %1
   %6 = phi i64 [ 8, %3 ], [ 6, %2 ], [ 4, %1 ]
-  %7 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #64
+  %7 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %8 = getelementptr inbounds i8, ptr addrspace(4) %7, i64 %6
-  %9 = load i16, ptr addrspace(4) %8, align 2
+  %9 = load i16, ptr addrspace(4) %8, align 2, !range !65, !invariant.load !51, !noundef !51
   %10 = zext i16 %9 to i32
   ret i32 %10
 }
@@ -2409,12 +2130,12 @@ define internal i32 @ompx_grid_dim(i32 noundef %0) #23 {
 15:                                               ; preds = %10, %6, %2
   %16 = phi ptr addrspace(4) [ %13, %10 ], [ %9, %6 ], [ %5, %2 ]
   %17 = phi ptr addrspace(4) [ %12, %10 ], [ %8, %6 ], [ %4, %2 ]
-  %18 = load i16, ptr addrspace(4) %16, align 2
-  %19 = load i32, ptr addrspace(4) %17, align 4, !invariant.load !63
-  %20 = zext i16 %18 to i32
-  %21 = udiv i32 %19, %20
+  %18 = load i32, ptr addrspace(4) %17, align 4, !invariant.load !51
+  %19 = load i16, ptr addrspace(4) %16, align 2, !range !65, !invariant.load !51, !noundef !51
+  %20 = zext i16 %19 to i32
+  %21 = udiv i32 %18, %20
   %22 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %23 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %23 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %24 = and i32 %22, 1
   %25 = and i32 %24, %23
   %26 = icmp eq i32 %25, 0
@@ -2484,7 +2205,7 @@ define internal i32 @ompx_grid_dim(i32 noundef %0) #23 {
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
 define internal noundef nofpclass(nan ninf nzero nsub nnorm) double @"_ZN4ompx4impl33getWTick$ompvariant$S2$s7$PamdgcnEv"() #5 {
-  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 4), align 8, !tbaa !53
+  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 4), align 8, !tbaa !40
   %2 = uitofp i64 %1 to double
   %3 = fdiv double 1.000000e+00, %2
   ret double %3
@@ -2494,7 +2215,7 @@ define internal noundef nofpclass(nan ninf nzero nsub nnorm) double @"_ZN4ompx4i
 define internal noundef double @"_ZN4ompx4impl33getWTime$ompvariant$S2$s7$PamdgcnEv"() #26 {
   %1 = tail call i64 @llvm.amdgcn.s.memrealtime() #64
   %2 = uitofp i64 %1 to double
-  %3 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 4), align 8, !tbaa !53
+  %3 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 4), align 8, !tbaa !40
   %4 = uitofp i64 %3 to double
   %5 = fdiv double 1.000000e+00, %4
   %6 = fmul double %5, %2
@@ -2510,16 +2231,16 @@ define internal noundef ptr @_ZN4ompx4impl18indirectCallLookupEPv(ptr nofree nou
   br i1 %2, label %45, label %3
 
 3:                                                ; preds = %1
-  %4 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 5), align 8, !tbaa !54
+  %4 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 5), align 8, !tbaa !41
   %5 = inttoptr i64 %4 to ptr
-  %6 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 6), align 8, !tbaa !55
+  %6 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 6), align 8, !tbaa !43
   %7 = icmp ne i64 %4, 0
   %8 = icmp ne i64 %6, 0
   %9 = and i1 %7, %8
   br i1 %9, label %10, label %45
 
 10:                                               ; preds = %3
-  %11 = load ptr, ptr %5, align 8, !tbaa !89
+  %11 = load ptr, ptr %5, align 8, !tbaa !78
   %12 = icmp ugt ptr %11, %0
   br i1 %12, label %45, label %13
 
@@ -2527,7 +2248,7 @@ define internal noundef ptr @_ZN4ompx4impl18indirectCallLookupEPv(ptr nofree nou
   %14 = add i64 %6, 4294967295
   %15 = and i64 %14, 4294967295
   %16 = getelementptr inbounds %struct.IndirectCallTable, ptr %5, i64 %15
-  %17 = load ptr, ptr %16, align 8, !tbaa !89
+  %17 = load ptr, ptr %16, align 8, !tbaa !78
   %18 = icmp ult ptr %17, %0
   br i1 %18, label %45, label %19
 
@@ -2548,13 +2269,13 @@ define internal noundef ptr @_ZN4ompx4impl18indirectCallLookupEPv(ptr nofree nou
   %29 = add i32 %28, %22
   %30 = zext i32 %29 to i64
   %31 = getelementptr inbounds %struct.IndirectCallTable, ptr %5, i64 %30
-  %32 = load ptr, ptr %31, align 8, !tbaa !89
+  %32 = load ptr, ptr %31, align 8, !tbaa !78
   %33 = icmp eq ptr %32, %0
   br i1 %33, label %34, label %37
 
 34:                                               ; preds = %26
   %35 = getelementptr inbounds %struct.IndirectCallTable, ptr %5, i64 %30, i32 1
-  %36 = load ptr, ptr %35, align 8, !tbaa !91
+  %36 = load ptr, ptr %35, align 8, !tbaa !80
   br label %41
 
 37:                                               ; preds = %26
@@ -2567,7 +2288,7 @@ define internal noundef ptr @_ZN4ompx4impl18indirectCallLookupEPv(ptr nofree nou
   %42 = phi i32 [ %22, %34 ], [ %39, %37 ]
   %43 = phi i32 [ %23, %34 ], [ %40, %37 ]
   %44 = phi ptr [ %36, %34 ], [ %24, %37 ]
-  br i1 %33, label %45, label %21, !llvm.loop !92
+  br i1 %33, label %45, label %21, !llvm.loop !81
 
 45:                                               ; preds = %41, %21, %13, %10, %3, %1
   %46 = phi ptr [ null, %1 ], [ %0, %3 ], [ %0, %13 ], [ %0, %10 ], [ %44, %41 ], [ %0, %21 ]
@@ -2586,7 +2307,7 @@ define internal noundef i32 @__kmpc_cancel(ptr nocapture nofree noundef readnone
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
 define internal noundef nofpclass(nan ninf nzero nsub nnorm) double @omp_get_wtick() #5 {
-  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 4), align 8, !tbaa !53
+  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 4), align 8, !tbaa !40
   %2 = uitofp i64 %1 to double
   %3 = fdiv double 1.000000e+00, %2
   ret double %3
@@ -2596,7 +2317,7 @@ define internal noundef nofpclass(nan ninf nzero nsub nnorm) double @omp_get_wti
 define internal double @omp_get_wtime() #26 {
   %1 = tail call i64 @llvm.amdgcn.s.memrealtime() #64
   %2 = uitofp i64 %1 to double
-  %3 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 4), align 8, !tbaa !53
+  %3 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 4), align 8, !tbaa !40
   %4 = uitofp i64 %3 to double
   %5 = fdiv double 1.000000e+00, %4
   %6 = fmul double %5, %2
@@ -2609,16 +2330,16 @@ define internal ptr @__llvm_omp_indirect_call_lookup(ptr nofree noundef readnone
   br i1 %2, label %45, label %3
 
 3:                                                ; preds = %1
-  %4 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 5), align 8, !tbaa !54
+  %4 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 5), align 8, !tbaa !41
   %5 = inttoptr i64 %4 to ptr
-  %6 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 6), align 8, !tbaa !55
+  %6 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 6), align 8, !tbaa !43
   %7 = icmp ne i64 %4, 0
   %8 = icmp ne i64 %6, 0
   %9 = and i1 %7, %8
   br i1 %9, label %10, label %45
 
 10:                                               ; preds = %3
-  %11 = load ptr, ptr %5, align 8, !tbaa !89
+  %11 = load ptr, ptr %5, align 8, !tbaa !78
   %12 = icmp ugt ptr %11, %0
   br i1 %12, label %45, label %13
 
@@ -2626,7 +2347,7 @@ define internal ptr @__llvm_omp_indirect_call_lookup(ptr nofree noundef readnone
   %14 = add i64 %6, 4294967295
   %15 = and i64 %14, 4294967295
   %16 = getelementptr inbounds %struct.IndirectCallTable, ptr %5, i64 %15
-  %17 = load ptr, ptr %16, align 8, !tbaa !89
+  %17 = load ptr, ptr %16, align 8, !tbaa !78
   %18 = icmp ult ptr %17, %0
   br i1 %18, label %45, label %19
 
@@ -2647,13 +2368,13 @@ define internal ptr @__llvm_omp_indirect_call_lookup(ptr nofree noundef readnone
   %29 = add i32 %28, %22
   %30 = zext i32 %29 to i64
   %31 = getelementptr inbounds %struct.IndirectCallTable, ptr %5, i64 %30
-  %32 = load ptr, ptr %31, align 8, !tbaa !89
+  %32 = load ptr, ptr %31, align 8, !tbaa !78
   %33 = icmp eq ptr %32, %0
   br i1 %33, label %34, label %37
 
 34:                                               ; preds = %26
   %35 = getelementptr inbounds %struct.IndirectCallTable, ptr %5, i64 %30, i32 1
-  %36 = load ptr, ptr %35, align 8, !tbaa !91
+  %36 = load ptr, ptr %35, align 8, !tbaa !80
   br label %41
 
 37:                                               ; preds = %26
@@ -2666,7 +2387,7 @@ define internal ptr @__llvm_omp_indirect_call_lookup(ptr nofree noundef readnone
   %42 = phi i32 [ %22, %34 ], [ %39, %37 ]
   %43 = phi i32 [ %23, %34 ], [ %40, %37 ]
   %44 = phi ptr [ %36, %34 ], [ %24, %37 ]
-  br i1 %33, label %45, label %21, !llvm.loop !92
+  br i1 %33, label %45, label %21, !llvm.loop !81
 
 45:                                               ; preds = %41, %21, %13, %10, %3, %1
   %46 = phi ptr [ null, %1 ], [ %0, %3 ], [ %0, %13 ], [ %0, %10 ], [ %44, %41 ], [ %0, %21 ]
@@ -2681,9 +2402,9 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
   %13 = alloca i32, align 4, addrspace(5)
   %14 = alloca i32, align 4, addrspace(5)
   %15 = alloca i32, align 4, addrspace(5)
-  %16 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %16 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %17 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %18 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %18 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %19 = and i32 %18, 1
   %20 = and i32 %19, %17
   %21 = icmp ne i32 %20, 0
@@ -2697,7 +2418,7 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
 25:                                               ; preds = %23
   %26 = load ptr, ptr addrspace(3) @_ZL20KernelEnvironmentPtr, align 8, !tbaa !20
   %27 = getelementptr inbounds %struct.ConfigurationEnvironmentTy, ptr %26, i64 0, i32 1
-  %28 = load i8, ptr %27, align 1, !tbaa !56
+  %28 = load i8, ptr %27, align 1, !tbaa !44
   %29 = icmp eq i8 %28, 0
   br i1 %29, label %30, label %49
 
@@ -2715,7 +2436,7 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
   %39 = getelementptr inbounds ptr, ptr %37, i64 %38
   %40 = load ptr, ptr %39, align 8, !tbaa !20
   %41 = icmp eq ptr %40, null
-  br i1 %41, label %43, label %42, !prof !85
+  br i1 %41, label %43, label %42, !prof !74
 
 42:                                               ; preds = %36
   br label %43
@@ -2742,7 +2463,7 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
 53:                                               ; preds = %49
   %54 = load ptr, ptr addrspace(3) @_ZL20KernelEnvironmentPtr, align 8, !tbaa !20
   %55 = getelementptr inbounds %struct.ConfigurationEnvironmentTy, ptr %54, i64 0, i32 1
-  %56 = load i8, ptr %55, align 1, !tbaa !56
+  %56 = load i8, ptr %55, align 1, !tbaa !44
   %57 = icmp eq i8 %56, 0
   %58 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
   br i1 %57, label %59, label %77
@@ -2761,7 +2482,7 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
   %68 = getelementptr inbounds ptr, ptr %66, i64 %67
   %69 = load ptr, ptr %68, align 8, !tbaa !20
   %70 = icmp eq ptr %69, null
-  br i1 %70, label %72, label %71, !prof !85
+  br i1 %70, label %72, label %71, !prof !74
 
 71:                                               ; preds = %65
   br label %72
@@ -2780,7 +2501,7 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
   %80 = icmp ne i32 %2, 0
   %81 = icmp eq i32 %78, 0
   %82 = select i1 %80, i1 %81, i1 false
-  br i1 %82, label %83, label %92, !prof !93
+  br i1 %82, label %83, label %92, !prof !82
 
 83:                                               ; preds = %77
   br i1 %50, label %84, label %4338
@@ -2788,12 +2509,12 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
 84:                                               ; preds = %83
   %85 = load ptr, ptr addrspace(3) @_ZL20KernelEnvironmentPtr, align 8, !tbaa !20
   %86 = getelementptr inbounds %struct.ConfigurationEnvironmentTy, ptr %85, i64 0, i32 1
-  %87 = load i8, ptr %86, align 1, !tbaa !56
+  %87 = load i8, ptr %86, align 1, !tbaa !44
   %88 = icmp eq i8 %87, 0
   %89 = load i32, ptr getelementptr inbounds (i8, ptr addrspacecast (ptr addrspace(3) @_ZN4ompx5state9TeamStateE to ptr), i64 4), align 4
   %90 = icmp eq i32 %89, 0
   %91 = select i1 %88, i1 true, i1 %90
-  br i1 %91, label %4338, label %92, !prof !94
+  br i1 %91, label %4338, label %92, !prof !83
 
 92:                                               ; preds = %84, %77
   %93 = icmp eq i32 %20, 0
@@ -2842,24 +2563,24 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
   %118 = load ptr, ptr %117, align 8, !tbaa !20
   %119 = icmp eq ptr %118, null
   %120 = select i1 %119, ptr addrspacecast (ptr addrspace(3) @_ZN4ompx5state9TeamStateE to ptr), ptr %118
-  tail call void @llvm.memcpy.p0.p0.i64(ptr nocapture nofree noundef nonnull align 8 dereferenceable(28) %99, ptr noundef nonnull align 8 dereferenceable(28) %120, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !95
+  tail call void @llvm.memcpy.p0.p0.i64(ptr nocapture nofree noundef nonnull align 8 dereferenceable(28) %99, ptr noundef nonnull align 8 dereferenceable(28) %120, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !84
   %121 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %99, i64 0, i32 1
-  store ptr %118, ptr %121, align 8, !tbaa !86
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
+  store ptr %118, ptr %121, align 8, !tbaa !75
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
   store ptr %99, ptr %117, align 8, !tbaa !20
   %122 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %123 = icmp eq i32 %122, 0
   %124 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
   %125 = icmp ne i32 %124, 0
   %126 = select i1 %123, i1 %125, i1 false
-  br i1 %126, label %127, label %148, !prof !96
+  br i1 %126, label %127, label %148, !prof !85
 
 127:                                              ; preds = %114
   %128 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %129 = getelementptr inbounds ptr, ptr %128, i64 %116
   %130 = load ptr, ptr %129, align 8, !tbaa !20
   %131 = icmp eq ptr %130, null
-  br i1 %131, label %132, label %148, !prof !97
+  br i1 %131, label %132, label %148, !prof !86
 
 132:                                              ; preds = %127
   store ptr null, ptr %129, align 8, !tbaa !20
@@ -2886,10 +2607,10 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
 144:                                              ; preds = %141, %139
   %145 = phi i1 [ %140, %139 ], [ true, %141 ]
   tail call void @llvm.assume(i1 noundef %145) #59
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
-  tail call void @llvm.memcpy.p0.p3.i64(ptr noundef nonnull align 8 dereferenceable(28) %138, ptr addrspace(3) noundef align 8 dereferenceable(28) @_ZN4ompx5state9TeamStateE, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !95
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
+  tail call void @llvm.memcpy.p0.p3.i64(ptr noundef nonnull align 8 dereferenceable(28) %138, ptr addrspace(3) noundef align 8 dereferenceable(28) @_ZN4ompx5state9TeamStateE, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !84
   %146 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %138, i64 0, i32 1
-  store ptr null, ptr %146, align 8, !tbaa !86
+  store ptr null, ptr %146, align 8, !tbaa !75
   %147 = load ptr, ptr %137, align 8, !tbaa !20
   br label %148
 
@@ -7359,11 +7080,11 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
   %4330 = getelementptr inbounds ptr, ptr %4329, i64 %116
   %4331 = load ptr, ptr %4330, align 8, !tbaa !20
   %4332 = icmp eq ptr %4331, null
-  br i1 %4332, label %12858, label %4333, !prof !85
+  br i1 %4332, label %12858, label %4333, !prof !74
 
 4333:                                             ; preds = %4328
   %4334 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %4331, i64 0, i32 1
-  %4335 = load ptr, ptr %4334, align 8, !tbaa !86
+  %4335 = load ptr, ptr %4334, align 8, !tbaa !75
   call void @__kmpc_free_shared(ptr noalias nocapture nofree noundef nonnull readnone align 8 dereferenceable(40) %4331, i64 noundef 40) #62
   %4336 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %4337 = getelementptr inbounds ptr, ptr %4336, i64 %116
@@ -7378,7 +7099,7 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
   %4343 = icmp eq i32 %4342, 0
   %4344 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %4345 = getelementptr inbounds i8, ptr addrspace(4) %4344, i64 4
-  %4346 = load i16, ptr addrspace(4) %4345, align 4
+  %4346 = load i16, ptr addrspace(4) %4345, align 4, !range !65, !invariant.load !51, !noundef !51
   %4347 = zext i16 %4346 to i32
   %4348 = select i1 %4343, i32 -64, i32 0
   %4349 = add nsw i32 %4348, %4347
@@ -16486,7 +16207,7 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
   %12783 = add nuw nsw i64 %12779, 1
   %12784 = and i64 %12783, 4294967295
   %12785 = icmp slt i64 %12784, %8
-  br i1 %12785, label %12778, label %12833, !llvm.loop !98
+  br i1 %12785, label %12778, label %12833, !llvm.loop !87
 
 12786:                                            ; preds = %12777
   %12787 = getelementptr inbounds ptr, ptr %7, i64 15
@@ -16580,7 +16301,7 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
 
 12831:                                            ; preds = %12828, %12777
   %12832 = load ptr, ptr %7, align 8, !tbaa !20
-  store ptr %12832, ptr addrspacecast (ptr addrspace(3) @_ZL29SharedMemVariableSharingSpace to ptr), align 16, !tbaa !20
+  store ptr %12832, ptr addrspacecast (ptr addrspace(3) @_ZL29SharedMemVariableSharingSpace to ptr), align 8, !tbaa !20
   br label %12833
 
 12833:                                            ; preds = %12831, %12778, %12772
@@ -16655,9 +16376,9 @@ define internal void @__kmpc_parallel_51(ptr nocapture nofree noundef readnone %
 define internal ptr @__kmpc_alloc_shared(i64 noundef %0) #29 {
   %2 = add i64 %0, 15
   %3 = and i64 %2, -16
-  %4 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #64
+  %4 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %5 = getelementptr inbounds i8, ptr addrspace(4) %4, i64 4
-  %6 = load i16, ptr addrspace(4) %5, align 4
+  %6 = load i16, ptr addrspace(4) %5, align 4, !range !65, !invariant.load !51, !noundef !51
   %7 = udiv i16 512, %6
   %8 = and i16 %7, 1008
   %9 = zext i16 %8 to i32
@@ -16674,13 +16395,13 @@ define internal ptr @__kmpc_alloc_shared(i64 noundef %0) #29 {
   br i1 %17, label %18, label %26
 
 18:                                               ; preds = %12
-  %19 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !62, !noundef !63
+  %19 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !50, !noundef !51
   %20 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %21 = zext i32 %19 to i64
   %22 = getelementptr inbounds ptr, ptr %20, i64 %21
   %23 = load ptr, ptr %22, align 8, !tbaa !20
   %24 = icmp eq ptr %23, null
-  br i1 %24, label %26, label %25, !prof !85
+  br i1 %24, label %26, label %25, !prof !74
 
 25:                                               ; preds = %18
   br label %26
@@ -16696,7 +16417,7 @@ define internal ptr @__kmpc_alloc_shared(i64 noundef %0) #29 {
   %32 = zext i16 %6 to i32
   %33 = add nsw i32 %32, -1
   %34 = and i32 %33, -64
-  %35 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !62, !noundef !63
+  %35 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !50, !noundef !51
   %36 = icmp eq i32 %35, %34
   br label %37
 
@@ -16704,9 +16425,9 @@ define internal ptr @__kmpc_alloc_shared(i64 noundef %0) #29 {
   %38 = phi i1 [ %36, %31 ], [ false, %26 ], [ false, %1 ]
   %39 = shl nuw nsw i32 %9, 6
   %40 = select i1 %38, i32 %39, i32 %9
-  %41 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %41 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %42 = getelementptr inbounds [1024 x i8], ptr addrspace(3) getelementptr inbounds (%"struct.(anonymous namespace)::SharedMemorySmartStackTy", ptr addrspace(3) @_ZN12_GLOBAL__N_122SharedMemorySmartStackE, i32 0, i32 1, i32 0), i32 0, i32 %41
-  %43 = load i8, ptr addrspace(3) %42, align 1, !tbaa !64
+  %43 = load i8, ptr addrspace(3) %42, align 1, !tbaa !52
   %44 = zext i8 %43 to i64
   %45 = add i64 %3, %44
   %46 = zext i32 %40 to i64
@@ -16721,12 +16442,12 @@ define internal ptr @__kmpc_alloc_shared(i64 noundef %0) #29 {
   %53 = getelementptr inbounds [512 x i8], ptr addrspacecast (ptr addrspace(3) @_ZN12_GLOBAL__N_122SharedMemorySmartStackE to ptr), i64 0, i64 %52
   %54 = trunc i64 %3 to i8
   %55 = add i8 %43, %54
-  store i8 %55, ptr addrspace(3) %42, align 1, !tbaa !64
+  store i8 %55, ptr addrspace(3) %42, align 1, !tbaa !52
   ret ptr %53
 
 56:                                               ; preds = %37
   %57 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %58 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %58 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %59 = and i32 %57, 1
   %60 = and i32 %59, %58
   %61 = icmp ne i32 %60, 0
@@ -16751,13 +16472,13 @@ define internal zeroext i16 @__kmpc_parallel_level(ptr nocapture nofree noundef 
   br i1 %7, label %8, label %16
 
 8:                                                ; preds = %2
-  %9 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %9 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %10 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %11 = zext i32 %9 to i64
   %12 = getelementptr inbounds ptr, ptr %10, i64 %11
   %13 = load ptr, ptr %12, align 8, !tbaa !20
   %14 = icmp eq ptr %13, null
-  br i1 %14, label %16, label %15, !prof !85
+  br i1 %14, label %16, label %15, !prof !74
 
 15:                                               ; preds = %8
   br label %16
@@ -16767,7 +16488,7 @@ define internal zeroext i16 @__kmpc_parallel_level(ptr nocapture nofree noundef 
   %18 = getelementptr inbounds i8, ptr %17, i64 4
   %19 = load i32, ptr %18, align 4, !tbaa !18
   %20 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %21 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %21 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %22 = and i32 %20, 1
   %23 = and i32 %22, %21
   %24 = icmp eq i32 %23, 0
@@ -16787,7 +16508,7 @@ define internal zeroext i16 @__kmpc_parallel_level(ptr nocapture nofree noundef 
 
 ; Function Attrs: mustprogress nounwind memory(read, inaccessiblemem: write)
 define internal noundef i32 @__kmpc_global_thread_num(ptr nocapture nofree noundef readnone %0) #31 {
-  %2 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %2 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %3 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %4 = icmp eq i32 %3, 0
   %5 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -16801,7 +16522,7 @@ define internal noundef i32 @__kmpc_global_thread_num(ptr nocapture nofree nound
   %11 = getelementptr inbounds ptr, ptr %9, i64 %10
   %12 = load ptr, ptr %11, align 8, !tbaa !20
   %13 = icmp eq ptr %12, null
-  br i1 %13, label %15, label %14, !prof !85
+  br i1 %13, label %15, label %14, !prof !74
 
 14:                                               ; preds = %8
   br label %15
@@ -16811,7 +16532,7 @@ define internal noundef i32 @__kmpc_global_thread_num(ptr nocapture nofree nound
   %17 = getelementptr inbounds i8, ptr %16, i64 4
   %18 = load i32, ptr %17, align 4, !tbaa !18
   %19 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %20 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %20 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %21 = and i32 %19, 1
   %22 = and i32 %21, %20
   %23 = icmp eq i32 %22, 0
@@ -16837,7 +16558,7 @@ define internal noundef i32 @__kmpc_global_thread_num(ptr nocapture nofree nound
   %33 = getelementptr inbounds ptr, ptr %31, i64 %32
   %34 = load ptr, ptr %33, align 8, !tbaa !20
   %35 = icmp eq ptr %34, null
-  br i1 %35, label %37, label %36, !prof !85
+  br i1 %35, label %37, label %36, !prof !74
 
 36:                                               ; preds = %30
   br label %37
@@ -16857,7 +16578,7 @@ define internal noundef i32 @__kmpc_global_thread_num(ptr nocapture nofree nound
 44:                                               ; preds = %37
   tail call void @llvm.assume(i1 noundef %41) #59
   %45 = icmp ult i32 %40, %18
-  br i1 %45, label %60, label %46, !prof !97
+  br i1 %45, label %60, label %46, !prof !86
 
 46:                                               ; preds = %44
   br i1 %7, label %47, label %54
@@ -16868,7 +16589,7 @@ define internal noundef i32 @__kmpc_global_thread_num(ptr nocapture nofree nound
   %50 = getelementptr inbounds ptr, ptr %48, i64 %49
   %51 = load ptr, ptr %50, align 8, !tbaa !20
   %52 = icmp eq ptr %51, null
-  br i1 %52, label %54, label %53, !prof !85
+  br i1 %52, label %54, label %53, !prof !74
 
 53:                                               ; preds = %47
   br label %54
@@ -16878,7 +16599,7 @@ define internal noundef i32 @__kmpc_global_thread_num(ptr nocapture nofree nound
   %56 = getelementptr inbounds i8, ptr %55, i64 8
   %57 = load i32, ptr %56, align 4, !tbaa !18
   %58 = icmp eq i32 %57, %18
-  %59 = select i1 %58, i32 %2, i32 0, !prof !85
+  %59 = select i1 %58, i32 %2, i32 0, !prof !74
   br label %60
 
 60:                                               ; preds = %54, %44, %27
@@ -16898,7 +16619,7 @@ define internal void @__kmpc_push_proc_bind(ptr nocapture nofree noundef readnon
 
 ; Function Attrs: convergent mustprogress nounwind
 define internal i32 @__kmpc_nvptx_parallel_reduce_nowait_v2(ptr nocapture nofree noundef readnone %0, i32 noundef %1, i32 noundef %2, i64 noundef %3, ptr noundef %4, ptr nocapture nofree noundef readonly %5, ptr nocapture nofree noundef readonly %6) #9 {
-  %8 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %8 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %9 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %10 = icmp eq i32 %9, 0
   %11 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -16912,7 +16633,7 @@ define internal i32 @__kmpc_nvptx_parallel_reduce_nowait_v2(ptr nocapture nofree
   %17 = getelementptr inbounds ptr, ptr %15, i64 %16
   %18 = load ptr, ptr %17, align 8, !tbaa !20
   %19 = icmp eq ptr %18, null
-  br i1 %19, label %21, label %20, !prof !85
+  br i1 %19, label %21, label %20, !prof !74
 
 20:                                               ; preds = %14
   br label %21
@@ -16927,7 +16648,7 @@ define internal i32 @__kmpc_nvptx_parallel_reduce_nowait_v2(ptr nocapture nofree
 26:                                               ; preds = %21
   %27 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #65
   %28 = getelementptr inbounds i8, ptr addrspace(4) %27, i64 4
-  %29 = load i16, ptr addrspace(4) %28, align 4
+  %29 = load i16, ptr addrspace(4) %28, align 4, !range !65, !invariant.load !51, !noundef !51
   %30 = zext i16 %29 to i32
   %31 = add nsw i32 %30, -1
   %32 = and i32 %31, -64
@@ -16945,7 +16666,7 @@ define internal i32 @__kmpc_nvptx_parallel_reduce_nowait_v2(ptr nocapture nofree
   %40 = getelementptr inbounds ptr, ptr %38, i64 %39
   %41 = load ptr, ptr %40, align 8, !tbaa !20
   %42 = icmp eq ptr %41, null
-  br i1 %42, label %44, label %43, !prof !85
+  br i1 %42, label %44, label %43, !prof !74
 
 43:                                               ; preds = %37
   br label %44
@@ -16955,7 +16676,7 @@ define internal i32 @__kmpc_nvptx_parallel_reduce_nowait_v2(ptr nocapture nofree
   %46 = getelementptr inbounds i8, ptr %45, i64 4
   %47 = load i32, ptr %46, align 4, !tbaa !18
   %48 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %49 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %49 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %50 = and i32 %48, 1
   %51 = and i32 %50, %49
   %52 = icmp eq i32 %51, 0
@@ -16982,7 +16703,7 @@ define internal i32 @__kmpc_nvptx_parallel_reduce_nowait_v2(ptr nocapture nofree
   %63 = icmp eq i32 %62, 0
   %64 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %65 = getelementptr inbounds i8, ptr addrspace(4) %64, i64 4
-  %66 = load i16, ptr addrspace(4) %65, align 4
+  %66 = load i16, ptr addrspace(4) %65, align 4, !range !65, !invariant.load !51, !noundef !51
   %67 = zext i16 %66 to i32
   %68 = select i1 %63, i32 -64, i32 0
   %69 = add nsw i32 %68, %67
@@ -17014,7 +16735,7 @@ define internal i32 @__kmpc_nvptx_parallel_reduce_nowait_v2(ptr nocapture nofree
   br i1 %80, label %81, label %97
 
 81:                                               ; preds = %77
-  %82 = tail call i64 @llvm.ctpop.i64(i64 noundef %74) #56, !range !99
+  %82 = tail call i64 @llvm.ctpop.i64(i64 noundef %74) #56, !range !88
   %83 = trunc i64 %82 to i32
   %84 = icmp ult i32 %83, 2
   br i1 %84, label %145, label %85
@@ -17034,7 +16755,7 @@ define internal i32 @__kmpc_nvptx_parallel_reduce_nowait_v2(ptr nocapture nofree
   %94 = lshr i32 %93, 1
   %95 = lshr i32 %93, 2
   %96 = icmp ult i32 %91, 3
-  br i1 %96, label %145, label %89, !llvm.loop !100
+  br i1 %96, label %145, label %89, !llvm.loop !89
 
 97:                                               ; preds = %77
   %98 = and i32 %8, 63
@@ -17057,7 +16778,7 @@ define internal i32 @__kmpc_nvptx_parallel_reduce_nowait_v2(ptr nocapture nofree
   %109 = shl nsw i64 -1, %108
   %110 = xor i64 %109, -1
   %111 = and i64 %107, %110
-  %112 = tail call i64 @llvm.ctpop.i64(i64 noundef %111) #56, !range !99
+  %112 = tail call i64 @llvm.ctpop.i64(i64 noundef %111) #56, !range !88
   %113 = trunc i64 %112 to i32
   %114 = shl nuw nsw i32 %113, 1
   %115 = icmp eq i32 %100, 63
@@ -17080,12 +16801,12 @@ define internal i32 @__kmpc_nvptx_parallel_reduce_nowait_v2(ptr nocapture nofree
   %126 = phi i32 [ %114, %122 ], [ %135, %125 ]
   %127 = tail call i64 @llvm.amdgcn.ballot.i64(i1 noundef true) #56
   %128 = and i64 %127, %123
-  %129 = tail call i64 @llvm.cttz.i64(i64 noundef %128, i1 noundef true) #56, !range !101
+  %129 = tail call i64 @llvm.cttz.i64(i64 noundef %128, i1 noundef true) #56, !range !90
   %130 = icmp eq i64 %128, 0
   %131 = trunc i64 %129 to i32
   %132 = add nuw nsw i32 %131, 1
   %133 = select i1 %130, i32 0, i32 %132
-  %134 = tail call i64 @llvm.ctpop.i64(i64 noundef %127) #56, !range !99
+  %134 = tail call i64 @llvm.ctpop.i64(i64 noundef %127) #56, !range !88
   %135 = lshr i32 %126, 1
   %136 = trunc i32 %135 to i16
   %137 = add nsw i32 %133, %124
@@ -17095,7 +16816,7 @@ define internal i32 @__kmpc_nvptx_parallel_reduce_nowait_v2(ptr nocapture nofree
   %140 = icmp eq i32 %139, 0
   %141 = icmp ugt i64 %134, 1
   %142 = and i1 %140, %141
-  br i1 %142, label %125, label %143, !llvm.loop !102
+  br i1 %142, label %125, label %143, !llvm.loop !91
 
 143:                                              ; preds = %125
   %144 = icmp ult i32 %126, 2
@@ -17128,7 +16849,7 @@ define internal i32 @__kmpc_nvptx_parallel_reduce_nowait_v2(ptr nocapture nofree
   %161 = lshr i32 %160, 1
   %162 = lshr i32 %160, 2
   %163 = icmp ult i32 %158, 3
-  br i1 %163, label %164, label %156, !llvm.loop !100
+  br i1 %163, label %164, label %156, !llvm.loop !89
 
 164:                                              ; preds = %156, %147
   %165 = icmp eq i32 %36, 0
@@ -17152,7 +16873,7 @@ declare i64 @llvm.cttz.i64(i64, i1 immarg) #2
 
 ; Function Attrs: convergent mustprogress nounwind
 define internal noundef i32 @__kmpc_nvptx_teams_reduce_nowait_v2(ptr nocapture nofree noundef readnone %0, i32 noundef %1, ptr noundef %2, i32 noundef %3, ptr noundef %4, ptr nocapture nofree noundef readonly %5, ptr nocapture nofree noundef readonly %6, ptr nocapture nofree noundef readonly %7, ptr nocapture nofree noundef readonly %8, ptr nocapture nofree noundef readonly %9, ptr nocapture nofree noundef readonly %10) #9 {
-  %12 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %12 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %13 = load i32, ptr addrspace(3) @IsSPMDMode, align 4, !tbaa !18
   %14 = icmp eq i32 %13, 0
   %15 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
@@ -17171,7 +16892,7 @@ define internal noundef i32 @__kmpc_nvptx_teams_reduce_nowait_v2(ptr nocapture n
   %24 = getelementptr inbounds ptr, ptr %22, i64 %23
   %25 = load ptr, ptr %24, align 8, !tbaa !20
   %26 = icmp eq ptr %25, null
-  br i1 %26, label %28, label %27, !prof !85
+  br i1 %26, label %28, label %27, !prof !74
 
 27:                                               ; preds = %21
   br label %28
@@ -17181,17 +16902,17 @@ define internal noundef i32 @__kmpc_nvptx_teams_reduce_nowait_v2(ptr nocapture n
   %30 = getelementptr inbounds i8, ptr %29, i64 4
   %31 = load i32, ptr %30, align 4, !tbaa !18
   %32 = icmp eq i32 %31, 0
-  br i1 %32, label %33, label %168
+  br i1 %32, label %33, label %167
 
 33:                                               ; preds = %28
   %34 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #65
   %35 = getelementptr inbounds i8, ptr addrspace(4) %34, i64 4
-  %36 = load i16, ptr addrspace(4) %35, align 4
+  %36 = load i16, ptr addrspace(4) %35, align 4, !range !65, !invariant.load !51, !noundef !51
   %37 = zext i16 %36 to i32
   %38 = add nsw i32 %37, -1
   %39 = and i32 %38, -64
   %40 = icmp eq i32 %12, %39
-  br i1 %40, label %41, label %168
+  br i1 %40, label %41, label %167
 
 41:                                               ; preds = %33, %11
   %42 = phi i32 [ 0, %33 ], [ %12, %11 ]
@@ -17206,7 +16927,7 @@ define internal noundef i32 @__kmpc_nvptx_teams_reduce_nowait_v2(ptr nocapture n
   %49 = getelementptr inbounds ptr, ptr %47, i64 %48
   %50 = load ptr, ptr %49, align 8, !tbaa !20
   %51 = icmp eq ptr %50, null
-  br i1 %51, label %53, label %52, !prof !85
+  br i1 %51, label %53, label %52, !prof !74
 
 52:                                               ; preds = %46
   br label %53
@@ -17216,7 +16937,7 @@ define internal noundef i32 @__kmpc_nvptx_teams_reduce_nowait_v2(ptr nocapture n
   %55 = getelementptr inbounds i8, ptr %54, i64 4
   %56 = load i32, ptr %55, align 4, !tbaa !18
   %57 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %58 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %58 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %59 = and i32 %57, 1
   %60 = and i32 %59, %58
   %61 = icmp eq i32 %60, 0
@@ -17242,7 +16963,7 @@ define internal noundef i32 @__kmpc_nvptx_teams_reduce_nowait_v2(ptr nocapture n
   %71 = select i1 %14, i32 -64, i32 0
   %72 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %73 = getelementptr inbounds i8, ptr addrspace(4) %72, i64 4
-  %74 = load i16, ptr addrspace(4) %73, align 4
+  %74 = load i16, ptr addrspace(4) %73, align 4, !range !65, !invariant.load !51, !noundef !51
   %75 = zext i16 %74 to i32
   %76 = add nsw i32 %71, %75
   br label %77
@@ -17251,168 +16972,167 @@ define internal noundef i32 @__kmpc_nvptx_teams_reduce_nowait_v2(ptr nocapture n
   %78 = phi i32 [ 1, %65 ], [ %76, %70 ], [ %68, %67 ]
   %79 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
   %80 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %61, label %81, label %88
+  %81 = getelementptr inbounds i8, ptr addrspace(4) %80, i64 12
+  br i1 %61, label %82, label %88
 
-81:                                               ; preds = %77
-  %82 = getelementptr inbounds i8, ptr addrspace(4) %80, i64 4
-  %83 = load i16, ptr addrspace(4) %82, align 4
-  %84 = getelementptr inbounds i8, ptr addrspace(4) %80, i64 12
-  %85 = load i32, ptr addrspace(4) %84, align 4, !invariant.load !63
-  %86 = zext i16 %83 to i32
-  %87 = udiv i32 %85, %86
-  br label %97
+82:                                               ; preds = %77
+  %83 = load i32, ptr addrspace(4) %81, align 4, !invariant.load !51
+  %84 = getelementptr inbounds i8, ptr addrspace(4) %80, i64 4
+  %85 = load i16, ptr addrspace(4) %84, align 4, !range !65, !invariant.load !51
+  %86 = zext i16 %85 to i32
+  %87 = udiv i32 %83, %86
+  br label %96
 
 88:                                               ; preds = %77
-  %89 = getelementptr inbounds i8, ptr addrspace(4) %80, i64 12
-  %90 = getelementptr inbounds i8, ptr addrspace(4) %80, i64 4
-  %91 = load i16, ptr addrspace(4) %90, align 4
-  %92 = load i32, ptr addrspace(4) %89, align 4, !invariant.load !63
-  %93 = zext i16 %91 to i32
-  %94 = udiv i32 %92, %93
-  %95 = icmp ult i32 %79, %94
-  br i1 %95, label %97, label %96
+  %89 = getelementptr inbounds i8, ptr addrspace(4) %80, i64 4
+  %90 = load i32, ptr addrspace(4) %81, align 4, !invariant.load !51
+  %91 = load i16, ptr addrspace(4) %89, align 4, !range !65, !invariant.load !51, !noundef !51
+  %92 = zext i16 %91 to i32
+  %93 = udiv i32 %90, %92
+  %94 = icmp ult i32 %79, %93
+  br i1 %94, label %96, label %95
 
-96:                                               ; preds = %88
+95:                                               ; preds = %88
   tail call void @llvm.trap() #58
   unreachable
 
-97:                                               ; preds = %88, %81
-  %98 = phi i32 [ %87, %81 ], [ %94, %88 ]
-  %99 = icmp ult i32 %79, %98
-  tail call void @llvm.assume(i1 noundef %99) #59
-  %100 = icmp eq i32 %42, 0
-  br i1 %100, label %101, label %114
+96:                                               ; preds = %88, %82
+  %97 = phi i32 [ %87, %82 ], [ %93, %88 ]
+  %98 = icmp ult i32 %79, %97
+  tail call void @llvm.assume(i1 noundef %98) #59
+  %99 = icmp eq i32 %42, 0
+  br i1 %99, label %100, label %113
 
-101:                                              ; preds = %101, %97
-  %102 = atomicrmw or ptr addrspace(1) @_ZN12_GLOBAL__N_17IterCntE, i32 0 seq_cst, align 4
-  store i32 %102, ptr addrspace(3) @_ZZ35__kmpc_nvptx_teams_reduce_nowait_v2E5Bound, align 4, !tbaa !18
-  %103 = add i32 %102, %3
-  %104 = icmp ult i32 %79, %103
-  br i1 %104, label %105, label %101, !llvm.loop !103
+100:                                              ; preds = %100, %96
+  %101 = atomicrmw or ptr addrspace(1) @_ZN12_GLOBAL__N_17IterCntE, i32 0 seq_cst, align 4
+  store i32 %101, ptr addrspace(3) @_ZZ35__kmpc_nvptx_teams_reduce_nowait_v2E5Bound, align 4, !tbaa !18
+  %102 = add i32 %101, %3
+  %103 = icmp ult i32 %79, %102
+  br i1 %103, label %104, label %100, !llvm.loop !92
 
-105:                                              ; preds = %101
-  %106 = urem i32 %79, %3
-  %107 = icmp ult i32 %79, %3
-  br i1 %107, label %108, label %109
+104:                                              ; preds = %100
+  %105 = urem i32 %79, %3
+  %106 = icmp ult i32 %79, %3
+  br i1 %106, label %107, label %108
 
-108:                                              ; preds = %105
-  tail call void %7(ptr noundef %2, i32 noundef %106, ptr noundef %4) #61
-  br label %110
+107:                                              ; preds = %104
+  tail call void %7(ptr noundef %2, i32 noundef %105, ptr noundef %4) #61
+  br label %109
 
-109:                                              ; preds = %105
-  tail call void %8(ptr noundef %2, i32 noundef %106, ptr noundef %4) #61
-  br label %110
+108:                                              ; preds = %104
+  tail call void %8(ptr noundef %2, i32 noundef %105, ptr noundef %4) #61
+  br label %109
 
-110:                                              ; preds = %109, %108
+109:                                              ; preds = %108, %107
   fence seq_cst
-  %111 = add i32 %3, -1
-  %112 = atomicrmw uinc_wrap ptr addrspace(1) @_ZN12_GLOBAL__N_13CntE, i32 %111 syncscope("agent") seq_cst, align 4
-  store i32 %112, ptr addrspace(3) @_ZZ35__kmpc_nvptx_teams_reduce_nowait_v2E14ChunkTeamCount, align 4, !tbaa !18
-  %113 = load i32, ptr addrspace(3) @IsSPMDMode, align 4, !tbaa !18
-  br label %114
+  %110 = add i32 %3, -1
+  %111 = atomicrmw uinc_wrap ptr addrspace(1) @_ZN12_GLOBAL__N_13CntE, i32 %110 syncscope("agent") seq_cst, align 4
+  store i32 %111, ptr addrspace(3) @_ZZ35__kmpc_nvptx_teams_reduce_nowait_v2E14ChunkTeamCount, align 4, !tbaa !18
+  %112 = load i32, ptr addrspace(3) @IsSPMDMode, align 4, !tbaa !18
+  br label %113
 
-114:                                              ; preds = %110, %97
-  %115 = phi i32 [ %113, %110 ], [ %13, %97 ]
-  %116 = icmp eq i32 %115, 0
-  br i1 %116, label %118, label %117
+113:                                              ; preds = %109, %96
+  %114 = phi i32 [ %112, %109 ], [ %13, %96 ]
+  %115 = icmp eq i32 %114, 0
+  br i1 %115, label %117, label %116
 
-117:                                              ; preds = %114
+116:                                              ; preds = %113
   tail call void @__kmpc_barrier_simple_spmd(ptr nofree poison, i32 poison) #66
-  br label %118
+  br label %117
 
-118:                                              ; preds = %117, %114
-  %119 = tail call i32 @llvm.umin.i32(i32 noundef %98, i32 noundef %3) #56
-  %120 = load i32, ptr addrspace(3) @_ZZ35__kmpc_nvptx_teams_reduce_nowait_v2E14ChunkTeamCount, align 4, !tbaa !18
-  %121 = load i32, ptr addrspace(3) @_ZZ35__kmpc_nvptx_teams_reduce_nowait_v2E5Bound, align 4, !tbaa !18
-  %122 = xor i32 %121, -1
-  %123 = add i32 %98, %122
-  %124 = icmp eq i32 %120, %123
-  br i1 %124, label %125, label %162
+117:                                              ; preds = %116, %113
+  %118 = tail call i32 @llvm.umin.i32(i32 noundef %97, i32 noundef %3) #56
+  %119 = load i32, ptr addrspace(3) @_ZZ35__kmpc_nvptx_teams_reduce_nowait_v2E14ChunkTeamCount, align 4, !tbaa !18
+  %120 = load i32, ptr addrspace(3) @_ZZ35__kmpc_nvptx_teams_reduce_nowait_v2E5Bound, align 4, !tbaa !18
+  %121 = xor i32 %120, -1
+  %122 = add i32 %97, %121
+  %123 = icmp eq i32 %119, %122
+  br i1 %123, label %124, label %161
 
-125:                                              ; preds = %118
-  %126 = icmp ult i32 %42, %119
-  br i1 %126, label %127, label %168
+124:                                              ; preds = %117
+  %125 = icmp ult i32 %42, %118
+  br i1 %125, label %126, label %167
 
-127:                                              ; preds = %125
-  %128 = tail call i32 @llvm.umin.i32(i32 %78, i32 %119) #56
-  %129 = icmp ult i32 %128, 64
-  %130 = and i32 %128, -64
-  %131 = select i1 %129, i32 1, i32 %130
-  %132 = icmp ult i32 %42, %131
-  br i1 %132, label %133, label %168
+126:                                              ; preds = %124
+  %127 = tail call i32 @llvm.umin.i32(i32 %78, i32 %118) #56
+  %128 = icmp ult i32 %127, 64
+  %129 = and i32 %127, -64
+  %130 = select i1 %128, i32 1, i32 %129
+  %131 = icmp ult i32 %42, %130
+  br i1 %131, label %132, label %167
 
-133:                                              ; preds = %127
+132:                                              ; preds = %126
   tail call void %9(ptr noundef %2, i32 noundef %42, ptr noundef %4) #61
-  %134 = add i32 %131, %42
-  %135 = icmp ult i32 %134, %119
-  br i1 %135, label %141, label %136
+  %133 = add i32 %130, %42
+  %134 = icmp ult i32 %133, %118
+  br i1 %134, label %140, label %135
 
-136:                                              ; preds = %141, %133
-  %137 = icmp ugt i32 %131, 1
-  br i1 %137, label %138, label %160
+135:                                              ; preds = %140, %132
+  %136 = icmp ugt i32 %130, 1
+  br i1 %136, label %137, label %159
 
-138:                                              ; preds = %136
+137:                                              ; preds = %135
   tail call void %5(ptr noundef %4, i16 noundef signext 0, i16 noundef signext 32, i16 noundef signext 0) #61
   tail call void %5(ptr noundef %4, i16 noundef signext 0, i16 noundef signext 16, i16 noundef signext 0) #61
   tail call void %5(ptr noundef %4, i16 noundef signext 0, i16 noundef signext 8, i16 noundef signext 0) #61
   tail call void %5(ptr noundef %4, i16 noundef signext 0, i16 noundef signext 4, i16 noundef signext 0) #61
   tail call void %5(ptr noundef %4, i16 noundef signext 0, i16 noundef signext 2, i16 noundef signext 0) #61
   tail call void %5(ptr noundef %4, i16 noundef signext 0, i16 noundef signext 1, i16 noundef signext 0) #61
-  %139 = tail call i32 @llvm.umin.i32(i32 %119, i32 %131) #56
-  %140 = icmp ugt i32 %139, 64
-  br i1 %140, label %145, label %160
+  %138 = tail call i32 @llvm.umin.i32(i32 %118, i32 %130) #56
+  %139 = icmp ugt i32 %138, 64
+  br i1 %139, label %144, label %159
 
-141:                                              ; preds = %141, %133
-  %142 = phi i32 [ %143, %141 ], [ %134, %133 ]
-  tail call void %10(ptr noundef %2, i32 noundef %142, ptr noundef %4) #61
-  %143 = add i32 %142, %131
-  %144 = icmp ult i32 %143, %119
-  br i1 %144, label %141, label %136, !llvm.loop !104
+140:                                              ; preds = %140, %132
+  %141 = phi i32 [ %142, %140 ], [ %133, %132 ]
+  tail call void %10(ptr noundef %2, i32 noundef %141, ptr noundef %4) #61
+  %142 = add i32 %141, %130
+  %143 = icmp ult i32 %142, %118
+  br i1 %143, label %140, label %135, !llvm.loop !93
 
-145:                                              ; preds = %138
-  %146 = add nuw i32 %139, 63
-  %147 = lshr i32 %146, 6
-  tail call void %6(ptr noundef %4, i32 noundef %147) #61
-  %148 = icmp ugt i32 %42, 63
-  br i1 %148, label %160, label %149
+144:                                              ; preds = %137
+  %145 = add nuw i32 %138, 63
+  %146 = lshr i32 %145, 6
+  tail call void %6(ptr noundef %4, i32 noundef %146) #61
+  %147 = icmp ugt i32 %42, 63
+  br i1 %147, label %159, label %148
 
-149:                                              ; preds = %145
-  %150 = lshr i32 %146, 7
-  %151 = trunc i32 %42 to i16
-  br label %152
+148:                                              ; preds = %144
+  %149 = lshr i32 %145, 7
+  %150 = trunc i32 %42 to i16
+  br label %151
 
-152:                                              ; preds = %152, %149
-  %153 = phi i32 [ %150, %149 ], [ %158, %152 ]
-  %154 = phi i32 [ %147, %149 ], [ %157, %152 ]
-  %155 = trunc i32 %153 to i16
-  tail call void %5(ptr noundef %4, i16 noundef signext %151, i16 noundef signext %155, i16 noundef signext 1) #61
-  %156 = add nuw nsw i32 %154, 1
-  %157 = lshr i32 %156, 1
-  %158 = lshr i32 %156, 2
-  %159 = icmp ult i32 %154, 3
-  br i1 %159, label %160, label %152, !llvm.loop !100
+151:                                              ; preds = %151, %148
+  %152 = phi i32 [ %149, %148 ], [ %157, %151 ]
+  %153 = phi i32 [ %146, %148 ], [ %156, %151 ]
+  %154 = trunc i32 %152 to i16
+  tail call void %5(ptr noundef %4, i16 noundef signext %150, i16 noundef signext %154, i16 noundef signext 1) #61
+  %155 = add nuw nsw i32 %153, 1
+  %156 = lshr i32 %155, 1
+  %157 = lshr i32 %155, 2
+  %158 = icmp ult i32 %153, 3
+  br i1 %158, label %159, label %151, !llvm.loop !89
 
-160:                                              ; preds = %152, %145, %138, %136
-  br i1 %100, label %161, label %168
+159:                                              ; preds = %151, %144, %137, %135
+  br i1 %99, label %160, label %167
 
-161:                                              ; preds = %160
+160:                                              ; preds = %159
   store i32 0, ptr addrspace(1) @_ZN12_GLOBAL__N_13CntE, align 4, !tbaa !18
   store i32 0, ptr addrspace(1) @_ZN12_GLOBAL__N_17IterCntE, align 4, !tbaa !18
-  br label %168
+  br label %167
 
-162:                                              ; preds = %118
-  %163 = add i32 %3, -1
-  %164 = icmp eq i32 %120, %163
-  %165 = and i1 %100, %164
-  br i1 %165, label %166, label %168
+161:                                              ; preds = %117
+  %162 = add i32 %3, -1
+  %163 = icmp eq i32 %119, %162
+  %164 = and i1 %99, %163
+  br i1 %164, label %165, label %167
 
-166:                                              ; preds = %162
-  %167 = atomicrmw add ptr addrspace(1) @_ZN12_GLOBAL__N_17IterCntE, i32 %3 seq_cst, align 4
-  br label %168
+165:                                              ; preds = %161
+  %166 = atomicrmw add ptr addrspace(1) @_ZN12_GLOBAL__N_17IterCntE, i32 %3 seq_cst, align 4
+  br label %167
 
-168:                                              ; preds = %166, %162, %161, %160, %127, %125, %33, %28
-  %169 = phi i32 [ 0, %33 ], [ 1, %161 ], [ 0, %125 ], [ 0, %127 ], [ 0, %160 ], [ 0, %166 ], [ 0, %162 ], [ 0, %28 ]
-  ret i32 %169
+167:                                              ; preds = %165, %161, %160, %159, %126, %124, %33, %28
+  %168 = phi i32 [ 0, %33 ], [ 1, %160 ], [ 0, %124 ], [ 0, %126 ], [ 0, %159 ], [ 0, %165 ], [ 0, %161 ], [ 0, %28 ]
+  ret i32 %168
 }
 
 ; Function Attrs: convergent mustprogress nofree noinline norecurse nounwind willreturn
@@ -17443,9 +17163,9 @@ define internal noundef align 16 ptr @_ZN4ompx6memory16getDynamicBufferEv() #5 {
 define internal noundef nonnull ptr @_ZN4ompx6memory11allocSharedEmPKc(i64 noundef %0, ptr nocapture nofree noundef readnone %1) #33 {
   %3 = add i64 %0, 15
   %4 = and i64 %3, -16
-  %5 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #64
+  %5 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %6 = getelementptr inbounds i8, ptr addrspace(4) %5, i64 4
-  %7 = load i16, ptr addrspace(4) %6, align 4
+  %7 = load i16, ptr addrspace(4) %6, align 4, !range !65, !invariant.load !51, !noundef !51
   %8 = udiv i16 512, %7
   %9 = and i16 %8, 1008
   %10 = zext i16 %9 to i32
@@ -17462,13 +17182,13 @@ define internal noundef nonnull ptr @_ZN4ompx6memory11allocSharedEmPKc(i64 nound
   br i1 %18, label %19, label %27
 
 19:                                               ; preds = %13
-  %20 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !62, !noundef !63
+  %20 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !50, !noundef !51
   %21 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %22 = zext i32 %20 to i64
   %23 = getelementptr inbounds ptr, ptr %21, i64 %22
   %24 = load ptr, ptr %23, align 8, !tbaa !20
   %25 = icmp eq ptr %24, null
-  br i1 %25, label %27, label %26, !prof !85
+  br i1 %25, label %27, label %26, !prof !74
 
 26:                                               ; preds = %19
   br label %27
@@ -17484,7 +17204,7 @@ define internal noundef nonnull ptr @_ZN4ompx6memory11allocSharedEmPKc(i64 nound
   %33 = zext i16 %7 to i32
   %34 = add nsw i32 %33, -1
   %35 = and i32 %34, -64
-  %36 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !62, !noundef !63
+  %36 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !50, !noundef !51
   %37 = icmp eq i32 %36, %35
   br label %38
 
@@ -17492,9 +17212,9 @@ define internal noundef nonnull ptr @_ZN4ompx6memory11allocSharedEmPKc(i64 nound
   %39 = phi i1 [ %37, %32 ], [ false, %27 ], [ false, %2 ]
   %40 = shl nuw nsw i32 %10, 6
   %41 = select i1 %39, i32 %40, i32 %10
-  %42 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %42 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %43 = getelementptr inbounds [1024 x i8], ptr addrspace(3) getelementptr inbounds (%"struct.(anonymous namespace)::SharedMemorySmartStackTy", ptr addrspace(3) @_ZN12_GLOBAL__N_122SharedMemorySmartStackE, i32 0, i32 1, i32 0), i32 0, i32 %42
-  %44 = load i8, ptr addrspace(3) %43, align 1, !tbaa !64
+  %44 = load i8, ptr addrspace(3) %43, align 1, !tbaa !52
   %45 = zext i8 %44 to i64
   %46 = add i64 %4, %45
   %47 = zext i32 %41 to i64
@@ -17509,12 +17229,12 @@ define internal noundef nonnull ptr @_ZN4ompx6memory11allocSharedEmPKc(i64 nound
   %54 = getelementptr inbounds [512 x i8], ptr addrspacecast (ptr addrspace(3) @_ZN12_GLOBAL__N_122SharedMemorySmartStackE to ptr), i64 0, i64 %53
   %55 = trunc i64 %4 to i8
   %56 = add i8 %44, %55
-  store i8 %56, ptr addrspace(3) %43, align 1, !tbaa !64
+  store i8 %56, ptr addrspace(3) %43, align 1, !tbaa !52
   ret ptr %54
 
 57:                                               ; preds = %38
   %58 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %59 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %59 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %60 = and i32 %58, 1
   %61 = and i32 %60, %59
   %62 = icmp ne i32 %61, 0
@@ -17534,14 +17254,14 @@ define internal void @_ZN4ompx6memory10freeSharedEPvmPKc(ptr nocapture nofree no
   br i1 %4, label %5, label %13
 
 5:                                                ; preds = %3
-  %6 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %6 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %7 = getelementptr inbounds [1024 x i8], ptr addrspace(3) getelementptr inbounds (%"struct.(anonymous namespace)::SharedMemorySmartStackTy", ptr addrspace(3) @_ZN12_GLOBAL__N_122SharedMemorySmartStackE, i32 0, i32 1, i32 0), i32 0, i32 %6
   %8 = trunc i64 %1 to i8
   %9 = add i8 %8, 15
   %10 = and i8 %9, -16
-  %11 = load i8, ptr addrspace(3) %7, align 1, !tbaa !64
+  %11 = load i8, ptr addrspace(3) %7, align 1, !tbaa !52
   %12 = sub i8 %11, %10
-  store i8 %12, ptr addrspace(3) %7, align 1, !tbaa !64
+  store i8 %12, ptr addrspace(3) %7, align 1, !tbaa !52
   br label %13
 
 13:                                               ; preds = %5, %3
@@ -17554,37 +17274,37 @@ define internal void @_ZN4ompx6memory10freeGlobalEPvPKc(ptr nocapture nofree nou
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: write)
-define internal void @_ZN4ompx5state11TeamStateTy4initEb(ptr nocapture nofree noundef nonnull writeonly align 8 dereferenceable(48) %0, i1 noundef zeroext %1) #35 align 2 !type !105 {
-  store i32 0, ptr %0, align 8, !tbaa !65
+define internal void @_ZN4ompx5state11TeamStateTy4initEb(ptr nocapture nofree noundef nonnull writeonly align 8 dereferenceable(48) %0, i1 noundef zeroext %1) #35 align 2 !type !94 {
+  store i32 0, ptr %0, align 8, !tbaa !53
   %3 = getelementptr inbounds %"struct.ompx::state::ICVStateTy", ptr %0, i64 0, i32 1
-  store i32 0, ptr %3, align 4, !tbaa !68
+  store i32 0, ptr %3, align 4, !tbaa !56
   %4 = getelementptr inbounds %"struct.ompx::state::ICVStateTy", ptr %0, i64 0, i32 2
-  store i32 0, ptr %4, align 8, !tbaa !69
+  store i32 0, ptr %4, align 8, !tbaa !57
   %5 = getelementptr inbounds %"struct.ompx::state::ICVStateTy", ptr %0, i64 0, i32 3
-  store i32 0, ptr %5, align 4, !tbaa !70
+  store i32 0, ptr %5, align 4, !tbaa !58
   %6 = getelementptr inbounds %"struct.ompx::state::ICVStateTy", ptr %0, i64 0, i32 4
-  store i32 1, ptr %6, align 8, !tbaa !71
+  store i32 1, ptr %6, align 8, !tbaa !59
   %7 = getelementptr inbounds %"struct.ompx::state::ICVStateTy", ptr %0, i64 0, i32 5
-  store i32 1, ptr %7, align 4, !tbaa !72
+  store i32 1, ptr %7, align 4, !tbaa !60
   %8 = getelementptr inbounds %"struct.ompx::state::ICVStateTy", ptr %0, i64 0, i32 6
-  store i32 1, ptr %8, align 8, !tbaa !73
+  store i32 1, ptr %8, align 8, !tbaa !61
   %9 = getelementptr inbounds %"struct.ompx::state::TeamStateTy", ptr %0, i64 0, i32 1
-  store i32 1, ptr %9, align 4, !tbaa !74
+  store i32 1, ptr %9, align 4, !tbaa !62
   %10 = getelementptr inbounds %"struct.ompx::state::TeamStateTy", ptr %0, i64 0, i32 2
-  store i32 0, ptr %10, align 8, !tbaa !75
+  store i32 0, ptr %10, align 8, !tbaa !63
   %11 = getelementptr inbounds %"struct.ompx::state::TeamStateTy", ptr %0, i64 0, i32 3
-  store ptr null, ptr %11, align 8, !tbaa !76
+  store ptr null, ptr %11, align 8, !tbaa !64
   ret void
 }
 
 ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(write, argmem: none, inaccessiblemem: none)
 define internal void @_ZN4ompx5state4initEbR19KernelEnvironmentTy(i1 noundef zeroext %0, ptr nofree noundef nonnull align 8 dereferenceable(24) %1) #36 {
-  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %4 = getelementptr inbounds [1024 x i8], ptr addrspace(3) getelementptr inbounds (%"struct.(anonymous namespace)::SharedMemorySmartStackTy", ptr addrspace(3) @_ZN12_GLOBAL__N_122SharedMemorySmartStackE, i32 0, i32 1, i32 0), i32 0, i32 %3
-  store i8 0, ptr addrspace(3) %4, align 1, !tbaa !64
+  store i8 0, ptr addrspace(3) %4, align 1, !tbaa !52
   %5 = tail call align 4 ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %6 = getelementptr inbounds i8, ptr addrspace(4) %5, i64 4
-  %7 = load i16, ptr addrspace(4) %6, align 4
+  %7 = load i16, ptr addrspace(4) %6, align 4, !range !65
   %8 = zext i16 %7 to i32
   %9 = add nsw i32 %8, -1
   %10 = and i32 %9, -64
@@ -17593,16 +17313,16 @@ define internal void @_ZN4ompx5state4initEbR19KernelEnvironmentTy(i1 noundef zer
   br i1 %12, label %13, label %14
 
 13:                                               ; preds = %2
-  store i32 0, ptr addrspace(3) @_ZN4ompx5state9TeamStateE, align 8, !tbaa !65
-  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 1), align 4, !tbaa !68
-  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 2), align 8, !tbaa !69
-  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 3), align 4, !tbaa !70
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 4), align 8, !tbaa !71
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 5), align 4, !tbaa !72
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8, !tbaa !73
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !74
-  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
-  store ptr null, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 3), align 8, !tbaa !76
+  store i32 0, ptr addrspace(3) @_ZN4ompx5state9TeamStateE, align 8, !tbaa !53
+  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 1), align 4, !tbaa !56
+  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 2), align 8, !tbaa !57
+  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 3), align 4, !tbaa !58
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 4), align 8, !tbaa !59
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 5), align 4, !tbaa !60
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8, !tbaa !61
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !62
+  store i32 0, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
+  store ptr null, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 3), align 8, !tbaa !64
   store ptr null, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   store ptr %1, ptr addrspace(3) @_ZL20KernelEnvironmentPtr, align 8, !tbaa !20
   br label %14
@@ -17620,7 +17340,7 @@ define internal noundef nonnull align 8 dereferenceable(24) ptr @_ZN4ompx5state2
 ; Function Attrs: mustprogress nounwind memory(readwrite, inaccessiblemem: write)
 define internal void @_ZN4ompx5state20enterDataEnvironmentEP7IdentTy(ptr nocapture nofree readnone %0) #37 {
   %2 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %3 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %3 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %4 = and i32 %3, 1
   %5 = and i32 %4, %2
   %6 = icmp eq i32 %5, 0
@@ -17663,17 +17383,17 @@ define internal void @_ZN4ompx5state20enterDataEnvironmentEP7IdentTy(ptr nocaptu
   br label %27
 
 27:                                               ; preds = %24, %11
-  %28 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %28 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %29 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %30 = zext i32 %28 to i64
   %31 = getelementptr inbounds ptr, ptr %29, i64 %30
   %32 = load ptr, ptr %31, align 8, !tbaa !20
   %33 = icmp eq ptr %32, null
   %34 = select i1 %33, ptr addrspacecast (ptr addrspace(3) @_ZN4ompx5state9TeamStateE to ptr), ptr %32
-  tail call void @llvm.memcpy.p0.p0.i64(ptr nocapture nofree noundef nonnull align 8 dereferenceable(28) %12, ptr noundef nonnull align 8 dereferenceable(28) %34, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !95
+  tail call void @llvm.memcpy.p0.p0.i64(ptr nocapture nofree noundef nonnull align 8 dereferenceable(28) %12, ptr noundef nonnull align 8 dereferenceable(28) %34, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !84
   %35 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %12, i64 0, i32 1
-  store ptr %32, ptr %35, align 8, !tbaa !86
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
+  store ptr %32, ptr %35, align 8, !tbaa !75
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
   store ptr %12, ptr %31, align 8, !tbaa !20
   ret void
 }
@@ -17681,7 +17401,7 @@ define internal void @_ZN4ompx5state20enterDataEnvironmentEP7IdentTy(ptr nocaptu
 ; Function Attrs: convergent mustprogress nounwind memory(readwrite, inaccessiblemem: write)
 define internal void @_ZN4ompx5state19exitDataEnvironmentEv() #38 {
   %1 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %2 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %2 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %3 = and i32 %1, 1
   %4 = and i32 %3, %2
   %5 = icmp eq i32 %4, 0
@@ -17701,17 +17421,17 @@ define internal void @_ZN4ompx5state19exitDataEnvironmentEv() #38 {
   br i1 %12, label %25, label %13
 
 13:                                               ; preds = %10
-  %14 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %14 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %15 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %16 = zext i32 %14 to i64
   %17 = getelementptr inbounds ptr, ptr %15, i64 %16
   %18 = load ptr, ptr %17, align 8, !tbaa !20
   %19 = icmp eq ptr %18, null
-  br i1 %19, label %25, label %20, !prof !85
+  br i1 %19, label %25, label %20, !prof !74
 
 20:                                               ; preds = %13
   %21 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %18, i64 0, i32 1
-  %22 = load ptr, ptr %21, align 8, !tbaa !86
+  %22 = load ptr, ptr %21, align 8, !tbaa !75
   tail call void @__kmpc_free_shared(ptr noalias nocapture nofree noundef nonnull readnone align 8 dereferenceable(40) %18, i64 noundef 40) #62
   %23 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %24 = getelementptr inbounds ptr, ptr %23, i64 %16
@@ -17737,11 +17457,11 @@ define internal void @_ZN4ompx5state19resetStateForThreadEj(i32 noundef %0) #39 
   %10 = getelementptr inbounds ptr, ptr %8, i64 %9
   %11 = load ptr, ptr %10, align 8, !tbaa !20
   %12 = icmp eq ptr %11, null
-  br i1 %12, label %18, label %13, !prof !85
+  br i1 %12, label %18, label %13, !prof !74
 
 13:                                               ; preds = %7
   %14 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %11, i64 0, i32 1
-  %15 = load ptr, ptr %14, align 8, !tbaa !86
+  %15 = load ptr, ptr %14, align 8, !tbaa !75
   tail call void @__kmpc_free_shared(ptr noalias nocapture nofree noundef nonnull readnone align 8 dereferenceable(40) %11, i64 noundef 40) #62
   %16 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %17 = getelementptr inbounds ptr, ptr %16, i64 %9
@@ -17762,13 +17482,13 @@ define internal void @_ZN4ompx5state16runAndCheckStateEPFvvE(ptr nocapture nofre
   %7 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8
   %8 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4
   %9 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
-  %10 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %10 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   tail call void %0() #61
   %11 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
   %12 = and i32 %10, 1
   %13 = and i32 %12, %11
   %14 = icmp ne i32 %13, 0
-  %15 = load i32, ptr addrspace(3) @_ZN4ompx5state9TeamStateE, align 8, !tbaa !77
+  %15 = load i32, ptr addrspace(3) @_ZN4ompx5state9TeamStateE, align 8, !tbaa !66
   %16 = icmp ne i32 %2, %15
   %17 = select i1 %14, i1 %16, i1 false
   br i1 %17, label %18, label %19
@@ -17780,7 +17500,7 @@ define internal void @_ZN4ompx5state16runAndCheckStateEPFvvE(ptr nocapture nofre
 19:                                               ; preds = %1
   %20 = icmp eq i32 %2, %15
   tail call void @llvm.assume(i1 noundef %20) #59
-  %21 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 1), align 4, !tbaa !78
+  %21 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 1), align 4, !tbaa !67
   br i1 %14, label %22, label %25
 
 22:                                               ; preds = %19
@@ -17795,7 +17515,7 @@ define internal void @_ZN4ompx5state16runAndCheckStateEPFvvE(ptr nocapture nofre
   %26 = phi i32 [ %3, %22 ], [ %21, %19 ]
   %27 = icmp eq i32 %3, %26
   tail call void @llvm.assume(i1 noundef %27) #59
-  %28 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 2), align 8, !tbaa !79
+  %28 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 2), align 8, !tbaa !68
   br i1 %14, label %29, label %32
 
 29:                                               ; preds = %25
@@ -17810,7 +17530,7 @@ define internal void @_ZN4ompx5state16runAndCheckStateEPFvvE(ptr nocapture nofre
   %33 = phi i32 [ %4, %29 ], [ %28, %25 ]
   %34 = icmp eq i32 %4, %33
   tail call void @llvm.assume(i1 noundef %34) #59
-  %35 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 4), align 8, !tbaa !80
+  %35 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 4), align 8, !tbaa !69
   br i1 %14, label %36, label %39
 
 36:                                               ; preds = %32
@@ -17825,7 +17545,7 @@ define internal void @_ZN4ompx5state16runAndCheckStateEPFvvE(ptr nocapture nofre
   %40 = phi i32 [ %5, %36 ], [ %35, %32 ]
   %41 = icmp eq i32 %5, %40
   tail call void @llvm.assume(i1 noundef %41) #59
-  %42 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 5), align 4, !tbaa !81
+  %42 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 5), align 4, !tbaa !70
   br i1 %14, label %43, label %46
 
 43:                                               ; preds = %39
@@ -17840,7 +17560,7 @@ define internal void @_ZN4ompx5state16runAndCheckStateEPFvvE(ptr nocapture nofre
   %47 = phi i32 [ %6, %43 ], [ %42, %39 ]
   %48 = icmp eq i32 %6, %47
   tail call void @llvm.assume(i1 noundef %48) #59
-  %49 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8, !tbaa !82
+  %49 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8, !tbaa !71
   br i1 %14, label %50, label %53
 
 50:                                               ; preds = %46
@@ -17855,7 +17575,7 @@ define internal void @_ZN4ompx5state16runAndCheckStateEPFvvE(ptr nocapture nofre
   %54 = phi i32 [ %7, %50 ], [ %49, %46 ]
   %55 = icmp eq i32 %7, %54
   tail call void @llvm.assume(i1 noundef %55) #59
-  %56 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !74
+  %56 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !62
   br i1 %14, label %57, label %60
 
 57:                                               ; preds = %53
@@ -17870,7 +17590,7 @@ define internal void @_ZN4ompx5state16runAndCheckStateEPFvvE(ptr nocapture nofre
   %61 = phi i32 [ %8, %57 ], [ %56, %53 ]
   %62 = icmp eq i32 %8, %61
   tail call void @llvm.assume(i1 noundef %62) #59
-  %63 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
+  %63 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
   br i1 %14, label %64, label %67
 
 64:                                               ; preds = %60
@@ -17891,11 +17611,11 @@ define internal void @_ZN4ompx5state16runAndCheckStateEPFvvE(ptr nocapture nofre
 ; Function Attrs: mustprogress nounwind memory(read, argmem: none, inaccessiblemem: write)
 define internal void @_ZN4ompx5state18assumeInitialStateEb(i1 noundef zeroext %0) #23 {
   %2 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %3 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %3 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %4 = and i32 %2, 1
   %5 = and i32 %4, %3
   %6 = icmp ne i32 %5, 0
-  %7 = load i32, ptr addrspace(3) @_ZN4ompx5state9TeamStateE, align 8, !tbaa !77
+  %7 = load i32, ptr addrspace(3) @_ZN4ompx5state9TeamStateE, align 8, !tbaa !66
   %8 = icmp ne i32 %7, 0
   %9 = select i1 %6, i1 %8, i1 false
   br i1 %9, label %10, label %11
@@ -17907,7 +17627,7 @@ define internal void @_ZN4ompx5state18assumeInitialStateEb(i1 noundef zeroext %0
 11:                                               ; preds = %1
   %12 = icmp eq i32 %7, 0
   tail call void @llvm.assume(i1 noundef %12) #59
-  %13 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 1), align 4, !tbaa !78
+  %13 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 1), align 4, !tbaa !67
   br i1 %6, label %14, label %17
 
 14:                                               ; preds = %11
@@ -17922,7 +17642,7 @@ define internal void @_ZN4ompx5state18assumeInitialStateEb(i1 noundef zeroext %0
   %18 = phi i32 [ 0, %14 ], [ %13, %11 ]
   %19 = icmp eq i32 %18, 0
   tail call void @llvm.assume(i1 noundef %19) #59
-  %20 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 2), align 8, !tbaa !79
+  %20 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 2), align 8, !tbaa !68
   br i1 %6, label %21, label %24
 
 21:                                               ; preds = %17
@@ -17937,7 +17657,7 @@ define internal void @_ZN4ompx5state18assumeInitialStateEb(i1 noundef zeroext %0
   %25 = phi i32 [ 0, %21 ], [ %20, %17 ]
   %26 = icmp eq i32 %25, 0
   tail call void @llvm.assume(i1 noundef %26) #59
-  %27 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 4), align 8, !tbaa !80
+  %27 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 4), align 8, !tbaa !69
   br i1 %6, label %28, label %31
 
 28:                                               ; preds = %24
@@ -17952,7 +17672,7 @@ define internal void @_ZN4ompx5state18assumeInitialStateEb(i1 noundef zeroext %0
   %32 = phi i32 [ 1, %28 ], [ %27, %24 ]
   %33 = icmp eq i32 %32, 1
   tail call void @llvm.assume(i1 noundef %33) #59
-  %34 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 5), align 4, !tbaa !81
+  %34 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 5), align 4, !tbaa !70
   br i1 %6, label %35, label %38
 
 35:                                               ; preds = %31
@@ -17967,7 +17687,7 @@ define internal void @_ZN4ompx5state18assumeInitialStateEb(i1 noundef zeroext %0
   %39 = phi i32 [ 1, %35 ], [ %34, %31 ]
   %40 = icmp eq i32 %39, 1
   tail call void @llvm.assume(i1 noundef %40) #59
-  %41 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8, !tbaa !82
+  %41 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 0, i32 6), align 8, !tbaa !71
   br i1 %6, label %42, label %61
 
 42:                                               ; preds = %38
@@ -17984,7 +17704,7 @@ define internal void @_ZN4ompx5state18assumeInitialStateEb(i1 noundef zeroext %0
   br i1 %6, label %47, label %63
 
 47:                                               ; preds = %45
-  %48 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !74
+  %48 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 1), align 4, !tbaa !62
   %49 = icmp eq i32 %48, 1
   br i1 %49, label %51, label %50
 
@@ -17996,7 +17716,7 @@ define internal void @_ZN4ompx5state18assumeInitialStateEb(i1 noundef zeroext %0
   br i1 %6, label %52, label %63
 
 52:                                               ; preds = %51
-  %53 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
+  %53 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
   %54 = icmp eq i32 %53, 0
   br i1 %54, label %56, label %55
 
@@ -18042,7 +17762,7 @@ define internal noundef i32 @_ZN4ompx5state21getEffectivePTeamSizeEv() #4 {
   %5 = icmp eq i32 %4, 0
   %6 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %7 = getelementptr inbounds i8, ptr addrspace(4) %6, i64 4
-  %8 = load i16, ptr addrspace(4) %7, align 4
+  %8 = load i16, ptr addrspace(4) %7, align 4, !range !65, !invariant.load !51, !noundef !51
   %9 = zext i16 %8 to i32
   %10 = select i1 %5, i32 -64, i32 0
   %11 = add nsw i32 %10, %9
@@ -18070,20 +17790,20 @@ define internal void @omp_set_num_threads(i32 noundef %0) #37 {
   %4 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
   %5 = icmp ne i32 %4, 0
   %6 = select i1 %3, i1 %5, i1 false
-  br i1 %6, label %7, label %32, !prof !96
+  br i1 %6, label %7, label %32, !prof !85
 
 7:                                                ; preds = %1
-  %8 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %8 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %9 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %10 = zext i32 %8 to i64
   %11 = getelementptr inbounds ptr, ptr %9, i64 %10
   %12 = load ptr, ptr %11, align 8, !tbaa !20
   %13 = icmp eq ptr %12, null
-  br i1 %13, label %14, label %32, !prof !97
+  br i1 %13, label %14, label %32, !prof !86
 
 14:                                               ; preds = %7
   %15 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %16 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %16 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   store ptr null, ptr %11, align 8, !tbaa !20
   %17 = and i32 %15, 1
   %18 = and i32 %17, %16
@@ -18108,10 +17828,10 @@ define internal void @omp_set_num_threads(i32 noundef %0) #37 {
 28:                                               ; preds = %25, %23
   %29 = phi i1 [ %24, %23 ], [ true, %25 ]
   tail call void @llvm.assume(i1 noundef %29) #59
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
-  tail call void @llvm.memcpy.p0.p3.i64(ptr noundef nonnull align 8 dereferenceable(28) %22, ptr addrspace(3) noundef align 8 dereferenceable(28) @_ZN4ompx5state9TeamStateE, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !95
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
+  tail call void @llvm.memcpy.p0.p3.i64(ptr noundef nonnull align 8 dereferenceable(28) %22, ptr addrspace(3) noundef align 8 dereferenceable(28) @_ZN4ompx5state9TeamStateE, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !84
   %30 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %22, i64 0, i32 1
-  store ptr null, ptr %30, align 8, !tbaa !86
+  store ptr null, ptr %30, align 8, !tbaa !75
   %31 = load ptr, ptr %21, align 8, !tbaa !20
   br label %32
 
@@ -18131,13 +17851,13 @@ define internal i32 @omp_get_max_threads() #40 {
   br i1 %5, label %6, label %14
 
 6:                                                ; preds = %0
-  %7 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %7 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %8 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %9 = zext i32 %7 to i64
   %10 = getelementptr inbounds ptr, ptr %8, i64 %9
   %11 = load ptr, ptr %10, align 8, !tbaa !20
   %12 = icmp eq ptr %11, null
-  br i1 %12, label %14, label %13, !prof !85
+  br i1 %12, label %14, label %13, !prof !74
 
 13:                                               ; preds = %6
   br label %14
@@ -18153,7 +17873,7 @@ define internal i32 @omp_get_max_threads() #40 {
   %20 = icmp eq i32 %19, 0
   %21 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %22 = getelementptr inbounds i8, ptr addrspace(4) %21, i64 4
-  %23 = load i16, ptr addrspace(4) %22, align 4
+  %23 = load i16, ptr addrspace(4) %22, align 4, !range !65, !invariant.load !51, !noundef !51
   %24 = zext i16 %23 to i32
   %25 = select i1 %20, i32 -64, i32 0
   %26 = add nsw i32 %25, %24
@@ -18174,13 +17894,13 @@ define internal i32 @omp_get_level() #31 {
   br i1 %5, label %6, label %14
 
 6:                                                ; preds = %0
-  %7 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %7 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %8 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %9 = zext i32 %7 to i64
   %10 = getelementptr inbounds ptr, ptr %8, i64 %9
   %11 = load ptr, ptr %10, align 8, !tbaa !20
   %12 = icmp eq ptr %11, null
-  br i1 %12, label %14, label %13, !prof !85
+  br i1 %12, label %14, label %13, !prof !74
 
 13:                                               ; preds = %6
   br label %14
@@ -18190,7 +17910,7 @@ define internal i32 @omp_get_level() #31 {
   %16 = getelementptr inbounds i8, ptr %15, i64 4
   %17 = load i32, ptr %16, align 4, !tbaa !18
   %18 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %19 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %19 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %20 = and i32 %18, 1
   %21 = and i32 %20, %19
   %22 = icmp eq i32 %21, 0
@@ -18217,13 +17937,13 @@ define internal i32 @omp_get_active_level() #40 {
   br i1 %5, label %6, label %14
 
 6:                                                ; preds = %0
-  %7 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %7 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %8 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %9 = zext i32 %7 to i64
   %10 = getelementptr inbounds ptr, ptr %8, i64 %9
   %11 = load ptr, ptr %10, align 8, !tbaa !20
   %12 = icmp eq ptr %11, null
-  br i1 %12, label %14, label %13, !prof !85
+  br i1 %12, label %14, label %13, !prof !74
 
 13:                                               ; preds = %6
   br label %14
@@ -18247,13 +17967,13 @@ define internal i32 @omp_in_parallel() #40 {
   br i1 %5, label %6, label %14
 
 6:                                                ; preds = %0
-  %7 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %7 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %8 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %9 = zext i32 %7 to i64
   %10 = getelementptr inbounds ptr, ptr %8, i64 %9
   %11 = load ptr, ptr %10, align 8, !tbaa !20
   %12 = icmp eq ptr %11, null
-  br i1 %12, label %14, label %13, !prof !85
+  br i1 %12, label %14, label %13, !prof !74
 
 13:                                               ; preds = %6
   br label %14
@@ -18269,7 +17989,7 @@ define internal i32 @omp_in_parallel() #40 {
 
 ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(read, argmem: readwrite, inaccessiblemem: none)
 define internal void @omp_get_schedule(ptr nocapture nofree noundef writeonly %0, ptr nocapture nofree noundef writeonly %1) #41 {
-  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %4 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %5 = icmp eq i32 %4, 0
   %6 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -18283,7 +18003,7 @@ define internal void @omp_get_schedule(ptr nocapture nofree noundef writeonly %0
   %12 = getelementptr inbounds ptr, ptr %10, i64 %11
   %13 = load ptr, ptr %12, align 8, !tbaa !20
   %14 = icmp eq ptr %13, null
-  br i1 %14, label %16, label %15, !prof !85
+  br i1 %14, label %16, label %15, !prof !74
 
 15:                                               ; preds = %9
   br label %16
@@ -18292,7 +18012,7 @@ define internal void @omp_get_schedule(ptr nocapture nofree noundef writeonly %0
   %17 = phi ptr [ %13, %15 ], [ addrspacecast (ptr addrspace(3) @_ZN4ompx5state9TeamStateE to ptr), %2 ], [ addrspacecast (ptr addrspace(3) @_ZN4ompx5state9TeamStateE to ptr), %9 ]
   %18 = getelementptr inbounds i8, ptr %17, i64 20
   %19 = load i32, ptr %18, align 4, !tbaa !18
-  store i32 %19, ptr %0, align 4, !tbaa !106
+  store i32 %19, ptr %0, align 4, !tbaa !95
   %20 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
   %21 = icmp ne i32 %20, 0
   %22 = select i1 %5, i1 %21, i1 false
@@ -18304,7 +18024,7 @@ define internal void @omp_get_schedule(ptr nocapture nofree noundef writeonly %0
   %26 = getelementptr inbounds ptr, ptr %24, i64 %25
   %27 = load ptr, ptr %26, align 8, !tbaa !20
   %28 = icmp eq ptr %27, null
-  br i1 %28, label %30, label %29, !prof !85
+  br i1 %28, label %30, label %29, !prof !74
 
 29:                                               ; preds = %23
   br label %30
@@ -18324,20 +18044,20 @@ define internal void @omp_set_schedule(i32 noundef %0, i32 noundef %1) #37 {
   %5 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
   %6 = icmp ne i32 %5, 0
   %7 = select i1 %4, i1 %6, i1 false
-  br i1 %7, label %8, label %34, !prof !96
+  br i1 %7, label %8, label %34, !prof !85
 
 8:                                                ; preds = %2
-  %9 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %9 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %10 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %11 = zext i32 %9 to i64
   %12 = getelementptr inbounds ptr, ptr %10, i64 %11
   %13 = load ptr, ptr %12, align 8, !tbaa !20
   %14 = icmp eq ptr %13, null
-  br i1 %14, label %15, label %34, !prof !97
+  br i1 %14, label %15, label %34, !prof !86
 
 15:                                               ; preds = %8
   %16 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %17 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %17 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   store ptr null, ptr %12, align 8, !tbaa !20
   %18 = and i32 %16, 1
   %19 = and i32 %18, %17
@@ -18362,10 +18082,10 @@ define internal void @omp_set_schedule(i32 noundef %0, i32 noundef %1) #37 {
 29:                                               ; preds = %26, %24
   %30 = phi i1 [ %25, %24 ], [ true, %26 ]
   tail call void @llvm.assume(i1 noundef %30) #59
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
-  tail call void @llvm.memcpy.p0.p3.i64(ptr noundef nonnull align 8 dereferenceable(28) %23, ptr addrspace(3) noundef align 8 dereferenceable(28) @_ZN4ompx5state9TeamStateE, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !95
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
+  tail call void @llvm.memcpy.p0.p3.i64(ptr noundef nonnull align 8 dereferenceable(28) %23, ptr addrspace(3) noundef align 8 dereferenceable(28) @_ZN4ompx5state9TeamStateE, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !84
   %31 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %23, i64 0, i32 1
-  store ptr null, ptr %31, align 8, !tbaa !86
+  store ptr null, ptr %31, align 8, !tbaa !75
   %32 = load ptr, ptr %22, align 8, !tbaa !20
   %33 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   br label %34
@@ -18379,20 +18099,20 @@ define internal void @omp_set_schedule(i32 noundef %0, i32 noundef %1) #37 {
   %39 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
   %40 = icmp ne i32 %39, 0
   %41 = select i1 %38, i1 %40, i1 false
-  br i1 %41, label %42, label %67, !prof !96
+  br i1 %41, label %42, label %67, !prof !85
 
 42:                                               ; preds = %34
-  %43 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %43 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %44 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %45 = zext i32 %43 to i64
   %46 = getelementptr inbounds ptr, ptr %44, i64 %45
   %47 = load ptr, ptr %46, align 8, !tbaa !20
   %48 = icmp eq ptr %47, null
-  br i1 %48, label %49, label %67, !prof !97
+  br i1 %48, label %49, label %67, !prof !86
 
 49:                                               ; preds = %42
   %50 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %51 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %51 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   store ptr null, ptr %46, align 8, !tbaa !20
   %52 = and i32 %50, 1
   %53 = and i32 %52, %51
@@ -18417,10 +18137,10 @@ define internal void @omp_set_schedule(i32 noundef %0, i32 noundef %1) #37 {
 63:                                               ; preds = %60, %58
   %64 = phi i1 [ %59, %58 ], [ true, %60 ]
   tail call void @llvm.assume(i1 noundef %64) #59
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
-  tail call void @llvm.memcpy.p0.p3.i64(ptr noundef nonnull align 8 dereferenceable(28) %57, ptr addrspace(3) noundef align 8 dereferenceable(28) @_ZN4ompx5state9TeamStateE, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !95
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
+  tail call void @llvm.memcpy.p0.p3.i64(ptr noundef nonnull align 8 dereferenceable(28) %57, ptr addrspace(3) noundef align 8 dereferenceable(28) @_ZN4ompx5state9TeamStateE, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !84
   %65 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %57, i64 0, i32 1
-  store ptr null, ptr %65, align 8, !tbaa !86
+  store ptr null, ptr %65, align 8, !tbaa !75
   %66 = load ptr, ptr %56, align 8, !tbaa !20
   br label %67
 
@@ -18433,7 +18153,7 @@ define internal void @omp_set_schedule(i32 noundef %0, i32 noundef %1) #37 {
 
 ; Function Attrs: mustprogress nounwind memory(read, inaccessiblemem: write)
 define internal noundef i32 @omp_get_ancestor_thread_num(i32 noundef %0) #31 {
-  %2 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %2 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %3 = icmp eq i32 %0, 0
   br i1 %3, label %45, label %4
 
@@ -18451,7 +18171,7 @@ define internal noundef i32 @omp_get_ancestor_thread_num(i32 noundef %0) #31 {
   %13 = getelementptr inbounds ptr, ptr %11, i64 %12
   %14 = load ptr, ptr %13, align 8, !tbaa !20
   %15 = icmp eq ptr %14, null
-  br i1 %15, label %17, label %16, !prof !85
+  br i1 %15, label %17, label %16, !prof !74
 
 16:                                               ; preds = %10
   br label %17
@@ -18461,7 +18181,7 @@ define internal noundef i32 @omp_get_ancestor_thread_num(i32 noundef %0) #31 {
   %19 = getelementptr inbounds i8, ptr %18, i64 4
   %20 = load i32, ptr %19, align 4, !tbaa !18
   %21 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %22 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %22 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %23 = and i32 %21, 1
   %24 = and i32 %23, %22
   %25 = icmp eq i32 %24, 0
@@ -18476,7 +18196,7 @@ define internal noundef i32 @omp_get_ancestor_thread_num(i32 noundef %0) #31 {
 29:                                               ; preds = %17
   tail call void @llvm.assume(i1 noundef %26) #59
   %30 = icmp ult i32 %20, %0
-  br i1 %30, label %45, label %31, !prof !97
+  br i1 %30, label %45, label %31, !prof !86
 
 31:                                               ; preds = %29
   br i1 %9, label %32, label %39
@@ -18487,7 +18207,7 @@ define internal noundef i32 @omp_get_ancestor_thread_num(i32 noundef %0) #31 {
   %35 = getelementptr inbounds ptr, ptr %33, i64 %34
   %36 = load ptr, ptr %35, align 8, !tbaa !20
   %37 = icmp eq ptr %36, null
-  br i1 %37, label %39, label %38, !prof !85
+  br i1 %37, label %39, label %38, !prof !74
 
 38:                                               ; preds = %32
   br label %39
@@ -18497,7 +18217,7 @@ define internal noundef i32 @omp_get_ancestor_thread_num(i32 noundef %0) #31 {
   %41 = getelementptr inbounds i8, ptr %40, i64 8
   %42 = load i32, ptr %41, align 4, !tbaa !18
   %43 = icmp eq i32 %42, %0
-  %44 = select i1 %43, i32 %2, i32 0, !prof !85
+  %44 = select i1 %43, i32 %2, i32 0, !prof !74
   br label %45
 
 45:                                               ; preds = %39, %29, %1
@@ -18507,7 +18227,7 @@ define internal noundef i32 @omp_get_ancestor_thread_num(i32 noundef %0) #31 {
 
 ; Function Attrs: mustprogress nounwind memory(read, inaccessiblemem: write)
 define internal noundef i32 @omp_get_thread_num() #31 {
-  %1 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %1 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %2 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %3 = icmp eq i32 %2, 0
   %4 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -18521,7 +18241,7 @@ define internal noundef i32 @omp_get_thread_num() #31 {
   %10 = getelementptr inbounds ptr, ptr %8, i64 %9
   %11 = load ptr, ptr %10, align 8, !tbaa !20
   %12 = icmp eq ptr %11, null
-  br i1 %12, label %14, label %13, !prof !85
+  br i1 %12, label %14, label %13, !prof !74
 
 13:                                               ; preds = %7
   br label %14
@@ -18531,7 +18251,7 @@ define internal noundef i32 @omp_get_thread_num() #31 {
   %16 = getelementptr inbounds i8, ptr %15, i64 4
   %17 = load i32, ptr %16, align 4, !tbaa !18
   %18 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %19 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %19 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %20 = and i32 %18, 1
   %21 = and i32 %20, %19
   %22 = icmp eq i32 %21, 0
@@ -18557,7 +18277,7 @@ define internal noundef i32 @omp_get_thread_num() #31 {
   %32 = getelementptr inbounds ptr, ptr %30, i64 %31
   %33 = load ptr, ptr %32, align 8, !tbaa !20
   %34 = icmp eq ptr %33, null
-  br i1 %34, label %36, label %35, !prof !85
+  br i1 %34, label %36, label %35, !prof !74
 
 35:                                               ; preds = %29
   br label %36
@@ -18577,7 +18297,7 @@ define internal noundef i32 @omp_get_thread_num() #31 {
 43:                                               ; preds = %36
   tail call void @llvm.assume(i1 noundef %40) #59
   %44 = icmp ult i32 %39, %17
-  br i1 %44, label %59, label %45, !prof !97
+  br i1 %44, label %59, label %45, !prof !86
 
 45:                                               ; preds = %43
   br i1 %6, label %46, label %53
@@ -18588,7 +18308,7 @@ define internal noundef i32 @omp_get_thread_num() #31 {
   %49 = getelementptr inbounds ptr, ptr %47, i64 %48
   %50 = load ptr, ptr %49, align 8, !tbaa !20
   %51 = icmp eq ptr %50, null
-  br i1 %51, label %53, label %52, !prof !85
+  br i1 %51, label %53, label %52, !prof !74
 
 52:                                               ; preds = %46
   br label %53
@@ -18598,7 +18318,7 @@ define internal noundef i32 @omp_get_thread_num() #31 {
   %55 = getelementptr inbounds i8, ptr %54, i64 8
   %56 = load i32, ptr %55, align 4, !tbaa !18
   %57 = icmp eq i32 %56, %17
-  %58 = select i1 %57, i32 %1, i32 0, !prof !85
+  %58 = select i1 %57, i32 %1, i32 0, !prof !74
   br label %59
 
 59:                                               ; preds = %53, %43, %26
@@ -18617,7 +18337,7 @@ define internal i32 @omp_get_team_size(i32 noundef %0) #31 {
   %6 = icmp eq i32 %5, 0
   %7 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %8 = getelementptr inbounds i8, ptr addrspace(4) %7, i64 4
-  %9 = load i16, ptr addrspace(4) %8, align 4
+  %9 = load i16, ptr addrspace(4) %8, align 4, !range !65, !invariant.load !51, !noundef !51
   %10 = zext i16 %9 to i32
   %11 = select i1 %6, i32 -64, i32 0
   %12 = add nsw i32 %11, %10
@@ -18629,7 +18349,7 @@ define internal i32 @omp_get_team_size(i32 noundef %0) #31 {
   br i1 %15, label %58, label %16
 
 16:                                               ; preds = %13
-  %17 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %17 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %18 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %19 = icmp eq i32 %18, 0
   %20 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -18643,7 +18363,7 @@ define internal i32 @omp_get_team_size(i32 noundef %0) #31 {
   %26 = getelementptr inbounds ptr, ptr %24, i64 %25
   %27 = load ptr, ptr %26, align 8, !tbaa !20
   %28 = icmp eq ptr %27, null
-  br i1 %28, label %30, label %29, !prof !85
+  br i1 %28, label %30, label %29, !prof !74
 
 29:                                               ; preds = %23
   br label %30
@@ -18653,7 +18373,7 @@ define internal i32 @omp_get_team_size(i32 noundef %0) #31 {
   %32 = getelementptr inbounds i8, ptr %31, i64 4
   %33 = load i32, ptr %32, align 4, !tbaa !18
   %34 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %35 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %35 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %36 = and i32 %34, 1
   %37 = and i32 %36, %35
   %38 = icmp eq i32 %37, 0
@@ -18668,7 +18388,7 @@ define internal i32 @omp_get_team_size(i32 noundef %0) #31 {
 42:                                               ; preds = %30
   tail call void @llvm.assume(i1 noundef %39) #59
   %43 = icmp ult i32 %33, %0
-  br i1 %43, label %58, label %44, !prof !97
+  br i1 %43, label %58, label %44, !prof !86
 
 44:                                               ; preds = %42
   br i1 %22, label %45, label %52
@@ -18679,7 +18399,7 @@ define internal i32 @omp_get_team_size(i32 noundef %0) #31 {
   %48 = getelementptr inbounds ptr, ptr %46, i64 %47
   %49 = load ptr, ptr %48, align 8, !tbaa !20
   %50 = icmp eq ptr %49, null
-  br i1 %50, label %52, label %51, !prof !85
+  br i1 %50, label %52, label %51, !prof !74
 
 51:                                               ; preds = %45
   br label %52
@@ -18689,7 +18409,7 @@ define internal i32 @omp_get_team_size(i32 noundef %0) #31 {
   %54 = getelementptr inbounds i8, ptr %53, i64 8
   %55 = load i32, ptr %54, align 4, !tbaa !18
   %56 = icmp eq i32 %55, %0
-  %57 = select i1 %56, i32 %14, i32 1, !prof !85
+  %57 = select i1 %56, i32 %14, i32 1, !prof !74
   br label %58
 
 58:                                               ; preds = %52, %42, %13
@@ -18707,13 +18427,13 @@ define internal i32 @omp_get_num_threads() #31 {
   br i1 %5, label %6, label %14
 
 6:                                                ; preds = %0
-  %7 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %7 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %8 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %9 = zext i32 %7 to i64
   %10 = getelementptr inbounds ptr, ptr %8, i64 %9
   %11 = load ptr, ptr %10, align 8, !tbaa !20
   %12 = icmp eq ptr %11, null
-  br i1 %12, label %14, label %13, !prof !85
+  br i1 %12, label %14, label %13, !prof !74
 
 13:                                               ; preds = %6
   br label %14
@@ -18723,7 +18443,7 @@ define internal i32 @omp_get_num_threads() #31 {
   %16 = getelementptr inbounds i8, ptr %15, i64 4
   %17 = load i32, ptr %16, align 4, !tbaa !18
   %18 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %19 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %19 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %20 = and i32 %18, 1
   %21 = and i32 %20, %19
   %22 = icmp eq i32 %21, 0
@@ -18750,7 +18470,7 @@ define internal i32 @omp_get_num_threads() #31 {
   %33 = icmp eq i32 %32, 0
   %34 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %35 = getelementptr inbounds i8, ptr addrspace(4) %34, i64 4
-  %36 = load i16, ptr addrspace(4) %35, align 4
+  %36 = load i16, ptr addrspace(4) %35, align 4, !range !65, !invariant.load !51, !noundef !51
   %37 = zext i16 %36 to i32
   %38 = select i1 %33, i32 -64, i32 0
   %39 = add nsw i32 %38, %37
@@ -18767,17 +18487,18 @@ define internal noundef i32 @omp_get_thread_limit() #4 {
   %2 = icmp eq i32 %1, 0
   %3 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %4 = getelementptr inbounds i8, ptr addrspace(4) %3, i64 4
-  %5 = load i16, ptr addrspace(4) %4, align 4
+  %5 = load i16, ptr addrspace(4) %4, align 4, !range !65, !invariant.load !51, !noundef !51
   %6 = zext i16 %5 to i32
   %7 = select i1 %2, i32 -64, i32 0
   %8 = add nsw i32 %7, %6
   ret i32 %8
 }
 
-; Function Attrs: mustprogress noreturn nounwind memory(inaccessiblemem: write)
-define internal i32 @omp_get_num_procs() #7 {
-  tail call void @llvm.trap() #58
-  unreachable
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
+define internal noundef i32 @omp_get_num_procs() #5 {
+  %1 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 7), align 8, !tbaa !42
+  %2 = trunc i64 %1 to i32
+  ret i32 %2
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
@@ -18797,20 +18518,20 @@ define internal void @omp_set_max_active_levels(i32 noundef %0) #37 {
   %4 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
   %5 = icmp ne i32 %4, 0
   %6 = select i1 %3, i1 %5, i1 false
-  br i1 %6, label %7, label %32, !prof !96
+  br i1 %6, label %7, label %32, !prof !85
 
 7:                                                ; preds = %1
-  %8 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %8 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %9 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %10 = zext i32 %8 to i64
   %11 = getelementptr inbounds ptr, ptr %9, i64 %10
   %12 = load ptr, ptr %11, align 8, !tbaa !20
   %13 = icmp eq ptr %12, null
-  br i1 %13, label %14, label %32, !prof !97
+  br i1 %13, label %14, label %32, !prof !86
 
 14:                                               ; preds = %7
   %15 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %16 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %16 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   store ptr null, ptr %11, align 8, !tbaa !20
   %17 = and i32 %15, 1
   %18 = and i32 %17, %16
@@ -18835,10 +18556,10 @@ define internal void @omp_set_max_active_levels(i32 noundef %0) #37 {
 28:                                               ; preds = %25, %23
   %29 = phi i1 [ %24, %23 ], [ true, %25 ]
   tail call void @llvm.assume(i1 noundef %29) #59
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
-  tail call void @llvm.memcpy.p0.p3.i64(ptr noundef nonnull align 8 dereferenceable(28) %22, ptr addrspace(3) noundef align 8 dereferenceable(28) @_ZN4ompx5state9TeamStateE, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !95
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
+  tail call void @llvm.memcpy.p0.p3.i64(ptr noundef nonnull align 8 dereferenceable(28) %22, ptr addrspace(3) noundef align 8 dereferenceable(28) @_ZN4ompx5state9TeamStateE, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !84
   %30 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %22, i64 0, i32 1
-  store ptr null, ptr %30, align 8, !tbaa !86
+  store ptr null, ptr %30, align 8, !tbaa !75
   %31 = load ptr, ptr %21, align 8, !tbaa !20
   br label %32
 
@@ -18861,13 +18582,13 @@ define internal i32 @omp_get_max_active_levels() #40 {
   br i1 %5, label %6, label %14
 
 6:                                                ; preds = %0
-  %7 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %7 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %8 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %9 = zext i32 %7 to i64
   %10 = getelementptr inbounds ptr, ptr %8, i64 %9
   %11 = load ptr, ptr %10, align 8, !tbaa !20
   %12 = icmp eq ptr %11, null
-  br i1 %12, label %14, label %13, !prof !85
+  br i1 %12, label %14, label %13, !prof !74
 
 13:                                               ; preds = %6
   br label %14
@@ -18889,10 +18610,11 @@ define internal noundef i32 @omp_get_num_places() #5 {
   ret i32 0
 }
 
-; Function Attrs: mustprogress noreturn nounwind memory(inaccessiblemem: write)
-define internal i32 @omp_get_place_num_procs(i32 noundef %0) #7 {
-  tail call void @llvm.trap() #58
-  unreachable
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
+define internal noundef i32 @omp_get_place_num_procs(i32 noundef %0) #5 {
+  %2 = load i64, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 7), align 8, !tbaa !42
+  %3 = trunc i64 %2 to i32
+  ret i32 %3
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
@@ -18932,13 +18654,13 @@ define internal noundef i32 @omp_get_default_device() #5 {
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
 define internal noundef i32 @omp_get_num_devices() #5 {
-  %1 = load i32, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 1), align 4, !tbaa !50
+  %1 = load i32, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 1), align 4, !tbaa !37
   ret i32 %1
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(none)
 define internal noundef i32 @omp_get_device_num() #5 {
-  %1 = load i32, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 2), align 8, !tbaa !51
+  %1 = load i32, ptr addrspace(4) getelementptr inbounds (%struct.DeviceEnvironmentTy, ptr addrspace(4) @__omp_rtl_device_environment, i64 0, i32 2), align 8, !tbaa !38
   ret i32 %1
 }
 
@@ -18947,12 +18669,12 @@ define internal noundef i32 @omp_get_num_teams() #23 {
   %1 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #64
   %2 = getelementptr inbounds i8, ptr addrspace(4) %1, i64 12
   %3 = getelementptr inbounds i8, ptr addrspace(4) %1, i64 4
-  %4 = load i16, ptr addrspace(4) %3, align 4
-  %5 = load i32, ptr addrspace(4) %2, align 4, !invariant.load !63
-  %6 = zext i16 %4 to i32
-  %7 = udiv i32 %5, %6
+  %4 = load i32, ptr addrspace(4) %2, align 4, !invariant.load !51
+  %5 = load i16, ptr addrspace(4) %3, align 4, !range !65, !invariant.load !51, !noundef !51
+  %6 = zext i16 %5 to i32
+  %7 = udiv i32 %4, %6
   %8 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %9 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %9 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %10 = and i32 %8, 1
   %11 = and i32 %10, %9
   %12 = icmp eq i32 %11, 0
@@ -18974,7 +18696,7 @@ define internal noundef i32 @omp_get_num_teams() #23 {
 define internal noundef i32 @omp_get_team_num() #23 {
   %1 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
   %2 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %3 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %3 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %4 = and i32 %2, 1
   %5 = and i32 %4, %3
   %6 = icmp eq i32 %5, 0
@@ -18984,10 +18706,10 @@ define internal noundef i32 @omp_get_team_num() #23 {
 8:                                                ; preds = %0
   %9 = getelementptr inbounds i8, ptr addrspace(4) %7, i64 12
   %10 = getelementptr inbounds i8, ptr addrspace(4) %7, i64 4
-  %11 = load i16, ptr addrspace(4) %10, align 4
-  %12 = load i32, ptr addrspace(4) %9, align 4, !invariant.load !63
-  %13 = zext i16 %11 to i32
-  %14 = udiv i32 %12, %13
+  %11 = load i32, ptr addrspace(4) %9, align 4, !invariant.load !51
+  %12 = load i16, ptr addrspace(4) %10, align 4, !range !65, !invariant.load !51, !noundef !51
+  %13 = zext i16 %12 to i32
+  %14 = udiv i32 %11, %13
   %15 = icmp ult i32 %1, %14
   br i1 %15, label %17, label %16
 
@@ -18998,10 +18720,10 @@ define internal noundef i32 @omp_get_team_num() #23 {
 17:                                               ; preds = %8, %0
   %18 = getelementptr inbounds i8, ptr addrspace(4) %7, i64 12
   %19 = getelementptr inbounds i8, ptr addrspace(4) %7, i64 4
-  %20 = load i16, ptr addrspace(4) %19, align 4
-  %21 = load i32, ptr addrspace(4) %18, align 4, !invariant.load !63
-  %22 = zext i16 %20 to i32
-  %23 = udiv i32 %21, %22
+  %20 = load i32, ptr addrspace(4) %18, align 4, !invariant.load !51
+  %21 = load i16, ptr addrspace(4) %19, align 4, !range !65, !invariant.load !51, !noundef !51
+  %22 = zext i16 %21 to i32
+  %23 = udiv i32 %20, %22
   %24 = icmp ult i32 %1, %23
   tail call void @llvm.assume(i1 noundef %24) #59
   ret i32 %1
@@ -19039,7 +18761,7 @@ define internal void @__kmpc_begin_sharing_variables(ptr nocapture nofree nounde
 
 5:                                                ; preds = %2
   %6 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %7 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %7 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   store ptr null, ptr addrspace(3) @_ZL32SharedMemVariableSharingSpacePtr, align 8, !tbaa !20
   %8 = and i32 %6, 1
   %9 = and i32 %8, %7
@@ -23910,13 +23632,13 @@ define internal noundef i32 @__kmpc_cancel_barrier(ptr nocapture nofree noundef 
   br i1 %10, label %11, label %19
 
 11:                                               ; preds = %5
-  %12 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !62, !noundef !63
+  %12 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !50, !noundef !51
   %13 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %14 = zext i32 %12 to i64
   %15 = getelementptr inbounds ptr, ptr %13, i64 %14
   %16 = load ptr, ptr %15, align 8, !tbaa !20
   %17 = icmp eq ptr %16, null
-  br i1 %17, label %19, label %18, !prof !85
+  br i1 %17, label %19, label %18, !prof !74
 
 18:                                               ; preds = %11
   br label %19
@@ -23931,11 +23653,11 @@ define internal noundef i32 @__kmpc_cancel_barrier(ptr nocapture nofree noundef 
 24:                                               ; preds = %19
   %25 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #65
   %26 = getelementptr inbounds i8, ptr addrspace(4) %25, i64 4
-  %27 = load i16, ptr addrspace(4) %26, align 4
+  %27 = load i16, ptr addrspace(4) %26, align 4, !range !65, !invariant.load !51, !noundef !51
   %28 = zext i16 %27 to i32
   %29 = add nsw i32 %28, -1
   %30 = and i32 %29, -64
-  %31 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !62, !noundef !63
+  %31 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !50, !noundef !51
   %32 = icmp eq i32 %31, %30
   br i1 %32, label %33, label %35
 
@@ -23951,13 +23673,13 @@ define internal noundef i32 @__kmpc_cancel_barrier(ptr nocapture nofree noundef 
   br i1 %10, label %36, label %44
 
 36:                                               ; preds = %35
-  %37 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %37 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %38 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %39 = zext i32 %37 to i64
   %40 = getelementptr inbounds ptr, ptr %38, i64 %39
   %41 = load ptr, ptr %40, align 8, !tbaa !20
   %42 = icmp eq ptr %41, null
-  br i1 %42, label %44, label %43, !prof !85
+  br i1 %42, label %44, label %43, !prof !74
 
 43:                                               ; preds = %36
   br label %44
@@ -23967,7 +23689,7 @@ define internal noundef i32 @__kmpc_cancel_barrier(ptr nocapture nofree noundef 
   %46 = getelementptr inbounds i8, ptr %45, i64 4
   %47 = load i32, ptr %46, align 4, !tbaa !18
   %48 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %49 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %49 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %50 = and i32 %49, 1
   %51 = and i32 %50, %48
   %52 = icmp eq i32 %51, 0
@@ -23992,7 +23714,7 @@ define internal noundef i32 @__kmpc_cancel_barrier(ptr nocapture nofree noundef 
 61:                                               ; preds = %58
   %62 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %63 = getelementptr inbounds i8, ptr addrspace(4) %62, i64 4
-  %64 = load i16, ptr addrspace(4) %63, align 4
+  %64 = load i16, ptr addrspace(4) %63, align 4, !range !65, !invariant.load !51, !noundef !51
   %65 = zext i16 %64 to i32
   %66 = add nsw i32 %65, -64
   br label %67
@@ -24045,7 +23767,7 @@ define internal noundef i32 @__kmpc_cancel_barrier(ptr nocapture nofree noundef 
   %97 = atomicrmw or ptr addrspace(3) @_ZN4impl19namedBarrierTrackerE, i32 0 monotonic, align 4
   %98 = xor i32 %97, %89
   %99 = icmp ult i32 %98, 65536
-  br i1 %99, label %96, label %100, !llvm.loop !108
+  br i1 %99, label %96, label %100, !llvm.loop !97
 
 100:                                              ; preds = %96, %93, %78
   fence syncscope("workgroup") release
@@ -24073,13 +23795,13 @@ define internal void @__kmpc_barrier(ptr nocapture nofree readnone %0, i32 %1) #
   br i1 %10, label %11, label %19
 
 11:                                               ; preds = %5
-  %12 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !62, !noundef !63
+  %12 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !50, !noundef !51
   %13 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %14 = zext i32 %12 to i64
   %15 = getelementptr inbounds ptr, ptr %13, i64 %14
   %16 = load ptr, ptr %15, align 8, !tbaa !20
   %17 = icmp eq ptr %16, null
-  br i1 %17, label %19, label %18, !prof !85
+  br i1 %17, label %19, label %18, !prof !74
 
 18:                                               ; preds = %11
   br label %19
@@ -24094,11 +23816,11 @@ define internal void @__kmpc_barrier(ptr nocapture nofree readnone %0, i32 %1) #
 24:                                               ; preds = %19
   %25 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #65
   %26 = getelementptr inbounds i8, ptr addrspace(4) %25, i64 4
-  %27 = load i16, ptr addrspace(4) %26, align 4
+  %27 = load i16, ptr addrspace(4) %26, align 4, !range !65, !invariant.load !51, !noundef !51
   %28 = zext i16 %27 to i32
   %29 = add nsw i32 %28, -1
   %30 = and i32 %29, -64
-  %31 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !62, !noundef !63
+  %31 = tail call i32 @llvm.amdgcn.workitem.id.x() #65, !range !50, !noundef !51
   %32 = icmp eq i32 %31, %30
   br i1 %32, label %33, label %35
 
@@ -24114,13 +23836,13 @@ define internal void @__kmpc_barrier(ptr nocapture nofree readnone %0, i32 %1) #
   br i1 %10, label %36, label %44
 
 36:                                               ; preds = %35
-  %37 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %37 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %38 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %39 = zext i32 %37 to i64
   %40 = getelementptr inbounds ptr, ptr %38, i64 %39
   %41 = load ptr, ptr %40, align 8, !tbaa !20
   %42 = icmp eq ptr %41, null
-  br i1 %42, label %44, label %43, !prof !85
+  br i1 %42, label %44, label %43, !prof !74
 
 43:                                               ; preds = %36
   br label %44
@@ -24130,7 +23852,7 @@ define internal void @__kmpc_barrier(ptr nocapture nofree readnone %0, i32 %1) #
   %46 = getelementptr inbounds i8, ptr %45, i64 4
   %47 = load i32, ptr %46, align 4, !tbaa !18
   %48 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %49 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %49 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %50 = and i32 %49, 1
   %51 = and i32 %50, %48
   %52 = icmp eq i32 %51, 0
@@ -24155,7 +23877,7 @@ define internal void @__kmpc_barrier(ptr nocapture nofree readnone %0, i32 %1) #
 61:                                               ; preds = %58
   %62 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %63 = getelementptr inbounds i8, ptr addrspace(4) %62, i64 4
-  %64 = load i16, ptr addrspace(4) %63, align 4
+  %64 = load i16, ptr addrspace(4) %63, align 4, !range !65, !invariant.load !51, !noundef !51
   %65 = zext i16 %64 to i32
   %66 = add nsw i32 %65, -64
   br label %67
@@ -24208,7 +23930,7 @@ define internal void @__kmpc_barrier(ptr nocapture nofree readnone %0, i32 %1) #
   %97 = atomicrmw or ptr addrspace(3) @_ZN4impl19namedBarrierTrackerE, i32 0 monotonic, align 4
   %98 = xor i32 %97, %89
   %99 = icmp ult i32 %98, 65536
-  br i1 %99, label %96, label %100, !llvm.loop !108
+  br i1 %99, label %96, label %100, !llvm.loop !97
 
 100:                                              ; preds = %96, %93, %78
   fence syncscope("workgroup") release
@@ -24234,7 +23956,7 @@ define internal void @__kmpc_barrier_simple_generic(ptr nocapture nofree noundef
 
 ; Function Attrs: mustprogress nounwind memory(read, inaccessiblemem: write)
 define internal i32 @__kmpc_master(ptr nocapture nofree noundef readnone %0, i32 noundef %1) #31 {
-  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %4 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %5 = icmp eq i32 %4, 0
   %6 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -24248,7 +23970,7 @@ define internal i32 @__kmpc_master(ptr nocapture nofree noundef readnone %0, i32
   %12 = getelementptr inbounds ptr, ptr %10, i64 %11
   %13 = load ptr, ptr %12, align 8, !tbaa !20
   %14 = icmp eq ptr %13, null
-  br i1 %14, label %16, label %15, !prof !85
+  br i1 %14, label %16, label %15, !prof !74
 
 15:                                               ; preds = %9
   br label %16
@@ -24258,7 +23980,7 @@ define internal i32 @__kmpc_master(ptr nocapture nofree noundef readnone %0, i32
   %18 = getelementptr inbounds i8, ptr %17, i64 4
   %19 = load i32, ptr %18, align 4, !tbaa !18
   %20 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %21 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %21 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %22 = and i32 %20, 1
   %23 = and i32 %22, %21
   %24 = icmp eq i32 %23, 0
@@ -24284,7 +24006,7 @@ define internal i32 @__kmpc_master(ptr nocapture nofree noundef readnone %0, i32
   %34 = getelementptr inbounds ptr, ptr %32, i64 %33
   %35 = load ptr, ptr %34, align 8, !tbaa !20
   %36 = icmp eq ptr %35, null
-  br i1 %36, label %38, label %37, !prof !85
+  br i1 %36, label %38, label %37, !prof !74
 
 37:                                               ; preds = %31
   br label %38
@@ -24304,7 +24026,7 @@ define internal i32 @__kmpc_master(ptr nocapture nofree noundef readnone %0, i32
 45:                                               ; preds = %38
   tail call void @llvm.assume(i1 noundef %42) #59
   %46 = icmp ult i32 %41, %19
-  br i1 %46, label %63, label %47, !prof !97
+  br i1 %46, label %63, label %47, !prof !86
 
 47:                                               ; preds = %45
   br i1 %8, label %48, label %55
@@ -24315,7 +24037,7 @@ define internal i32 @__kmpc_master(ptr nocapture nofree noundef readnone %0, i32
   %51 = getelementptr inbounds ptr, ptr %49, i64 %50
   %52 = load ptr, ptr %51, align 8, !tbaa !20
   %53 = icmp eq ptr %52, null
-  br i1 %53, label %55, label %54, !prof !85
+  br i1 %53, label %55, label %54, !prof !74
 
 54:                                               ; preds = %48
   br label %55
@@ -24342,7 +24064,7 @@ define internal void @__kmpc_end_master(ptr nocapture nofree noundef readnone %0
 
 ; Function Attrs: mustprogress nounwind memory(read, inaccessiblemem: write)
 define internal i32 @__kmpc_masked(ptr nocapture nofree noundef readnone %0, i32 noundef %1, i32 noundef %2) #31 {
-  %4 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %4 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %5 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %6 = icmp eq i32 %5, 0
   %7 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -24356,7 +24078,7 @@ define internal i32 @__kmpc_masked(ptr nocapture nofree noundef readnone %0, i32
   %13 = getelementptr inbounds ptr, ptr %11, i64 %12
   %14 = load ptr, ptr %13, align 8, !tbaa !20
   %15 = icmp eq ptr %14, null
-  br i1 %15, label %17, label %16, !prof !85
+  br i1 %15, label %17, label %16, !prof !74
 
 16:                                               ; preds = %10
   br label %17
@@ -24366,7 +24088,7 @@ define internal i32 @__kmpc_masked(ptr nocapture nofree noundef readnone %0, i32
   %19 = getelementptr inbounds i8, ptr %18, i64 4
   %20 = load i32, ptr %19, align 4, !tbaa !18
   %21 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %22 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %22 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %23 = and i32 %21, 1
   %24 = and i32 %23, %22
   %25 = icmp eq i32 %24, 0
@@ -24392,7 +24114,7 @@ define internal i32 @__kmpc_masked(ptr nocapture nofree noundef readnone %0, i32
   %35 = getelementptr inbounds ptr, ptr %33, i64 %34
   %36 = load ptr, ptr %35, align 8, !tbaa !20
   %37 = icmp eq ptr %36, null
-  br i1 %37, label %39, label %38, !prof !85
+  br i1 %37, label %39, label %38, !prof !74
 
 38:                                               ; preds = %32
   br label %39
@@ -24412,7 +24134,7 @@ define internal i32 @__kmpc_masked(ptr nocapture nofree noundef readnone %0, i32
 46:                                               ; preds = %39
   tail call void @llvm.assume(i1 noundef %43) #59
   %47 = icmp ult i32 %42, %20
-  br i1 %47, label %62, label %48, !prof !97
+  br i1 %47, label %62, label %48, !prof !86
 
 48:                                               ; preds = %46
   br i1 %9, label %49, label %56
@@ -24423,7 +24145,7 @@ define internal i32 @__kmpc_masked(ptr nocapture nofree noundef readnone %0, i32
   %52 = getelementptr inbounds ptr, ptr %50, i64 %51
   %53 = load ptr, ptr %52, align 8, !tbaa !20
   %54 = icmp eq ptr %53, null
-  br i1 %54, label %56, label %55, !prof !85
+  br i1 %54, label %56, label %55, !prof !74
 
 55:                                               ; preds = %49
   br label %56
@@ -24433,7 +24155,7 @@ define internal i32 @__kmpc_masked(ptr nocapture nofree noundef readnone %0, i32
   %58 = getelementptr inbounds i8, ptr %57, i64 8
   %59 = load i32, ptr %58, align 4, !tbaa !18
   %60 = icmp eq i32 %59, %20
-  %61 = select i1 %60, i32 %4, i32 0, !prof !85
+  %61 = select i1 %60, i32 %4, i32 0, !prof !74
   br label %62
 
 62:                                               ; preds = %56, %46, %29
@@ -24450,7 +24172,7 @@ define internal void @__kmpc_end_masked(ptr nocapture nofree noundef readnone %0
 
 ; Function Attrs: mustprogress nounwind memory(read, inaccessiblemem: write)
 define internal i32 @__kmpc_single(ptr nocapture nofree noundef readnone %0, i32 noundef %1) #31 {
-  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %3 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %4 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %5 = icmp eq i32 %4, 0
   %6 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -24464,7 +24186,7 @@ define internal i32 @__kmpc_single(ptr nocapture nofree noundef readnone %0, i32
   %12 = getelementptr inbounds ptr, ptr %10, i64 %11
   %13 = load ptr, ptr %12, align 8, !tbaa !20
   %14 = icmp eq ptr %13, null
-  br i1 %14, label %16, label %15, !prof !85
+  br i1 %14, label %16, label %15, !prof !74
 
 15:                                               ; preds = %9
   br label %16
@@ -24474,7 +24196,7 @@ define internal i32 @__kmpc_single(ptr nocapture nofree noundef readnone %0, i32
   %18 = getelementptr inbounds i8, ptr %17, i64 4
   %19 = load i32, ptr %18, align 4, !tbaa !18
   %20 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %21 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %21 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %22 = and i32 %20, 1
   %23 = and i32 %22, %21
   %24 = icmp eq i32 %23, 0
@@ -24500,7 +24222,7 @@ define internal i32 @__kmpc_single(ptr nocapture nofree noundef readnone %0, i32
   %34 = getelementptr inbounds ptr, ptr %32, i64 %33
   %35 = load ptr, ptr %34, align 8, !tbaa !20
   %36 = icmp eq ptr %35, null
-  br i1 %36, label %38, label %37, !prof !85
+  br i1 %36, label %38, label %37, !prof !74
 
 37:                                               ; preds = %31
   br label %38
@@ -24520,7 +24242,7 @@ define internal i32 @__kmpc_single(ptr nocapture nofree noundef readnone %0, i32
 45:                                               ; preds = %38
   tail call void @llvm.assume(i1 noundef %42) #59
   %46 = icmp ult i32 %41, %19
-  br i1 %46, label %63, label %47, !prof !97
+  br i1 %46, label %63, label %47, !prof !86
 
 47:                                               ; preds = %45
   br i1 %8, label %48, label %55
@@ -24531,7 +24253,7 @@ define internal i32 @__kmpc_single(ptr nocapture nofree noundef readnone %0, i32
   %51 = getelementptr inbounds ptr, ptr %49, i64 %50
   %52 = load ptr, ptr %51, align 8, !tbaa !20
   %53 = icmp eq ptr %52, null
-  br i1 %53, label %55, label %54, !prof !85
+  br i1 %53, label %55, label %54, !prof !74
 
 54:                                               ; preds = %48
   br label %55
@@ -24573,7 +24295,7 @@ define internal void @__kmpc_critical(ptr nocapture nofree noundef readnone %0, 
   %5 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %6 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %5) #64
   %7 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %8 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %8 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %9 = and i32 %7, 1
   %10 = and i32 %9, %8
   %11 = icmp ne i32 %10, 0
@@ -24587,7 +24309,7 @@ define internal void @__kmpc_critical(ptr nocapture nofree noundef readnone %0, 
 
 15:                                               ; preds = %3
   %16 = icmp eq i64 %4, 0
-  %17 = tail call i64 @llvm.cttz.i64(i64 noundef %4, i1 noundef true) #67, !range !101
+  %17 = tail call i64 @llvm.cttz.i64(i64 noundef %4, i1 noundef true) #67, !range !90
   %18 = trunc i64 %17 to i32
   %19 = select i1 %16, i32 -1, i32 %18
   %20 = icmp ult i32 %6, 64
@@ -24605,7 +24327,7 @@ define internal void @__kmpc_critical(ptr nocapture nofree noundef readnone %0, 
   tail call void @llvm.amdgcn.s.sleep(i32 noundef 32) #56
   %26 = cmpxchg ptr %2, i32 0, i32 1 monotonic monotonic, align 4
   %27 = extractvalue { i32, i1 } %26, 1
-  br i1 %27, label %28, label %25, !llvm.loop !109
+  br i1 %27, label %28, label %25, !llvm.loop !98
 
 28:                                               ; preds = %25, %22
   fence syncscope("agent") acquire
@@ -24741,7 +24463,7 @@ define internal noalias noundef nonnull ptr @__kmpc_omp_task_alloc(ptr nocapture
 ; Function Attrs: convergent nounwind
 define internal noundef i32 @__kmpc_omp_task(ptr nocapture nofree noundef readnone %0, i32 noundef %1, ptr noundef %2) #50 {
   %4 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %5 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %5 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %6 = and i32 %5, 1
   %7 = and i32 %6, %4
   %8 = icmp eq i32 %7, 0
@@ -24784,20 +24506,20 @@ define internal noundef i32 @__kmpc_omp_task(ptr nocapture nofree noundef readno
   br label %29
 
 29:                                               ; preds = %26, %13
-  %30 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %30 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %31 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %32 = zext i32 %30 to i64
   %33 = getelementptr inbounds ptr, ptr %31, i64 %32
   %34 = load ptr, ptr %33, align 8, !tbaa !20
   %35 = icmp eq ptr %34, null
   %36 = select i1 %35, ptr addrspacecast (ptr addrspace(3) @_ZN4ompx5state9TeamStateE to ptr), ptr %34
-  tail call void @llvm.memcpy.p0.p0.i64(ptr nocapture nofree noundef nonnull align 8 dereferenceable(28) %14, ptr noundef nonnull align 8 dereferenceable(28) %36, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !95
+  tail call void @llvm.memcpy.p0.p0.i64(ptr nocapture nofree noundef nonnull align 8 dereferenceable(28) %14, ptr noundef nonnull align 8 dereferenceable(28) %36, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !84
   %37 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %14, i64 0, i32 1
-  store ptr %34, ptr %37, align 8, !tbaa !86
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
+  store ptr %34, ptr %37, align 8, !tbaa !75
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
   store ptr %14, ptr %33, align 8, !tbaa !20
   %38 = getelementptr inbounds %struct.IndirectCallTable, ptr %2, i64 0, i32 1
-  %39 = load ptr, ptr %38, align 8, !tbaa !110
+  %39 = load ptr, ptr %38, align 8, !tbaa !99
   %40 = tail call noundef i32 %39(i32 noundef 0, ptr noundef %2) #61
   %41 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
   %42 = and i32 %6, %41
@@ -24822,11 +24544,11 @@ define internal noundef i32 @__kmpc_omp_task(ptr nocapture nofree noundef readno
   %53 = getelementptr inbounds ptr, ptr %52, i64 %32
   %54 = load ptr, ptr %53, align 8, !tbaa !20
   %55 = icmp eq ptr %54, null
-  br i1 %55, label %61, label %56, !prof !85
+  br i1 %55, label %61, label %56, !prof !74
 
 56:                                               ; preds = %51
   %57 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %54, i64 0, i32 1
-  %58 = load ptr, ptr %57, align 8, !tbaa !86
+  %58 = load ptr, ptr %57, align 8, !tbaa !75
   tail call void @__kmpc_free_shared(ptr noalias nocapture nofree noundef nonnull readnone align 8 dereferenceable(40) %54, i64 noundef 40) #62
   %59 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %60 = getelementptr inbounds ptr, ptr %59, i64 %32
@@ -24840,7 +24562,7 @@ define internal noundef i32 @__kmpc_omp_task(ptr nocapture nofree noundef readno
 ; Function Attrs: convergent nounwind
 define internal noundef i32 @__kmpc_omp_task_with_deps(ptr nocapture nofree noundef readnone %0, i32 noundef %1, ptr noundef %2, i32 noundef %3, ptr nocapture nofree noundef readnone %4, i32 noundef %5, ptr nocapture nofree noundef readnone %6) #50 {
   %8 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %9 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %9 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %10 = and i32 %9, 1
   %11 = and i32 %10, %8
   %12 = icmp eq i32 %11, 0
@@ -24883,20 +24605,20 @@ define internal noundef i32 @__kmpc_omp_task_with_deps(ptr nocapture nofree noun
   br label %33
 
 33:                                               ; preds = %30, %17
-  %34 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %34 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %35 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %36 = zext i32 %34 to i64
   %37 = getelementptr inbounds ptr, ptr %35, i64 %36
   %38 = load ptr, ptr %37, align 8, !tbaa !20
   %39 = icmp eq ptr %38, null
   %40 = select i1 %39, ptr addrspacecast (ptr addrspace(3) @_ZN4ompx5state9TeamStateE to ptr), ptr %38
-  tail call void @llvm.memcpy.p0.p0.i64(ptr nocapture nofree noundef nonnull align 8 dereferenceable(28) %18, ptr noundef nonnull align 8 dereferenceable(28) %40, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !95
+  tail call void @llvm.memcpy.p0.p0.i64(ptr nocapture nofree noundef nonnull align 8 dereferenceable(28) %18, ptr noundef nonnull align 8 dereferenceable(28) %40, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !84
   %41 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %18, i64 0, i32 1
-  store ptr %38, ptr %41, align 8, !tbaa !86
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
+  store ptr %38, ptr %41, align 8, !tbaa !75
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
   store ptr %18, ptr %37, align 8, !tbaa !20
   %42 = getelementptr inbounds %struct.IndirectCallTable, ptr %2, i64 0, i32 1
-  %43 = load ptr, ptr %42, align 8, !tbaa !110
+  %43 = load ptr, ptr %42, align 8, !tbaa !99
   %44 = tail call noundef i32 %43(i32 noundef 0, ptr noundef %2) #61
   %45 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
   %46 = and i32 %10, %45
@@ -24921,11 +24643,11 @@ define internal noundef i32 @__kmpc_omp_task_with_deps(ptr nocapture nofree noun
   %57 = getelementptr inbounds ptr, ptr %56, i64 %36
   %58 = load ptr, ptr %57, align 8, !tbaa !20
   %59 = icmp eq ptr %58, null
-  br i1 %59, label %65, label %60, !prof !85
+  br i1 %59, label %65, label %60, !prof !74
 
 60:                                               ; preds = %55
   %61 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %58, i64 0, i32 1
-  %62 = load ptr, ptr %61, align 8, !tbaa !86
+  %62 = load ptr, ptr %61, align 8, !tbaa !75
   tail call void @__kmpc_free_shared(ptr noalias nocapture nofree noundef nonnull readnone align 8 dereferenceable(40) %58, i64 noundef 40) #62
   %63 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %64 = getelementptr inbounds ptr, ptr %63, i64 %36
@@ -24939,7 +24661,7 @@ define internal noundef i32 @__kmpc_omp_task_with_deps(ptr nocapture nofree noun
 ; Function Attrs: mustprogress nounwind memory(readwrite, inaccessiblemem: write)
 define internal void @__kmpc_omp_task_begin_if0(ptr nocapture nofree noundef readnone %0, i32 noundef %1, ptr nocapture nofree noundef readnone %2) #37 {
   %4 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %5 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %5 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %6 = and i32 %5, 1
   %7 = and i32 %6, %4
   %8 = icmp eq i32 %7, 0
@@ -24982,17 +24704,17 @@ define internal void @__kmpc_omp_task_begin_if0(ptr nocapture nofree noundef rea
   br label %29
 
 29:                                               ; preds = %26, %13
-  %30 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %30 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %31 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %32 = zext i32 %30 to i64
   %33 = getelementptr inbounds ptr, ptr %31, i64 %32
   %34 = load ptr, ptr %33, align 8, !tbaa !20
   %35 = icmp eq ptr %34, null
   %36 = select i1 %35, ptr addrspacecast (ptr addrspace(3) @_ZN4ompx5state9TeamStateE to ptr), ptr %34
-  tail call void @llvm.memcpy.p0.p0.i64(ptr nocapture nofree noundef nonnull align 8 dereferenceable(28) %14, ptr noundef nonnull align 8 dereferenceable(28) %36, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !95
+  tail call void @llvm.memcpy.p0.p0.i64(ptr nocapture nofree noundef nonnull align 8 dereferenceable(28) %14, ptr noundef nonnull align 8 dereferenceable(28) %36, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !84
   %37 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %14, i64 0, i32 1
-  store ptr %34, ptr %37, align 8, !tbaa !86
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
+  store ptr %34, ptr %37, align 8, !tbaa !75
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
   store ptr %14, ptr %33, align 8, !tbaa !20
   ret void
 }
@@ -25000,7 +24722,7 @@ define internal void @__kmpc_omp_task_begin_if0(ptr nocapture nofree noundef rea
 ; Function Attrs: convergent mustprogress nounwind memory(readwrite, inaccessiblemem: write)
 define internal void @__kmpc_omp_task_complete_if0(ptr nocapture nofree noundef readnone %0, i32 noundef %1, ptr nocapture nofree noundef readnone %2) #38 {
   %4 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %5 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %5 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %6 = and i32 %4, 1
   %7 = and i32 %6, %5
   %8 = icmp eq i32 %7, 0
@@ -25020,17 +24742,17 @@ define internal void @__kmpc_omp_task_complete_if0(ptr nocapture nofree noundef 
   br i1 %15, label %28, label %16
 
 16:                                               ; preds = %13
-  %17 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %17 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %18 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %19 = zext i32 %17 to i64
   %20 = getelementptr inbounds ptr, ptr %18, i64 %19
   %21 = load ptr, ptr %20, align 8, !tbaa !20
   %22 = icmp eq ptr %21, null
-  br i1 %22, label %28, label %23, !prof !85
+  br i1 %22, label %28, label %23, !prof !74
 
 23:                                               ; preds = %16
   %24 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %21, i64 0, i32 1
-  %25 = load ptr, ptr %24, align 8, !tbaa !86
+  %25 = load ptr, ptr %24, align 8, !tbaa !75
   tail call void @__kmpc_free_shared(ptr noalias nocapture nofree noundef nonnull readnone align 8 dereferenceable(40) %21, i64 noundef 40) #62
   %26 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %27 = getelementptr inbounds ptr, ptr %26, i64 %19
@@ -25075,7 +24797,7 @@ define internal void @__kmpc_taskloop(ptr nocapture nofree noundef readnone %0, 
 
 15:                                               ; preds = %11
   %16 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %17 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %17 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %18 = and i32 %17, 1
   %19 = and i32 %18, %16
   %20 = icmp eq i32 %19, 0
@@ -25118,20 +24840,20 @@ define internal void @__kmpc_taskloop(ptr nocapture nofree noundef readnone %0, 
   br label %41
 
 41:                                               ; preds = %38, %25
-  %42 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %42 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %43 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %44 = zext i32 %42 to i64
   %45 = getelementptr inbounds ptr, ptr %43, i64 %44
   %46 = load ptr, ptr %45, align 8, !tbaa !20
   %47 = icmp eq ptr %46, null
   %48 = select i1 %47, ptr addrspacecast (ptr addrspace(3) @_ZN4ompx5state9TeamStateE to ptr), ptr %46
-  tail call void @llvm.memcpy.p0.p0.i64(ptr nocapture nofree noundef nonnull align 8 dereferenceable(28) %26, ptr noundef nonnull align 8 dereferenceable(28) %48, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !95
+  tail call void @llvm.memcpy.p0.p0.i64(ptr nocapture nofree noundef nonnull align 8 dereferenceable(28) %26, ptr noundef nonnull align 8 dereferenceable(28) %48, i64 noundef 28, i1 noundef false) #56, !tbaa.struct !84
   %49 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %26, i64 0, i32 1
-  store ptr %46, ptr %49, align 8, !tbaa !86
-  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !75
+  store ptr %46, ptr %49, align 8, !tbaa !75
+  store i32 1, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8, !tbaa !63
   store ptr %26, ptr %45, align 8, !tbaa !20
   %50 = getelementptr inbounds %struct.IndirectCallTable, ptr %2, i64 0, i32 1
-  %51 = load ptr, ptr %50, align 8, !tbaa !110
+  %51 = load ptr, ptr %50, align 8, !tbaa !99
   %52 = tail call noundef i32 %51(i32 noundef 0, ptr noundef %2) #61
   %53 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
   %54 = and i32 %18, %53
@@ -25156,11 +24878,11 @@ define internal void @__kmpc_taskloop(ptr nocapture nofree noundef readnone %0, 
   %65 = getelementptr inbounds ptr, ptr %64, i64 %44
   %66 = load ptr, ptr %65, align 8, !tbaa !20
   %67 = icmp eq ptr %66, null
-  br i1 %67, label %73, label %68, !prof !85
+  br i1 %67, label %73, label %68, !prof !74
 
 68:                                               ; preds = %63
   %69 = getelementptr inbounds %"struct.ompx::state::ThreadStateTy", ptr %66, i64 0, i32 1
-  %70 = load ptr, ptr %69, align 8, !tbaa !86
+  %70 = load ptr, ptr %69, align 8, !tbaa !75
   tail call void @__kmpc_free_shared(ptr noalias nocapture nofree noundef nonnull readnone align 8 dereferenceable(40) %66, i64 noundef 40) #62
   %71 = load ptr, ptr addrspace(3) @_ZN4ompx5state12ThreadStatesE, align 8, !tbaa !20
   %72 = getelementptr inbounds ptr, ptr %71, i64 %44
@@ -25205,7 +24927,7 @@ define internal noundef i32 @_ZN4ompx5utils7shuffleEmii(i64 %0, i32 noundef %1, 
   %4 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %5 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %4) #64
   %6 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %7 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %7 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %8 = and i32 %6, 1
   %9 = and i32 %8, %7
   %10 = icmp ne i32 %9, 0
@@ -25233,7 +24955,7 @@ define internal noundef i32 @_ZN4ompx5utils11shuffleDownEmiji(i64 noundef %0, i3
   %5 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %6 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %5) #64
   %7 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %8 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %8 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %9 = and i32 %7, 1
   %10 = and i32 %9, %8
   %11 = icmp ne i32 %10, 0
@@ -25270,7 +24992,7 @@ define internal i32 @__kmpc_shuffle_int32(i32 noundef %0, i16 noundef signext %1
   %4 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %5 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %4) #64
   %6 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %7 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %7 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %8 = and i32 %6, 1
   %9 = and i32 %8, %7
   %10 = icmp ne i32 %9, 0
@@ -25303,7 +25025,7 @@ define internal i64 @__kmpc_shuffle_int64(i64 noundef %0, i16 noundef signext %1
   %4 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %5 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %4) #64
   %6 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %7 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %7 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %8 = and i32 %6, 1
   %9 = and i32 %8, %7
   %10 = icmp ne i32 %9, 0
@@ -25363,23 +25085,23 @@ define internal void @__kmpc_dispatch_init_8u(ptr nocapture nofree noundef readn
 define internal noundef i32 @__kmpc_dispatch_next_4(ptr nocapture nofree noundef readnone %0, i32 noundef %1, ptr nocapture nofree noundef writeonly %2, ptr nocapture nofree noundef writeonly %3, ptr nocapture nofree noundef writeonly %4, ptr nocapture nofree noundef writeonly %5) #38 {
   %7 = load ptr, ptr addrspace(5) @_ZL12ThreadDSTPtr, align 8, !tbaa !20
   %8 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 4
-  %9 = load i32, ptr %8, align 8, !tbaa !112
+  %9 = load i32, ptr %8, align 8, !tbaa !101
   %10 = add i32 %9, -33
   %11 = icmp ult i32 %10, 2
   br i1 %11, label %12, label %33
 
 12:                                               ; preds = %6
   %13 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 2
-  %14 = load i64, ptr %13, align 8, !tbaa !115
+  %14 = load i64, ptr %13, align 8, !tbaa !104
   %15 = trunc i64 %14 to i32
   %16 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 1
-  %17 = load i64, ptr %16, align 8, !tbaa !116
+  %17 = load i64, ptr %16, align 8, !tbaa !105
   %18 = trunc i64 %17 to i32
   %19 = icmp sgt i32 %15, %18
   br i1 %19, label %86, label %20
 
 20:                                               ; preds = %12
-  %21 = load i64, ptr %7, align 8, !tbaa !117
+  %21 = load i64, ptr %7, align 8, !tbaa !106
   %22 = trunc i64 %21 to i32
   store i32 %15, ptr %3, align 4, !tbaa !18
   %23 = add nsw i32 %22, %15
@@ -25390,27 +25112,27 @@ define internal noundef i32 @__kmpc_dispatch_next_4(ptr nocapture nofree noundef
   %27 = zext i1 %26 to i32
   store i32 %27, ptr %2, align 4, !tbaa !18
   %28 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 3
-  %29 = load i64, ptr %28, align 8, !tbaa !118
+  %29 = load i64, ptr %28, align 8, !tbaa !107
   %30 = add i64 %29, %14
   %31 = shl i64 %30, 32
   %32 = ashr exact i64 %31, 32
-  store i64 %32, ptr %13, align 8, !tbaa !115
+  store i64 %32, ptr %13, align 8, !tbaa !104
   br label %86
 
 33:                                               ; preds = %6
-  %34 = load i64, ptr %7, align 8, !tbaa !117
+  %34 = load i64, ptr %7, align 8, !tbaa !106
   %35 = trunc i64 %34 to i32
   %36 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 2
-  %37 = load i64, ptr %36, align 8, !tbaa !115
+  %37 = load i64, ptr %36, align 8, !tbaa !104
   %38 = trunc i64 %37 to i32
   %39 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 1
-  %40 = load i64, ptr %39, align 8, !tbaa !116
+  %40 = load i64, ptr %39, align 8, !tbaa !105
   %41 = trunc i64 %40 to i32
   %42 = tail call i64 @llvm.amdgcn.ballot.i64(i1 noundef true) #56
   %43 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %44 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %43) #64
   %45 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %46 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %46 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %47 = and i32 %45, 1
   %48 = and i32 %47, %46
   %49 = icmp ne i32 %48, 0
@@ -25435,16 +25157,16 @@ define internal noundef i32 @__kmpc_dispatch_next_4(ptr nocapture nofree noundef
   br i1 %61, label %62, label %66
 
 62:                                               ; preds = %53
-  %63 = tail call i64 @llvm.ctpop.i64(i64 noundef %42) #56, !range !99
+  %63 = tail call i64 @llvm.ctpop.i64(i64 noundef %42) #56, !range !88
   %64 = atomicrmw add ptr addrspace(3) @_ZL3Cnt, i64 %63 seq_cst, align 8
   %65 = trunc i64 %64 to i32
   br label %66
 
 66:                                               ; preds = %62, %53
   %67 = phi i32 [ %65, %62 ], [ 0, %53 ]
-  %68 = tail call i64 @llvm.ctpop.i64(i64 noundef %60) #56, !range !99
+  %68 = tail call i64 @llvm.ctpop.i64(i64 noundef %60) #56, !range !88
   %69 = icmp eq i64 %42, 0
-  %70 = tail call i64 @llvm.cttz.i64(i64 noundef %42, i1 noundef true) #56, !range !101
+  %70 = tail call i64 @llvm.cttz.i64(i64 noundef %42, i1 noundef true) #56, !range !90
   %71 = trunc i64 %70 to i32
   %72 = shl nuw nsw i32 %71, 2
   %73 = select i1 %69, i32 -4, i32 %72
@@ -25480,23 +25202,23 @@ declare i32 @llvm.smin.i32(i32, i32) #2
 define internal noundef i32 @__kmpc_dispatch_next_4u(ptr nocapture nofree noundef readnone %0, i32 noundef %1, ptr nocapture nofree noundef writeonly %2, ptr nocapture nofree noundef writeonly %3, ptr nocapture nofree noundef writeonly %4, ptr nocapture nofree noundef writeonly %5) #38 {
   %7 = load ptr, ptr addrspace(5) @_ZL12ThreadDSTPtr, align 8, !tbaa !20
   %8 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 4
-  %9 = load i32, ptr %8, align 8, !tbaa !112
+  %9 = load i32, ptr %8, align 8, !tbaa !101
   %10 = add i32 %9, -33
   %11 = icmp ult i32 %10, 2
   br i1 %11, label %12, label %32
 
 12:                                               ; preds = %6
   %13 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 2
-  %14 = load i64, ptr %13, align 8, !tbaa !115
+  %14 = load i64, ptr %13, align 8, !tbaa !104
   %15 = trunc i64 %14 to i32
   %16 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 1
-  %17 = load i64, ptr %16, align 8, !tbaa !116
+  %17 = load i64, ptr %16, align 8, !tbaa !105
   %18 = trunc i64 %17 to i32
   %19 = icmp ugt i32 %15, %18
   br i1 %19, label %85, label %20
 
 20:                                               ; preds = %12
-  %21 = load i64, ptr %7, align 8, !tbaa !117
+  %21 = load i64, ptr %7, align 8, !tbaa !106
   %22 = trunc i64 %21 to i32
   store i32 %15, ptr %3, align 4, !tbaa !18
   %23 = add i32 %15, -1
@@ -25507,26 +25229,26 @@ define internal noundef i32 @__kmpc_dispatch_next_4u(ptr nocapture nofree nounde
   %27 = zext i1 %26 to i32
   store i32 %27, ptr %2, align 4, !tbaa !18
   %28 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 3
-  %29 = load i64, ptr %28, align 8, !tbaa !118
+  %29 = load i64, ptr %28, align 8, !tbaa !107
   %30 = add i64 %29, %14
   %31 = and i64 %30, 4294967295
-  store i64 %31, ptr %13, align 8, !tbaa !115
+  store i64 %31, ptr %13, align 8, !tbaa !104
   br label %85
 
 32:                                               ; preds = %6
-  %33 = load i64, ptr %7, align 8, !tbaa !117
+  %33 = load i64, ptr %7, align 8, !tbaa !106
   %34 = trunc i64 %33 to i32
   %35 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 2
-  %36 = load i64, ptr %35, align 8, !tbaa !115
+  %36 = load i64, ptr %35, align 8, !tbaa !104
   %37 = trunc i64 %36 to i32
   %38 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 1
-  %39 = load i64, ptr %38, align 8, !tbaa !116
+  %39 = load i64, ptr %38, align 8, !tbaa !105
   %40 = trunc i64 %39 to i32
   %41 = tail call i64 @llvm.amdgcn.ballot.i64(i1 noundef true) #56
   %42 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %43 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %42) #64
   %44 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %45 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %45 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %46 = and i32 %44, 1
   %47 = and i32 %46, %45
   %48 = icmp ne i32 %47, 0
@@ -25551,16 +25273,16 @@ define internal noundef i32 @__kmpc_dispatch_next_4u(ptr nocapture nofree nounde
   br i1 %60, label %61, label %65
 
 61:                                               ; preds = %52
-  %62 = tail call i64 @llvm.ctpop.i64(i64 noundef %41) #56, !range !99
+  %62 = tail call i64 @llvm.ctpop.i64(i64 noundef %41) #56, !range !88
   %63 = atomicrmw add ptr addrspace(3) @_ZL3Cnt, i64 %62 seq_cst, align 8
   %64 = trunc i64 %63 to i32
   br label %65
 
 65:                                               ; preds = %61, %52
   %66 = phi i32 [ %64, %61 ], [ 0, %52 ]
-  %67 = tail call i64 @llvm.ctpop.i64(i64 noundef %59) #56, !range !99
+  %67 = tail call i64 @llvm.ctpop.i64(i64 noundef %59) #56, !range !88
   %68 = icmp eq i64 %41, 0
-  %69 = tail call i64 @llvm.cttz.i64(i64 noundef %41, i1 noundef true) #56, !range !101
+  %69 = tail call i64 @llvm.cttz.i64(i64 noundef %41, i1 noundef true) #56, !range !90
   %70 = trunc i64 %69 to i32
   %71 = shl nuw nsw i32 %70, 2
   %72 = select i1 %68, i32 -4, i32 %71
@@ -25593,21 +25315,21 @@ define internal noundef i32 @__kmpc_dispatch_next_4u(ptr nocapture nofree nounde
 define internal noundef i32 @__kmpc_dispatch_next_8(ptr nocapture nofree noundef readnone %0, i32 noundef %1, ptr nocapture nofree noundef writeonly %2, ptr nocapture nofree noundef writeonly %3, ptr nocapture nofree noundef writeonly %4, ptr nocapture nofree noundef writeonly %5) #38 {
   %7 = load ptr, ptr addrspace(5) @_ZL12ThreadDSTPtr, align 8, !tbaa !20
   %8 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 4
-  %9 = load i32, ptr %8, align 8, !tbaa !112
+  %9 = load i32, ptr %8, align 8, !tbaa !101
   %10 = add i32 %9, -33
   %11 = icmp ult i32 %10, 2
   br i1 %11, label %12, label %28
 
 12:                                               ; preds = %6
   %13 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 2
-  %14 = load i64, ptr %13, align 8, !tbaa !115
+  %14 = load i64, ptr %13, align 8, !tbaa !104
   %15 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 1
-  %16 = load i64, ptr %15, align 8, !tbaa !116
+  %16 = load i64, ptr %15, align 8, !tbaa !105
   %17 = icmp sgt i64 %14, %16
   br i1 %17, label %78, label %18
 
 18:                                               ; preds = %12
-  %19 = load i64, ptr %7, align 8, !tbaa !117
+  %19 = load i64, ptr %7, align 8, !tbaa !106
   store i64 %14, ptr %3, align 8, !tbaa !14
   %20 = add nsw i64 %19, %14
   %21 = add nsw i64 %20, -1
@@ -25617,22 +25339,22 @@ define internal noundef i32 @__kmpc_dispatch_next_8(ptr nocapture nofree noundef
   %24 = zext i1 %23 to i32
   store i32 %24, ptr %2, align 4, !tbaa !18
   %25 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 3
-  %26 = load i64, ptr %25, align 8, !tbaa !118
+  %26 = load i64, ptr %25, align 8, !tbaa !107
   %27 = add nsw i64 %26, %14
-  store i64 %27, ptr %13, align 8, !tbaa !115
+  store i64 %27, ptr %13, align 8, !tbaa !104
   br label %78
 
 28:                                               ; preds = %6
-  %29 = load i64, ptr %7, align 8, !tbaa !117
+  %29 = load i64, ptr %7, align 8, !tbaa !106
   %30 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 2
-  %31 = load i64, ptr %30, align 8, !tbaa !115
+  %31 = load i64, ptr %30, align 8, !tbaa !104
   %32 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 1
-  %33 = load i64, ptr %32, align 8, !tbaa !116
+  %33 = load i64, ptr %32, align 8, !tbaa !105
   %34 = tail call i64 @llvm.amdgcn.ballot.i64(i1 noundef true) #56
   %35 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %36 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %35) #64
   %37 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %38 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %38 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %39 = and i32 %37, 1
   %40 = and i32 %39, %38
   %41 = icmp ne i32 %40, 0
@@ -25657,16 +25379,16 @@ define internal noundef i32 @__kmpc_dispatch_next_8(ptr nocapture nofree noundef
   br i1 %53, label %54, label %58
 
 54:                                               ; preds = %45
-  %55 = tail call i64 @llvm.ctpop.i64(i64 noundef %34) #56, !range !99
+  %55 = tail call i64 @llvm.ctpop.i64(i64 noundef %34) #56, !range !88
   %56 = atomicrmw add ptr addrspace(3) @_ZL3Cnt, i64 %55 seq_cst, align 8
   %57 = trunc i64 %56 to i32
   br label %58
 
 58:                                               ; preds = %54, %45
   %59 = phi i32 [ %57, %54 ], [ 0, %45 ]
-  %60 = tail call i64 @llvm.ctpop.i64(i64 noundef %52) #56, !range !99
+  %60 = tail call i64 @llvm.ctpop.i64(i64 noundef %52) #56, !range !88
   %61 = icmp eq i64 %34, 0
-  %62 = tail call i64 @llvm.cttz.i64(i64 noundef %34, i1 noundef true) #56, !range !101
+  %62 = tail call i64 @llvm.cttz.i64(i64 noundef %34, i1 noundef true) #56, !range !90
   %63 = trunc i64 %62 to i32
   %64 = shl nuw nsw i32 %63, 2
   %65 = select i1 %61, i32 -4, i32 %64
@@ -25699,21 +25421,21 @@ define internal noundef i32 @__kmpc_dispatch_next_8(ptr nocapture nofree noundef
 define internal noundef i32 @__kmpc_dispatch_next_8u(ptr nocapture nofree noundef readnone %0, i32 noundef %1, ptr nocapture nofree noundef writeonly %2, ptr nocapture nofree noundef writeonly %3, ptr nocapture nofree noundef writeonly %4, ptr nocapture nofree noundef writeonly %5) #38 {
   %7 = load ptr, ptr addrspace(5) @_ZL12ThreadDSTPtr, align 8, !tbaa !20
   %8 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 4
-  %9 = load i32, ptr %8, align 8, !tbaa !112
+  %9 = load i32, ptr %8, align 8, !tbaa !101
   %10 = add i32 %9, -33
   %11 = icmp ult i32 %10, 2
   br i1 %11, label %12, label %28
 
 12:                                               ; preds = %6
   %13 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 2
-  %14 = load i64, ptr %13, align 8, !tbaa !115
+  %14 = load i64, ptr %13, align 8, !tbaa !104
   %15 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 1
-  %16 = load i64, ptr %15, align 8, !tbaa !116
+  %16 = load i64, ptr %15, align 8, !tbaa !105
   %17 = icmp ugt i64 %14, %16
   br i1 %17, label %91, label %18
 
 18:                                               ; preds = %12
-  %19 = load i64, ptr %7, align 8, !tbaa !117
+  %19 = load i64, ptr %7, align 8, !tbaa !106
   store i64 %14, ptr %3, align 8, !tbaa !14
   %20 = add i64 %14, -1
   %21 = add i64 %20, %19
@@ -25723,22 +25445,22 @@ define internal noundef i32 @__kmpc_dispatch_next_8u(ptr nocapture nofree nounde
   %24 = zext i1 %23 to i32
   store i32 %24, ptr %2, align 4, !tbaa !18
   %25 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 3
-  %26 = load i64, ptr %25, align 8, !tbaa !118
+  %26 = load i64, ptr %25, align 8, !tbaa !107
   %27 = add i64 %26, %14
-  store i64 %27, ptr %13, align 8, !tbaa !115
+  store i64 %27, ptr %13, align 8, !tbaa !104
   br label %91
 
 28:                                               ; preds = %6
-  %29 = load i64, ptr %7, align 8, !tbaa !117
+  %29 = load i64, ptr %7, align 8, !tbaa !106
   %30 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 2
-  %31 = load i64, ptr %30, align 8, !tbaa !115
+  %31 = load i64, ptr %30, align 8, !tbaa !104
   %32 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %7, i64 0, i32 1
-  %33 = load i64, ptr %32, align 8, !tbaa !116
+  %33 = load i64, ptr %32, align 8, !tbaa !105
   %34 = tail call i64 @llvm.amdgcn.ballot.i64(i1 noundef true) #56
   %35 = tail call i32 @llvm.amdgcn.mbcnt.lo(i32 noundef -1, i32 noundef 0) #64
   %36 = tail call i32 @llvm.amdgcn.mbcnt.hi(i32 noundef -1, i32 %35) #64
   %37 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %38 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %38 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %39 = and i32 %37, 1
   %40 = and i32 %39, %38
   %41 = icmp ne i32 %40, 0
@@ -25763,16 +25485,16 @@ define internal noundef i32 @__kmpc_dispatch_next_8u(ptr nocapture nofree nounde
   br i1 %53, label %54, label %58
 
 54:                                               ; preds = %45
-  %55 = tail call i64 @llvm.ctpop.i64(i64 noundef %34) #56, !range !99
+  %55 = tail call i64 @llvm.ctpop.i64(i64 noundef %34) #56, !range !88
   %56 = atomicrmw add ptr addrspace(3) @_ZL3Cnt, i64 %55 seq_cst, align 8
   %57 = trunc i64 %56 to i32
   br label %58
 
 58:                                               ; preds = %54, %45
   %59 = phi i32 [ %57, %54 ], [ 0, %45 ]
-  %60 = tail call i64 @llvm.ctpop.i64(i64 noundef %52) #56, !range !99
+  %60 = tail call i64 @llvm.ctpop.i64(i64 noundef %52) #56, !range !88
   %61 = icmp eq i64 %34, 0
-  %62 = tail call i64 @llvm.cttz.i64(i64 noundef %34, i1 noundef true) #56, !range !101
+  %62 = tail call i64 @llvm.cttz.i64(i64 noundef %34, i1 noundef true) #56, !range !90
   %63 = trunc i64 %62 to i32
   %64 = shl nuw nsw i32 %63, 2
   %65 = select i1 %61, i32 -4, i32 %64
@@ -25825,7 +25547,7 @@ declare i64 @llvm.umin.i64(i64, i64) #2
 define internal void @__kmpc_dispatch_fini_4(ptr nocapture nofree noundef readnone %0, i32 noundef %1) #51 {
   %3 = load ptr, ptr addrspace(5) @_ZL12ThreadDSTPtr, align 8, !tbaa !20
   %4 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %3, i64 0, i32 5
-  %5 = load ptr, ptr %4, align 8, !tbaa !119
+  %5 = load ptr, ptr %4, align 8, !tbaa !108
   store ptr %5, ptr addrspace(5) @_ZL12ThreadDSTPtr, align 8, !tbaa !20
   ret void
 }
@@ -25834,7 +25556,7 @@ define internal void @__kmpc_dispatch_fini_4(ptr nocapture nofree noundef readno
 define internal void @__kmpc_dispatch_fini_4u(ptr nocapture nofree noundef readnone %0, i32 noundef %1) #51 {
   %3 = load ptr, ptr addrspace(5) @_ZL12ThreadDSTPtr, align 8, !tbaa !20
   %4 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %3, i64 0, i32 5
-  %5 = load ptr, ptr %4, align 8, !tbaa !119
+  %5 = load ptr, ptr %4, align 8, !tbaa !108
   store ptr %5, ptr addrspace(5) @_ZL12ThreadDSTPtr, align 8, !tbaa !20
   ret void
 }
@@ -25843,7 +25565,7 @@ define internal void @__kmpc_dispatch_fini_4u(ptr nocapture nofree noundef readn
 define internal void @__kmpc_dispatch_fini_8(ptr nocapture nofree noundef readnone %0, i32 noundef %1) #51 {
   %3 = load ptr, ptr addrspace(5) @_ZL12ThreadDSTPtr, align 8, !tbaa !20
   %4 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %3, i64 0, i32 5
-  %5 = load ptr, ptr %4, align 8, !tbaa !119
+  %5 = load ptr, ptr %4, align 8, !tbaa !108
   store ptr %5, ptr addrspace(5) @_ZL12ThreadDSTPtr, align 8, !tbaa !20
   ret void
 }
@@ -25852,14 +25574,14 @@ define internal void @__kmpc_dispatch_fini_8(ptr nocapture nofree noundef readno
 define internal void @__kmpc_dispatch_fini_8u(ptr nocapture nofree noundef readnone %0, i32 noundef %1) #51 {
   %3 = load ptr, ptr addrspace(5) @_ZL12ThreadDSTPtr, align 8, !tbaa !20
   %4 = getelementptr inbounds %struct.DynamicScheduleTracker, ptr %3, i64 0, i32 5
-  %5 = load ptr, ptr %4, align 8, !tbaa !119
+  %5 = load ptr, ptr %4, align 8, !tbaa !108
   store ptr %5, ptr addrspace(5) @_ZL12ThreadDSTPtr, align 8, !tbaa !20
   ret void
 }
 
 ; Function Attrs: mustprogress nounwind memory(read, argmem: readwrite, inaccessiblemem: write)
 define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef readnone %0, i32 noundef %1, i32 noundef %2, ptr nocapture nofree noundef writeonly %3, ptr nocapture nofree noundef %4, ptr nocapture nofree noundef %5, ptr nocapture nofree noundef writeonly %6, i32 noundef %7, i32 noundef %8) #52 {
-  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %11 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %12 = icmp eq i32 %11, 0
   %13 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -25873,7 +25595,7 @@ define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef read
   %19 = getelementptr inbounds ptr, ptr %17, i64 %18
   %20 = load ptr, ptr %19, align 8, !tbaa !20
   %21 = icmp eq ptr %20, null
-  br i1 %21, label %23, label %22, !prof !85
+  br i1 %21, label %23, label %22, !prof !74
 
 22:                                               ; preds = %16
   br label %23
@@ -25883,7 +25605,7 @@ define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef read
   %25 = getelementptr inbounds i8, ptr %24, i64 4
   %26 = load i32, ptr %25, align 4, !tbaa !18
   %27 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %29 = and i32 %27, 1
   %30 = and i32 %29, %28
   %31 = icmp eq i32 %30, 0
@@ -25909,7 +25631,7 @@ define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef read
   %41 = getelementptr inbounds ptr, ptr %39, i64 %40
   %42 = load ptr, ptr %41, align 8, !tbaa !20
   %43 = icmp eq ptr %42, null
-  br i1 %43, label %45, label %44, !prof !85
+  br i1 %43, label %45, label %44, !prof !74
 
 44:                                               ; preds = %38
   br label %45
@@ -25929,7 +25651,7 @@ define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef read
 52:                                               ; preds = %45
   tail call void @llvm.assume(i1 noundef %49) #59
   %53 = icmp ult i32 %48, %26
-  br i1 %53, label %68, label %54, !prof !97
+  br i1 %53, label %68, label %54, !prof !86
 
 54:                                               ; preds = %52
   br i1 %15, label %55, label %62
@@ -25940,7 +25662,7 @@ define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef read
   %58 = getelementptr inbounds ptr, ptr %56, i64 %57
   %59 = load ptr, ptr %58, align 8, !tbaa !20
   %60 = icmp eq ptr %59, null
-  br i1 %60, label %62, label %61, !prof !85
+  br i1 %60, label %62, label %61, !prof !74
 
 61:                                               ; preds = %55
   br label %62
@@ -25950,7 +25672,7 @@ define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef read
   %64 = getelementptr inbounds i8, ptr %63, i64 8
   %65 = load i32, ptr %64, align 4, !tbaa !18
   %66 = icmp eq i32 %65, %26
-  %67 = select i1 %66, i32 %10, i32 0, !prof !85
+  %67 = select i1 %66, i32 %10, i32 0, !prof !74
   br label %68
 
 68:                                               ; preds = %62, %52, %35
@@ -25963,7 +25685,7 @@ define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef read
   %73 = getelementptr inbounds ptr, ptr %71, i64 %72
   %74 = load ptr, ptr %73, align 8, !tbaa !20
   %75 = icmp eq ptr %74, null
-  br i1 %75, label %77, label %76, !prof !85
+  br i1 %75, label %77, label %76, !prof !74
 
 76:                                               ; preds = %70
   br label %77
@@ -25995,7 +25717,7 @@ define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef read
   %91 = icmp eq i32 %90, 0
   %92 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %93 = getelementptr inbounds i8, ptr addrspace(4) %92, i64 4
-  %94 = load i16, ptr addrspace(4) %93, align 4
+  %94 = load i16, ptr addrspace(4) %93, align 4, !range !65, !invariant.load !51, !noundef !51
   %95 = zext i16 %94 to i32
   %96 = select i1 %91, i32 -64, i32 0
   %97 = add nsw i32 %96, %95
@@ -26006,13 +25728,13 @@ define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef read
   %100 = load i32, ptr %4, align 4, !tbaa !18
   %101 = load i32, ptr %5, align 4, !tbaa !18
   %102 = and i32 %2, -1610612737
-  switch i32 %102, label %273 [
+  switch i32 %102, label %270 [
     i32 33, label %103
     i32 45, label %116
     i32 34, label %137
     i32 91, label %160
-    i32 92, label %194
-    i32 93, label %238
+    i32 92, label %193
+    i32 93, label %236
   ]
 
 103:                                              ; preds = %98
@@ -26030,7 +25752,7 @@ define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef read
   %113 = sub i32 %101, %112
   %114 = srem i32 %113, %106
   %115 = icmp eq i32 %114, 0
-  br label %284
+  br label %281
 
 116:                                              ; preds = %103, %98
   %117 = icmp sgt i32 %8, 0
@@ -26055,7 +25777,7 @@ define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef read
   %134 = srem i32 %133, %126
   %135 = icmp eq i32 %134, 0
   %136 = tail call i32 @llvm.smin.i32(i32 %130, i32 %101) #56
-  br label %284
+  br label %281
 
 137:                                              ; preds = %116, %98
   %138 = sub nsw i32 %101, %100
@@ -26086,194 +25808,191 @@ define internal void @__kmpc_for_static_init_4(ptr nocapture nofree noundef read
   %157 = icmp sle i32 %154, %101
   %158 = icmp slt i32 %101, %155
   %159 = select i1 %157, i1 %158, i1 false
-  br label %284
+  br label %281
 
 160:                                              ; preds = %98
   %161 = icmp sgt i32 %8, 0
-  br i1 %161, label %162, label %194
+  br i1 %161, label %162, label %193
 
 162:                                              ; preds = %160
   %163 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
   %164 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %165, label %172
+  %165 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 12
+  br i1 %31, label %166, label %172
 
-165:                                              ; preds = %162
-  %166 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
-  %167 = load i16, ptr addrspace(4) %166, align 4
-  %168 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 12
-  %169 = load i32, ptr addrspace(4) %168, align 4, !invariant.load !63
-  %170 = zext i16 %167 to i32
-  %171 = udiv i32 %169, %170
-  br label %181
+166:                                              ; preds = %162
+  %167 = load i32, ptr addrspace(4) %165, align 4, !invariant.load !51
+  %168 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
+  %169 = load i16, ptr addrspace(4) %168, align 4, !range !65, !invariant.load !51
+  %170 = zext i16 %169 to i32
+  %171 = udiv i32 %167, %170
+  br label %180
 
 172:                                              ; preds = %162
-  %173 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 12
-  %174 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
-  %175 = load i16, ptr addrspace(4) %174, align 4
-  %176 = load i32, ptr addrspace(4) %173, align 4, !invariant.load !63
-  %177 = zext i16 %175 to i32
-  %178 = udiv i32 %176, %177
-  %179 = icmp ult i32 %163, %178
-  br i1 %179, label %181, label %180
+  %173 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
+  %174 = load i32, ptr addrspace(4) %165, align 4, !invariant.load !51
+  %175 = load i16, ptr addrspace(4) %173, align 4, !range !65, !invariant.load !51, !noundef !51
+  %176 = zext i16 %175 to i32
+  %177 = udiv i32 %174, %176
+  %178 = icmp ult i32 %163, %177
+  br i1 %178, label %180, label %179
 
-180:                                              ; preds = %172
+179:                                              ; preds = %172
   tail call void @llvm.trap() #58
   unreachable
 
-181:                                              ; preds = %172, %165
-  %182 = phi i32 [ %171, %165 ], [ %178, %172 ]
-  %183 = icmp ult i32 %163, %182
-  tail call void @llvm.assume(i1 noundef %183) #59
-  %184 = mul nsw i32 %182, %8
-  %185 = mul nsw i32 %163, %8
-  %186 = add nsw i32 %100, %185
-  %187 = add nsw i32 %8, -1
-  %188 = add i32 %187, %186
-  %189 = srem i32 %101, %8
-  %190 = add i32 %186, %189
-  %191 = sub i32 %101, %190
-  %192 = srem i32 %191, %184
-  %193 = icmp eq i32 %192, 0
-  br label %284
+180:                                              ; preds = %172, %166
+  %181 = phi i32 [ %171, %166 ], [ %177, %172 ]
+  %182 = icmp ult i32 %163, %181
+  tail call void @llvm.assume(i1 noundef %182) #59
+  %183 = mul nsw i32 %181, %8
+  %184 = mul nsw i32 %163, %8
+  %185 = add nsw i32 %100, %184
+  %186 = add nsw i32 %8, -1
+  %187 = add i32 %186, %185
+  %188 = srem i32 %101, %8
+  %189 = add i32 %185, %188
+  %190 = sub i32 %101, %189
+  %191 = srem i32 %190, %183
+  %192 = icmp eq i32 %191, 0
+  br label %281
 
-194:                                              ; preds = %160, %98
-  %195 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %196 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %197, label %204
+193:                                              ; preds = %160, %98
+  %194 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %195 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %196 = getelementptr inbounds i8, ptr addrspace(4) %195, i64 12
+  br i1 %31, label %197, label %203
 
-197:                                              ; preds = %194
-  %198 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 4
-  %199 = load i16, ptr addrspace(4) %198, align 4
-  %200 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 12
-  %201 = load i32, ptr addrspace(4) %200, align 4, !invariant.load !63
-  %202 = zext i16 %199 to i32
-  %203 = udiv i32 %201, %202
-  br label %213
+197:                                              ; preds = %193
+  %198 = load i32, ptr addrspace(4) %196, align 4, !invariant.load !51
+  %199 = getelementptr inbounds i8, ptr addrspace(4) %195, i64 4
+  %200 = load i16, ptr addrspace(4) %199, align 4, !range !65, !invariant.load !51
+  %201 = zext i16 %200 to i32
+  %202 = udiv i32 %198, %201
+  br label %211
 
-204:                                              ; preds = %194
-  %205 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 12
-  %206 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 4
-  %207 = load i16, ptr addrspace(4) %206, align 4
-  %208 = load i32, ptr addrspace(4) %205, align 4, !invariant.load !63
-  %209 = zext i16 %207 to i32
-  %210 = udiv i32 %208, %209
-  %211 = icmp ult i32 %195, %210
-  br i1 %211, label %213, label %212
+203:                                              ; preds = %193
+  %204 = getelementptr inbounds i8, ptr addrspace(4) %195, i64 4
+  %205 = load i32, ptr addrspace(4) %196, align 4, !invariant.load !51
+  %206 = load i16, ptr addrspace(4) %204, align 4, !range !65, !invariant.load !51, !noundef !51
+  %207 = zext i16 %206 to i32
+  %208 = udiv i32 %205, %207
+  %209 = icmp ult i32 %194, %208
+  br i1 %209, label %211, label %210
 
-212:                                              ; preds = %204
+210:                                              ; preds = %203
   tail call void @llvm.trap() #58
   unreachable
 
-213:                                              ; preds = %204, %197
-  %214 = phi i32 [ %203, %197 ], [ %210, %204 ]
-  %215 = icmp ult i32 %195, %214
-  tail call void @llvm.assume(i1 noundef %215) #59
-  %216 = sub nsw i32 %101, %100
-  %217 = add nsw i32 %216, 1
-  %218 = sdiv i32 %217, %214
-  %219 = mul nsw i32 %218, %214
-  %220 = sub nsw i32 %217, %219
-  %221 = icmp sgt i32 %220, %195
-  br i1 %221, label %222, label %226
+211:                                              ; preds = %203, %197
+  %212 = phi i32 [ %202, %197 ], [ %208, %203 ]
+  %213 = icmp ult i32 %194, %212
+  tail call void @llvm.assume(i1 noundef %213) #59
+  %214 = sub nsw i32 %101, %100
+  %215 = add nsw i32 %214, 1
+  %216 = sdiv i32 %215, %212
+  %217 = mul nsw i32 %216, %212
+  %218 = sub nsw i32 %215, %217
+  %219 = icmp sgt i32 %218, %194
+  br i1 %219, label %220, label %224
 
-222:                                              ; preds = %213
-  %223 = add nsw i32 %218, 1
-  %224 = mul nsw i32 %223, %195
-  %225 = add nsw i32 %224, %100
-  br label %230
+220:                                              ; preds = %211
+  %221 = add nsw i32 %216, 1
+  %222 = mul nsw i32 %221, %194
+  %223 = add nsw i32 %222, %100
+  br label %228
 
-226:                                              ; preds = %213
-  %227 = mul nsw i32 %218, %195
-  %228 = add i32 %227, %100
-  %229 = add i32 %228, %220
-  br label %230
+224:                                              ; preds = %211
+  %225 = mul nsw i32 %216, %194
+  %226 = add i32 %225, %100
+  %227 = add i32 %226, %218
+  br label %228
 
-230:                                              ; preds = %226, %222
-  %231 = phi i32 [ %223, %222 ], [ %218, %226 ]
-  %232 = phi i32 [ %225, %222 ], [ %229, %226 ]
-  %233 = add nsw i32 %232, %231
-  %234 = add nsw i32 %233, -1
-  %235 = icmp sle i32 %232, %101
-  %236 = icmp slt i32 %101, %233
-  %237 = select i1 %235, i1 %236, i1 false
-  br label %284
+228:                                              ; preds = %224, %220
+  %229 = phi i32 [ %221, %220 ], [ %216, %224 ]
+  %230 = phi i32 [ %223, %220 ], [ %227, %224 ]
+  %231 = add nsw i32 %230, %229
+  %232 = add nsw i32 %231, -1
+  %233 = icmp sle i32 %230, %101
+  %234 = icmp slt i32 %101, %231
+  %235 = select i1 %233, i1 %234, i1 false
+  br label %281
 
-238:                                              ; preds = %98
-  %239 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %240 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %241, label %248
+236:                                              ; preds = %98
+  %237 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %238 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %239 = getelementptr inbounds i8, ptr addrspace(4) %238, i64 12
+  br i1 %31, label %240, label %246
 
-241:                                              ; preds = %238
-  %242 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 4
-  %243 = load i16, ptr addrspace(4) %242, align 4
-  %244 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 12
-  %245 = load i32, ptr addrspace(4) %244, align 4, !invariant.load !63
-  %246 = zext i16 %243 to i32
-  %247 = udiv i32 %245, %246
-  br label %257
+240:                                              ; preds = %236
+  %241 = load i32, ptr addrspace(4) %239, align 4, !invariant.load !51
+  %242 = getelementptr inbounds i8, ptr addrspace(4) %238, i64 4
+  %243 = load i16, ptr addrspace(4) %242, align 4, !range !65, !invariant.load !51
+  %244 = zext i16 %243 to i32
+  %245 = udiv i32 %241, %244
+  br label %254
 
-248:                                              ; preds = %238
-  %249 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 12
-  %250 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 4
-  %251 = load i16, ptr addrspace(4) %250, align 4
-  %252 = load i32, ptr addrspace(4) %249, align 4, !invariant.load !63
-  %253 = zext i16 %251 to i32
-  %254 = udiv i32 %252, %253
-  %255 = icmp ult i32 %239, %254
-  br i1 %255, label %257, label %256
+246:                                              ; preds = %236
+  %247 = getelementptr inbounds i8, ptr addrspace(4) %238, i64 4
+  %248 = load i32, ptr addrspace(4) %239, align 4, !invariant.load !51
+  %249 = load i16, ptr addrspace(4) %247, align 4, !range !65, !invariant.load !51, !noundef !51
+  %250 = zext i16 %249 to i32
+  %251 = udiv i32 %248, %250
+  %252 = icmp ult i32 %237, %251
+  br i1 %252, label %254, label %253
 
-256:                                              ; preds = %248
+253:                                              ; preds = %246
   tail call void @llvm.trap() #58
   unreachable
 
-257:                                              ; preds = %248, %241
-  %258 = phi i32 [ %247, %241 ], [ %254, %248 ]
-  %259 = icmp ult i32 %239, %258
-  tail call void @llvm.assume(i1 noundef %259) #59
-  %260 = mul nsw i32 %99, %239
-  %261 = add nsw i32 %260, %69
-  %262 = mul i32 %99, %8
-  %263 = mul i32 %262, %258
-  %264 = mul nsw i32 %261, %8
-  %265 = add nsw i32 %264, %100
-  %266 = add i32 %8, -1
-  %267 = add i32 %266, %265
-  %268 = srem i32 %101, %8
-  %269 = add i32 %265, %268
-  %270 = sub i32 %101, %269
-  %271 = srem i32 %270, %263
-  %272 = icmp eq i32 %271, 0
-  br label %284
+254:                                              ; preds = %246, %240
+  %255 = phi i32 [ %245, %240 ], [ %251, %246 ]
+  %256 = icmp ult i32 %237, %255
+  tail call void @llvm.assume(i1 noundef %256) #59
+  %257 = mul nsw i32 %99, %237
+  %258 = add nsw i32 %257, %69
+  %259 = mul i32 %99, %8
+  %260 = mul i32 %259, %255
+  %261 = mul nsw i32 %258, %8
+  %262 = add nsw i32 %261, %100
+  %263 = add i32 %8, -1
+  %264 = add i32 %263, %262
+  %265 = srem i32 %101, %8
+  %266 = add i32 %262, %265
+  %267 = sub i32 %101, %266
+  %268 = srem i32 %267, %260
+  %269 = icmp eq i32 %268, 0
+  br label %281
 
-273:                                              ; preds = %98
-  %274 = mul nsw i32 %99, %8
-  %275 = mul nsw i32 %69, %8
-  %276 = add nsw i32 %100, %275
-  %277 = add i32 %8, -1
-  %278 = add i32 %277, %276
-  %279 = srem i32 %101, %8
-  %280 = add i32 %276, %279
-  %281 = sub i32 %101, %280
-  %282 = srem i32 %281, %274
-  %283 = icmp eq i32 %282, 0
-  br label %284
+270:                                              ; preds = %98
+  %271 = mul nsw i32 %99, %8
+  %272 = mul nsw i32 %69, %8
+  %273 = add nsw i32 %100, %272
+  %274 = add i32 %8, -1
+  %275 = add i32 %274, %273
+  %276 = srem i32 %101, %8
+  %277 = add i32 %273, %276
+  %278 = sub i32 %101, %277
+  %279 = srem i32 %278, %271
+  %280 = icmp eq i32 %279, 0
+  br label %281
 
-284:                                              ; preds = %273, %257, %230, %181, %152, %118, %105
-  %285 = phi i1 [ %283, %273 ], [ %272, %257 ], [ %237, %230 ], [ %193, %181 ], [ %159, %152 ], [ %115, %105 ], [ %135, %118 ]
-  %286 = phi i32 [ %276, %273 ], [ %265, %257 ], [ %232, %230 ], [ %186, %181 ], [ %154, %152 ], [ %108, %105 ], [ %128, %118 ]
-  %287 = phi i32 [ %278, %273 ], [ %267, %257 ], [ %234, %230 ], [ %188, %181 ], [ %156, %152 ], [ %110, %105 ], [ %136, %118 ]
-  %288 = phi i32 [ %274, %273 ], [ %263, %257 ], [ %217, %230 ], [ %184, %181 ], [ %139, %152 ], [ %106, %105 ], [ %126, %118 ]
-  %289 = zext i1 %285 to i32
-  store i32 %289, ptr %3, align 4, !tbaa !18
-  store i32 %286, ptr %4, align 4, !tbaa !18
-  store i32 %287, ptr %5, align 4, !tbaa !18
-  store i32 %288, ptr %6, align 4, !tbaa !18
+281:                                              ; preds = %270, %254, %228, %180, %152, %118, %105
+  %282 = phi i1 [ %280, %270 ], [ %269, %254 ], [ %235, %228 ], [ %192, %180 ], [ %159, %152 ], [ %115, %105 ], [ %135, %118 ]
+  %283 = phi i32 [ %273, %270 ], [ %262, %254 ], [ %230, %228 ], [ %185, %180 ], [ %154, %152 ], [ %108, %105 ], [ %128, %118 ]
+  %284 = phi i32 [ %275, %270 ], [ %264, %254 ], [ %232, %228 ], [ %187, %180 ], [ %156, %152 ], [ %110, %105 ], [ %136, %118 ]
+  %285 = phi i32 [ %271, %270 ], [ %260, %254 ], [ %215, %228 ], [ %183, %180 ], [ %139, %152 ], [ %106, %105 ], [ %126, %118 ]
+  %286 = zext i1 %282 to i32
+  store i32 %286, ptr %3, align 4, !tbaa !18
+  store i32 %283, ptr %4, align 4, !tbaa !18
+  store i32 %284, ptr %5, align 4, !tbaa !18
+  store i32 %285, ptr %6, align 4, !tbaa !18
   ret void
 }
 
 ; Function Attrs: mustprogress nounwind memory(read, argmem: readwrite, inaccessiblemem: write)
 define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef readnone %0, i32 noundef %1, i32 noundef %2, ptr nocapture nofree noundef writeonly %3, ptr nocapture nofree noundef %4, ptr nocapture nofree noundef %5, ptr nocapture nofree noundef writeonly %6, i32 noundef %7, i32 noundef %8) #52 {
-  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %11 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %12 = icmp eq i32 %11, 0
   %13 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -26287,7 +26006,7 @@ define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef rea
   %19 = getelementptr inbounds ptr, ptr %17, i64 %18
   %20 = load ptr, ptr %19, align 8, !tbaa !20
   %21 = icmp eq ptr %20, null
-  br i1 %21, label %23, label %22, !prof !85
+  br i1 %21, label %23, label %22, !prof !74
 
 22:                                               ; preds = %16
   br label %23
@@ -26297,7 +26016,7 @@ define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef rea
   %25 = getelementptr inbounds i8, ptr %24, i64 4
   %26 = load i32, ptr %25, align 4, !tbaa !18
   %27 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %29 = and i32 %27, 1
   %30 = and i32 %29, %28
   %31 = icmp eq i32 %30, 0
@@ -26323,7 +26042,7 @@ define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef rea
   %41 = getelementptr inbounds ptr, ptr %39, i64 %40
   %42 = load ptr, ptr %41, align 8, !tbaa !20
   %43 = icmp eq ptr %42, null
-  br i1 %43, label %45, label %44, !prof !85
+  br i1 %43, label %45, label %44, !prof !74
 
 44:                                               ; preds = %38
   br label %45
@@ -26343,7 +26062,7 @@ define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef rea
 52:                                               ; preds = %45
   tail call void @llvm.assume(i1 noundef %49) #59
   %53 = icmp ult i32 %48, %26
-  br i1 %53, label %68, label %54, !prof !97
+  br i1 %53, label %68, label %54, !prof !86
 
 54:                                               ; preds = %52
   br i1 %15, label %55, label %62
@@ -26354,7 +26073,7 @@ define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef rea
   %58 = getelementptr inbounds ptr, ptr %56, i64 %57
   %59 = load ptr, ptr %58, align 8, !tbaa !20
   %60 = icmp eq ptr %59, null
-  br i1 %60, label %62, label %61, !prof !85
+  br i1 %60, label %62, label %61, !prof !74
 
 61:                                               ; preds = %55
   br label %62
@@ -26364,7 +26083,7 @@ define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef rea
   %64 = getelementptr inbounds i8, ptr %63, i64 8
   %65 = load i32, ptr %64, align 4, !tbaa !18
   %66 = icmp eq i32 %65, %26
-  %67 = select i1 %66, i32 %10, i32 0, !prof !85
+  %67 = select i1 %66, i32 %10, i32 0, !prof !74
   br label %68
 
 68:                                               ; preds = %62, %52, %35
@@ -26377,7 +26096,7 @@ define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef rea
   %73 = getelementptr inbounds ptr, ptr %71, i64 %72
   %74 = load ptr, ptr %73, align 8, !tbaa !20
   %75 = icmp eq ptr %74, null
-  br i1 %75, label %77, label %76, !prof !85
+  br i1 %75, label %77, label %76, !prof !74
 
 76:                                               ; preds = %70
   br label %77
@@ -26409,7 +26128,7 @@ define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef rea
   %91 = icmp eq i32 %90, 0
   %92 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %93 = getelementptr inbounds i8, ptr addrspace(4) %92, i64 4
-  %94 = load i16, ptr addrspace(4) %93, align 4
+  %94 = load i16, ptr addrspace(4) %93, align 4, !range !65, !invariant.load !51, !noundef !51
   %95 = zext i16 %94 to i32
   %96 = select i1 %91, i32 -64, i32 0
   %97 = add nsw i32 %96, %95
@@ -26420,13 +26139,13 @@ define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef rea
   %100 = load i32, ptr %4, align 4, !tbaa !18
   %101 = load i32, ptr %5, align 4, !tbaa !18
   %102 = and i32 %2, -1610612737
-  switch i32 %102, label %273 [
+  switch i32 %102, label %270 [
     i32 33, label %103
     i32 45, label %116
     i32 34, label %137
     i32 91, label %160
-    i32 92, label %194
-    i32 93, label %238
+    i32 92, label %193
+    i32 93, label %236
   ]
 
 103:                                              ; preds = %98
@@ -26444,7 +26163,7 @@ define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef rea
   %113 = sub i32 %101, %112
   %114 = urem i32 %113, %106
   %115 = icmp eq i32 %114, 0
-  br label %284
+  br label %281
 
 116:                                              ; preds = %103, %98
   %117 = icmp sgt i32 %8, 0
@@ -26469,7 +26188,7 @@ define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef rea
   %134 = urem i32 %133, %126
   %135 = icmp eq i32 %134, 0
   %136 = tail call i32 @llvm.umin.i32(i32 %130, i32 %101) #56
-  br label %284
+  br label %281
 
 137:                                              ; preds = %116, %98
   %138 = sub i32 %101, %100
@@ -26500,194 +26219,191 @@ define internal void @__kmpc_for_static_init_4u(ptr nocapture nofree noundef rea
   %157 = icmp ule i32 %155, %101
   %158 = icmp ule i32 %101, %156
   %159 = and i1 %157, %158
-  br label %284
+  br label %281
 
 160:                                              ; preds = %98
   %161 = icmp sgt i32 %8, 0
-  br i1 %161, label %162, label %194
+  br i1 %161, label %162, label %193
 
 162:                                              ; preds = %160
   %163 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
   %164 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %165, label %172
+  %165 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 12
+  br i1 %31, label %166, label %172
 
-165:                                              ; preds = %162
-  %166 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
-  %167 = load i16, ptr addrspace(4) %166, align 4
-  %168 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 12
-  %169 = load i32, ptr addrspace(4) %168, align 4, !invariant.load !63
-  %170 = zext i16 %167 to i32
-  %171 = udiv i32 %169, %170
-  br label %181
+166:                                              ; preds = %162
+  %167 = load i32, ptr addrspace(4) %165, align 4, !invariant.load !51
+  %168 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
+  %169 = load i16, ptr addrspace(4) %168, align 4, !range !65, !invariant.load !51
+  %170 = zext i16 %169 to i32
+  %171 = udiv i32 %167, %170
+  br label %180
 
 172:                                              ; preds = %162
-  %173 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 12
-  %174 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
-  %175 = load i16, ptr addrspace(4) %174, align 4
-  %176 = load i32, ptr addrspace(4) %173, align 4, !invariant.load !63
-  %177 = zext i16 %175 to i32
-  %178 = udiv i32 %176, %177
-  %179 = icmp ult i32 %163, %178
-  br i1 %179, label %181, label %180
+  %173 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
+  %174 = load i32, ptr addrspace(4) %165, align 4, !invariant.load !51
+  %175 = load i16, ptr addrspace(4) %173, align 4, !range !65, !invariant.load !51, !noundef !51
+  %176 = zext i16 %175 to i32
+  %177 = udiv i32 %174, %176
+  %178 = icmp ult i32 %163, %177
+  br i1 %178, label %180, label %179
 
-180:                                              ; preds = %172
+179:                                              ; preds = %172
   tail call void @llvm.trap() #58
   unreachable
 
-181:                                              ; preds = %172, %165
-  %182 = phi i32 [ %171, %165 ], [ %178, %172 ]
-  %183 = icmp ult i32 %163, %182
-  tail call void @llvm.assume(i1 noundef %183) #59
-  %184 = mul i32 %182, %8
-  %185 = mul i32 %163, %8
-  %186 = add i32 %100, %185
-  %187 = add nsw i32 %8, -1
-  %188 = add i32 %187, %186
-  %189 = urem i32 %101, %8
-  %190 = add i32 %186, %189
-  %191 = sub i32 %101, %190
-  %192 = urem i32 %191, %184
-  %193 = icmp eq i32 %192, 0
-  br label %284
+180:                                              ; preds = %172, %166
+  %181 = phi i32 [ %171, %166 ], [ %177, %172 ]
+  %182 = icmp ult i32 %163, %181
+  tail call void @llvm.assume(i1 noundef %182) #59
+  %183 = mul i32 %181, %8
+  %184 = mul i32 %163, %8
+  %185 = add i32 %100, %184
+  %186 = add nsw i32 %8, -1
+  %187 = add i32 %186, %185
+  %188 = urem i32 %101, %8
+  %189 = add i32 %185, %188
+  %190 = sub i32 %101, %189
+  %191 = urem i32 %190, %183
+  %192 = icmp eq i32 %191, 0
+  br label %281
 
-194:                                              ; preds = %160, %98
-  %195 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %196 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %197, label %204
+193:                                              ; preds = %160, %98
+  %194 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %195 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %196 = getelementptr inbounds i8, ptr addrspace(4) %195, i64 12
+  br i1 %31, label %197, label %203
 
-197:                                              ; preds = %194
-  %198 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 4
-  %199 = load i16, ptr addrspace(4) %198, align 4
-  %200 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 12
-  %201 = load i32, ptr addrspace(4) %200, align 4, !invariant.load !63
-  %202 = zext i16 %199 to i32
-  %203 = udiv i32 %201, %202
-  br label %213
+197:                                              ; preds = %193
+  %198 = load i32, ptr addrspace(4) %196, align 4, !invariant.load !51
+  %199 = getelementptr inbounds i8, ptr addrspace(4) %195, i64 4
+  %200 = load i16, ptr addrspace(4) %199, align 4, !range !65, !invariant.load !51
+  %201 = zext i16 %200 to i32
+  %202 = udiv i32 %198, %201
+  br label %211
 
-204:                                              ; preds = %194
-  %205 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 12
-  %206 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 4
-  %207 = load i16, ptr addrspace(4) %206, align 4
-  %208 = load i32, ptr addrspace(4) %205, align 4, !invariant.load !63
-  %209 = zext i16 %207 to i32
-  %210 = udiv i32 %208, %209
-  %211 = icmp ult i32 %195, %210
-  br i1 %211, label %213, label %212
+203:                                              ; preds = %193
+  %204 = getelementptr inbounds i8, ptr addrspace(4) %195, i64 4
+  %205 = load i32, ptr addrspace(4) %196, align 4, !invariant.load !51
+  %206 = load i16, ptr addrspace(4) %204, align 4, !range !65, !invariant.load !51, !noundef !51
+  %207 = zext i16 %206 to i32
+  %208 = udiv i32 %205, %207
+  %209 = icmp ult i32 %194, %208
+  br i1 %209, label %211, label %210
 
-212:                                              ; preds = %204
+210:                                              ; preds = %203
   tail call void @llvm.trap() #58
   unreachable
 
-213:                                              ; preds = %204, %197
-  %214 = phi i32 [ %203, %197 ], [ %210, %204 ]
-  %215 = icmp ult i32 %195, %214
-  tail call void @llvm.assume(i1 noundef %215) #59
-  %216 = sub i32 %101, %100
-  %217 = add i32 %216, 1
-  %218 = udiv i32 %217, %214
-  %219 = mul i32 %218, %214
-  %220 = sub i32 %217, %219
-  %221 = icmp ugt i32 %220, %195
-  br i1 %221, label %222, label %226
+211:                                              ; preds = %203, %197
+  %212 = phi i32 [ %202, %197 ], [ %208, %203 ]
+  %213 = icmp ult i32 %194, %212
+  tail call void @llvm.assume(i1 noundef %213) #59
+  %214 = sub i32 %101, %100
+  %215 = add i32 %214, 1
+  %216 = udiv i32 %215, %212
+  %217 = mul i32 %216, %212
+  %218 = sub i32 %215, %217
+  %219 = icmp ugt i32 %218, %194
+  br i1 %219, label %220, label %224
 
-222:                                              ; preds = %213
-  %223 = add nsw i32 %218, 1
-  %224 = mul i32 %223, %195
-  %225 = add i32 %224, %100
-  br label %231
+220:                                              ; preds = %211
+  %221 = add nsw i32 %216, 1
+  %222 = mul i32 %221, %194
+  %223 = add i32 %222, %100
+  br label %229
 
-226:                                              ; preds = %213
-  %227 = mul i32 %218, %195
-  %228 = add i32 %227, %100
-  %229 = add i32 %228, %220
-  %230 = add i32 %218, -1
-  br label %231
+224:                                              ; preds = %211
+  %225 = mul i32 %216, %194
+  %226 = add i32 %225, %100
+  %227 = add i32 %226, %218
+  %228 = add i32 %216, -1
+  br label %229
 
-231:                                              ; preds = %226, %222
-  %232 = phi i32 [ %218, %222 ], [ %230, %226 ]
-  %233 = phi i32 [ %225, %222 ], [ %229, %226 ]
-  %234 = add i32 %233, %232
-  %235 = icmp ule i32 %233, %101
-  %236 = icmp ule i32 %101, %234
-  %237 = and i1 %235, %236
-  br label %284
+229:                                              ; preds = %224, %220
+  %230 = phi i32 [ %216, %220 ], [ %228, %224 ]
+  %231 = phi i32 [ %223, %220 ], [ %227, %224 ]
+  %232 = add i32 %231, %230
+  %233 = icmp ule i32 %231, %101
+  %234 = icmp ule i32 %101, %232
+  %235 = and i1 %233, %234
+  br label %281
 
-238:                                              ; preds = %98
-  %239 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %240 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %241, label %248
+236:                                              ; preds = %98
+  %237 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %238 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %239 = getelementptr inbounds i8, ptr addrspace(4) %238, i64 12
+  br i1 %31, label %240, label %246
 
-241:                                              ; preds = %238
-  %242 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 4
-  %243 = load i16, ptr addrspace(4) %242, align 4
-  %244 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 12
-  %245 = load i32, ptr addrspace(4) %244, align 4, !invariant.load !63
-  %246 = zext i16 %243 to i32
-  %247 = udiv i32 %245, %246
-  br label %257
+240:                                              ; preds = %236
+  %241 = load i32, ptr addrspace(4) %239, align 4, !invariant.load !51
+  %242 = getelementptr inbounds i8, ptr addrspace(4) %238, i64 4
+  %243 = load i16, ptr addrspace(4) %242, align 4, !range !65, !invariant.load !51
+  %244 = zext i16 %243 to i32
+  %245 = udiv i32 %241, %244
+  br label %254
 
-248:                                              ; preds = %238
-  %249 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 12
-  %250 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 4
-  %251 = load i16, ptr addrspace(4) %250, align 4
-  %252 = load i32, ptr addrspace(4) %249, align 4, !invariant.load !63
-  %253 = zext i16 %251 to i32
-  %254 = udiv i32 %252, %253
-  %255 = icmp ult i32 %239, %254
-  br i1 %255, label %257, label %256
+246:                                              ; preds = %236
+  %247 = getelementptr inbounds i8, ptr addrspace(4) %238, i64 4
+  %248 = load i32, ptr addrspace(4) %239, align 4, !invariant.load !51
+  %249 = load i16, ptr addrspace(4) %247, align 4, !range !65, !invariant.load !51, !noundef !51
+  %250 = zext i16 %249 to i32
+  %251 = udiv i32 %248, %250
+  %252 = icmp ult i32 %237, %251
+  br i1 %252, label %254, label %253
 
-256:                                              ; preds = %248
+253:                                              ; preds = %246
   tail call void @llvm.trap() #58
   unreachable
 
-257:                                              ; preds = %248, %241
-  %258 = phi i32 [ %247, %241 ], [ %254, %248 ]
-  %259 = icmp ult i32 %239, %258
-  tail call void @llvm.assume(i1 noundef %259) #59
-  %260 = mul nsw i32 %99, %239
-  %261 = add nsw i32 %260, %69
-  %262 = mul i32 %99, %8
-  %263 = mul i32 %262, %258
-  %264 = mul i32 %261, %8
-  %265 = add i32 %264, %100
-  %266 = add i32 %8, -1
-  %267 = add i32 %266, %265
-  %268 = urem i32 %101, %8
-  %269 = add i32 %265, %268
-  %270 = sub i32 %101, %269
-  %271 = urem i32 %270, %263
-  %272 = icmp eq i32 %271, 0
-  br label %284
+254:                                              ; preds = %246, %240
+  %255 = phi i32 [ %245, %240 ], [ %251, %246 ]
+  %256 = icmp ult i32 %237, %255
+  tail call void @llvm.assume(i1 noundef %256) #59
+  %257 = mul nsw i32 %99, %237
+  %258 = add nsw i32 %257, %69
+  %259 = mul i32 %99, %8
+  %260 = mul i32 %259, %255
+  %261 = mul i32 %258, %8
+  %262 = add i32 %261, %100
+  %263 = add i32 %8, -1
+  %264 = add i32 %263, %262
+  %265 = urem i32 %101, %8
+  %266 = add i32 %262, %265
+  %267 = sub i32 %101, %266
+  %268 = urem i32 %267, %260
+  %269 = icmp eq i32 %268, 0
+  br label %281
 
-273:                                              ; preds = %98
-  %274 = mul i32 %99, %8
-  %275 = mul i32 %69, %8
-  %276 = add i32 %100, %275
-  %277 = add i32 %8, -1
-  %278 = add i32 %277, %276
-  %279 = urem i32 %101, %8
-  %280 = add i32 %276, %279
-  %281 = sub i32 %101, %280
-  %282 = urem i32 %281, %274
-  %283 = icmp eq i32 %282, 0
-  br label %284
+270:                                              ; preds = %98
+  %271 = mul i32 %99, %8
+  %272 = mul i32 %69, %8
+  %273 = add i32 %100, %272
+  %274 = add i32 %8, -1
+  %275 = add i32 %274, %273
+  %276 = urem i32 %101, %8
+  %277 = add i32 %273, %276
+  %278 = sub i32 %101, %277
+  %279 = urem i32 %278, %271
+  %280 = icmp eq i32 %279, 0
+  br label %281
 
-284:                                              ; preds = %273, %257, %231, %181, %153, %118, %105
-  %285 = phi i1 [ %283, %273 ], [ %272, %257 ], [ %237, %231 ], [ %193, %181 ], [ %159, %153 ], [ %115, %105 ], [ %135, %118 ]
-  %286 = phi i32 [ %276, %273 ], [ %265, %257 ], [ %233, %231 ], [ %186, %181 ], [ %155, %153 ], [ %108, %105 ], [ %128, %118 ]
-  %287 = phi i32 [ %278, %273 ], [ %267, %257 ], [ %234, %231 ], [ %188, %181 ], [ %156, %153 ], [ %110, %105 ], [ %136, %118 ]
-  %288 = phi i32 [ %274, %273 ], [ %263, %257 ], [ %217, %231 ], [ %184, %181 ], [ %139, %153 ], [ %106, %105 ], [ %126, %118 ]
-  %289 = zext i1 %285 to i32
-  store i32 %289, ptr %3, align 4, !tbaa !18
-  store i32 %286, ptr %4, align 4, !tbaa !18
-  store i32 %287, ptr %5, align 4, !tbaa !18
-  store i32 %288, ptr %6, align 4, !tbaa !18
+281:                                              ; preds = %270, %254, %229, %180, %153, %118, %105
+  %282 = phi i1 [ %280, %270 ], [ %269, %254 ], [ %235, %229 ], [ %192, %180 ], [ %159, %153 ], [ %115, %105 ], [ %135, %118 ]
+  %283 = phi i32 [ %273, %270 ], [ %262, %254 ], [ %231, %229 ], [ %185, %180 ], [ %155, %153 ], [ %108, %105 ], [ %128, %118 ]
+  %284 = phi i32 [ %275, %270 ], [ %264, %254 ], [ %232, %229 ], [ %187, %180 ], [ %156, %153 ], [ %110, %105 ], [ %136, %118 ]
+  %285 = phi i32 [ %271, %270 ], [ %260, %254 ], [ %215, %229 ], [ %183, %180 ], [ %139, %153 ], [ %106, %105 ], [ %126, %118 ]
+  %286 = zext i1 %282 to i32
+  store i32 %286, ptr %3, align 4, !tbaa !18
+  store i32 %283, ptr %4, align 4, !tbaa !18
+  store i32 %284, ptr %5, align 4, !tbaa !18
+  store i32 %285, ptr %6, align 4, !tbaa !18
   ret void
 }
 
 ; Function Attrs: mustprogress nounwind memory(read, argmem: readwrite, inaccessiblemem: write)
 define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef readnone %0, i32 noundef %1, i32 noundef %2, ptr nocapture nofree noundef writeonly %3, ptr nocapture nofree noundef %4, ptr nocapture nofree noundef %5, ptr nocapture nofree noundef writeonly %6, i64 noundef %7, i64 noundef %8) #52 {
-  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %11 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %12 = icmp eq i32 %11, 0
   %13 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -26701,7 +26417,7 @@ define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef read
   %19 = getelementptr inbounds ptr, ptr %17, i64 %18
   %20 = load ptr, ptr %19, align 8, !tbaa !20
   %21 = icmp eq ptr %20, null
-  br i1 %21, label %23, label %22, !prof !85
+  br i1 %21, label %23, label %22, !prof !74
 
 22:                                               ; preds = %16
   br label %23
@@ -26711,7 +26427,7 @@ define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef read
   %25 = getelementptr inbounds i8, ptr %24, i64 4
   %26 = load i32, ptr %25, align 4, !tbaa !18
   %27 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %29 = and i32 %27, 1
   %30 = and i32 %29, %28
   %31 = icmp eq i32 %30, 0
@@ -26737,7 +26453,7 @@ define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef read
   %41 = getelementptr inbounds ptr, ptr %39, i64 %40
   %42 = load ptr, ptr %41, align 8, !tbaa !20
   %43 = icmp eq ptr %42, null
-  br i1 %43, label %45, label %44, !prof !85
+  br i1 %43, label %45, label %44, !prof !74
 
 44:                                               ; preds = %38
   br label %45
@@ -26757,7 +26473,7 @@ define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef read
 52:                                               ; preds = %45
   tail call void @llvm.assume(i1 noundef %49) #59
   %53 = icmp ult i32 %48, %26
-  br i1 %53, label %68, label %54, !prof !97
+  br i1 %53, label %68, label %54, !prof !86
 
 54:                                               ; preds = %52
   br i1 %15, label %55, label %62
@@ -26768,7 +26484,7 @@ define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef read
   %58 = getelementptr inbounds ptr, ptr %56, i64 %57
   %59 = load ptr, ptr %58, align 8, !tbaa !20
   %60 = icmp eq ptr %59, null
-  br i1 %60, label %62, label %61, !prof !85
+  br i1 %60, label %62, label %61, !prof !74
 
 61:                                               ; preds = %55
   br label %62
@@ -26778,7 +26494,7 @@ define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef read
   %64 = getelementptr inbounds i8, ptr %63, i64 8
   %65 = load i32, ptr %64, align 4, !tbaa !18
   %66 = icmp eq i32 %65, %26
-  %67 = select i1 %66, i32 %10, i32 0, !prof !85
+  %67 = select i1 %66, i32 %10, i32 0, !prof !74
   br label %68
 
 68:                                               ; preds = %62, %52, %35
@@ -26791,7 +26507,7 @@ define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef read
   %73 = getelementptr inbounds ptr, ptr %71, i64 %72
   %74 = load ptr, ptr %73, align 8, !tbaa !20
   %75 = icmp eq ptr %74, null
-  br i1 %75, label %77, label %76, !prof !85
+  br i1 %75, label %77, label %76, !prof !74
 
 76:                                               ; preds = %70
   br label %77
@@ -26823,7 +26539,7 @@ define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef read
   %91 = icmp eq i32 %90, 0
   %92 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %93 = getelementptr inbounds i8, ptr addrspace(4) %92, i64 4
-  %94 = load i16, ptr addrspace(4) %93, align 4
+  %94 = load i16, ptr addrspace(4) %93, align 4, !range !65, !invariant.load !51, !noundef !51
   %95 = zext i16 %94 to i32
   %96 = select i1 %91, i32 -64, i32 0
   %97 = add nsw i32 %96, %95
@@ -26834,13 +26550,13 @@ define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef read
   %100 = load i64, ptr %4, align 8, !tbaa !14
   %101 = load i64, ptr %5, align 8, !tbaa !14
   %102 = and i32 %2, -1610612737
-  switch i32 %102, label %285 [
+  switch i32 %102, label %282 [
     i32 33, label %103
     i32 45, label %118
     i32 34, label %141
     i32 91, label %166
-    i32 92, label %202
-    i32 93, label %248
+    i32 92, label %201
+    i32 93, label %246
   ]
 
 103:                                              ; preds = %98
@@ -26860,7 +26576,7 @@ define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef read
   %115 = sub i64 %101, %114
   %116 = srem i64 %115, %108
   %117 = icmp eq i64 %116, 0
-  br label %298
+  br label %295
 
 118:                                              ; preds = %103, %98
   %119 = icmp sgt i64 %8, 0
@@ -26887,7 +26603,7 @@ define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef read
   %138 = srem i64 %137, %130
   %139 = icmp eq i64 %138, 0
   %140 = tail call i64 @llvm.smin.i64(i64 %134, i64 %101) #56
-  br label %298
+  br label %295
 
 141:                                              ; preds = %118, %98
   %142 = sext i32 %69 to i64
@@ -26920,202 +26636,199 @@ define internal void @__kmpc_for_static_init_8(ptr nocapture nofree noundef read
   %163 = icmp sle i64 %160, %101
   %164 = icmp slt i64 %101, %161
   %165 = select i1 %163, i1 %164, i1 false
-  br label %298
+  br label %295
 
 166:                                              ; preds = %98
   %167 = icmp sgt i64 %8, 0
-  br i1 %167, label %168, label %202
+  br i1 %167, label %168, label %201
 
 168:                                              ; preds = %166
   %169 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
   %170 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %171, label %178
+  %171 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 12
+  br i1 %31, label %172, label %178
 
-171:                                              ; preds = %168
-  %172 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
-  %173 = load i16, ptr addrspace(4) %172, align 4
-  %174 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 12
-  %175 = load i32, ptr addrspace(4) %174, align 4, !invariant.load !63
-  %176 = zext i16 %173 to i32
-  %177 = udiv i32 %175, %176
-  br label %187
+172:                                              ; preds = %168
+  %173 = load i32, ptr addrspace(4) %171, align 4, !invariant.load !51
+  %174 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
+  %175 = load i16, ptr addrspace(4) %174, align 4, !range !65, !invariant.load !51
+  %176 = zext i16 %175 to i32
+  %177 = udiv i32 %173, %176
+  br label %186
 
 178:                                              ; preds = %168
-  %179 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 12
-  %180 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
-  %181 = load i16, ptr addrspace(4) %180, align 4
-  %182 = load i32, ptr addrspace(4) %179, align 4, !invariant.load !63
-  %183 = zext i16 %181 to i32
-  %184 = udiv i32 %182, %183
-  %185 = icmp ult i32 %169, %184
-  br i1 %185, label %187, label %186
+  %179 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
+  %180 = load i32, ptr addrspace(4) %171, align 4, !invariant.load !51
+  %181 = load i16, ptr addrspace(4) %179, align 4, !range !65, !invariant.load !51, !noundef !51
+  %182 = zext i16 %181 to i32
+  %183 = udiv i32 %180, %182
+  %184 = icmp ult i32 %169, %183
+  br i1 %184, label %186, label %185
 
-186:                                              ; preds = %178
+185:                                              ; preds = %178
   tail call void @llvm.trap() #58
   unreachable
 
-187:                                              ; preds = %178, %171
-  %188 = phi i32 [ %177, %171 ], [ %184, %178 ]
-  %189 = icmp ult i32 %169, %188
-  tail call void @llvm.assume(i1 noundef %189) #59
-  %190 = sext i32 %169 to i64
-  %191 = sext i32 %188 to i64
-  %192 = mul nsw i64 %191, %8
-  %193 = mul nsw i64 %190, %8
-  %194 = add nsw i64 %100, %193
-  %195 = add nsw i64 %8, -1
-  %196 = add i64 %195, %194
-  %197 = srem i64 %101, %8
-  %198 = add i64 %194, %197
-  %199 = sub i64 %101, %198
-  %200 = srem i64 %199, %192
-  %201 = icmp eq i64 %200, 0
-  br label %298
+186:                                              ; preds = %178, %172
+  %187 = phi i32 [ %177, %172 ], [ %183, %178 ]
+  %188 = icmp ult i32 %169, %187
+  tail call void @llvm.assume(i1 noundef %188) #59
+  %189 = sext i32 %169 to i64
+  %190 = sext i32 %187 to i64
+  %191 = mul nsw i64 %190, %8
+  %192 = mul nsw i64 %189, %8
+  %193 = add nsw i64 %100, %192
+  %194 = add nsw i64 %8, -1
+  %195 = add i64 %194, %193
+  %196 = srem i64 %101, %8
+  %197 = add i64 %193, %196
+  %198 = sub i64 %101, %197
+  %199 = srem i64 %198, %191
+  %200 = icmp eq i64 %199, 0
+  br label %295
 
-202:                                              ; preds = %166, %98
-  %203 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %204 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %205, label %212
+201:                                              ; preds = %166, %98
+  %202 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %203 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %204 = getelementptr inbounds i8, ptr addrspace(4) %203, i64 12
+  br i1 %31, label %205, label %211
 
-205:                                              ; preds = %202
-  %206 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 4
-  %207 = load i16, ptr addrspace(4) %206, align 4
-  %208 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 12
-  %209 = load i32, ptr addrspace(4) %208, align 4, !invariant.load !63
-  %210 = zext i16 %207 to i32
-  %211 = udiv i32 %209, %210
-  br label %221
+205:                                              ; preds = %201
+  %206 = load i32, ptr addrspace(4) %204, align 4, !invariant.load !51
+  %207 = getelementptr inbounds i8, ptr addrspace(4) %203, i64 4
+  %208 = load i16, ptr addrspace(4) %207, align 4, !range !65, !invariant.load !51
+  %209 = zext i16 %208 to i32
+  %210 = udiv i32 %206, %209
+  br label %219
 
-212:                                              ; preds = %202
-  %213 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 12
-  %214 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 4
-  %215 = load i16, ptr addrspace(4) %214, align 4
-  %216 = load i32, ptr addrspace(4) %213, align 4, !invariant.load !63
-  %217 = zext i16 %215 to i32
-  %218 = udiv i32 %216, %217
-  %219 = icmp ult i32 %203, %218
-  br i1 %219, label %221, label %220
+211:                                              ; preds = %201
+  %212 = getelementptr inbounds i8, ptr addrspace(4) %203, i64 4
+  %213 = load i32, ptr addrspace(4) %204, align 4, !invariant.load !51
+  %214 = load i16, ptr addrspace(4) %212, align 4, !range !65, !invariant.load !51, !noundef !51
+  %215 = zext i16 %214 to i32
+  %216 = udiv i32 %213, %215
+  %217 = icmp ult i32 %202, %216
+  br i1 %217, label %219, label %218
 
-220:                                              ; preds = %212
+218:                                              ; preds = %211
   tail call void @llvm.trap() #58
   unreachable
 
-221:                                              ; preds = %212, %205
-  %222 = phi i32 [ %211, %205 ], [ %218, %212 ]
-  %223 = icmp ult i32 %203, %222
-  tail call void @llvm.assume(i1 noundef %223) #59
-  %224 = sext i32 %203 to i64
-  %225 = sext i32 %222 to i64
-  %226 = sub nsw i64 %101, %100
-  %227 = add nsw i64 %226, 1
-  %228 = sdiv i64 %227, %225
-  %229 = mul nsw i64 %228, %225
-  %230 = sub nsw i64 %227, %229
-  %231 = icmp sgt i64 %230, %224
-  br i1 %231, label %232, label %236
+219:                                              ; preds = %211, %205
+  %220 = phi i32 [ %210, %205 ], [ %216, %211 ]
+  %221 = icmp ult i32 %202, %220
+  tail call void @llvm.assume(i1 noundef %221) #59
+  %222 = sext i32 %202 to i64
+  %223 = sext i32 %220 to i64
+  %224 = sub nsw i64 %101, %100
+  %225 = add nsw i64 %224, 1
+  %226 = sdiv i64 %225, %223
+  %227 = mul nsw i64 %226, %223
+  %228 = sub nsw i64 %225, %227
+  %229 = icmp sgt i64 %228, %222
+  br i1 %229, label %230, label %234
 
-232:                                              ; preds = %221
-  %233 = add nsw i64 %228, 1
-  %234 = mul nsw i64 %233, %224
-  %235 = add nsw i64 %234, %100
-  br label %240
+230:                                              ; preds = %219
+  %231 = add nsw i64 %226, 1
+  %232 = mul nsw i64 %231, %222
+  %233 = add nsw i64 %232, %100
+  br label %238
 
-236:                                              ; preds = %221
-  %237 = mul nsw i64 %228, %224
-  %238 = add i64 %237, %100
-  %239 = add i64 %238, %230
-  br label %240
+234:                                              ; preds = %219
+  %235 = mul nsw i64 %226, %222
+  %236 = add i64 %235, %100
+  %237 = add i64 %236, %228
+  br label %238
 
-240:                                              ; preds = %236, %232
-  %241 = phi i64 [ %233, %232 ], [ %228, %236 ]
-  %242 = phi i64 [ %235, %232 ], [ %239, %236 ]
-  %243 = add nsw i64 %242, %241
-  %244 = add nsw i64 %243, -1
-  %245 = icmp sle i64 %242, %101
-  %246 = icmp slt i64 %101, %243
-  %247 = select i1 %245, i1 %246, i1 false
-  br label %298
+238:                                              ; preds = %234, %230
+  %239 = phi i64 [ %231, %230 ], [ %226, %234 ]
+  %240 = phi i64 [ %233, %230 ], [ %237, %234 ]
+  %241 = add nsw i64 %240, %239
+  %242 = add nsw i64 %241, -1
+  %243 = icmp sle i64 %240, %101
+  %244 = icmp slt i64 %101, %241
+  %245 = select i1 %243, i1 %244, i1 false
+  br label %295
 
-248:                                              ; preds = %98
-  %249 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %250 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %251, label %258
+246:                                              ; preds = %98
+  %247 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %248 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %249 = getelementptr inbounds i8, ptr addrspace(4) %248, i64 12
+  br i1 %31, label %250, label %256
 
-251:                                              ; preds = %248
-  %252 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 4
-  %253 = load i16, ptr addrspace(4) %252, align 4
-  %254 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 12
-  %255 = load i32, ptr addrspace(4) %254, align 4, !invariant.load !63
-  %256 = zext i16 %253 to i32
-  %257 = udiv i32 %255, %256
-  br label %267
+250:                                              ; preds = %246
+  %251 = load i32, ptr addrspace(4) %249, align 4, !invariant.load !51
+  %252 = getelementptr inbounds i8, ptr addrspace(4) %248, i64 4
+  %253 = load i16, ptr addrspace(4) %252, align 4, !range !65, !invariant.load !51
+  %254 = zext i16 %253 to i32
+  %255 = udiv i32 %251, %254
+  br label %264
 
-258:                                              ; preds = %248
-  %259 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 12
-  %260 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 4
-  %261 = load i16, ptr addrspace(4) %260, align 4
-  %262 = load i32, ptr addrspace(4) %259, align 4, !invariant.load !63
-  %263 = zext i16 %261 to i32
-  %264 = udiv i32 %262, %263
-  %265 = icmp ult i32 %249, %264
-  br i1 %265, label %267, label %266
+256:                                              ; preds = %246
+  %257 = getelementptr inbounds i8, ptr addrspace(4) %248, i64 4
+  %258 = load i32, ptr addrspace(4) %249, align 4, !invariant.load !51
+  %259 = load i16, ptr addrspace(4) %257, align 4, !range !65, !invariant.load !51, !noundef !51
+  %260 = zext i16 %259 to i32
+  %261 = udiv i32 %258, %260
+  %262 = icmp ult i32 %247, %261
+  br i1 %262, label %264, label %263
 
-266:                                              ; preds = %258
+263:                                              ; preds = %256
   tail call void @llvm.trap() #58
   unreachable
 
-267:                                              ; preds = %258, %251
-  %268 = phi i32 [ %257, %251 ], [ %264, %258 ]
-  %269 = icmp ult i32 %249, %268
-  tail call void @llvm.assume(i1 noundef %269) #59
-  %270 = mul nsw i32 %99, %249
-  %271 = add nsw i32 %270, %69
-  %272 = sext i32 %271 to i64
-  %273 = mul nsw i32 %268, %99
-  %274 = sext i32 %273 to i64
-  %275 = mul nsw i64 %274, %8
-  %276 = mul nsw i64 %272, %8
-  %277 = add nsw i64 %276, %100
-  %278 = add i64 %8, -1
-  %279 = add i64 %278, %277
-  %280 = srem i64 %101, %8
-  %281 = add i64 %277, %280
-  %282 = sub i64 %101, %281
-  %283 = srem i64 %282, %275
-  %284 = icmp eq i64 %283, 0
-  br label %298
+264:                                              ; preds = %256, %250
+  %265 = phi i32 [ %255, %250 ], [ %261, %256 ]
+  %266 = icmp ult i32 %247, %265
+  tail call void @llvm.assume(i1 noundef %266) #59
+  %267 = mul nsw i32 %99, %247
+  %268 = add nsw i32 %267, %69
+  %269 = sext i32 %268 to i64
+  %270 = mul nsw i32 %265, %99
+  %271 = sext i32 %270 to i64
+  %272 = mul nsw i64 %271, %8
+  %273 = mul nsw i64 %269, %8
+  %274 = add nsw i64 %273, %100
+  %275 = add i64 %8, -1
+  %276 = add i64 %275, %274
+  %277 = srem i64 %101, %8
+  %278 = add i64 %274, %277
+  %279 = sub i64 %101, %278
+  %280 = srem i64 %279, %272
+  %281 = icmp eq i64 %280, 0
+  br label %295
 
-285:                                              ; preds = %98
-  %286 = sext i32 %69 to i64
-  %287 = sext i32 %99 to i64
-  %288 = mul nsw i64 %287, %8
-  %289 = mul nsw i64 %286, %8
-  %290 = add nsw i64 %100, %289
-  %291 = add i64 %8, -1
-  %292 = add i64 %291, %290
-  %293 = srem i64 %101, %8
-  %294 = add i64 %290, %293
-  %295 = sub i64 %101, %294
-  %296 = srem i64 %295, %288
-  %297 = icmp eq i64 %296, 0
-  br label %298
+282:                                              ; preds = %98
+  %283 = sext i32 %69 to i64
+  %284 = sext i32 %99 to i64
+  %285 = mul nsw i64 %284, %8
+  %286 = mul nsw i64 %283, %8
+  %287 = add nsw i64 %100, %286
+  %288 = add i64 %8, -1
+  %289 = add i64 %288, %287
+  %290 = srem i64 %101, %8
+  %291 = add i64 %287, %290
+  %292 = sub i64 %101, %291
+  %293 = srem i64 %292, %285
+  %294 = icmp eq i64 %293, 0
+  br label %295
 
-298:                                              ; preds = %285, %267, %240, %187, %158, %120, %105
-  %299 = phi i1 [ %297, %285 ], [ %284, %267 ], [ %247, %240 ], [ %201, %187 ], [ %165, %158 ], [ %117, %105 ], [ %139, %120 ]
-  %300 = phi i64 [ %290, %285 ], [ %277, %267 ], [ %242, %240 ], [ %194, %187 ], [ %160, %158 ], [ %110, %105 ], [ %132, %120 ]
-  %301 = phi i64 [ %292, %285 ], [ %279, %267 ], [ %244, %240 ], [ %196, %187 ], [ %162, %158 ], [ %112, %105 ], [ %140, %120 ]
-  %302 = phi i64 [ %288, %285 ], [ %275, %267 ], [ %227, %240 ], [ %192, %187 ], [ %145, %158 ], [ %108, %105 ], [ %130, %120 ]
-  %303 = zext i1 %299 to i32
-  store i32 %303, ptr %3, align 4, !tbaa !18
-  store i64 %300, ptr %4, align 8, !tbaa !14
-  store i64 %301, ptr %5, align 8, !tbaa !14
-  store i64 %302, ptr %6, align 8, !tbaa !14
+295:                                              ; preds = %282, %264, %238, %186, %158, %120, %105
+  %296 = phi i1 [ %294, %282 ], [ %281, %264 ], [ %245, %238 ], [ %200, %186 ], [ %165, %158 ], [ %117, %105 ], [ %139, %120 ]
+  %297 = phi i64 [ %287, %282 ], [ %274, %264 ], [ %240, %238 ], [ %193, %186 ], [ %160, %158 ], [ %110, %105 ], [ %132, %120 ]
+  %298 = phi i64 [ %289, %282 ], [ %276, %264 ], [ %242, %238 ], [ %195, %186 ], [ %162, %158 ], [ %112, %105 ], [ %140, %120 ]
+  %299 = phi i64 [ %285, %282 ], [ %272, %264 ], [ %225, %238 ], [ %191, %186 ], [ %145, %158 ], [ %108, %105 ], [ %130, %120 ]
+  %300 = zext i1 %296 to i32
+  store i32 %300, ptr %3, align 4, !tbaa !18
+  store i64 %297, ptr %4, align 8, !tbaa !14
+  store i64 %298, ptr %5, align 8, !tbaa !14
+  store i64 %299, ptr %6, align 8, !tbaa !14
   ret void
 }
 
 ; Function Attrs: mustprogress nounwind memory(read, argmem: readwrite, inaccessiblemem: write)
 define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef readnone %0, i32 noundef %1, i32 noundef %2, ptr nocapture nofree noundef writeonly %3, ptr nocapture nofree noundef %4, ptr nocapture nofree noundef %5, ptr nocapture nofree noundef writeonly %6, i64 noundef %7, i64 noundef %8) #52 {
-  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %11 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %12 = icmp eq i32 %11, 0
   %13 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -27129,7 +26842,7 @@ define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef rea
   %19 = getelementptr inbounds ptr, ptr %17, i64 %18
   %20 = load ptr, ptr %19, align 8, !tbaa !20
   %21 = icmp eq ptr %20, null
-  br i1 %21, label %23, label %22, !prof !85
+  br i1 %21, label %23, label %22, !prof !74
 
 22:                                               ; preds = %16
   br label %23
@@ -27139,7 +26852,7 @@ define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef rea
   %25 = getelementptr inbounds i8, ptr %24, i64 4
   %26 = load i32, ptr %25, align 4, !tbaa !18
   %27 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %29 = and i32 %27, 1
   %30 = and i32 %29, %28
   %31 = icmp eq i32 %30, 0
@@ -27165,7 +26878,7 @@ define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef rea
   %41 = getelementptr inbounds ptr, ptr %39, i64 %40
   %42 = load ptr, ptr %41, align 8, !tbaa !20
   %43 = icmp eq ptr %42, null
-  br i1 %43, label %45, label %44, !prof !85
+  br i1 %43, label %45, label %44, !prof !74
 
 44:                                               ; preds = %38
   br label %45
@@ -27185,7 +26898,7 @@ define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef rea
 52:                                               ; preds = %45
   tail call void @llvm.assume(i1 noundef %49) #59
   %53 = icmp ult i32 %48, %26
-  br i1 %53, label %68, label %54, !prof !97
+  br i1 %53, label %68, label %54, !prof !86
 
 54:                                               ; preds = %52
   br i1 %15, label %55, label %62
@@ -27196,7 +26909,7 @@ define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef rea
   %58 = getelementptr inbounds ptr, ptr %56, i64 %57
   %59 = load ptr, ptr %58, align 8, !tbaa !20
   %60 = icmp eq ptr %59, null
-  br i1 %60, label %62, label %61, !prof !85
+  br i1 %60, label %62, label %61, !prof !74
 
 61:                                               ; preds = %55
   br label %62
@@ -27206,7 +26919,7 @@ define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef rea
   %64 = getelementptr inbounds i8, ptr %63, i64 8
   %65 = load i32, ptr %64, align 4, !tbaa !18
   %66 = icmp eq i32 %65, %26
-  %67 = select i1 %66, i32 %10, i32 0, !prof !85
+  %67 = select i1 %66, i32 %10, i32 0, !prof !74
   br label %68
 
 68:                                               ; preds = %62, %52, %35
@@ -27219,7 +26932,7 @@ define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef rea
   %73 = getelementptr inbounds ptr, ptr %71, i64 %72
   %74 = load ptr, ptr %73, align 8, !tbaa !20
   %75 = icmp eq ptr %74, null
-  br i1 %75, label %77, label %76, !prof !85
+  br i1 %75, label %77, label %76, !prof !74
 
 76:                                               ; preds = %70
   br label %77
@@ -27251,7 +26964,7 @@ define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef rea
   %91 = icmp eq i32 %90, 0
   %92 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %93 = getelementptr inbounds i8, ptr addrspace(4) %92, i64 4
-  %94 = load i16, ptr addrspace(4) %93, align 4
+  %94 = load i16, ptr addrspace(4) %93, align 4, !range !65, !invariant.load !51, !noundef !51
   %95 = zext i16 %94 to i32
   %96 = select i1 %91, i32 -64, i32 0
   %97 = add nsw i32 %96, %95
@@ -27262,13 +26975,13 @@ define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef rea
   %100 = load i64, ptr %4, align 8, !tbaa !14
   %101 = load i64, ptr %5, align 8, !tbaa !14
   %102 = and i32 %2, -1610612737
-  switch i32 %102, label %285 [
+  switch i32 %102, label %282 [
     i32 33, label %103
     i32 45, label %118
     i32 34, label %141
     i32 91, label %166
-    i32 92, label %202
-    i32 93, label %248
+    i32 92, label %201
+    i32 93, label %246
   ]
 
 103:                                              ; preds = %98
@@ -27288,7 +27001,7 @@ define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef rea
   %115 = sub i64 %101, %114
   %116 = urem i64 %115, %108
   %117 = icmp eq i64 %116, 0
-  br label %298
+  br label %295
 
 118:                                              ; preds = %103, %98
   %119 = icmp sgt i64 %8, 0
@@ -27315,7 +27028,7 @@ define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef rea
   %138 = urem i64 %137, %130
   %139 = icmp eq i64 %138, 0
   %140 = tail call i64 @llvm.umin.i64(i64 %134, i64 %101) #56
-  br label %298
+  br label %295
 
 141:                                              ; preds = %118, %98
   %142 = sext i32 %69 to i64
@@ -27348,202 +27061,199 @@ define internal void @__kmpc_for_static_init_8u(ptr nocapture nofree noundef rea
   %163 = icmp ule i64 %161, %101
   %164 = icmp ule i64 %101, %162
   %165 = and i1 %163, %164
-  br label %298
+  br label %295
 
 166:                                              ; preds = %98
   %167 = icmp sgt i64 %8, 0
-  br i1 %167, label %168, label %202
+  br i1 %167, label %168, label %201
 
 168:                                              ; preds = %166
   %169 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
   %170 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %171, label %178
+  %171 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 12
+  br i1 %31, label %172, label %178
 
-171:                                              ; preds = %168
-  %172 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
-  %173 = load i16, ptr addrspace(4) %172, align 4
-  %174 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 12
-  %175 = load i32, ptr addrspace(4) %174, align 4, !invariant.load !63
-  %176 = zext i16 %173 to i32
-  %177 = udiv i32 %175, %176
-  br label %187
+172:                                              ; preds = %168
+  %173 = load i32, ptr addrspace(4) %171, align 4, !invariant.load !51
+  %174 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
+  %175 = load i16, ptr addrspace(4) %174, align 4, !range !65, !invariant.load !51
+  %176 = zext i16 %175 to i32
+  %177 = udiv i32 %173, %176
+  br label %186
 
 178:                                              ; preds = %168
-  %179 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 12
-  %180 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
-  %181 = load i16, ptr addrspace(4) %180, align 4
-  %182 = load i32, ptr addrspace(4) %179, align 4, !invariant.load !63
-  %183 = zext i16 %181 to i32
-  %184 = udiv i32 %182, %183
-  %185 = icmp ult i32 %169, %184
-  br i1 %185, label %187, label %186
+  %179 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
+  %180 = load i32, ptr addrspace(4) %171, align 4, !invariant.load !51
+  %181 = load i16, ptr addrspace(4) %179, align 4, !range !65, !invariant.load !51, !noundef !51
+  %182 = zext i16 %181 to i32
+  %183 = udiv i32 %180, %182
+  %184 = icmp ult i32 %169, %183
+  br i1 %184, label %186, label %185
 
-186:                                              ; preds = %178
+185:                                              ; preds = %178
   tail call void @llvm.trap() #58
   unreachable
 
-187:                                              ; preds = %178, %171
-  %188 = phi i32 [ %177, %171 ], [ %184, %178 ]
-  %189 = icmp ult i32 %169, %188
-  tail call void @llvm.assume(i1 noundef %189) #59
-  %190 = sext i32 %169 to i64
-  %191 = sext i32 %188 to i64
-  %192 = mul i64 %191, %8
-  %193 = mul i64 %190, %8
-  %194 = add i64 %100, %193
-  %195 = add nsw i64 %8, -1
-  %196 = add i64 %195, %194
-  %197 = urem i64 %101, %8
-  %198 = add i64 %194, %197
-  %199 = sub i64 %101, %198
-  %200 = urem i64 %199, %192
-  %201 = icmp eq i64 %200, 0
-  br label %298
+186:                                              ; preds = %178, %172
+  %187 = phi i32 [ %177, %172 ], [ %183, %178 ]
+  %188 = icmp ult i32 %169, %187
+  tail call void @llvm.assume(i1 noundef %188) #59
+  %189 = sext i32 %169 to i64
+  %190 = sext i32 %187 to i64
+  %191 = mul i64 %190, %8
+  %192 = mul i64 %189, %8
+  %193 = add i64 %100, %192
+  %194 = add nsw i64 %8, -1
+  %195 = add i64 %194, %193
+  %196 = urem i64 %101, %8
+  %197 = add i64 %193, %196
+  %198 = sub i64 %101, %197
+  %199 = urem i64 %198, %191
+  %200 = icmp eq i64 %199, 0
+  br label %295
 
-202:                                              ; preds = %166, %98
-  %203 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %204 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %205, label %212
+201:                                              ; preds = %166, %98
+  %202 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %203 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %204 = getelementptr inbounds i8, ptr addrspace(4) %203, i64 12
+  br i1 %31, label %205, label %211
 
-205:                                              ; preds = %202
-  %206 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 4
-  %207 = load i16, ptr addrspace(4) %206, align 4
-  %208 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 12
-  %209 = load i32, ptr addrspace(4) %208, align 4, !invariant.load !63
-  %210 = zext i16 %207 to i32
-  %211 = udiv i32 %209, %210
-  br label %221
+205:                                              ; preds = %201
+  %206 = load i32, ptr addrspace(4) %204, align 4, !invariant.load !51
+  %207 = getelementptr inbounds i8, ptr addrspace(4) %203, i64 4
+  %208 = load i16, ptr addrspace(4) %207, align 4, !range !65, !invariant.load !51
+  %209 = zext i16 %208 to i32
+  %210 = udiv i32 %206, %209
+  br label %219
 
-212:                                              ; preds = %202
-  %213 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 12
-  %214 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 4
-  %215 = load i16, ptr addrspace(4) %214, align 4
-  %216 = load i32, ptr addrspace(4) %213, align 4, !invariant.load !63
-  %217 = zext i16 %215 to i32
-  %218 = udiv i32 %216, %217
-  %219 = icmp ult i32 %203, %218
-  br i1 %219, label %221, label %220
+211:                                              ; preds = %201
+  %212 = getelementptr inbounds i8, ptr addrspace(4) %203, i64 4
+  %213 = load i32, ptr addrspace(4) %204, align 4, !invariant.load !51
+  %214 = load i16, ptr addrspace(4) %212, align 4, !range !65, !invariant.load !51, !noundef !51
+  %215 = zext i16 %214 to i32
+  %216 = udiv i32 %213, %215
+  %217 = icmp ult i32 %202, %216
+  br i1 %217, label %219, label %218
 
-220:                                              ; preds = %212
+218:                                              ; preds = %211
   tail call void @llvm.trap() #58
   unreachable
 
-221:                                              ; preds = %212, %205
-  %222 = phi i32 [ %211, %205 ], [ %218, %212 ]
-  %223 = icmp ult i32 %203, %222
-  tail call void @llvm.assume(i1 noundef %223) #59
-  %224 = sext i32 %203 to i64
-  %225 = sext i32 %222 to i64
-  %226 = sub i64 %101, %100
-  %227 = add i64 %226, 1
-  %228 = udiv i64 %227, %225
-  %229 = mul i64 %228, %225
-  %230 = sub i64 %227, %229
-  %231 = icmp ugt i64 %230, %224
-  br i1 %231, label %232, label %236
+219:                                              ; preds = %211, %205
+  %220 = phi i32 [ %210, %205 ], [ %216, %211 ]
+  %221 = icmp ult i32 %202, %220
+  tail call void @llvm.assume(i1 noundef %221) #59
+  %222 = sext i32 %202 to i64
+  %223 = sext i32 %220 to i64
+  %224 = sub i64 %101, %100
+  %225 = add i64 %224, 1
+  %226 = udiv i64 %225, %223
+  %227 = mul i64 %226, %223
+  %228 = sub i64 %225, %227
+  %229 = icmp ugt i64 %228, %222
+  br i1 %229, label %230, label %234
 
-232:                                              ; preds = %221
-  %233 = add nsw i64 %228, 1
-  %234 = mul i64 %233, %224
-  %235 = add i64 %234, %100
-  br label %241
+230:                                              ; preds = %219
+  %231 = add nsw i64 %226, 1
+  %232 = mul i64 %231, %222
+  %233 = add i64 %232, %100
+  br label %239
 
-236:                                              ; preds = %221
-  %237 = mul i64 %228, %224
-  %238 = add i64 %237, %100
-  %239 = add i64 %238, %230
-  %240 = add i64 %228, -1
-  br label %241
+234:                                              ; preds = %219
+  %235 = mul i64 %226, %222
+  %236 = add i64 %235, %100
+  %237 = add i64 %236, %228
+  %238 = add i64 %226, -1
+  br label %239
 
-241:                                              ; preds = %236, %232
-  %242 = phi i64 [ %228, %232 ], [ %240, %236 ]
-  %243 = phi i64 [ %235, %232 ], [ %239, %236 ]
-  %244 = add i64 %243, %242
-  %245 = icmp ule i64 %243, %101
-  %246 = icmp ule i64 %101, %244
-  %247 = and i1 %245, %246
-  br label %298
+239:                                              ; preds = %234, %230
+  %240 = phi i64 [ %226, %230 ], [ %238, %234 ]
+  %241 = phi i64 [ %233, %230 ], [ %237, %234 ]
+  %242 = add i64 %241, %240
+  %243 = icmp ule i64 %241, %101
+  %244 = icmp ule i64 %101, %242
+  %245 = and i1 %243, %244
+  br label %295
 
-248:                                              ; preds = %98
-  %249 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %250 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %251, label %258
+246:                                              ; preds = %98
+  %247 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %248 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %249 = getelementptr inbounds i8, ptr addrspace(4) %248, i64 12
+  br i1 %31, label %250, label %256
 
-251:                                              ; preds = %248
-  %252 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 4
-  %253 = load i16, ptr addrspace(4) %252, align 4
-  %254 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 12
-  %255 = load i32, ptr addrspace(4) %254, align 4, !invariant.load !63
-  %256 = zext i16 %253 to i32
-  %257 = udiv i32 %255, %256
-  br label %267
+250:                                              ; preds = %246
+  %251 = load i32, ptr addrspace(4) %249, align 4, !invariant.load !51
+  %252 = getelementptr inbounds i8, ptr addrspace(4) %248, i64 4
+  %253 = load i16, ptr addrspace(4) %252, align 4, !range !65, !invariant.load !51
+  %254 = zext i16 %253 to i32
+  %255 = udiv i32 %251, %254
+  br label %264
 
-258:                                              ; preds = %248
-  %259 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 12
-  %260 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 4
-  %261 = load i16, ptr addrspace(4) %260, align 4
-  %262 = load i32, ptr addrspace(4) %259, align 4, !invariant.load !63
-  %263 = zext i16 %261 to i32
-  %264 = udiv i32 %262, %263
-  %265 = icmp ult i32 %249, %264
-  br i1 %265, label %267, label %266
+256:                                              ; preds = %246
+  %257 = getelementptr inbounds i8, ptr addrspace(4) %248, i64 4
+  %258 = load i32, ptr addrspace(4) %249, align 4, !invariant.load !51
+  %259 = load i16, ptr addrspace(4) %257, align 4, !range !65, !invariant.load !51, !noundef !51
+  %260 = zext i16 %259 to i32
+  %261 = udiv i32 %258, %260
+  %262 = icmp ult i32 %247, %261
+  br i1 %262, label %264, label %263
 
-266:                                              ; preds = %258
+263:                                              ; preds = %256
   tail call void @llvm.trap() #58
   unreachable
 
-267:                                              ; preds = %258, %251
-  %268 = phi i32 [ %257, %251 ], [ %264, %258 ]
-  %269 = icmp ult i32 %249, %268
-  tail call void @llvm.assume(i1 noundef %269) #59
-  %270 = mul nsw i32 %99, %249
-  %271 = add nsw i32 %270, %69
-  %272 = sext i32 %271 to i64
-  %273 = mul nsw i32 %268, %99
-  %274 = sext i32 %273 to i64
-  %275 = mul i64 %274, %8
-  %276 = mul i64 %272, %8
-  %277 = add i64 %276, %100
-  %278 = add i64 %8, -1
-  %279 = add i64 %278, %277
-  %280 = urem i64 %101, %8
-  %281 = add i64 %277, %280
-  %282 = sub i64 %101, %281
-  %283 = urem i64 %282, %275
-  %284 = icmp eq i64 %283, 0
-  br label %298
+264:                                              ; preds = %256, %250
+  %265 = phi i32 [ %255, %250 ], [ %261, %256 ]
+  %266 = icmp ult i32 %247, %265
+  tail call void @llvm.assume(i1 noundef %266) #59
+  %267 = mul nsw i32 %99, %247
+  %268 = add nsw i32 %267, %69
+  %269 = sext i32 %268 to i64
+  %270 = mul nsw i32 %265, %99
+  %271 = sext i32 %270 to i64
+  %272 = mul i64 %271, %8
+  %273 = mul i64 %269, %8
+  %274 = add i64 %273, %100
+  %275 = add i64 %8, -1
+  %276 = add i64 %275, %274
+  %277 = urem i64 %101, %8
+  %278 = add i64 %274, %277
+  %279 = sub i64 %101, %278
+  %280 = urem i64 %279, %272
+  %281 = icmp eq i64 %280, 0
+  br label %295
 
-285:                                              ; preds = %98
-  %286 = sext i32 %69 to i64
-  %287 = sext i32 %99 to i64
-  %288 = mul i64 %287, %8
-  %289 = mul i64 %286, %8
-  %290 = add i64 %100, %289
-  %291 = add i64 %8, -1
-  %292 = add i64 %291, %290
-  %293 = urem i64 %101, %8
-  %294 = add i64 %290, %293
-  %295 = sub i64 %101, %294
-  %296 = urem i64 %295, %288
-  %297 = icmp eq i64 %296, 0
-  br label %298
+282:                                              ; preds = %98
+  %283 = sext i32 %69 to i64
+  %284 = sext i32 %99 to i64
+  %285 = mul i64 %284, %8
+  %286 = mul i64 %283, %8
+  %287 = add i64 %100, %286
+  %288 = add i64 %8, -1
+  %289 = add i64 %288, %287
+  %290 = urem i64 %101, %8
+  %291 = add i64 %287, %290
+  %292 = sub i64 %101, %291
+  %293 = urem i64 %292, %285
+  %294 = icmp eq i64 %293, 0
+  br label %295
 
-298:                                              ; preds = %285, %267, %241, %187, %159, %120, %105
-  %299 = phi i1 [ %297, %285 ], [ %284, %267 ], [ %247, %241 ], [ %201, %187 ], [ %165, %159 ], [ %117, %105 ], [ %139, %120 ]
-  %300 = phi i64 [ %290, %285 ], [ %277, %267 ], [ %243, %241 ], [ %194, %187 ], [ %161, %159 ], [ %110, %105 ], [ %132, %120 ]
-  %301 = phi i64 [ %292, %285 ], [ %279, %267 ], [ %244, %241 ], [ %196, %187 ], [ %162, %159 ], [ %112, %105 ], [ %140, %120 ]
-  %302 = phi i64 [ %288, %285 ], [ %275, %267 ], [ %227, %241 ], [ %192, %187 ], [ %145, %159 ], [ %108, %105 ], [ %130, %120 ]
-  %303 = zext i1 %299 to i32
-  store i32 %303, ptr %3, align 4, !tbaa !18
-  store i64 %300, ptr %4, align 8, !tbaa !14
-  store i64 %301, ptr %5, align 8, !tbaa !14
-  store i64 %302, ptr %6, align 8, !tbaa !14
+295:                                              ; preds = %282, %264, %239, %186, %159, %120, %105
+  %296 = phi i1 [ %294, %282 ], [ %281, %264 ], [ %245, %239 ], [ %200, %186 ], [ %165, %159 ], [ %117, %105 ], [ %139, %120 ]
+  %297 = phi i64 [ %287, %282 ], [ %274, %264 ], [ %241, %239 ], [ %193, %186 ], [ %161, %159 ], [ %110, %105 ], [ %132, %120 ]
+  %298 = phi i64 [ %289, %282 ], [ %276, %264 ], [ %242, %239 ], [ %195, %186 ], [ %162, %159 ], [ %112, %105 ], [ %140, %120 ]
+  %299 = phi i64 [ %285, %282 ], [ %272, %264 ], [ %225, %239 ], [ %191, %186 ], [ %145, %159 ], [ %108, %105 ], [ %130, %120 ]
+  %300 = zext i1 %296 to i32
+  store i32 %300, ptr %3, align 4, !tbaa !18
+  store i64 %297, ptr %4, align 8, !tbaa !14
+  store i64 %298, ptr %5, align 8, !tbaa !14
+  store i64 %299, ptr %6, align 8, !tbaa !14
   ret void
 }
 
 ; Function Attrs: mustprogress nounwind memory(read, argmem: readwrite, inaccessiblemem: write)
 define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree noundef readnone %0, i32 noundef %1, i32 noundef %2, ptr nocapture nofree noundef writeonly %3, ptr nocapture nofree noundef %4, ptr nocapture nofree noundef %5, ptr nocapture nofree noundef writeonly %6, i32 noundef %7, i32 noundef %8) #52 {
-  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %11 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %12 = icmp eq i32 %11, 0
   %13 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -27557,7 +27267,7 @@ define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree nound
   %19 = getelementptr inbounds ptr, ptr %17, i64 %18
   %20 = load ptr, ptr %19, align 8, !tbaa !20
   %21 = icmp eq ptr %20, null
-  br i1 %21, label %23, label %22, !prof !85
+  br i1 %21, label %23, label %22, !prof !74
 
 22:                                               ; preds = %16
   br label %23
@@ -27567,7 +27277,7 @@ define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree nound
   %25 = getelementptr inbounds i8, ptr %24, i64 4
   %26 = load i32, ptr %25, align 4, !tbaa !18
   %27 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %29 = and i32 %27, 1
   %30 = and i32 %29, %28
   %31 = icmp eq i32 %30, 0
@@ -27593,7 +27303,7 @@ define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree nound
   %41 = getelementptr inbounds ptr, ptr %39, i64 %40
   %42 = load ptr, ptr %41, align 8, !tbaa !20
   %43 = icmp eq ptr %42, null
-  br i1 %43, label %45, label %44, !prof !85
+  br i1 %43, label %45, label %44, !prof !74
 
 44:                                               ; preds = %38
   br label %45
@@ -27613,7 +27323,7 @@ define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree nound
 52:                                               ; preds = %45
   tail call void @llvm.assume(i1 noundef %49) #59
   %53 = icmp ult i32 %48, %26
-  br i1 %53, label %68, label %54, !prof !97
+  br i1 %53, label %68, label %54, !prof !86
 
 54:                                               ; preds = %52
   br i1 %15, label %55, label %62
@@ -27624,7 +27334,7 @@ define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree nound
   %58 = getelementptr inbounds ptr, ptr %56, i64 %57
   %59 = load ptr, ptr %58, align 8, !tbaa !20
   %60 = icmp eq ptr %59, null
-  br i1 %60, label %62, label %61, !prof !85
+  br i1 %60, label %62, label %61, !prof !74
 
 61:                                               ; preds = %55
   br label %62
@@ -27634,7 +27344,7 @@ define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree nound
   %64 = getelementptr inbounds i8, ptr %63, i64 8
   %65 = load i32, ptr %64, align 4, !tbaa !18
   %66 = icmp eq i32 %65, %26
-  %67 = select i1 %66, i32 %10, i32 0, !prof !85
+  %67 = select i1 %66, i32 %10, i32 0, !prof !74
   br label %68
 
 68:                                               ; preds = %62, %52, %35
@@ -27647,7 +27357,7 @@ define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree nound
   %73 = getelementptr inbounds ptr, ptr %71, i64 %72
   %74 = load ptr, ptr %73, align 8, !tbaa !20
   %75 = icmp eq ptr %74, null
-  br i1 %75, label %77, label %76, !prof !85
+  br i1 %75, label %77, label %76, !prof !74
 
 76:                                               ; preds = %70
   br label %77
@@ -27679,7 +27389,7 @@ define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree nound
   %91 = icmp eq i32 %90, 0
   %92 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %93 = getelementptr inbounds i8, ptr addrspace(4) %92, i64 4
-  %94 = load i16, ptr addrspace(4) %93, align 4
+  %94 = load i16, ptr addrspace(4) %93, align 4, !range !65, !invariant.load !51, !noundef !51
   %95 = zext i16 %94 to i32
   %96 = select i1 %91, i32 -64, i32 0
   %97 = add nsw i32 %96, %95
@@ -27690,13 +27400,13 @@ define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree nound
   %100 = load i32, ptr %4, align 4, !tbaa !18
   %101 = load i32, ptr %5, align 4, !tbaa !18
   %102 = and i32 %2, -1610612737
-  switch i32 %102, label %273 [
+  switch i32 %102, label %270 [
     i32 33, label %103
     i32 45, label %116
     i32 34, label %137
     i32 91, label %160
-    i32 92, label %194
-    i32 93, label %238
+    i32 92, label %193
+    i32 93, label %236
   ]
 
 103:                                              ; preds = %98
@@ -27714,7 +27424,7 @@ define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree nound
   %113 = sub i32 %101, %112
   %114 = srem i32 %113, %106
   %115 = icmp eq i32 %114, 0
-  br label %284
+  br label %281
 
 116:                                              ; preds = %103, %98
   %117 = icmp sgt i32 %8, 0
@@ -27739,7 +27449,7 @@ define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree nound
   %134 = srem i32 %133, %126
   %135 = icmp eq i32 %134, 0
   %136 = tail call i32 @llvm.smin.i32(i32 %130, i32 %101) #56
-  br label %284
+  br label %281
 
 137:                                              ; preds = %116, %98
   %138 = sub nsw i32 %101, %100
@@ -27770,194 +27480,191 @@ define internal void @__kmpc_distribute_static_init_4(ptr nocapture nofree nound
   %157 = icmp sle i32 %154, %101
   %158 = icmp slt i32 %101, %155
   %159 = select i1 %157, i1 %158, i1 false
-  br label %284
+  br label %281
 
 160:                                              ; preds = %98
   %161 = icmp sgt i32 %8, 0
-  br i1 %161, label %162, label %194
+  br i1 %161, label %162, label %193
 
 162:                                              ; preds = %160
   %163 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
   %164 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %165, label %172
+  %165 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 12
+  br i1 %31, label %166, label %172
 
-165:                                              ; preds = %162
-  %166 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
-  %167 = load i16, ptr addrspace(4) %166, align 4
-  %168 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 12
-  %169 = load i32, ptr addrspace(4) %168, align 4, !invariant.load !63
-  %170 = zext i16 %167 to i32
-  %171 = udiv i32 %169, %170
-  br label %181
+166:                                              ; preds = %162
+  %167 = load i32, ptr addrspace(4) %165, align 4, !invariant.load !51
+  %168 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
+  %169 = load i16, ptr addrspace(4) %168, align 4, !range !65, !invariant.load !51
+  %170 = zext i16 %169 to i32
+  %171 = udiv i32 %167, %170
+  br label %180
 
 172:                                              ; preds = %162
-  %173 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 12
-  %174 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
-  %175 = load i16, ptr addrspace(4) %174, align 4
-  %176 = load i32, ptr addrspace(4) %173, align 4, !invariant.load !63
-  %177 = zext i16 %175 to i32
-  %178 = udiv i32 %176, %177
-  %179 = icmp ult i32 %163, %178
-  br i1 %179, label %181, label %180
+  %173 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
+  %174 = load i32, ptr addrspace(4) %165, align 4, !invariant.load !51
+  %175 = load i16, ptr addrspace(4) %173, align 4, !range !65, !invariant.load !51, !noundef !51
+  %176 = zext i16 %175 to i32
+  %177 = udiv i32 %174, %176
+  %178 = icmp ult i32 %163, %177
+  br i1 %178, label %180, label %179
 
-180:                                              ; preds = %172
+179:                                              ; preds = %172
   tail call void @llvm.trap() #58
   unreachable
 
-181:                                              ; preds = %172, %165
-  %182 = phi i32 [ %171, %165 ], [ %178, %172 ]
-  %183 = icmp ult i32 %163, %182
-  tail call void @llvm.assume(i1 noundef %183) #59
-  %184 = mul nsw i32 %182, %8
-  %185 = mul nsw i32 %163, %8
-  %186 = add nsw i32 %100, %185
-  %187 = add nsw i32 %8, -1
-  %188 = add i32 %187, %186
-  %189 = srem i32 %101, %8
-  %190 = add i32 %186, %189
-  %191 = sub i32 %101, %190
-  %192 = srem i32 %191, %184
-  %193 = icmp eq i32 %192, 0
-  br label %284
+180:                                              ; preds = %172, %166
+  %181 = phi i32 [ %171, %166 ], [ %177, %172 ]
+  %182 = icmp ult i32 %163, %181
+  tail call void @llvm.assume(i1 noundef %182) #59
+  %183 = mul nsw i32 %181, %8
+  %184 = mul nsw i32 %163, %8
+  %185 = add nsw i32 %100, %184
+  %186 = add nsw i32 %8, -1
+  %187 = add i32 %186, %185
+  %188 = srem i32 %101, %8
+  %189 = add i32 %185, %188
+  %190 = sub i32 %101, %189
+  %191 = srem i32 %190, %183
+  %192 = icmp eq i32 %191, 0
+  br label %281
 
-194:                                              ; preds = %160, %98
-  %195 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %196 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %197, label %204
+193:                                              ; preds = %160, %98
+  %194 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %195 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %196 = getelementptr inbounds i8, ptr addrspace(4) %195, i64 12
+  br i1 %31, label %197, label %203
 
-197:                                              ; preds = %194
-  %198 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 4
-  %199 = load i16, ptr addrspace(4) %198, align 4
-  %200 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 12
-  %201 = load i32, ptr addrspace(4) %200, align 4, !invariant.load !63
-  %202 = zext i16 %199 to i32
-  %203 = udiv i32 %201, %202
-  br label %213
+197:                                              ; preds = %193
+  %198 = load i32, ptr addrspace(4) %196, align 4, !invariant.load !51
+  %199 = getelementptr inbounds i8, ptr addrspace(4) %195, i64 4
+  %200 = load i16, ptr addrspace(4) %199, align 4, !range !65, !invariant.load !51
+  %201 = zext i16 %200 to i32
+  %202 = udiv i32 %198, %201
+  br label %211
 
-204:                                              ; preds = %194
-  %205 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 12
-  %206 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 4
-  %207 = load i16, ptr addrspace(4) %206, align 4
-  %208 = load i32, ptr addrspace(4) %205, align 4, !invariant.load !63
-  %209 = zext i16 %207 to i32
-  %210 = udiv i32 %208, %209
-  %211 = icmp ult i32 %195, %210
-  br i1 %211, label %213, label %212
+203:                                              ; preds = %193
+  %204 = getelementptr inbounds i8, ptr addrspace(4) %195, i64 4
+  %205 = load i32, ptr addrspace(4) %196, align 4, !invariant.load !51
+  %206 = load i16, ptr addrspace(4) %204, align 4, !range !65, !invariant.load !51, !noundef !51
+  %207 = zext i16 %206 to i32
+  %208 = udiv i32 %205, %207
+  %209 = icmp ult i32 %194, %208
+  br i1 %209, label %211, label %210
 
-212:                                              ; preds = %204
+210:                                              ; preds = %203
   tail call void @llvm.trap() #58
   unreachable
 
-213:                                              ; preds = %204, %197
-  %214 = phi i32 [ %203, %197 ], [ %210, %204 ]
-  %215 = icmp ult i32 %195, %214
-  tail call void @llvm.assume(i1 noundef %215) #59
-  %216 = sub nsw i32 %101, %100
-  %217 = add nsw i32 %216, 1
-  %218 = sdiv i32 %217, %214
-  %219 = mul nsw i32 %218, %214
-  %220 = sub nsw i32 %217, %219
-  %221 = icmp sgt i32 %220, %195
-  br i1 %221, label %222, label %226
+211:                                              ; preds = %203, %197
+  %212 = phi i32 [ %202, %197 ], [ %208, %203 ]
+  %213 = icmp ult i32 %194, %212
+  tail call void @llvm.assume(i1 noundef %213) #59
+  %214 = sub nsw i32 %101, %100
+  %215 = add nsw i32 %214, 1
+  %216 = sdiv i32 %215, %212
+  %217 = mul nsw i32 %216, %212
+  %218 = sub nsw i32 %215, %217
+  %219 = icmp sgt i32 %218, %194
+  br i1 %219, label %220, label %224
 
-222:                                              ; preds = %213
-  %223 = add nsw i32 %218, 1
-  %224 = mul nsw i32 %223, %195
-  %225 = add nsw i32 %224, %100
-  br label %230
+220:                                              ; preds = %211
+  %221 = add nsw i32 %216, 1
+  %222 = mul nsw i32 %221, %194
+  %223 = add nsw i32 %222, %100
+  br label %228
 
-226:                                              ; preds = %213
-  %227 = mul nsw i32 %218, %195
-  %228 = add i32 %227, %100
-  %229 = add i32 %228, %220
-  br label %230
+224:                                              ; preds = %211
+  %225 = mul nsw i32 %216, %194
+  %226 = add i32 %225, %100
+  %227 = add i32 %226, %218
+  br label %228
 
-230:                                              ; preds = %226, %222
-  %231 = phi i32 [ %223, %222 ], [ %218, %226 ]
-  %232 = phi i32 [ %225, %222 ], [ %229, %226 ]
-  %233 = add nsw i32 %232, %231
-  %234 = add nsw i32 %233, -1
-  %235 = icmp sle i32 %232, %101
-  %236 = icmp slt i32 %101, %233
-  %237 = select i1 %235, i1 %236, i1 false
-  br label %284
+228:                                              ; preds = %224, %220
+  %229 = phi i32 [ %221, %220 ], [ %216, %224 ]
+  %230 = phi i32 [ %223, %220 ], [ %227, %224 ]
+  %231 = add nsw i32 %230, %229
+  %232 = add nsw i32 %231, -1
+  %233 = icmp sle i32 %230, %101
+  %234 = icmp slt i32 %101, %231
+  %235 = select i1 %233, i1 %234, i1 false
+  br label %281
 
-238:                                              ; preds = %98
-  %239 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %240 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %241, label %248
+236:                                              ; preds = %98
+  %237 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %238 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %239 = getelementptr inbounds i8, ptr addrspace(4) %238, i64 12
+  br i1 %31, label %240, label %246
 
-241:                                              ; preds = %238
-  %242 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 4
-  %243 = load i16, ptr addrspace(4) %242, align 4
-  %244 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 12
-  %245 = load i32, ptr addrspace(4) %244, align 4, !invariant.load !63
-  %246 = zext i16 %243 to i32
-  %247 = udiv i32 %245, %246
-  br label %257
+240:                                              ; preds = %236
+  %241 = load i32, ptr addrspace(4) %239, align 4, !invariant.load !51
+  %242 = getelementptr inbounds i8, ptr addrspace(4) %238, i64 4
+  %243 = load i16, ptr addrspace(4) %242, align 4, !range !65, !invariant.load !51
+  %244 = zext i16 %243 to i32
+  %245 = udiv i32 %241, %244
+  br label %254
 
-248:                                              ; preds = %238
-  %249 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 12
-  %250 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 4
-  %251 = load i16, ptr addrspace(4) %250, align 4
-  %252 = load i32, ptr addrspace(4) %249, align 4, !invariant.load !63
-  %253 = zext i16 %251 to i32
-  %254 = udiv i32 %252, %253
-  %255 = icmp ult i32 %239, %254
-  br i1 %255, label %257, label %256
+246:                                              ; preds = %236
+  %247 = getelementptr inbounds i8, ptr addrspace(4) %238, i64 4
+  %248 = load i32, ptr addrspace(4) %239, align 4, !invariant.load !51
+  %249 = load i16, ptr addrspace(4) %247, align 4, !range !65, !invariant.load !51, !noundef !51
+  %250 = zext i16 %249 to i32
+  %251 = udiv i32 %248, %250
+  %252 = icmp ult i32 %237, %251
+  br i1 %252, label %254, label %253
 
-256:                                              ; preds = %248
+253:                                              ; preds = %246
   tail call void @llvm.trap() #58
   unreachable
 
-257:                                              ; preds = %248, %241
-  %258 = phi i32 [ %247, %241 ], [ %254, %248 ]
-  %259 = icmp ult i32 %239, %258
-  tail call void @llvm.assume(i1 noundef %259) #59
-  %260 = mul nsw i32 %99, %239
-  %261 = add nsw i32 %260, %69
-  %262 = mul i32 %99, %8
-  %263 = mul i32 %262, %258
-  %264 = mul nsw i32 %261, %8
-  %265 = add nsw i32 %264, %100
-  %266 = add i32 %8, -1
-  %267 = add i32 %266, %265
-  %268 = srem i32 %101, %8
-  %269 = add i32 %265, %268
-  %270 = sub i32 %101, %269
-  %271 = srem i32 %270, %263
-  %272 = icmp eq i32 %271, 0
-  br label %284
+254:                                              ; preds = %246, %240
+  %255 = phi i32 [ %245, %240 ], [ %251, %246 ]
+  %256 = icmp ult i32 %237, %255
+  tail call void @llvm.assume(i1 noundef %256) #59
+  %257 = mul nsw i32 %99, %237
+  %258 = add nsw i32 %257, %69
+  %259 = mul i32 %99, %8
+  %260 = mul i32 %259, %255
+  %261 = mul nsw i32 %258, %8
+  %262 = add nsw i32 %261, %100
+  %263 = add i32 %8, -1
+  %264 = add i32 %263, %262
+  %265 = srem i32 %101, %8
+  %266 = add i32 %262, %265
+  %267 = sub i32 %101, %266
+  %268 = srem i32 %267, %260
+  %269 = icmp eq i32 %268, 0
+  br label %281
 
-273:                                              ; preds = %98
-  %274 = mul nsw i32 %99, %8
-  %275 = mul nsw i32 %69, %8
-  %276 = add nsw i32 %100, %275
-  %277 = add i32 %8, -1
-  %278 = add i32 %277, %276
-  %279 = srem i32 %101, %8
-  %280 = add i32 %276, %279
-  %281 = sub i32 %101, %280
-  %282 = srem i32 %281, %274
-  %283 = icmp eq i32 %282, 0
-  br label %284
+270:                                              ; preds = %98
+  %271 = mul nsw i32 %99, %8
+  %272 = mul nsw i32 %69, %8
+  %273 = add nsw i32 %100, %272
+  %274 = add i32 %8, -1
+  %275 = add i32 %274, %273
+  %276 = srem i32 %101, %8
+  %277 = add i32 %273, %276
+  %278 = sub i32 %101, %277
+  %279 = srem i32 %278, %271
+  %280 = icmp eq i32 %279, 0
+  br label %281
 
-284:                                              ; preds = %273, %257, %230, %181, %152, %118, %105
-  %285 = phi i1 [ %283, %273 ], [ %272, %257 ], [ %237, %230 ], [ %193, %181 ], [ %159, %152 ], [ %115, %105 ], [ %135, %118 ]
-  %286 = phi i32 [ %276, %273 ], [ %265, %257 ], [ %232, %230 ], [ %186, %181 ], [ %154, %152 ], [ %108, %105 ], [ %128, %118 ]
-  %287 = phi i32 [ %278, %273 ], [ %267, %257 ], [ %234, %230 ], [ %188, %181 ], [ %156, %152 ], [ %110, %105 ], [ %136, %118 ]
-  %288 = phi i32 [ %274, %273 ], [ %263, %257 ], [ %217, %230 ], [ %184, %181 ], [ %139, %152 ], [ %106, %105 ], [ %126, %118 ]
-  %289 = zext i1 %285 to i32
-  store i32 %289, ptr %3, align 4, !tbaa !18
-  store i32 %286, ptr %4, align 4, !tbaa !18
-  store i32 %287, ptr %5, align 4, !tbaa !18
-  store i32 %288, ptr %6, align 4, !tbaa !18
+281:                                              ; preds = %270, %254, %228, %180, %152, %118, %105
+  %282 = phi i1 [ %280, %270 ], [ %269, %254 ], [ %235, %228 ], [ %192, %180 ], [ %159, %152 ], [ %115, %105 ], [ %135, %118 ]
+  %283 = phi i32 [ %273, %270 ], [ %262, %254 ], [ %230, %228 ], [ %185, %180 ], [ %154, %152 ], [ %108, %105 ], [ %128, %118 ]
+  %284 = phi i32 [ %275, %270 ], [ %264, %254 ], [ %232, %228 ], [ %187, %180 ], [ %156, %152 ], [ %110, %105 ], [ %136, %118 ]
+  %285 = phi i32 [ %271, %270 ], [ %260, %254 ], [ %215, %228 ], [ %183, %180 ], [ %139, %152 ], [ %106, %105 ], [ %126, %118 ]
+  %286 = zext i1 %282 to i32
+  store i32 %286, ptr %3, align 4, !tbaa !18
+  store i32 %283, ptr %4, align 4, !tbaa !18
+  store i32 %284, ptr %5, align 4, !tbaa !18
+  store i32 %285, ptr %6, align 4, !tbaa !18
   ret void
 }
 
 ; Function Attrs: mustprogress nounwind memory(read, argmem: readwrite, inaccessiblemem: write)
 define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noundef readnone %0, i32 noundef %1, i32 noundef %2, ptr nocapture nofree noundef writeonly %3, ptr nocapture nofree noundef %4, ptr nocapture nofree noundef %5, ptr nocapture nofree noundef writeonly %6, i32 noundef %7, i32 noundef %8) #52 {
-  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %11 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %12 = icmp eq i32 %11, 0
   %13 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -27971,7 +27678,7 @@ define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noun
   %19 = getelementptr inbounds ptr, ptr %17, i64 %18
   %20 = load ptr, ptr %19, align 8, !tbaa !20
   %21 = icmp eq ptr %20, null
-  br i1 %21, label %23, label %22, !prof !85
+  br i1 %21, label %23, label %22, !prof !74
 
 22:                                               ; preds = %16
   br label %23
@@ -27981,7 +27688,7 @@ define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noun
   %25 = getelementptr inbounds i8, ptr %24, i64 4
   %26 = load i32, ptr %25, align 4, !tbaa !18
   %27 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %29 = and i32 %27, 1
   %30 = and i32 %29, %28
   %31 = icmp eq i32 %30, 0
@@ -28007,7 +27714,7 @@ define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noun
   %41 = getelementptr inbounds ptr, ptr %39, i64 %40
   %42 = load ptr, ptr %41, align 8, !tbaa !20
   %43 = icmp eq ptr %42, null
-  br i1 %43, label %45, label %44, !prof !85
+  br i1 %43, label %45, label %44, !prof !74
 
 44:                                               ; preds = %38
   br label %45
@@ -28027,7 +27734,7 @@ define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noun
 52:                                               ; preds = %45
   tail call void @llvm.assume(i1 noundef %49) #59
   %53 = icmp ult i32 %48, %26
-  br i1 %53, label %68, label %54, !prof !97
+  br i1 %53, label %68, label %54, !prof !86
 
 54:                                               ; preds = %52
   br i1 %15, label %55, label %62
@@ -28038,7 +27745,7 @@ define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noun
   %58 = getelementptr inbounds ptr, ptr %56, i64 %57
   %59 = load ptr, ptr %58, align 8, !tbaa !20
   %60 = icmp eq ptr %59, null
-  br i1 %60, label %62, label %61, !prof !85
+  br i1 %60, label %62, label %61, !prof !74
 
 61:                                               ; preds = %55
   br label %62
@@ -28048,7 +27755,7 @@ define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noun
   %64 = getelementptr inbounds i8, ptr %63, i64 8
   %65 = load i32, ptr %64, align 4, !tbaa !18
   %66 = icmp eq i32 %65, %26
-  %67 = select i1 %66, i32 %10, i32 0, !prof !85
+  %67 = select i1 %66, i32 %10, i32 0, !prof !74
   br label %68
 
 68:                                               ; preds = %62, %52, %35
@@ -28061,7 +27768,7 @@ define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noun
   %73 = getelementptr inbounds ptr, ptr %71, i64 %72
   %74 = load ptr, ptr %73, align 8, !tbaa !20
   %75 = icmp eq ptr %74, null
-  br i1 %75, label %77, label %76, !prof !85
+  br i1 %75, label %77, label %76, !prof !74
 
 76:                                               ; preds = %70
   br label %77
@@ -28093,7 +27800,7 @@ define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noun
   %91 = icmp eq i32 %90, 0
   %92 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %93 = getelementptr inbounds i8, ptr addrspace(4) %92, i64 4
-  %94 = load i16, ptr addrspace(4) %93, align 4
+  %94 = load i16, ptr addrspace(4) %93, align 4, !range !65, !invariant.load !51, !noundef !51
   %95 = zext i16 %94 to i32
   %96 = select i1 %91, i32 -64, i32 0
   %97 = add nsw i32 %96, %95
@@ -28104,13 +27811,13 @@ define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noun
   %100 = load i32, ptr %4, align 4, !tbaa !18
   %101 = load i32, ptr %5, align 4, !tbaa !18
   %102 = and i32 %2, -1610612737
-  switch i32 %102, label %273 [
+  switch i32 %102, label %270 [
     i32 33, label %103
     i32 45, label %116
     i32 34, label %137
     i32 91, label %160
-    i32 92, label %194
-    i32 93, label %238
+    i32 92, label %193
+    i32 93, label %236
   ]
 
 103:                                              ; preds = %98
@@ -28128,7 +27835,7 @@ define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noun
   %113 = sub i32 %101, %112
   %114 = urem i32 %113, %106
   %115 = icmp eq i32 %114, 0
-  br label %284
+  br label %281
 
 116:                                              ; preds = %103, %98
   %117 = icmp sgt i32 %8, 0
@@ -28153,7 +27860,7 @@ define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noun
   %134 = urem i32 %133, %126
   %135 = icmp eq i32 %134, 0
   %136 = tail call i32 @llvm.umin.i32(i32 %130, i32 %101) #56
-  br label %284
+  br label %281
 
 137:                                              ; preds = %116, %98
   %138 = sub i32 %101, %100
@@ -28184,194 +27891,191 @@ define internal void @__kmpc_distribute_static_init_4u(ptr nocapture nofree noun
   %157 = icmp ule i32 %155, %101
   %158 = icmp ule i32 %101, %156
   %159 = and i1 %157, %158
-  br label %284
+  br label %281
 
 160:                                              ; preds = %98
   %161 = icmp sgt i32 %8, 0
-  br i1 %161, label %162, label %194
+  br i1 %161, label %162, label %193
 
 162:                                              ; preds = %160
   %163 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
   %164 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %165, label %172
+  %165 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 12
+  br i1 %31, label %166, label %172
 
-165:                                              ; preds = %162
-  %166 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
-  %167 = load i16, ptr addrspace(4) %166, align 4
-  %168 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 12
-  %169 = load i32, ptr addrspace(4) %168, align 4, !invariant.load !63
-  %170 = zext i16 %167 to i32
-  %171 = udiv i32 %169, %170
-  br label %181
+166:                                              ; preds = %162
+  %167 = load i32, ptr addrspace(4) %165, align 4, !invariant.load !51
+  %168 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
+  %169 = load i16, ptr addrspace(4) %168, align 4, !range !65, !invariant.load !51
+  %170 = zext i16 %169 to i32
+  %171 = udiv i32 %167, %170
+  br label %180
 
 172:                                              ; preds = %162
-  %173 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 12
-  %174 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
-  %175 = load i16, ptr addrspace(4) %174, align 4
-  %176 = load i32, ptr addrspace(4) %173, align 4, !invariant.load !63
-  %177 = zext i16 %175 to i32
-  %178 = udiv i32 %176, %177
-  %179 = icmp ult i32 %163, %178
-  br i1 %179, label %181, label %180
+  %173 = getelementptr inbounds i8, ptr addrspace(4) %164, i64 4
+  %174 = load i32, ptr addrspace(4) %165, align 4, !invariant.load !51
+  %175 = load i16, ptr addrspace(4) %173, align 4, !range !65, !invariant.load !51, !noundef !51
+  %176 = zext i16 %175 to i32
+  %177 = udiv i32 %174, %176
+  %178 = icmp ult i32 %163, %177
+  br i1 %178, label %180, label %179
 
-180:                                              ; preds = %172
+179:                                              ; preds = %172
   tail call void @llvm.trap() #58
   unreachable
 
-181:                                              ; preds = %172, %165
-  %182 = phi i32 [ %171, %165 ], [ %178, %172 ]
-  %183 = icmp ult i32 %163, %182
-  tail call void @llvm.assume(i1 noundef %183) #59
-  %184 = mul i32 %182, %8
-  %185 = mul i32 %163, %8
-  %186 = add i32 %100, %185
-  %187 = add nsw i32 %8, -1
-  %188 = add i32 %187, %186
-  %189 = urem i32 %101, %8
-  %190 = add i32 %186, %189
-  %191 = sub i32 %101, %190
-  %192 = urem i32 %191, %184
-  %193 = icmp eq i32 %192, 0
-  br label %284
+180:                                              ; preds = %172, %166
+  %181 = phi i32 [ %171, %166 ], [ %177, %172 ]
+  %182 = icmp ult i32 %163, %181
+  tail call void @llvm.assume(i1 noundef %182) #59
+  %183 = mul i32 %181, %8
+  %184 = mul i32 %163, %8
+  %185 = add i32 %100, %184
+  %186 = add nsw i32 %8, -1
+  %187 = add i32 %186, %185
+  %188 = urem i32 %101, %8
+  %189 = add i32 %185, %188
+  %190 = sub i32 %101, %189
+  %191 = urem i32 %190, %183
+  %192 = icmp eq i32 %191, 0
+  br label %281
 
-194:                                              ; preds = %160, %98
-  %195 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %196 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %197, label %204
+193:                                              ; preds = %160, %98
+  %194 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %195 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %196 = getelementptr inbounds i8, ptr addrspace(4) %195, i64 12
+  br i1 %31, label %197, label %203
 
-197:                                              ; preds = %194
-  %198 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 4
-  %199 = load i16, ptr addrspace(4) %198, align 4
-  %200 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 12
-  %201 = load i32, ptr addrspace(4) %200, align 4, !invariant.load !63
-  %202 = zext i16 %199 to i32
-  %203 = udiv i32 %201, %202
-  br label %213
+197:                                              ; preds = %193
+  %198 = load i32, ptr addrspace(4) %196, align 4, !invariant.load !51
+  %199 = getelementptr inbounds i8, ptr addrspace(4) %195, i64 4
+  %200 = load i16, ptr addrspace(4) %199, align 4, !range !65, !invariant.load !51
+  %201 = zext i16 %200 to i32
+  %202 = udiv i32 %198, %201
+  br label %211
 
-204:                                              ; preds = %194
-  %205 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 12
-  %206 = getelementptr inbounds i8, ptr addrspace(4) %196, i64 4
-  %207 = load i16, ptr addrspace(4) %206, align 4
-  %208 = load i32, ptr addrspace(4) %205, align 4, !invariant.load !63
-  %209 = zext i16 %207 to i32
-  %210 = udiv i32 %208, %209
-  %211 = icmp ult i32 %195, %210
-  br i1 %211, label %213, label %212
+203:                                              ; preds = %193
+  %204 = getelementptr inbounds i8, ptr addrspace(4) %195, i64 4
+  %205 = load i32, ptr addrspace(4) %196, align 4, !invariant.load !51
+  %206 = load i16, ptr addrspace(4) %204, align 4, !range !65, !invariant.load !51, !noundef !51
+  %207 = zext i16 %206 to i32
+  %208 = udiv i32 %205, %207
+  %209 = icmp ult i32 %194, %208
+  br i1 %209, label %211, label %210
 
-212:                                              ; preds = %204
+210:                                              ; preds = %203
   tail call void @llvm.trap() #58
   unreachable
 
-213:                                              ; preds = %204, %197
-  %214 = phi i32 [ %203, %197 ], [ %210, %204 ]
-  %215 = icmp ult i32 %195, %214
-  tail call void @llvm.assume(i1 noundef %215) #59
-  %216 = sub i32 %101, %100
-  %217 = add i32 %216, 1
-  %218 = udiv i32 %217, %214
-  %219 = mul i32 %218, %214
-  %220 = sub i32 %217, %219
-  %221 = icmp ugt i32 %220, %195
-  br i1 %221, label %222, label %226
+211:                                              ; preds = %203, %197
+  %212 = phi i32 [ %202, %197 ], [ %208, %203 ]
+  %213 = icmp ult i32 %194, %212
+  tail call void @llvm.assume(i1 noundef %213) #59
+  %214 = sub i32 %101, %100
+  %215 = add i32 %214, 1
+  %216 = udiv i32 %215, %212
+  %217 = mul i32 %216, %212
+  %218 = sub i32 %215, %217
+  %219 = icmp ugt i32 %218, %194
+  br i1 %219, label %220, label %224
 
-222:                                              ; preds = %213
-  %223 = add nsw i32 %218, 1
-  %224 = mul i32 %223, %195
-  %225 = add i32 %224, %100
-  br label %231
+220:                                              ; preds = %211
+  %221 = add nsw i32 %216, 1
+  %222 = mul i32 %221, %194
+  %223 = add i32 %222, %100
+  br label %229
 
-226:                                              ; preds = %213
-  %227 = mul i32 %218, %195
-  %228 = add i32 %227, %100
-  %229 = add i32 %228, %220
-  %230 = add i32 %218, -1
-  br label %231
+224:                                              ; preds = %211
+  %225 = mul i32 %216, %194
+  %226 = add i32 %225, %100
+  %227 = add i32 %226, %218
+  %228 = add i32 %216, -1
+  br label %229
 
-231:                                              ; preds = %226, %222
-  %232 = phi i32 [ %218, %222 ], [ %230, %226 ]
-  %233 = phi i32 [ %225, %222 ], [ %229, %226 ]
-  %234 = add i32 %233, %232
-  %235 = icmp ule i32 %233, %101
-  %236 = icmp ule i32 %101, %234
-  %237 = and i1 %235, %236
-  br label %284
+229:                                              ; preds = %224, %220
+  %230 = phi i32 [ %216, %220 ], [ %228, %224 ]
+  %231 = phi i32 [ %223, %220 ], [ %227, %224 ]
+  %232 = add i32 %231, %230
+  %233 = icmp ule i32 %231, %101
+  %234 = icmp ule i32 %101, %232
+  %235 = and i1 %233, %234
+  br label %281
 
-238:                                              ; preds = %98
-  %239 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %240 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %241, label %248
+236:                                              ; preds = %98
+  %237 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %238 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %239 = getelementptr inbounds i8, ptr addrspace(4) %238, i64 12
+  br i1 %31, label %240, label %246
 
-241:                                              ; preds = %238
-  %242 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 4
-  %243 = load i16, ptr addrspace(4) %242, align 4
-  %244 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 12
-  %245 = load i32, ptr addrspace(4) %244, align 4, !invariant.load !63
-  %246 = zext i16 %243 to i32
-  %247 = udiv i32 %245, %246
-  br label %257
+240:                                              ; preds = %236
+  %241 = load i32, ptr addrspace(4) %239, align 4, !invariant.load !51
+  %242 = getelementptr inbounds i8, ptr addrspace(4) %238, i64 4
+  %243 = load i16, ptr addrspace(4) %242, align 4, !range !65, !invariant.load !51
+  %244 = zext i16 %243 to i32
+  %245 = udiv i32 %241, %244
+  br label %254
 
-248:                                              ; preds = %238
-  %249 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 12
-  %250 = getelementptr inbounds i8, ptr addrspace(4) %240, i64 4
-  %251 = load i16, ptr addrspace(4) %250, align 4
-  %252 = load i32, ptr addrspace(4) %249, align 4, !invariant.load !63
-  %253 = zext i16 %251 to i32
-  %254 = udiv i32 %252, %253
-  %255 = icmp ult i32 %239, %254
-  br i1 %255, label %257, label %256
+246:                                              ; preds = %236
+  %247 = getelementptr inbounds i8, ptr addrspace(4) %238, i64 4
+  %248 = load i32, ptr addrspace(4) %239, align 4, !invariant.load !51
+  %249 = load i16, ptr addrspace(4) %247, align 4, !range !65, !invariant.load !51, !noundef !51
+  %250 = zext i16 %249 to i32
+  %251 = udiv i32 %248, %250
+  %252 = icmp ult i32 %237, %251
+  br i1 %252, label %254, label %253
 
-256:                                              ; preds = %248
+253:                                              ; preds = %246
   tail call void @llvm.trap() #58
   unreachable
 
-257:                                              ; preds = %248, %241
-  %258 = phi i32 [ %247, %241 ], [ %254, %248 ]
-  %259 = icmp ult i32 %239, %258
-  tail call void @llvm.assume(i1 noundef %259) #59
-  %260 = mul nsw i32 %99, %239
-  %261 = add nsw i32 %260, %69
-  %262 = mul i32 %99, %8
-  %263 = mul i32 %262, %258
-  %264 = mul i32 %261, %8
-  %265 = add i32 %264, %100
-  %266 = add i32 %8, -1
-  %267 = add i32 %266, %265
-  %268 = urem i32 %101, %8
-  %269 = add i32 %265, %268
-  %270 = sub i32 %101, %269
-  %271 = urem i32 %270, %263
-  %272 = icmp eq i32 %271, 0
-  br label %284
+254:                                              ; preds = %246, %240
+  %255 = phi i32 [ %245, %240 ], [ %251, %246 ]
+  %256 = icmp ult i32 %237, %255
+  tail call void @llvm.assume(i1 noundef %256) #59
+  %257 = mul nsw i32 %99, %237
+  %258 = add nsw i32 %257, %69
+  %259 = mul i32 %99, %8
+  %260 = mul i32 %259, %255
+  %261 = mul i32 %258, %8
+  %262 = add i32 %261, %100
+  %263 = add i32 %8, -1
+  %264 = add i32 %263, %262
+  %265 = urem i32 %101, %8
+  %266 = add i32 %262, %265
+  %267 = sub i32 %101, %266
+  %268 = urem i32 %267, %260
+  %269 = icmp eq i32 %268, 0
+  br label %281
 
-273:                                              ; preds = %98
-  %274 = mul i32 %99, %8
-  %275 = mul i32 %69, %8
-  %276 = add i32 %100, %275
-  %277 = add i32 %8, -1
-  %278 = add i32 %277, %276
-  %279 = urem i32 %101, %8
-  %280 = add i32 %276, %279
-  %281 = sub i32 %101, %280
-  %282 = urem i32 %281, %274
-  %283 = icmp eq i32 %282, 0
-  br label %284
+270:                                              ; preds = %98
+  %271 = mul i32 %99, %8
+  %272 = mul i32 %69, %8
+  %273 = add i32 %100, %272
+  %274 = add i32 %8, -1
+  %275 = add i32 %274, %273
+  %276 = urem i32 %101, %8
+  %277 = add i32 %273, %276
+  %278 = sub i32 %101, %277
+  %279 = urem i32 %278, %271
+  %280 = icmp eq i32 %279, 0
+  br label %281
 
-284:                                              ; preds = %273, %257, %231, %181, %153, %118, %105
-  %285 = phi i1 [ %283, %273 ], [ %272, %257 ], [ %237, %231 ], [ %193, %181 ], [ %159, %153 ], [ %115, %105 ], [ %135, %118 ]
-  %286 = phi i32 [ %276, %273 ], [ %265, %257 ], [ %233, %231 ], [ %186, %181 ], [ %155, %153 ], [ %108, %105 ], [ %128, %118 ]
-  %287 = phi i32 [ %278, %273 ], [ %267, %257 ], [ %234, %231 ], [ %188, %181 ], [ %156, %153 ], [ %110, %105 ], [ %136, %118 ]
-  %288 = phi i32 [ %274, %273 ], [ %263, %257 ], [ %217, %231 ], [ %184, %181 ], [ %139, %153 ], [ %106, %105 ], [ %126, %118 ]
-  %289 = zext i1 %285 to i32
-  store i32 %289, ptr %3, align 4, !tbaa !18
-  store i32 %286, ptr %4, align 4, !tbaa !18
-  store i32 %287, ptr %5, align 4, !tbaa !18
-  store i32 %288, ptr %6, align 4, !tbaa !18
+281:                                              ; preds = %270, %254, %229, %180, %153, %118, %105
+  %282 = phi i1 [ %280, %270 ], [ %269, %254 ], [ %235, %229 ], [ %192, %180 ], [ %159, %153 ], [ %115, %105 ], [ %135, %118 ]
+  %283 = phi i32 [ %273, %270 ], [ %262, %254 ], [ %231, %229 ], [ %185, %180 ], [ %155, %153 ], [ %108, %105 ], [ %128, %118 ]
+  %284 = phi i32 [ %275, %270 ], [ %264, %254 ], [ %232, %229 ], [ %187, %180 ], [ %156, %153 ], [ %110, %105 ], [ %136, %118 ]
+  %285 = phi i32 [ %271, %270 ], [ %260, %254 ], [ %215, %229 ], [ %183, %180 ], [ %139, %153 ], [ %106, %105 ], [ %126, %118 ]
+  %286 = zext i1 %282 to i32
+  store i32 %286, ptr %3, align 4, !tbaa !18
+  store i32 %283, ptr %4, align 4, !tbaa !18
+  store i32 %284, ptr %5, align 4, !tbaa !18
+  store i32 %285, ptr %6, align 4, !tbaa !18
   ret void
 }
 
 ; Function Attrs: mustprogress nounwind memory(read, argmem: readwrite, inaccessiblemem: write)
 define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree noundef readnone %0, i32 noundef %1, i32 noundef %2, ptr nocapture nofree noundef writeonly %3, ptr nocapture nofree noundef %4, ptr nocapture nofree noundef %5, ptr nocapture nofree noundef writeonly %6, i64 noundef %7, i64 noundef %8) #52 {
-  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %11 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %12 = icmp eq i32 %11, 0
   %13 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -28385,7 +28089,7 @@ define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree nound
   %19 = getelementptr inbounds ptr, ptr %17, i64 %18
   %20 = load ptr, ptr %19, align 8, !tbaa !20
   %21 = icmp eq ptr %20, null
-  br i1 %21, label %23, label %22, !prof !85
+  br i1 %21, label %23, label %22, !prof !74
 
 22:                                               ; preds = %16
   br label %23
@@ -28395,7 +28099,7 @@ define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree nound
   %25 = getelementptr inbounds i8, ptr %24, i64 4
   %26 = load i32, ptr %25, align 4, !tbaa !18
   %27 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %29 = and i32 %27, 1
   %30 = and i32 %29, %28
   %31 = icmp eq i32 %30, 0
@@ -28421,7 +28125,7 @@ define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree nound
   %41 = getelementptr inbounds ptr, ptr %39, i64 %40
   %42 = load ptr, ptr %41, align 8, !tbaa !20
   %43 = icmp eq ptr %42, null
-  br i1 %43, label %45, label %44, !prof !85
+  br i1 %43, label %45, label %44, !prof !74
 
 44:                                               ; preds = %38
   br label %45
@@ -28441,7 +28145,7 @@ define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree nound
 52:                                               ; preds = %45
   tail call void @llvm.assume(i1 noundef %49) #59
   %53 = icmp ult i32 %48, %26
-  br i1 %53, label %68, label %54, !prof !97
+  br i1 %53, label %68, label %54, !prof !86
 
 54:                                               ; preds = %52
   br i1 %15, label %55, label %62
@@ -28452,7 +28156,7 @@ define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree nound
   %58 = getelementptr inbounds ptr, ptr %56, i64 %57
   %59 = load ptr, ptr %58, align 8, !tbaa !20
   %60 = icmp eq ptr %59, null
-  br i1 %60, label %62, label %61, !prof !85
+  br i1 %60, label %62, label %61, !prof !74
 
 61:                                               ; preds = %55
   br label %62
@@ -28462,7 +28166,7 @@ define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree nound
   %64 = getelementptr inbounds i8, ptr %63, i64 8
   %65 = load i32, ptr %64, align 4, !tbaa !18
   %66 = icmp eq i32 %65, %26
-  %67 = select i1 %66, i32 %10, i32 0, !prof !85
+  %67 = select i1 %66, i32 %10, i32 0, !prof !74
   br label %68
 
 68:                                               ; preds = %62, %52, %35
@@ -28475,7 +28179,7 @@ define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree nound
   %73 = getelementptr inbounds ptr, ptr %71, i64 %72
   %74 = load ptr, ptr %73, align 8, !tbaa !20
   %75 = icmp eq ptr %74, null
-  br i1 %75, label %77, label %76, !prof !85
+  br i1 %75, label %77, label %76, !prof !74
 
 76:                                               ; preds = %70
   br label %77
@@ -28507,7 +28211,7 @@ define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree nound
   %91 = icmp eq i32 %90, 0
   %92 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %93 = getelementptr inbounds i8, ptr addrspace(4) %92, i64 4
-  %94 = load i16, ptr addrspace(4) %93, align 4
+  %94 = load i16, ptr addrspace(4) %93, align 4, !range !65, !invariant.load !51, !noundef !51
   %95 = zext i16 %94 to i32
   %96 = select i1 %91, i32 -64, i32 0
   %97 = add nsw i32 %96, %95
@@ -28518,13 +28222,13 @@ define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree nound
   %100 = load i64, ptr %4, align 8, !tbaa !14
   %101 = load i64, ptr %5, align 8, !tbaa !14
   %102 = and i32 %2, -1610612737
-  switch i32 %102, label %285 [
+  switch i32 %102, label %282 [
     i32 33, label %103
     i32 45, label %118
     i32 34, label %141
     i32 91, label %166
-    i32 92, label %202
-    i32 93, label %248
+    i32 92, label %201
+    i32 93, label %246
   ]
 
 103:                                              ; preds = %98
@@ -28544,7 +28248,7 @@ define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree nound
   %115 = sub i64 %101, %114
   %116 = srem i64 %115, %108
   %117 = icmp eq i64 %116, 0
-  br label %298
+  br label %295
 
 118:                                              ; preds = %103, %98
   %119 = icmp sgt i64 %8, 0
@@ -28571,7 +28275,7 @@ define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree nound
   %138 = srem i64 %137, %130
   %139 = icmp eq i64 %138, 0
   %140 = tail call i64 @llvm.smin.i64(i64 %134, i64 %101) #56
-  br label %298
+  br label %295
 
 141:                                              ; preds = %118, %98
   %142 = sext i32 %69 to i64
@@ -28604,202 +28308,199 @@ define internal void @__kmpc_distribute_static_init_8(ptr nocapture nofree nound
   %163 = icmp sle i64 %160, %101
   %164 = icmp slt i64 %101, %161
   %165 = select i1 %163, i1 %164, i1 false
-  br label %298
+  br label %295
 
 166:                                              ; preds = %98
   %167 = icmp sgt i64 %8, 0
-  br i1 %167, label %168, label %202
+  br i1 %167, label %168, label %201
 
 168:                                              ; preds = %166
   %169 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
   %170 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %171, label %178
+  %171 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 12
+  br i1 %31, label %172, label %178
 
-171:                                              ; preds = %168
-  %172 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
-  %173 = load i16, ptr addrspace(4) %172, align 4
-  %174 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 12
-  %175 = load i32, ptr addrspace(4) %174, align 4, !invariant.load !63
-  %176 = zext i16 %173 to i32
-  %177 = udiv i32 %175, %176
-  br label %187
+172:                                              ; preds = %168
+  %173 = load i32, ptr addrspace(4) %171, align 4, !invariant.load !51
+  %174 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
+  %175 = load i16, ptr addrspace(4) %174, align 4, !range !65, !invariant.load !51
+  %176 = zext i16 %175 to i32
+  %177 = udiv i32 %173, %176
+  br label %186
 
 178:                                              ; preds = %168
-  %179 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 12
-  %180 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
-  %181 = load i16, ptr addrspace(4) %180, align 4
-  %182 = load i32, ptr addrspace(4) %179, align 4, !invariant.load !63
-  %183 = zext i16 %181 to i32
-  %184 = udiv i32 %182, %183
-  %185 = icmp ult i32 %169, %184
-  br i1 %185, label %187, label %186
+  %179 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
+  %180 = load i32, ptr addrspace(4) %171, align 4, !invariant.load !51
+  %181 = load i16, ptr addrspace(4) %179, align 4, !range !65, !invariant.load !51, !noundef !51
+  %182 = zext i16 %181 to i32
+  %183 = udiv i32 %180, %182
+  %184 = icmp ult i32 %169, %183
+  br i1 %184, label %186, label %185
 
-186:                                              ; preds = %178
+185:                                              ; preds = %178
   tail call void @llvm.trap() #58
   unreachable
 
-187:                                              ; preds = %178, %171
-  %188 = phi i32 [ %177, %171 ], [ %184, %178 ]
-  %189 = icmp ult i32 %169, %188
-  tail call void @llvm.assume(i1 noundef %189) #59
-  %190 = sext i32 %169 to i64
-  %191 = sext i32 %188 to i64
-  %192 = mul nsw i64 %191, %8
-  %193 = mul nsw i64 %190, %8
-  %194 = add nsw i64 %100, %193
-  %195 = add nsw i64 %8, -1
-  %196 = add i64 %195, %194
-  %197 = srem i64 %101, %8
-  %198 = add i64 %194, %197
-  %199 = sub i64 %101, %198
-  %200 = srem i64 %199, %192
-  %201 = icmp eq i64 %200, 0
-  br label %298
+186:                                              ; preds = %178, %172
+  %187 = phi i32 [ %177, %172 ], [ %183, %178 ]
+  %188 = icmp ult i32 %169, %187
+  tail call void @llvm.assume(i1 noundef %188) #59
+  %189 = sext i32 %169 to i64
+  %190 = sext i32 %187 to i64
+  %191 = mul nsw i64 %190, %8
+  %192 = mul nsw i64 %189, %8
+  %193 = add nsw i64 %100, %192
+  %194 = add nsw i64 %8, -1
+  %195 = add i64 %194, %193
+  %196 = srem i64 %101, %8
+  %197 = add i64 %193, %196
+  %198 = sub i64 %101, %197
+  %199 = srem i64 %198, %191
+  %200 = icmp eq i64 %199, 0
+  br label %295
 
-202:                                              ; preds = %166, %98
-  %203 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %204 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %205, label %212
+201:                                              ; preds = %166, %98
+  %202 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %203 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %204 = getelementptr inbounds i8, ptr addrspace(4) %203, i64 12
+  br i1 %31, label %205, label %211
 
-205:                                              ; preds = %202
-  %206 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 4
-  %207 = load i16, ptr addrspace(4) %206, align 4
-  %208 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 12
-  %209 = load i32, ptr addrspace(4) %208, align 4, !invariant.load !63
-  %210 = zext i16 %207 to i32
-  %211 = udiv i32 %209, %210
-  br label %221
+205:                                              ; preds = %201
+  %206 = load i32, ptr addrspace(4) %204, align 4, !invariant.load !51
+  %207 = getelementptr inbounds i8, ptr addrspace(4) %203, i64 4
+  %208 = load i16, ptr addrspace(4) %207, align 4, !range !65, !invariant.load !51
+  %209 = zext i16 %208 to i32
+  %210 = udiv i32 %206, %209
+  br label %219
 
-212:                                              ; preds = %202
-  %213 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 12
-  %214 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 4
-  %215 = load i16, ptr addrspace(4) %214, align 4
-  %216 = load i32, ptr addrspace(4) %213, align 4, !invariant.load !63
-  %217 = zext i16 %215 to i32
-  %218 = udiv i32 %216, %217
-  %219 = icmp ult i32 %203, %218
-  br i1 %219, label %221, label %220
+211:                                              ; preds = %201
+  %212 = getelementptr inbounds i8, ptr addrspace(4) %203, i64 4
+  %213 = load i32, ptr addrspace(4) %204, align 4, !invariant.load !51
+  %214 = load i16, ptr addrspace(4) %212, align 4, !range !65, !invariant.load !51, !noundef !51
+  %215 = zext i16 %214 to i32
+  %216 = udiv i32 %213, %215
+  %217 = icmp ult i32 %202, %216
+  br i1 %217, label %219, label %218
 
-220:                                              ; preds = %212
+218:                                              ; preds = %211
   tail call void @llvm.trap() #58
   unreachable
 
-221:                                              ; preds = %212, %205
-  %222 = phi i32 [ %211, %205 ], [ %218, %212 ]
-  %223 = icmp ult i32 %203, %222
-  tail call void @llvm.assume(i1 noundef %223) #59
-  %224 = sext i32 %203 to i64
-  %225 = sext i32 %222 to i64
-  %226 = sub nsw i64 %101, %100
-  %227 = add nsw i64 %226, 1
-  %228 = sdiv i64 %227, %225
-  %229 = mul nsw i64 %228, %225
-  %230 = sub nsw i64 %227, %229
-  %231 = icmp sgt i64 %230, %224
-  br i1 %231, label %232, label %236
+219:                                              ; preds = %211, %205
+  %220 = phi i32 [ %210, %205 ], [ %216, %211 ]
+  %221 = icmp ult i32 %202, %220
+  tail call void @llvm.assume(i1 noundef %221) #59
+  %222 = sext i32 %202 to i64
+  %223 = sext i32 %220 to i64
+  %224 = sub nsw i64 %101, %100
+  %225 = add nsw i64 %224, 1
+  %226 = sdiv i64 %225, %223
+  %227 = mul nsw i64 %226, %223
+  %228 = sub nsw i64 %225, %227
+  %229 = icmp sgt i64 %228, %222
+  br i1 %229, label %230, label %234
 
-232:                                              ; preds = %221
-  %233 = add nsw i64 %228, 1
-  %234 = mul nsw i64 %233, %224
-  %235 = add nsw i64 %234, %100
-  br label %240
+230:                                              ; preds = %219
+  %231 = add nsw i64 %226, 1
+  %232 = mul nsw i64 %231, %222
+  %233 = add nsw i64 %232, %100
+  br label %238
 
-236:                                              ; preds = %221
-  %237 = mul nsw i64 %228, %224
-  %238 = add i64 %237, %100
-  %239 = add i64 %238, %230
-  br label %240
+234:                                              ; preds = %219
+  %235 = mul nsw i64 %226, %222
+  %236 = add i64 %235, %100
+  %237 = add i64 %236, %228
+  br label %238
 
-240:                                              ; preds = %236, %232
-  %241 = phi i64 [ %233, %232 ], [ %228, %236 ]
-  %242 = phi i64 [ %235, %232 ], [ %239, %236 ]
-  %243 = add nsw i64 %242, %241
-  %244 = add nsw i64 %243, -1
-  %245 = icmp sle i64 %242, %101
-  %246 = icmp slt i64 %101, %243
-  %247 = select i1 %245, i1 %246, i1 false
-  br label %298
+238:                                              ; preds = %234, %230
+  %239 = phi i64 [ %231, %230 ], [ %226, %234 ]
+  %240 = phi i64 [ %233, %230 ], [ %237, %234 ]
+  %241 = add nsw i64 %240, %239
+  %242 = add nsw i64 %241, -1
+  %243 = icmp sle i64 %240, %101
+  %244 = icmp slt i64 %101, %241
+  %245 = select i1 %243, i1 %244, i1 false
+  br label %295
 
-248:                                              ; preds = %98
-  %249 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %250 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %251, label %258
+246:                                              ; preds = %98
+  %247 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %248 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %249 = getelementptr inbounds i8, ptr addrspace(4) %248, i64 12
+  br i1 %31, label %250, label %256
 
-251:                                              ; preds = %248
-  %252 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 4
-  %253 = load i16, ptr addrspace(4) %252, align 4
-  %254 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 12
-  %255 = load i32, ptr addrspace(4) %254, align 4, !invariant.load !63
-  %256 = zext i16 %253 to i32
-  %257 = udiv i32 %255, %256
-  br label %267
+250:                                              ; preds = %246
+  %251 = load i32, ptr addrspace(4) %249, align 4, !invariant.load !51
+  %252 = getelementptr inbounds i8, ptr addrspace(4) %248, i64 4
+  %253 = load i16, ptr addrspace(4) %252, align 4, !range !65, !invariant.load !51
+  %254 = zext i16 %253 to i32
+  %255 = udiv i32 %251, %254
+  br label %264
 
-258:                                              ; preds = %248
-  %259 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 12
-  %260 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 4
-  %261 = load i16, ptr addrspace(4) %260, align 4
-  %262 = load i32, ptr addrspace(4) %259, align 4, !invariant.load !63
-  %263 = zext i16 %261 to i32
-  %264 = udiv i32 %262, %263
-  %265 = icmp ult i32 %249, %264
-  br i1 %265, label %267, label %266
+256:                                              ; preds = %246
+  %257 = getelementptr inbounds i8, ptr addrspace(4) %248, i64 4
+  %258 = load i32, ptr addrspace(4) %249, align 4, !invariant.load !51
+  %259 = load i16, ptr addrspace(4) %257, align 4, !range !65, !invariant.load !51, !noundef !51
+  %260 = zext i16 %259 to i32
+  %261 = udiv i32 %258, %260
+  %262 = icmp ult i32 %247, %261
+  br i1 %262, label %264, label %263
 
-266:                                              ; preds = %258
+263:                                              ; preds = %256
   tail call void @llvm.trap() #58
   unreachable
 
-267:                                              ; preds = %258, %251
-  %268 = phi i32 [ %257, %251 ], [ %264, %258 ]
-  %269 = icmp ult i32 %249, %268
-  tail call void @llvm.assume(i1 noundef %269) #59
-  %270 = mul nsw i32 %99, %249
-  %271 = add nsw i32 %270, %69
-  %272 = sext i32 %271 to i64
-  %273 = mul nsw i32 %268, %99
-  %274 = sext i32 %273 to i64
-  %275 = mul nsw i64 %274, %8
-  %276 = mul nsw i64 %272, %8
-  %277 = add nsw i64 %276, %100
-  %278 = add i64 %8, -1
-  %279 = add i64 %278, %277
-  %280 = srem i64 %101, %8
-  %281 = add i64 %277, %280
-  %282 = sub i64 %101, %281
-  %283 = srem i64 %282, %275
-  %284 = icmp eq i64 %283, 0
-  br label %298
+264:                                              ; preds = %256, %250
+  %265 = phi i32 [ %255, %250 ], [ %261, %256 ]
+  %266 = icmp ult i32 %247, %265
+  tail call void @llvm.assume(i1 noundef %266) #59
+  %267 = mul nsw i32 %99, %247
+  %268 = add nsw i32 %267, %69
+  %269 = sext i32 %268 to i64
+  %270 = mul nsw i32 %265, %99
+  %271 = sext i32 %270 to i64
+  %272 = mul nsw i64 %271, %8
+  %273 = mul nsw i64 %269, %8
+  %274 = add nsw i64 %273, %100
+  %275 = add i64 %8, -1
+  %276 = add i64 %275, %274
+  %277 = srem i64 %101, %8
+  %278 = add i64 %274, %277
+  %279 = sub i64 %101, %278
+  %280 = srem i64 %279, %272
+  %281 = icmp eq i64 %280, 0
+  br label %295
 
-285:                                              ; preds = %98
-  %286 = sext i32 %69 to i64
-  %287 = sext i32 %99 to i64
-  %288 = mul nsw i64 %287, %8
-  %289 = mul nsw i64 %286, %8
-  %290 = add nsw i64 %100, %289
-  %291 = add i64 %8, -1
-  %292 = add i64 %291, %290
-  %293 = srem i64 %101, %8
-  %294 = add i64 %290, %293
-  %295 = sub i64 %101, %294
-  %296 = srem i64 %295, %288
-  %297 = icmp eq i64 %296, 0
-  br label %298
+282:                                              ; preds = %98
+  %283 = sext i32 %69 to i64
+  %284 = sext i32 %99 to i64
+  %285 = mul nsw i64 %284, %8
+  %286 = mul nsw i64 %283, %8
+  %287 = add nsw i64 %100, %286
+  %288 = add i64 %8, -1
+  %289 = add i64 %288, %287
+  %290 = srem i64 %101, %8
+  %291 = add i64 %287, %290
+  %292 = sub i64 %101, %291
+  %293 = srem i64 %292, %285
+  %294 = icmp eq i64 %293, 0
+  br label %295
 
-298:                                              ; preds = %285, %267, %240, %187, %158, %120, %105
-  %299 = phi i1 [ %297, %285 ], [ %284, %267 ], [ %247, %240 ], [ %201, %187 ], [ %165, %158 ], [ %117, %105 ], [ %139, %120 ]
-  %300 = phi i64 [ %290, %285 ], [ %277, %267 ], [ %242, %240 ], [ %194, %187 ], [ %160, %158 ], [ %110, %105 ], [ %132, %120 ]
-  %301 = phi i64 [ %292, %285 ], [ %279, %267 ], [ %244, %240 ], [ %196, %187 ], [ %162, %158 ], [ %112, %105 ], [ %140, %120 ]
-  %302 = phi i64 [ %288, %285 ], [ %275, %267 ], [ %227, %240 ], [ %192, %187 ], [ %145, %158 ], [ %108, %105 ], [ %130, %120 ]
-  %303 = zext i1 %299 to i32
-  store i32 %303, ptr %3, align 4, !tbaa !18
-  store i64 %300, ptr %4, align 8, !tbaa !14
-  store i64 %301, ptr %5, align 8, !tbaa !14
-  store i64 %302, ptr %6, align 8, !tbaa !14
+295:                                              ; preds = %282, %264, %238, %186, %158, %120, %105
+  %296 = phi i1 [ %294, %282 ], [ %281, %264 ], [ %245, %238 ], [ %200, %186 ], [ %165, %158 ], [ %117, %105 ], [ %139, %120 ]
+  %297 = phi i64 [ %287, %282 ], [ %274, %264 ], [ %240, %238 ], [ %193, %186 ], [ %160, %158 ], [ %110, %105 ], [ %132, %120 ]
+  %298 = phi i64 [ %289, %282 ], [ %276, %264 ], [ %242, %238 ], [ %195, %186 ], [ %162, %158 ], [ %112, %105 ], [ %140, %120 ]
+  %299 = phi i64 [ %285, %282 ], [ %272, %264 ], [ %225, %238 ], [ %191, %186 ], [ %145, %158 ], [ %108, %105 ], [ %130, %120 ]
+  %300 = zext i1 %296 to i32
+  store i32 %300, ptr %3, align 4, !tbaa !18
+  store i64 %297, ptr %4, align 8, !tbaa !14
+  store i64 %298, ptr %5, align 8, !tbaa !14
+  store i64 %299, ptr %6, align 8, !tbaa !14
   ret void
 }
 
 ; Function Attrs: mustprogress nounwind memory(read, argmem: readwrite, inaccessiblemem: write)
 define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noundef readnone %0, i32 noundef %1, i32 noundef %2, ptr nocapture nofree noundef writeonly %3, ptr nocapture nofree noundef %4, ptr nocapture nofree noundef %5, ptr nocapture nofree noundef writeonly %6, i64 noundef %7, i64 noundef %8) #52 {
-  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !62, !noundef !63
+  %10 = tail call i32 @llvm.amdgcn.workitem.id.x() #64, !range !50, !noundef !51
   %11 = load i32, ptr addrspace(1) @__omp_rtl_assume_no_thread_state, align 4, !tbaa !18
   %12 = icmp eq i32 %11, 0
   %13 = load i32, ptr addrspace(3) getelementptr inbounds (%"struct.ompx::state::TeamStateTy", ptr addrspace(3) @_ZN4ompx5state9TeamStateE, i32 0, i32 2), align 8
@@ -28813,7 +28514,7 @@ define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noun
   %19 = getelementptr inbounds ptr, ptr %17, i64 %18
   %20 = load ptr, ptr %19, align 8, !tbaa !20
   %21 = icmp eq ptr %20, null
-  br i1 %21, label %23, label %22, !prof !85
+  br i1 %21, label %23, label %22, !prof !74
 
 22:                                               ; preds = %16
   br label %23
@@ -28823,7 +28524,7 @@ define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noun
   %25 = getelementptr inbounds i8, ptr %24, i64 4
   %26 = load i32, ptr %25, align 4, !tbaa !18
   %27 = load i32, ptr addrspace(1) @__omp_rtl_debug_kind, align 4, !tbaa !18
-  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !48
+  %28 = load i32, ptr addrspace(4) @__omp_rtl_device_environment, align 8, !tbaa !35
   %29 = and i32 %27, 1
   %30 = and i32 %29, %28
   %31 = icmp eq i32 %30, 0
@@ -28849,7 +28550,7 @@ define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noun
   %41 = getelementptr inbounds ptr, ptr %39, i64 %40
   %42 = load ptr, ptr %41, align 8, !tbaa !20
   %43 = icmp eq ptr %42, null
-  br i1 %43, label %45, label %44, !prof !85
+  br i1 %43, label %45, label %44, !prof !74
 
 44:                                               ; preds = %38
   br label %45
@@ -28869,7 +28570,7 @@ define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noun
 52:                                               ; preds = %45
   tail call void @llvm.assume(i1 noundef %49) #59
   %53 = icmp ult i32 %48, %26
-  br i1 %53, label %68, label %54, !prof !97
+  br i1 %53, label %68, label %54, !prof !86
 
 54:                                               ; preds = %52
   br i1 %15, label %55, label %62
@@ -28880,7 +28581,7 @@ define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noun
   %58 = getelementptr inbounds ptr, ptr %56, i64 %57
   %59 = load ptr, ptr %58, align 8, !tbaa !20
   %60 = icmp eq ptr %59, null
-  br i1 %60, label %62, label %61, !prof !85
+  br i1 %60, label %62, label %61, !prof !74
 
 61:                                               ; preds = %55
   br label %62
@@ -28890,7 +28591,7 @@ define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noun
   %64 = getelementptr inbounds i8, ptr %63, i64 8
   %65 = load i32, ptr %64, align 4, !tbaa !18
   %66 = icmp eq i32 %65, %26
-  %67 = select i1 %66, i32 %10, i32 0, !prof !85
+  %67 = select i1 %66, i32 %10, i32 0, !prof !74
   br label %68
 
 68:                                               ; preds = %62, %52, %35
@@ -28903,7 +28604,7 @@ define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noun
   %73 = getelementptr inbounds ptr, ptr %71, i64 %72
   %74 = load ptr, ptr %73, align 8, !tbaa !20
   %75 = icmp eq ptr %74, null
-  br i1 %75, label %77, label %76, !prof !85
+  br i1 %75, label %77, label %76, !prof !74
 
 76:                                               ; preds = %70
   br label %77
@@ -28935,7 +28636,7 @@ define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noun
   %91 = icmp eq i32 %90, 0
   %92 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
   %93 = getelementptr inbounds i8, ptr addrspace(4) %92, i64 4
-  %94 = load i16, ptr addrspace(4) %93, align 4
+  %94 = load i16, ptr addrspace(4) %93, align 4, !range !65, !invariant.load !51, !noundef !51
   %95 = zext i16 %94 to i32
   %96 = select i1 %91, i32 -64, i32 0
   %97 = add nsw i32 %96, %95
@@ -28946,13 +28647,13 @@ define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noun
   %100 = load i64, ptr %4, align 8, !tbaa !14
   %101 = load i64, ptr %5, align 8, !tbaa !14
   %102 = and i32 %2, -1610612737
-  switch i32 %102, label %285 [
+  switch i32 %102, label %282 [
     i32 33, label %103
     i32 45, label %118
     i32 34, label %141
     i32 91, label %166
-    i32 92, label %202
-    i32 93, label %248
+    i32 92, label %201
+    i32 93, label %246
   ]
 
 103:                                              ; preds = %98
@@ -28972,7 +28673,7 @@ define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noun
   %115 = sub i64 %101, %114
   %116 = urem i64 %115, %108
   %117 = icmp eq i64 %116, 0
-  br label %298
+  br label %295
 
 118:                                              ; preds = %103, %98
   %119 = icmp sgt i64 %8, 0
@@ -28999,7 +28700,7 @@ define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noun
   %138 = urem i64 %137, %130
   %139 = icmp eq i64 %138, 0
   %140 = tail call i64 @llvm.umin.i64(i64 %134, i64 %101) #56
-  br label %298
+  br label %295
 
 141:                                              ; preds = %118, %98
   %142 = sext i32 %69 to i64
@@ -29032,196 +28733,193 @@ define internal void @__kmpc_distribute_static_init_8u(ptr nocapture nofree noun
   %163 = icmp ule i64 %161, %101
   %164 = icmp ule i64 %101, %162
   %165 = and i1 %163, %164
-  br label %298
+  br label %295
 
 166:                                              ; preds = %98
   %167 = icmp sgt i64 %8, 0
-  br i1 %167, label %168, label %202
+  br i1 %167, label %168, label %201
 
 168:                                              ; preds = %166
   %169 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
   %170 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %171, label %178
+  %171 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 12
+  br i1 %31, label %172, label %178
 
-171:                                              ; preds = %168
-  %172 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
-  %173 = load i16, ptr addrspace(4) %172, align 4
-  %174 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 12
-  %175 = load i32, ptr addrspace(4) %174, align 4, !invariant.load !63
-  %176 = zext i16 %173 to i32
-  %177 = udiv i32 %175, %176
-  br label %187
+172:                                              ; preds = %168
+  %173 = load i32, ptr addrspace(4) %171, align 4, !invariant.load !51
+  %174 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
+  %175 = load i16, ptr addrspace(4) %174, align 4, !range !65, !invariant.load !51
+  %176 = zext i16 %175 to i32
+  %177 = udiv i32 %173, %176
+  br label %186
 
 178:                                              ; preds = %168
-  %179 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 12
-  %180 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
-  %181 = load i16, ptr addrspace(4) %180, align 4
-  %182 = load i32, ptr addrspace(4) %179, align 4, !invariant.load !63
-  %183 = zext i16 %181 to i32
-  %184 = udiv i32 %182, %183
-  %185 = icmp ult i32 %169, %184
-  br i1 %185, label %187, label %186
+  %179 = getelementptr inbounds i8, ptr addrspace(4) %170, i64 4
+  %180 = load i32, ptr addrspace(4) %171, align 4, !invariant.load !51
+  %181 = load i16, ptr addrspace(4) %179, align 4, !range !65, !invariant.load !51, !noundef !51
+  %182 = zext i16 %181 to i32
+  %183 = udiv i32 %180, %182
+  %184 = icmp ult i32 %169, %183
+  br i1 %184, label %186, label %185
 
-186:                                              ; preds = %178
+185:                                              ; preds = %178
   tail call void @llvm.trap() #58
   unreachable
 
-187:                                              ; preds = %178, %171
-  %188 = phi i32 [ %177, %171 ], [ %184, %178 ]
-  %189 = icmp ult i32 %169, %188
-  tail call void @llvm.assume(i1 noundef %189) #59
-  %190 = sext i32 %169 to i64
-  %191 = sext i32 %188 to i64
-  %192 = mul i64 %191, %8
-  %193 = mul i64 %190, %8
-  %194 = add i64 %100, %193
-  %195 = add nsw i64 %8, -1
-  %196 = add i64 %195, %194
-  %197 = urem i64 %101, %8
-  %198 = add i64 %194, %197
-  %199 = sub i64 %101, %198
-  %200 = urem i64 %199, %192
-  %201 = icmp eq i64 %200, 0
-  br label %298
+186:                                              ; preds = %178, %172
+  %187 = phi i32 [ %177, %172 ], [ %183, %178 ]
+  %188 = icmp ult i32 %169, %187
+  tail call void @llvm.assume(i1 noundef %188) #59
+  %189 = sext i32 %169 to i64
+  %190 = sext i32 %187 to i64
+  %191 = mul i64 %190, %8
+  %192 = mul i64 %189, %8
+  %193 = add i64 %100, %192
+  %194 = add nsw i64 %8, -1
+  %195 = add i64 %194, %193
+  %196 = urem i64 %101, %8
+  %197 = add i64 %193, %196
+  %198 = sub i64 %101, %197
+  %199 = urem i64 %198, %191
+  %200 = icmp eq i64 %199, 0
+  br label %295
 
-202:                                              ; preds = %166, %98
-  %203 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %204 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %205, label %212
+201:                                              ; preds = %166, %98
+  %202 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %203 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %204 = getelementptr inbounds i8, ptr addrspace(4) %203, i64 12
+  br i1 %31, label %205, label %211
 
-205:                                              ; preds = %202
-  %206 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 4
-  %207 = load i16, ptr addrspace(4) %206, align 4
-  %208 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 12
-  %209 = load i32, ptr addrspace(4) %208, align 4, !invariant.load !63
-  %210 = zext i16 %207 to i32
-  %211 = udiv i32 %209, %210
-  br label %221
+205:                                              ; preds = %201
+  %206 = load i32, ptr addrspace(4) %204, align 4, !invariant.load !51
+  %207 = getelementptr inbounds i8, ptr addrspace(4) %203, i64 4
+  %208 = load i16, ptr addrspace(4) %207, align 4, !range !65, !invariant.load !51
+  %209 = zext i16 %208 to i32
+  %210 = udiv i32 %206, %209
+  br label %219
 
-212:                                              ; preds = %202
-  %213 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 12
-  %214 = getelementptr inbounds i8, ptr addrspace(4) %204, i64 4
-  %215 = load i16, ptr addrspace(4) %214, align 4
-  %216 = load i32, ptr addrspace(4) %213, align 4, !invariant.load !63
-  %217 = zext i16 %215 to i32
-  %218 = udiv i32 %216, %217
-  %219 = icmp ult i32 %203, %218
-  br i1 %219, label %221, label %220
+211:                                              ; preds = %201
+  %212 = getelementptr inbounds i8, ptr addrspace(4) %203, i64 4
+  %213 = load i32, ptr addrspace(4) %204, align 4, !invariant.load !51
+  %214 = load i16, ptr addrspace(4) %212, align 4, !range !65, !invariant.load !51, !noundef !51
+  %215 = zext i16 %214 to i32
+  %216 = udiv i32 %213, %215
+  %217 = icmp ult i32 %202, %216
+  br i1 %217, label %219, label %218
 
-220:                                              ; preds = %212
+218:                                              ; preds = %211
   tail call void @llvm.trap() #58
   unreachable
 
-221:                                              ; preds = %212, %205
-  %222 = phi i32 [ %211, %205 ], [ %218, %212 ]
-  %223 = icmp ult i32 %203, %222
-  tail call void @llvm.assume(i1 noundef %223) #59
-  %224 = sext i32 %203 to i64
-  %225 = sext i32 %222 to i64
-  %226 = sub i64 %101, %100
-  %227 = add i64 %226, 1
-  %228 = udiv i64 %227, %225
-  %229 = mul i64 %228, %225
-  %230 = sub i64 %227, %229
-  %231 = icmp ugt i64 %230, %224
-  br i1 %231, label %232, label %236
+219:                                              ; preds = %211, %205
+  %220 = phi i32 [ %210, %205 ], [ %216, %211 ]
+  %221 = icmp ult i32 %202, %220
+  tail call void @llvm.assume(i1 noundef %221) #59
+  %222 = sext i32 %202 to i64
+  %223 = sext i32 %220 to i64
+  %224 = sub i64 %101, %100
+  %225 = add i64 %224, 1
+  %226 = udiv i64 %225, %223
+  %227 = mul i64 %226, %223
+  %228 = sub i64 %225, %227
+  %229 = icmp ugt i64 %228, %222
+  br i1 %229, label %230, label %234
 
-232:                                              ; preds = %221
-  %233 = add nsw i64 %228, 1
-  %234 = mul i64 %233, %224
-  %235 = add i64 %234, %100
-  br label %241
+230:                                              ; preds = %219
+  %231 = add nsw i64 %226, 1
+  %232 = mul i64 %231, %222
+  %233 = add i64 %232, %100
+  br label %239
 
-236:                                              ; preds = %221
-  %237 = mul i64 %228, %224
-  %238 = add i64 %237, %100
-  %239 = add i64 %238, %230
-  %240 = add i64 %228, -1
-  br label %241
+234:                                              ; preds = %219
+  %235 = mul i64 %226, %222
+  %236 = add i64 %235, %100
+  %237 = add i64 %236, %228
+  %238 = add i64 %226, -1
+  br label %239
 
-241:                                              ; preds = %236, %232
-  %242 = phi i64 [ %228, %232 ], [ %240, %236 ]
-  %243 = phi i64 [ %235, %232 ], [ %239, %236 ]
-  %244 = add i64 %243, %242
-  %245 = icmp ule i64 %243, %101
-  %246 = icmp ule i64 %101, %244
-  %247 = and i1 %245, %246
-  br label %298
+239:                                              ; preds = %234, %230
+  %240 = phi i64 [ %226, %230 ], [ %238, %234 ]
+  %241 = phi i64 [ %233, %230 ], [ %237, %234 ]
+  %242 = add i64 %241, %240
+  %243 = icmp ule i64 %241, %101
+  %244 = icmp ule i64 %101, %242
+  %245 = and i1 %243, %244
+  br label %295
 
-248:                                              ; preds = %98
-  %249 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
-  %250 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
-  br i1 %31, label %251, label %258
+246:                                              ; preds = %98
+  %247 = tail call i32 @llvm.amdgcn.workgroup.id.x() #64
+  %248 = tail call align 4 dereferenceable(64) ptr addrspace(4) @llvm.amdgcn.dispatch.ptr() #56
+  %249 = getelementptr inbounds i8, ptr addrspace(4) %248, i64 12
+  br i1 %31, label %250, label %256
 
-251:                                              ; preds = %248
-  %252 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 4
-  %253 = load i16, ptr addrspace(4) %252, align 4
-  %254 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 12
-  %255 = load i32, ptr addrspace(4) %254, align 4, !invariant.load !63
-  %256 = zext i16 %253 to i32
-  %257 = udiv i32 %255, %256
-  br label %267
+250:                                              ; preds = %246
+  %251 = load i32, ptr addrspace(4) %249, align 4, !invariant.load !51
+  %252 = getelementptr inbounds i8, ptr addrspace(4) %248, i64 4
+  %253 = load i16, ptr addrspace(4) %252, align 4, !range !65, !invariant.load !51
+  %254 = zext i16 %253 to i32
+  %255 = udiv i32 %251, %254
+  br label %264
 
-258:                                              ; preds = %248
-  %259 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 12
-  %260 = getelementptr inbounds i8, ptr addrspace(4) %250, i64 4
-  %261 = load i16, ptr addrspace(4) %260, align 4
-  %262 = load i32, ptr addrspace(4) %259, align 4, !invariant.load !63
-  %263 = zext i16 %261 to i32
-  %264 = udiv i32 %262, %263
-  %265 = icmp ult i32 %249, %264
-  br i1 %265, label %267, label %266
+256:                                              ; preds = %246
+  %257 = getelementptr inbounds i8, ptr addrspace(4) %248, i64 4
+  %258 = load i32, ptr addrspace(4) %249, align 4, !invariant.load !51
+  %259 = load i16, ptr addrspace(4) %257, align 4, !range !65, !invariant.load !51, !noundef !51
+  %260 = zext i16 %259 to i32
+  %261 = udiv i32 %258, %260
+  %262 = icmp ult i32 %247, %261
+  br i1 %262, label %264, label %263
 
-266:                                              ; preds = %258
+263:                                              ; preds = %256
   tail call void @llvm.trap() #58
   unreachable
 
-267:                                              ; preds = %258, %251
-  %268 = phi i32 [ %257, %251 ], [ %264, %258 ]
-  %269 = icmp ult i32 %249, %268
-  tail call void @llvm.assume(i1 noundef %269) #59
-  %270 = mul nsw i32 %99, %249
-  %271 = add nsw i32 %270, %69
-  %272 = sext i32 %271 to i64
-  %273 = mul nsw i32 %268, %99
-  %274 = sext i32 %273 to i64
-  %275 = mul i64 %274, %8
-  %276 = mul i64 %272, %8
-  %277 = add i64 %276, %100
-  %278 = add i64 %8, -1
-  %279 = add i64 %278, %277
-  %280 = urem i64 %101, %8
-  %281 = add i64 %277, %280
-  %282 = sub i64 %101, %281
-  %283 = urem i64 %282, %275
-  %284 = icmp eq i64 %283, 0
-  br label %298
+264:                                              ; preds = %256, %250
+  %265 = phi i32 [ %255, %250 ], [ %261, %256 ]
+  %266 = icmp ult i32 %247, %265
+  tail call void @llvm.assume(i1 noundef %266) #59
+  %267 = mul nsw i32 %99, %247
+  %268 = add nsw i32 %267, %69
+  %269 = sext i32 %268 to i64
+  %270 = mul nsw i32 %265, %99
+  %271 = sext i32 %270 to i64
+  %272 = mul i64 %271, %8
+  %273 = mul i64 %269, %8
+  %274 = add i64 %273, %100
+  %275 = add i64 %8, -1
+  %276 = add i64 %275, %274
+  %277 = urem i64 %101, %8
+  %278 = add i64 %274, %277
+  %279 = sub i64 %101, %278
+  %280 = urem i64 %279, %272
+  %281 = icmp eq i64 %280, 0
+  br label %295
 
-285:                                              ; preds = %98
-  %286 = sext i32 %69 to i64
-  %287 = sext i32 %99 to i64
-  %288 = mul i64 %287, %8
-  %289 = mul i64 %286, %8
-  %290 = add i64 %100, %289
-  %291 = add i64 %8, -1
-  %292 = add i64 %291, %290
-  %293 = urem i64 %101, %8
-  %294 = add i64 %290, %293
-  %295 = sub i64 %101, %294
-  %296 = urem i64 %295, %288
-  %297 = icmp eq i64 %296, 0
-  br label %298
+282:                                              ; preds = %98
+  %283 = sext i32 %69 to i64
+  %284 = sext i32 %99 to i64
+  %285 = mul i64 %284, %8
+  %286 = mul i64 %283, %8
+  %287 = add i64 %100, %286
+  %288 = add i64 %8, -1
+  %289 = add i64 %288, %287
+  %290 = urem i64 %101, %8
+  %291 = add i64 %287, %290
+  %292 = sub i64 %101, %291
+  %293 = urem i64 %292, %285
+  %294 = icmp eq i64 %293, 0
+  br label %295
 
-298:                                              ; preds = %285, %267, %241, %187, %159, %120, %105
-  %299 = phi i1 [ %297, %285 ], [ %284, %267 ], [ %247, %241 ], [ %201, %187 ], [ %165, %159 ], [ %117, %105 ], [ %139, %120 ]
-  %300 = phi i64 [ %290, %285 ], [ %277, %267 ], [ %243, %241 ], [ %194, %187 ], [ %161, %159 ], [ %110, %105 ], [ %132, %120 ]
-  %301 = phi i64 [ %292, %285 ], [ %279, %267 ], [ %244, %241 ], [ %196, %187 ], [ %162, %159 ], [ %112, %105 ], [ %140, %120 ]
-  %302 = phi i64 [ %288, %285 ], [ %275, %267 ], [ %227, %241 ], [ %192, %187 ], [ %145, %159 ], [ %108, %105 ], [ %130, %120 ]
-  %303 = zext i1 %299 to i32
-  store i32 %303, ptr %3, align 4, !tbaa !18
-  store i64 %300, ptr %4, align 8, !tbaa !14
-  store i64 %301, ptr %5, align 8, !tbaa !14
-  store i64 %302, ptr %6, align 8, !tbaa !14
+295:                                              ; preds = %282, %264, %239, %186, %159, %120, %105
+  %296 = phi i1 [ %294, %282 ], [ %281, %264 ], [ %245, %239 ], [ %200, %186 ], [ %165, %159 ], [ %117, %105 ], [ %139, %120 ]
+  %297 = phi i64 [ %287, %282 ], [ %274, %264 ], [ %241, %239 ], [ %193, %186 ], [ %161, %159 ], [ %110, %105 ], [ %132, %120 ]
+  %298 = phi i64 [ %289, %282 ], [ %276, %264 ], [ %242, %239 ], [ %195, %186 ], [ %162, %159 ], [ %112, %105 ], [ %140, %120 ]
+  %299 = phi i64 [ %285, %282 ], [ %272, %264 ], [ %225, %239 ], [ %191, %186 ], [ %145, %159 ], [ %108, %105 ], [ %130, %120 ]
+  %300 = zext i1 %296 to i32
+  store i32 %300, ptr %3, align 4, !tbaa !18
+  store i64 %297, ptr %4, align 8, !tbaa !14
+  store i64 %298, ptr %5, align 8, !tbaa !14
+  store i64 %299, ptr %6, align 8, !tbaa !14
   ret void
 }
 
@@ -29311,12 +29009,12 @@ attributes #67 = { nofree "llvm.assume"="ompx_no_call_asm" }
 !llvm.ident = !{!5, !6, !5}
 !llvm.module.flags = !{!7, !8, !9, !10, !11, !12, !13}
 
-!0 = !{i32 0, i32 22, i32 566764907, !"_ZNSt3__113__simd_walk_1B7v180000IPil3$_0EET_S3_T0_T1_", i32 30, i32 0, i32 0}
-!1 = !{i32 0, i32 22, i32 566764907, !"_ZNSt3__113__simd_walk_1B7v180000IPil3$_1EET_S3_T0_T1_", i32 30, i32 0, i32 1}
-!2 = !{ptr @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_0EET_S3_T0_T1__l30", !"kernel", i32 1}
-!3 = !{ptr @"__omp_offloading_16_21c8256b__ZNSt3__113__simd_walk_1B7v180000IPil3$_1EET_S3_T0_T1__l30", !"kernel", i32 1}
+!0 = !{i32 0, i32 22, i32 1675352264, !"_ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_0EET_S5_T0_T1_i", i32 81, i32 0, i32 0}
+!1 = !{i32 0, i32 22, i32 1675352264, !"_ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_1EET_S5_T0_T1_i", i32 81, i32 0, i32 1}
+!2 = !{ptr @"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_0EET_S5_T0_T1_i_l81", !"kernel", i32 1}
+!3 = !{ptr @"__omp_offloading_16_63dbd8c8__ZNSt3__113__par_backend17__omp_gpu_backend25__omp_parallel_for_simd_1B7v180000IPil3$_1EET_S5_T0_T1_i_l81", !"kernel", i32 1}
 !4 = !{i32 2, i32 0}
-!5 = !{!"clang version 18.0.0 (https://github.com/llvm/llvm-project.git ddb335b55b2c06930a30876d609f2b5a1a822e60)"}
+!5 = !{!"clang version 18.0.0 (https://github.com/AntonRydahl/llvm-project 96adadf8f7227f6543537056f27f98cb18bbe8ce)"}
 !6 = !{!"AMD clang version 16.0.0 (https://github.com/RadeonOpenCompute/llvm-project roc-5.6.0 23243 be997b2f3651a41597d7a41441fff8ade4ac59ac)"}
 !7 = !{i32 1, !"amdgpu_code_object_version", i32 400}
 !8 = !{i32 1, !"wchar_size", i32 4}
@@ -29337,97 +29035,86 @@ attributes #67 = { nofree "llvm.assume"="ompx_no_call_asm" }
 !23 = distinct !{!23, !24, !25}
 !24 = !{!"llvm.loop.parallel_accesses", !22}
 !25 = !{!"llvm.loop.vectorize.enable", i1 true}
-!26 = distinct !{!26, !27}
-!27 = !{!"llvm.loop.vectorize.enable", i1 false}
-!28 = distinct !{}
-!29 = distinct !{!29, !30, !25}
-!30 = !{!"llvm.loop.parallel_accesses", !28}
-!31 = distinct !{!31, !27}
+!26 = distinct !{}
+!27 = distinct !{!27, !28, !25}
+!28 = !{!"llvm.loop.parallel_accesses", !26}
+!29 = distinct !{}
+!30 = distinct !{!30, !31, !25}
+!31 = !{!"llvm.loop.parallel_accesses", !29}
 !32 = distinct !{}
 !33 = distinct !{!33, !34, !25}
 !34 = !{!"llvm.loop.parallel_accesses", !32}
-!35 = distinct !{!35, !27}
-!36 = distinct !{}
-!37 = distinct !{!37, !38, !25}
-!38 = !{!"llvm.loop.parallel_accesses", !36}
-!39 = distinct !{!39, !27}
-!40 = distinct !{}
-!41 = distinct !{!41, !42, !25}
-!42 = !{!"llvm.loop.parallel_accesses", !40}
-!43 = distinct !{!43, !27}
-!44 = distinct !{}
-!45 = distinct !{!45, !46, !25}
-!46 = !{!"llvm.loop.parallel_accesses", !44}
-!47 = distinct !{!47, !27}
-!48 = !{!49, !19, i64 0}
-!49 = !{!"_ZTS19DeviceEnvironmentTy", !19, i64 0, !19, i64 4, !19, i64 8, !19, i64 12, !15, i64 16, !15, i64 24, !15, i64 32}
-!50 = !{!49, !19, i64 4}
-!51 = !{!49, !19, i64 8}
-!52 = !{!49, !19, i64 12}
-!53 = !{!49, !15, i64 16}
-!54 = !{!49, !15, i64 24}
-!55 = !{!49, !15, i64 32}
-!56 = !{!57, !16, i64 1}
-!57 = !{!"_ZTS19KernelEnvironmentTy", !58, i64 0, !21, i64 8, !21, i64 16}
-!58 = !{!"_ZTS26ConfigurationEnvironmentTy", !16, i64 0, !16, i64 1, !59, i64 2}
-!59 = !{!"_ZTSN4llvm3omp19OMPTgtExecModeFlagsE", !16, i64 0}
-!60 = !{!58, !59, i64 2}
-!61 = !{!58, !16, i64 0}
-!62 = !{i32 0, i32 1024}
-!63 = !{}
-!64 = !{!16, !16, i64 0}
-!65 = !{!66, !19, i64 0}
-!66 = !{!"_ZTSN4ompx5state11TeamStateTyE", !67, i64 0, !19, i64 28, !19, i64 32, !21, i64 40}
-!67 = !{!"_ZTSN4ompx5state10ICVStateTyE", !19, i64 0, !19, i64 4, !19, i64 8, !19, i64 12, !19, i64 16, !19, i64 20, !19, i64 24}
-!68 = !{!66, !19, i64 4}
-!69 = !{!66, !19, i64 8}
-!70 = !{!66, !19, i64 12}
-!71 = !{!66, !19, i64 16}
-!72 = !{!66, !19, i64 20}
-!73 = !{!66, !19, i64 24}
-!74 = !{!66, !19, i64 28}
-!75 = !{!66, !19, i64 32}
-!76 = !{!66, !21, i64 40}
-!77 = !{!67, !19, i64 0}
-!78 = !{!67, !19, i64 4}
-!79 = !{!67, !19, i64 8}
-!80 = !{!67, !19, i64 16}
-!81 = !{!67, !19, i64 20}
-!82 = !{!67, !19, i64 24}
-!83 = distinct !{!83, !84}
-!84 = !{!"llvm.loop.mustprogress"}
-!85 = !{!"branch_weights", i32 2000, i32 1}
-!86 = !{!87, !21, i64 32}
-!87 = !{!"_ZTSN4ompx5state13ThreadStateTyE", !67, i64 0, !21, i64 32}
-!88 = distinct !{!88, !84}
-!89 = !{!90, !21, i64 0}
-!90 = !{!"_ZTSZN4ompx4impl18indirectCallLookupEPvE17IndirectCallTable", !21, i64 0, !21, i64 8}
-!91 = !{!90, !21, i64 8}
-!92 = distinct !{!92, !84}
-!93 = !{!"branch_weights", i32 4000000, i32 4001}
-!94 = !{!"branch_weights", i32 4001, i32 1}
-!95 = !{i64 0, i64 4, !18, i64 4, i64 4, !18, i64 8, i64 4, !18, i64 12, i64 4, !18, i64 16, i64 4, !18, i64 20, i64 4, !18, i64 24, i64 4, !18}
-!96 = !{!"branch_weights", i32 1, i32 4001}
-!97 = !{!"branch_weights", i32 1, i32 2000}
-!98 = distinct !{!98, !84}
-!99 = !{i64 0, i64 65}
-!100 = distinct !{!100, !84}
-!101 = !{i64 0, i64 64}
-!102 = distinct !{!102, !84}
-!103 = distinct !{!103, !84}
-!104 = distinct !{!104, !84}
-!105 = !{i64 0, !"_ZTSMN4ompx5state11TeamStateTyEFvbE"}
-!106 = !{!107, !107, i64 0}
-!107 = !{!"_ZTS11omp_sched_t", !16, i64 0}
-!108 = distinct !{!108, !84}
-!109 = distinct !{!109, !84}
-!110 = !{!111, !21, i64 8}
-!111 = !{!"_ZTS16TaskDescriptorTy", !21, i64 0, !21, i64 8}
-!112 = !{!113, !114, i64 32}
-!113 = !{!"_ZTS22DynamicScheduleTracker", !15, i64 0, !15, i64 8, !15, i64 16, !15, i64 24, !114, i64 32, !21, i64 40}
-!114 = !{!"_ZTS11kmp_sched_t", !16, i64 0}
-!115 = !{!113, !15, i64 16}
-!116 = !{!113, !15, i64 8}
-!117 = !{!113, !15, i64 0}
-!118 = !{!113, !15, i64 24}
-!119 = !{!113, !21, i64 40}
+!35 = !{!36, !19, i64 0}
+!36 = !{!"_ZTS19DeviceEnvironmentTy", !19, i64 0, !19, i64 4, !19, i64 8, !19, i64 12, !15, i64 16, !15, i64 24, !15, i64 32, !15, i64 40}
+!37 = !{!36, !19, i64 4}
+!38 = !{!36, !19, i64 8}
+!39 = !{!36, !19, i64 12}
+!40 = !{!36, !15, i64 16}
+!41 = !{!36, !15, i64 24}
+!42 = !{!36, !15, i64 40}
+!43 = !{!36, !15, i64 32}
+!44 = !{!45, !16, i64 1}
+!45 = !{!"_ZTS19KernelEnvironmentTy", !46, i64 0, !21, i64 8, !21, i64 16}
+!46 = !{!"_ZTS26ConfigurationEnvironmentTy", !16, i64 0, !16, i64 1, !47, i64 2}
+!47 = !{!"_ZTSN4llvm3omp19OMPTgtExecModeFlagsE", !16, i64 0}
+!48 = !{!46, !47, i64 2}
+!49 = !{!46, !16, i64 0}
+!50 = !{i32 0, i32 1024}
+!51 = !{}
+!52 = !{!16, !16, i64 0}
+!53 = !{!54, !19, i64 0}
+!54 = !{!"_ZTSN4ompx5state11TeamStateTyE", !55, i64 0, !19, i64 28, !19, i64 32, !21, i64 40}
+!55 = !{!"_ZTSN4ompx5state10ICVStateTyE", !19, i64 0, !19, i64 4, !19, i64 8, !19, i64 12, !19, i64 16, !19, i64 20, !19, i64 24}
+!56 = !{!54, !19, i64 4}
+!57 = !{!54, !19, i64 8}
+!58 = !{!54, !19, i64 12}
+!59 = !{!54, !19, i64 16}
+!60 = !{!54, !19, i64 20}
+!61 = !{!54, !19, i64 24}
+!62 = !{!54, !19, i64 28}
+!63 = !{!54, !19, i64 32}
+!64 = !{!54, !21, i64 40}
+!65 = !{i16 1, i16 1025}
+!66 = !{!55, !19, i64 0}
+!67 = !{!55, !19, i64 4}
+!68 = !{!55, !19, i64 8}
+!69 = !{!55, !19, i64 16}
+!70 = !{!55, !19, i64 20}
+!71 = !{!55, !19, i64 24}
+!72 = distinct !{!72, !73}
+!73 = !{!"llvm.loop.mustprogress"}
+!74 = !{!"branch_weights", i32 2000, i32 1}
+!75 = !{!76, !21, i64 32}
+!76 = !{!"_ZTSN4ompx5state13ThreadStateTyE", !55, i64 0, !21, i64 32}
+!77 = distinct !{!77, !73}
+!78 = !{!79, !21, i64 0}
+!79 = !{!"_ZTSZN4ompx4impl18indirectCallLookupEPvE17IndirectCallTable", !21, i64 0, !21, i64 8}
+!80 = !{!79, !21, i64 8}
+!81 = distinct !{!81, !73}
+!82 = !{!"branch_weights", i32 4000000, i32 4001}
+!83 = !{!"branch_weights", i32 4001, i32 1}
+!84 = !{i64 0, i64 4, !18, i64 4, i64 4, !18, i64 8, i64 4, !18, i64 12, i64 4, !18, i64 16, i64 4, !18, i64 20, i64 4, !18, i64 24, i64 4, !18}
+!85 = !{!"branch_weights", i32 1, i32 4001}
+!86 = !{!"branch_weights", i32 1, i32 2000}
+!87 = distinct !{!87, !73}
+!88 = !{i64 0, i64 65}
+!89 = distinct !{!89, !73}
+!90 = !{i64 0, i64 64}
+!91 = distinct !{!91, !73}
+!92 = distinct !{!92, !73}
+!93 = distinct !{!93, !73}
+!94 = !{i64 0, !"_ZTSMN4ompx5state11TeamStateTyEFvbE"}
+!95 = !{!96, !96, i64 0}
+!96 = !{!"_ZTS11omp_sched_t", !16, i64 0}
+!97 = distinct !{!97, !73}
+!98 = distinct !{!98, !73}
+!99 = !{!100, !21, i64 8}
+!100 = !{!"_ZTS16TaskDescriptorTy", !21, i64 0, !21, i64 8}
+!101 = !{!102, !103, i64 32}
+!102 = !{!"_ZTS22DynamicScheduleTracker", !15, i64 0, !15, i64 8, !15, i64 16, !15, i64 24, !103, i64 32, !21, i64 40}
+!103 = !{!"_ZTS11kmp_sched_t", !16, i64 0}
+!104 = !{!102, !15, i64 16}
+!105 = !{!102, !15, i64 8}
+!106 = !{!102, !15, i64 0}
+!107 = !{!102, !15, i64 24}
+!108 = !{!102, !21, i64 40}

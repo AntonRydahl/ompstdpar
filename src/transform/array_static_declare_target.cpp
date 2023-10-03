@@ -7,16 +7,16 @@
 #pragma omp declare target
 void init(int& n) {n=0; };
 void increment(int& n) {n++; };
-int square(int n) {return n*n; };
+int square(int& n) {return n*n; };
 #pragma omp end declare target
 
 int main()
 {
   void (*initdev)(int& n);
   void (*incrementdev)(int& n);
-  int (*squaredev)(int n);
+  int (*squaredev)(int& n);
 
-  #pragma omp target map(always,from:initdev,incrementdev,squaredev)
+#  pragma omp target map(always,from:initdev,incrementdev,squaredev)
   {
     initdev = &init;
     incrementdev = &increment;

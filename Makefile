@@ -9,16 +9,19 @@ OPT ?=-O3
 CC = clang
 CXX = clang++
 
+GPU ?= gfx906
+VENDOR ?= amdgcn-amd-amdhsa
+
 bin: bin/$(APP)
 
 target: bin
 
 TMPOUT=temps/$(APP)
 
-CFLAGS = $(OPT) -Wall -std=c++2a -Iinclude
-CFLAGS += -stdlib=libc++ -fexperimental-library
+CFLAGS = $(OPT) -Wall -std=c++23 -Iinclude
+CFLAGS += -stdlib=libc++ -fexperimental-library -I$(LLVMPATH)/bin/../include/c++/v1/ #-I/usr/include/sys/
 LDFLAGS = -L$(LLVMPATH)/lib/x86_64-unknown-linux-gnu/ -L/usr/include/tbb -ltbb
-LDFLAGS += -Wl,-rpath,$(LLVMPATH)/lib/x86_64-unknown-linux-gnu/
+LDFLAGS += -Wl,-rpath,$(LLVMPATH)/lib/x86_64-unknown-linux-gnu/ #-Wl,-rpath,$(LLVMPATH)/lib/powerpc64le-unknown-linux-gnu/
 
 ifdef LEN
 CFLAGS += -DLEN=$(LEN)
@@ -29,7 +32,9 @@ CFLAGS += -fopenmp -fopenmp-version=51
 ifdef OMPHOST
 #CFLAGS += -fopenmp-targets=x86_64-pc-linux-gnu
 else
-CFLAGS += -fopenmp-targets=amdgcn-amd-amdhsa --offload-arch=gfx906 -D_LIBCPP_ENABLE_OPENMP_OFFLOAD -L$(LLVMPATH)/lib -lomptarget
+CFLAGS += -fopenmp-targets=$(VENDOR) --offload-arch=$(GPU) -L$(LLVMPATH)/lib -lomptarget
+#CFLAGS += -fopenmp-targets=amdgcn-amd-amdhsa --offload-arch=gfx906 -D_LIBCPP_ENABLE_OPENMP_OFFLOAD -L$(LLVMPATH)/lib -lomptarget
+#CFLAGS += -D_LIBCPP_PSTL_GPU_BACKEND_OMP_OFFLOAD
 endif
 LDFLAGS += -L$(LLVMPATH)/lib -lomp
 else

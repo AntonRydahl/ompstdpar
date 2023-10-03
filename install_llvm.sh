@@ -1,7 +1,8 @@
 module load ninja
 ROOTDIR=`pwd`
+export CCACHE_DIR=/dev/shm/rydahl1/ccache
 TARGETDIR=/dev/shm/rydahl1/LLVM
-SRCDIR=/g/g92/rydahl1/LLVM2/llvm-project
+SRCDIR=/g/g92/rydahl1/LLVM_FORK/llvm-project
 if [ -d $TARGETDIR/build ] && [ -d $TARGETDIR/install/bin ]; then
   source recompile.sh
   exit(0)
@@ -29,6 +30,7 @@ cmake \
         -DLLVM_BUILD_EXAMPLES=ON \
         -DLLVM_LIT_ARGS=-v \
         -DLLVM_LIBC_FULL_BUILD=1 \
+	-DLIBCXX_ENABLE_GPU_OFFLOAD=ON \
         -DLLVM_TARGETS_TO_BUILD="host;AMDGPU" \
         -DLLVM_ENABLE_PROJECTS="clang;lld;openmp;pstl" \
         -DLLVM_ENABLE_RUNTIMES="compiler-rt;libcxx;libcxxabi" \
@@ -36,6 +38,7 @@ cmake \
         $SRCDIR/llvm
 
 ninja install -j 63
+#ninja check-cxx
 
 export LLVMPATH=$TARGETDIR/install/
 export PATH=$TARGETDIR/install/bin/:$PATH
