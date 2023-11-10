@@ -3,6 +3,9 @@ ROOTDIR=`pwd`
 export CCACHE_DIR=/dev/shm/rydahl1/ccache
 TARGETDIR=/dev/shm/rydahl1/LLVM
 SRCDIR=/g/g92/rydahl1/LLVM_FORK/llvm-project
+source ~/.bashrc
+export CC=clang
+export CXX=clang++
 if [ -d $TARGETDIR/build ]; then
   cd $TARGETDIR/build
 else
@@ -34,16 +37,18 @@ cmake \
         -DLLVM_ENABLE_PROJECTS="clang;lld;openmp" \
         -DLLVM_ENABLE_RUNTIMES="compiler-rt;libcxx;libcxxabi" \
 	-DLIBOMPTARGET_ENABLE_DEBUG=ON  \
+	-DLIBOMPTARGET_FORCE_AMDGPU_TESTS=ON \
 	-DSPHINX_EXECUTABLE=/g/g92/rydahl1/.local/bin/sphinx-build \
         $SRCDIR/llvm
 
 ninja install -j 95
 
+module load rocm
 export LLVMPATH=$TARGETDIR/install/
 export PATH=$TARGETDIR/install/bin/:$PATH
 export LD_LIBRARY_PATH=$TARGETDIR/install/lib/:$LD_LIBRARY_PATH
 
-#ninja check-cxx
+ninja check-cxx
 
 cd $ROOTDIR
 

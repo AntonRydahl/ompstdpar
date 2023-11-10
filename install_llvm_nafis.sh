@@ -6,6 +6,8 @@ SRCDIR=/g/g92/rydahl1/LLVM_FORK/llvm-project
 if [ -d $TARGETDIR/build ]; then
   cd $TARGETDIR/build
 else
+#cd $SRCDIR
+#git apply $ROOTDIR/patches/*.patch
 mkdir -p $TARGETDIR
 cd $TARGETDIR
 rm -rf build
@@ -15,6 +17,7 @@ mkdir install
 INSTALLDIR=$TARGETDIR/install
 cd build
 fi
+module load rocm
 
 cmake \
         -G Ninja \
@@ -38,12 +41,11 @@ cmake \
         $SRCDIR/llvm
 
 ninja install -j 95
+ninja check-cxx
 
 export LLVMPATH=$TARGETDIR/install/
 export PATH=$TARGETDIR/install/bin/:$PATH
 export LD_LIBRARY_PATH=$TARGETDIR/install/lib/:$LD_LIBRARY_PATH
-
-#ninja check-cxx
-
 cd $ROOTDIR
-
+module load rocm
+#ninja check-clang 

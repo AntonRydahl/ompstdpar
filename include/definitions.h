@@ -1,0 +1,6 @@
+#ifndef STD_PAR_OFFLOAD_TEST_HEADER
+#define STD_PAR_OFFLOAD_TEST_HEADER
+#ifndef LEN
+#define LEN 35791394 //3579139410
+#endif
+#endif

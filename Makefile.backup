@@ -20,20 +20,19 @@ TMPOUT=temps/$(APP)
 
 CFLAGS = -Wall -std=c++23 $(OPT) -Iinclude
 CFLAGS += -stdlib=libc++ -fexperimental-library -I$(LLVMPATH)/bin/../include/c++/v1/ #-I/usr/include/sys/
-#LDFLAGS = -L$(LLVMPATH)/lib/x86_64-unknown-linux-gnu/ -L/usr/include/tbb -ltbb
-#LDFLAGS += -Wl,-rpath,$(LLVMPATH)/lib/x86_64-unknown-linux-gnu/ -Wl,-rpath,$(LLVMPATH)/lib #-Wl,-rpath,$(LLVMPATH)/lib/powerpc64le-unknown-linux-gnu/
-LDFLAGS = -Wl,-rpath,$(LLVMPATH)/lib/,-rpath,$(LLVMPATH)/lib/x86_64-unknown-linux-gnu/ #-L$($(LLVMPATH))/lib -lomptarget
+LDFLAGS = -L$(LLVMPATH)/lib/x86_64-unknown-linux-gnu/ -L/usr/include/tbb -ltbb
+LDFLAGS += -Wl,-rpath,$(LLVMPATH)/lib/x86_64-unknown-linux-gnu/ -Wl,-rpath,$(LLVMPATH)/lib #-Wl,-rpath,$(LLVMPATH)/lib/powerpc64le-unknown-linux-gnu/
+
 ifdef LEN
 CFLAGS += -DLEN=$(LEN)
 endif
 
 ifdef OMP
-CFLAGS += -fopenmp -fno-exceptions
+CFLAGS += -fopenmp -fopenmp-version=51
 ifdef OMPHOST
 #CFLAGS += -fopenmp-targets=x86_64-pc-linux-gnu
 else
-CFLAGS += -fopenmp-targets=$(VENDOR) --offload-arch=$(GPU) 
-LDFLAGS += -L$(LLVMPATH)/lib -lomptarget
+CFLAGS += -fopenmp-targets=$(VENDOR) --offload-arch=$(GPU) -L$(LLVMPATH)/lib -lomptarget
 #CFLAGS += -fopenmp-targets=amdgcn-amd-amdhsa --offload-arch=gfx906 -D_LIBCPP_ENABLE_OPENMP_OFFLOAD -L$(LLVMPATH)/lib -lomptarget
 #CFLAGS += -D_LIBCPP_PSTL_GPU_BACKEND_OMP_OFFLOAD
 endif
@@ -59,7 +58,7 @@ mktemps:
 
 bin/$(APP)/%: src/$(APP)/%.cpp
 	make mkbin
-	$(CXX) $(CFLAGS) $< -o $@ $(LDFLAGS)
+	$(CXX) $(CFLAGS) $(LDFLAGS) $< -o $@
 
 temps/$(APP)/%: src/$(APP)/%.cpp
 	mkdir -p $(TMPOUT)/$(basename $(subst src/$(APP)/,,$<))
